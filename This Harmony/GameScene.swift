@@ -22,22 +22,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let somePlayer: Player = self.childNode(withName: "player") as? Player {
             // Make the declared variable equal to somePlayer
             player = somePlayer
-         
         }
         
-        let swipeRight:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
+        for node in children {
+            if node.name == "crate" {
+                // Adjust bounding rect so to avoid corner collisions
+                node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: node.frame.width - 1, height: node.frame.height - 1))
+                node.physicsBody?.mass = 0.00000001
+            }
+        }
+                
+        let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
         view.addGestureRecognizer(swipeRight)
 
-        let swipeLeft:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft(sender:)))
+        let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft(sender:)))
         swipeLeft.direction = .left
         view.addGestureRecognizer(swipeLeft)
 
-        let swipeUp:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp(sender:)))
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp(sender:)))
         swipeUp.direction = .up
         view.addGestureRecognizer(swipeUp)
 
-        let swipeDown:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown(sender:)))
+        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown(sender:)))
         swipeDown.direction = .down
         view.addGestureRecognizer(swipeDown)
     }
@@ -63,19 +70,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-         print("didBeginContact entered for \(String(describing: contact.bodyA.node!.name)) and \(String(describing: contact.bodyB.node!.name))")
 
-//         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-//
-//         switch contactMask {
-//         case bulletCategory | enemyCategory:
-//            print("bullet and enemy have contacted.")
-//            let bulletNode = contact.bodyA.categoryBitMask == bulletCategory ? contact.bodyA.node : contact.bodyB.node
-//            enemyHealth -= 10
-//            bulletNode.removeFromParent
-//         default:
-//            print("Some other contact occurred")
-//         }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+
     }
     
 }
