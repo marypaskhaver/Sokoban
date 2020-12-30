@@ -18,6 +18,7 @@
 		20E2F828259BC43A004BF34B /* This_HarmonyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F827259BC43A004BF34B /* This_HarmonyUITests.swift */; };
 		20F5922C259CDEED003C6A1D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F5922B259CDEED003C6A1D /* Player.swift */; };
 		20F59231259CE20C003C6A1D /* MovableTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F59230259CE20C003C6A1D /* MovableTile.swift */; };
+		20F59236259CEFC9003C6A1D /* Crate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F59235259CEFC9003C6A1D /* Crate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		20E2F829259BC43A004BF34B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20F5922B259CDEED003C6A1D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		20F59230259CE20C003C6A1D /* MovableTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableTile.swift; sourceTree = "<group>"; };
+		20F59235259CEFC9003C6A1D /* Crate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				20E2F804259BC439004BF34B /* AppDelegate.swift */,
 				20E2F806259BC439004BF34B /* GameScene.sks */,
 				20F5922B259CDEED003C6A1D /* Player.swift */,
+				20F59235259CEFC9003C6A1D /* Crate.swift */,
 				20F59230259CE20C003C6A1D /* MovableTile.swift */,
 				20E2F808259BC439004BF34B /* Actions.sks */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20F5922C259CDEED003C6A1D /* Player.swift in Sources */,
+				20F59236259CEFC9003C6A1D /* Crate.swift in Sources */,
 				20E2F80B259BC439004BF34B /* GameScene.swift in Sources */,
 				20E2F80D259BC439004BF34B /* GameViewController.swift in Sources */,
 				20F59231259CE20C003C6A1D /* MovableTile.swift in Sources */,
