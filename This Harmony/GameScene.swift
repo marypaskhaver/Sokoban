@@ -10,7 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var player: SKSpriteNode?
+    var player: Player = Player()
     let tileSize: CGFloat = 80.0
     
     override func didMove(to view: SKView) {
@@ -18,7 +18,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         // Setup player
-        player = self.childNode(withName: "player") as? SKSpriteNode
+        // Make sure the child actually is of the Player class
+        if let somePlayer: Player = self.childNode(withName: "player") as? Player {
+            // Make the declared variable equal to somePlayer
+            player = somePlayer
+         
+        }
         
         let swipeRight:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
@@ -38,22 +43,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func swipedRight(sender: UISwipeGestureRecognizer) {
-        player?.run(SKAction.moveBy(x: tileSize, y: 0, duration: 0.2))
+        player.moveRight(byNumTiles: 1)
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
-        player?.run(SKAction.moveBy(x: -tileSize, y: 0, duration: 0.2))
+        player.moveLeft(byNumTiles: 1)
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer) {
-        player?.run(SKAction.moveBy(x: 0, y: tileSize, duration: 0.2))
+        player.moveUp(byNumTiles: 1)
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
-        player?.run(SKAction.moveBy(x: 0, y: -tileSize, duration: 0.2))
+        player.moveDown(byNumTiles: 1)
         // Call player.animate method to change image-- later
     }
     
