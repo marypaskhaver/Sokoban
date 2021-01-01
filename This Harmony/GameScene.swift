@@ -26,7 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         grid = Grid(withChildren: self.children)
-        grid?.printGrid()
+//        grid?.printGrid()
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
@@ -49,24 +49,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // What if the player can only move forward if the block in front of them is of type "floor"? But then how would they push crates?
     
     @objc func swipedRight(sender: UISwipeGestureRecognizer) {
-//        grid?.movePlayerRight()
+        grid?.canPlayerMove(inDirection: .right)
 
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
-//        grid?.movePlayerLeft()
+        grid?.canPlayerMove(inDirection: .left)
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer) {
-//        grid?.movePlayerUp()
+        grid?.canPlayerMove(inDirection: .up)
+
         // They don't have to slide. They have to go their row on the grid + 64 + 80x or whatever and column at grid + 32 + 80y or whatever!!!
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
-//        grid?.movePlayerDown()
+        grid?.canPlayerMove(inDirection: .down)
 
         // Call player.animate method to change image-- later
     }
