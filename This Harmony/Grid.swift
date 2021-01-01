@@ -12,6 +12,7 @@ class Grid {
     
     var grid: [[Tile]] = [ [Tile] ]()
     var player: Player?
+    var childrenToAddToView: [SKNode] = [SKNode]()
     
     init(withChildren children: [SKNode]) {
         var arrayOfNodes: [Tile] = []
@@ -56,17 +57,18 @@ class Grid {
                     // Replace w/ Floor tile
                     grid[row][col] = Floor(texture: SKTexture(imageNamed: "floor"), name: "floor", row: row, column: col)
                     (grid[row][col] as! Floor).player = player
+
+                    childrenToAddToView.append(grid[row][col])
+                    
                     self.player = player
-                    
-                    print("Player row: \(player.row), player col: \(player.column)")
-                    
                 } else if grid[row][col].name == "crate" {
                     let crate: Crate = grid[row][col] as! Crate
                     
                     // Replace w/ Crate tile
                     grid[row][col] = Floor(texture: SKTexture(imageNamed: "floor"), name: "floor", row: row, column: col)
                     (grid[row][col] as! Floor).crate = crate
-
+                    
+                    childrenToAddToView.append(grid[row][col])
                 }
                 
             }
@@ -95,23 +97,19 @@ class Grid {
         case .up:
             if player?.row == 1 { print("In row 1, can't move up"); return false }
             let tilesInFront = getAdjacentTiles(inDirection: .up)
-            print("Tiles in front: \(tilesInFront)")
-            return isObstacleInPlayerPath(twoTilesInFrontOfPlayer: tilesInFront)
+            return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
         case .down:
             if player?.row == 6 { print("In row 6, can't move down"); return false }
             let tilesInFront = getAdjacentTiles(inDirection: .down)
-            print("Tiles in front: \(tilesInFront)")
-            return isObstacleInPlayerPath(twoTilesInFrontOfPlayer: tilesInFront)
+            return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
         case .left:
             if player?.column == 1 { print("In col 1, can't move left"); return false }
             let tilesInFront = getAdjacentTiles(inDirection: .left)
-            print("Tiles in front: \(tilesInFront)")
-            return isObstacleInPlayerPath(twoTilesInFrontOfPlayer: tilesInFront)
+            return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
         case .right:
             if player?.column == 10 { print("In col 10, can't move right"); return false }
             let tilesInFront = getAdjacentTiles(inDirection: .right)
-            print("Tiles in front: \(tilesInFront)")
-            return isObstacleInPlayerPath(twoTilesInFrontOfPlayer: tilesInFront)
+            return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
         default:
             return false
         }
@@ -145,17 +143,17 @@ class Grid {
         return (oneTileFromPlayer, twoTilesFromPlayer)
     }
     
-    func isObstacleInPlayerPath(twoTilesInFrontOfPlayer: (Tile, Tile)) -> Bool {
+    func isPlayersPathClear(twoTilesInFrontOfPlayer: (Tile, Tile)) -> Bool {
         let oneTileFromPlayer: Tile = twoTilesInFrontOfPlayer.0
         let twoTilesFromPlayer: Tile = twoTilesInFrontOfPlayer.1
         
         if oneTileFromPlayer.name == "wall" ||
             (isFloorThatContainsCrate(oneTileFromPlayer) && twoTilesFromPlayer.name == "wall") ||
             (isFloorThatContainsCrate(oneTileFromPlayer) && isFloorThatContainsCrate(twoTilesFromPlayer)) {
-            return true
+            return false
         }
-
-        return false
+        
+        return true
     }
     
     func isFloorThatContainsCrate(_ tile: Tile) -> Bool {
