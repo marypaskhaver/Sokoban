@@ -11,4 +11,9 @@ import SpriteKit
 class Floor: SKSpriteNode {
     var player: SKSpriteNode?
     var crate: SKSpriteNode?
+    
+//    init(image: FloorImageInterface, player: Player = null) {
+//        image = new WoodImage()
+//        player = Player
+//    }
 }
