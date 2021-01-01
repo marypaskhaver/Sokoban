@@ -26,7 +26,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         grid = Grid(withChildren: self.children)
-//        grid?.printGrid()
+        let childrenToAdd: [SKNode] = grid!.childrenToAddToView // There will always be a player and some crates
+        
+        for child in childrenToAdd {
+            // Calculate position for drawing floors underneath the player and crates
+            let tile: Tile = child as! Tile
+            child.position = CGPoint(x: tile.column * 80 + 64, y: 656 - (tile.row * 80))
+            
+            scene?.addChild(child)
+        }
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
@@ -67,10 +75,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
-        grid?.canPlayerMove(inDirection: .down)
-
+//        print("Can player move? \(grid?.canPlayerMove(inDirection: .down))")
+        grid?.movePlayer(inDirection: .down)
         // Call player.animate method to change image-- later
     }
+    
+    // Create method to add child to GameScene from Grid
     
     func didBegin(_ contact: SKPhysicsContact) {
 
