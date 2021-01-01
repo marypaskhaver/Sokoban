@@ -12,6 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player = Player()
     let tileSize: CGFloat = 80.0
+    var grid: Grid?
     
     override func didMove(to view: SKView) {
         
@@ -24,24 +25,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player = somePlayer
         }
         
-        var arrayOfNodes: [SKSpriteNode] = []
+        grid = Grid(withChildren: self.children)
+        grid?.printGrid()
         
-        for child in children {
-            arrayOfNodes.append(child as! SKSpriteNode)
-        }
-        
-        arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midX < $1.frame.midX })
-        arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midY > $1.frame.midY })
-        
-        var arrayOfNodes2D: [[SKSpriteNode]] = [ [SKSpriteNode] ]()
-        
-        arrayOfNodes2D = arrayOfNodes.chunked(into: 12)
-        
-        for r in arrayOfNodes2D {
-            var row = r
-            row = row.sorted(by: { $0.frame.midX < $1.frame.midX })
-        }
-
         // Create array from nodes in self.children and sort them by their x and y values
         // Start w/ lowest x and highest y
         // Go thru all the x's on that y level
@@ -100,12 +86,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
-}
-
-extension Array {
-    func chunked(into size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
-            Array(self[$0 ..< Swift.min($0 + size, count)])
-        }
-    }
 }
