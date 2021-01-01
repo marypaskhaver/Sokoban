@@ -8,5 +8,5 @@
 import Foundation
 
 class Crate: MovableTile {
-    
+    var isOnStorageArea: Bool = false
 }
