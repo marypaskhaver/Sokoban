@@ -16,13 +16,10 @@ class Grid {
         var arrayOfNodes: [SKSpriteNode] = []
         
         for child in children {
-            // Adjust for imprecise x and y values
-            child.position = CGPoint(x: child.position.x.rounded(), y: child.position.y.rounded())
-
-            
-            if child.name != "crate" && child.name != "player" {
-                arrayOfNodes.append(child as! SKSpriteNode)
-            }
+            // A player and crate will always be standing on a floor, so you can add them normally to the arrayOfNodes and just remember they're on Floor tiles;
+            // Maybe create Floor tiles underneath them.
+            child.position = CGPoint(x: child.getRoundedX(), y: child.getRoundedY())
+            arrayOfNodes.append(child as! SKSpriteNode)
         }
         
         arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midX < $1.frame.midX })
@@ -40,9 +37,6 @@ class Grid {
         for row in grid {
             for node in row {
                 print(node.name, node.frame.midX, node.frame.midY)
-                if (node.name == "floor") {
-                    print((node as? Floor)?.userData)
-                }
             }
             print()
         }
@@ -54,5 +48,15 @@ extension Array {
         return stride(from: 0, to: count, by: size).map {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
+    }
+}
+
+extension SKNode {
+    func getRoundedX() -> CGFloat {
+        return self.position.x.rounded()
+    }
+    
+    func getRoundedY() -> CGFloat {
+        return self.position.y.rounded()
     }
 }
