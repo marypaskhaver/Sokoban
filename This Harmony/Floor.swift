@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class Floor: SKSpriteNode {
+class Floor: Tile {
     var player: SKSpriteNode?
     var crate: SKSpriteNode?
     
