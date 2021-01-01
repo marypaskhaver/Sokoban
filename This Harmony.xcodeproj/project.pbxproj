@@ -22,6 +22,7 @@
 		20F59241259E85D0003C6A1D /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F59240259E85D0003C6A1D /* Grid.swift */; };
 		20F59246259EA747003C6A1D /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F59245259EA747003C6A1D /* Floor.swift */; };
 		20F59251259F71DD003C6A1D /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F59250259F71DD003C6A1D /* Tile.swift */; };
+		20F59256259F9D56003C6A1D /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F59255259F9D56003C6A1D /* Direction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		20F59240259E85D0003C6A1D /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		20F59245259EA747003C6A1D /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		20F59250259F71DD003C6A1D /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		20F59255259F9D56003C6A1D /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				20E2F808259BC439004BF34B /* Actions.sks */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
 				20F59240259E85D0003C6A1D /* Grid.swift */,
+				20F59255259F9D56003C6A1D /* Direction.swift */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
 				20E2F80E259BC439004BF34B /* Main.storyboard */,
 				20E2F811259BC43A004BF34B /* Assets.xcassets */,
@@ -283,6 +286,7 @@
 				20F59246259EA747003C6A1D /* Floor.swift in Sources */,
 				20F5922C259CDEED003C6A1D /* Player.swift in Sources */,
 				20F59236259CEFC9003C6A1D /* Crate.swift in Sources */,
+				20F59256259F9D56003C6A1D /* Direction.swift in Sources */,
 				20E2F80B259BC439004BF34B /* GameScene.swift in Sources */,
 				20E2F80D259BC439004BF34B /* GameViewController.swift in Sources */,
 				20F59231259CE20C003C6A1D /* MovableTile.swift in Sources */,
