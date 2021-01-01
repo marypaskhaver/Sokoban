@@ -9,6 +9,8 @@ import Foundation
 import SpriteKit
 
 class MovableTile: SKSpriteNode {
+    var row: Int = 0
+    var column: Int = 0
     
     func moveRight(byNumTiles numTiles: Int) {
         self.run(SKAction.moveBy(x: CGFloat(numTiles * 80), y: 0, duration: 0.2))
