@@ -10,7 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var player: Player = Player()
+    var player: Player?
     let tileSize: CGFloat = 80.0
     var grid: Grid?
     
