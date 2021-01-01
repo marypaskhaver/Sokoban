@@ -11,7 +11,7 @@ import SpriteKit
 class Grid {
     
     var grid: [[Tile]] = [ [Tile] ]()
-    var player: Player?
+    var player: Player? // Could remove this and get playerInfo thru method that finds Player obj in one of the Floor tiles?
     var childrenToAddToView: [SKNode] = [SKNode]()
     
     init(withChildren children: [SKNode]) {
@@ -162,6 +162,42 @@ class Grid {
         }
         
         return false
+    }
+    
+    func movePlayer(inDirection dir: Direction) {
+        switch dir {
+        case .up:
+            break
+        case .down:
+            if canPlayerMove(inDirection: .down) {
+                let oneTileFromPlayer: Tile = getAdjacentTiles(inDirection: .down).0
+                
+                // If there's a crate, update its properties and move it
+                if isFloorThatContainsCrate(oneTileFromPlayer) {
+                    // Update grid properties: Set current Floor item that the crate is on to not have a crate property; move the crate property to the
+                    // square immediately below the current Floor.
+                    let floorThatHoldsCrateInFrontofPlayer: Floor = oneTileFromPlayer as! Floor
+                    
+                    (grid[oneTileFromPlayer.row + 1][oneTileFromPlayer.column] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
+                    (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveDown(byNumTiles: 1)
+                    floorThatHoldsCrateInFrontofPlayer.crate = nil
+                }
+                
+                ((grid[player!.row][player!.column]) as! Floor).player = nil // Set current Floor's player property to nil bc player is moving off of it
+                player?.row += 1 // Inc player's row
+                (oneTileFromPlayer as! Floor).player = player // Set tile in front of player (floor) to have player property
+                player?.moveDown(byNumTiles: 1) // Animate player
+            }
+            break
+        case .left:
+            //
+            break
+        case .right:
+            //
+            break
+        default:
+            print("Unknown direction")
+        }
     }
 }
 
