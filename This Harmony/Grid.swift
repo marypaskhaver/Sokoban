@@ -11,6 +11,7 @@ import SpriteKit
 class Grid {
     
     var grid: [[Tile]] = [ [Tile] ]()
+    var player: Player?
     
     init(withChildren children: [SKNode]) {
         var arrayOfNodes: [Tile] = []
@@ -55,6 +56,10 @@ class Grid {
                     // Replace w/ Floor tile
                     grid[row][col] = Floor(texture: SKTexture(imageNamed: "floor"), name: "floor", row: row, column: col)
                     (grid[row][col] as! Floor).player = player
+                    self.player = player
+                    
+                    print("Player row: \(player.row), player col: \(player.column)")
+                    
                 } else if grid[row][col].name == "crate" {
                     let crate: Crate = grid[row][col] as! Crate
                     
@@ -83,6 +88,82 @@ class Grid {
             }
             print()
         }
+    }
+    
+    func canPlayerMove(inDirection dir: Direction) -> Bool {
+        switch dir {
+        case .up:
+            if player?.row == 1 { print("In row 1, can't move up"); return false }
+            let tilesInFront = getAdjacentTiles(inDirection: .up)
+            print("Tiles in front: \(tilesInFront)")
+            return isObstacleInPlayerPath(twoTilesInFrontOfPlayer: tilesInFront)
+        case .down:
+            if player?.row == 6 { print("In row 6, can't move down"); return false }
+            let tilesInFront = getAdjacentTiles(inDirection: .down)
+            print("Tiles in front: \(tilesInFront)")
+            return isObstacleInPlayerPath(twoTilesInFrontOfPlayer: tilesInFront)
+        case .left:
+            if player?.column == 1 { print("In col 1, can't move left"); return false }
+            let tilesInFront = getAdjacentTiles(inDirection: .left)
+            print("Tiles in front: \(tilesInFront)")
+            return isObstacleInPlayerPath(twoTilesInFrontOfPlayer: tilesInFront)
+        case .right:
+            if player?.column == 10 { print("In col 10, can't move right"); return false }
+            let tilesInFront = getAdjacentTiles(inDirection: .right)
+            print("Tiles in front: \(tilesInFront)")
+            return isObstacleInPlayerPath(twoTilesInFrontOfPlayer: tilesInFront)
+        default:
+            return false
+        }
+    }
+    
+    func getAdjacentTiles(inDirection dir: Direction) -> (Tile, Tile) {
+        var oneTileFromPlayer: Tile!
+        var twoTilesFromPlayer: Tile!
+        
+        switch dir {
+        case .up:
+            oneTileFromPlayer = grid[player!.row - 1][player!.column]
+            twoTilesFromPlayer = grid[player!.row - 2][player!.column]
+            break
+        case .down:
+            oneTileFromPlayer = grid[player!.row + 1][player!.column]
+            twoTilesFromPlayer = grid[player!.row + 2][player!.column]
+            break
+        case .left:
+            oneTileFromPlayer = grid[player!.row][player!.column - 1]
+            twoTilesFromPlayer = grid[player!.row][player!.column - 2]
+            break
+        case .right:
+            oneTileFromPlayer = grid[player!.row][player!.column + 1]
+            twoTilesFromPlayer = grid[player!.row][player!.column + 2]
+            break
+        default:
+            print("Unknown direction")
+        }
+        
+        return (oneTileFromPlayer, twoTilesFromPlayer)
+    }
+    
+    func isObstacleInPlayerPath(twoTilesInFrontOfPlayer: (Tile, Tile)) -> Bool {
+        let oneTileFromPlayer: Tile = twoTilesInFrontOfPlayer.0
+        let twoTilesFromPlayer: Tile = twoTilesInFrontOfPlayer.1
+        
+        if oneTileFromPlayer.name == "wall" ||
+            (isFloorThatContainsCrate(oneTileFromPlayer) && twoTilesFromPlayer.name == "wall") ||
+            (isFloorThatContainsCrate(oneTileFromPlayer) && isFloorThatContainsCrate(twoTilesFromPlayer)) {
+            return true
+        }
+
+        return false
+    }
+    
+    func isFloorThatContainsCrate(_ tile: Tile) -> Bool {
+        if let floor = tile as? Floor {
+            return floor.crate != nil
+        }
+        
+        return false
     }
 }
 
