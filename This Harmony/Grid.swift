@@ -167,6 +167,23 @@ class Grid {
     func movePlayer(inDirection dir: Direction) {
         switch dir {
         case .up:
+            if canPlayerMove(inDirection: .up) {
+                let oneTileFromPlayer: Tile = getAdjacentTiles(inDirection: .up).0
+                
+                if isFloorThatContainsCrate(oneTileFromPlayer) {
+                    let floorThatHoldsCrateInFrontofPlayer: Floor = oneTileFromPlayer as! Floor
+                    
+                    (grid[oneTileFromPlayer.row - 1][oneTileFromPlayer.column] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
+                    (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveUp(byNumTiles: 1)
+                    floorThatHoldsCrateInFrontofPlayer.crate = nil
+                }
+                
+                ((grid[player!.row][player!.column]) as! Floor).player = nil
+                player?.row -= 1
+                (oneTileFromPlayer as! Floor).player = player
+                player?.moveUp(byNumTiles: 1)
+            }
+            
             break
         case .down:
             if canPlayerMove(inDirection: .down) {
@@ -188,12 +205,45 @@ class Grid {
                 (oneTileFromPlayer as! Floor).player = player // Set tile in front of player (floor) to have player property
                 player?.moveDown(byNumTiles: 1) // Animate player
             }
+            
             break
         case .left:
-            //
+            if canPlayerMove(inDirection: .left) {
+                let oneTileFromPlayer: Tile = getAdjacentTiles(inDirection: .left).0
+                
+                if isFloorThatContainsCrate(oneTileFromPlayer) {
+                    let floorThatHoldsCrateInFrontofPlayer: Floor = oneTileFromPlayer as! Floor
+                    
+                    (grid[oneTileFromPlayer.row][oneTileFromPlayer.column - 1] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
+                    (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveLeft(byNumTiles: 1)
+                    floorThatHoldsCrateInFrontofPlayer.crate = nil
+                }
+                
+                ((grid[player!.row][player!.column]) as! Floor).player = nil
+                player?.column -= 1
+                (oneTileFromPlayer as! Floor).player = player
+                player?.moveLeft(byNumTiles: 1)
+            }
+            
             break
         case .right:
-            //
+            if canPlayerMove(inDirection: .right) {
+                let oneTileFromPlayer: Tile = getAdjacentTiles(inDirection: .right).0
+                
+                if isFloorThatContainsCrate(oneTileFromPlayer) {
+                    let floorThatHoldsCrateInFrontofPlayer: Floor = oneTileFromPlayer as! Floor
+                    
+                    (grid[oneTileFromPlayer.row][oneTileFromPlayer.column + 1] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
+                    (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveRight(byNumTiles: 1)
+                    floorThatHoldsCrateInFrontofPlayer.crate = nil
+                }
+                
+                ((grid[player!.row][player!.column]) as! Floor).player = nil
+                player?.column += 1
+                (oneTileFromPlayer as! Floor).player = player
+                player?.moveRight(byNumTiles: 1)
+            }
+                        
             break
         default:
             print("Unknown direction")

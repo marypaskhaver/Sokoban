@@ -52,36 +52,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         swipeDown.direction = .down
         view.addGestureRecognizer(swipeDown)
     }
-    
-    // Check if pathway is clear of walls and other crates before moving?
-    // What if the player can only move forward if the block in front of them is of type "floor"? But then how would they push crates?
-    
+        
     @objc func swipedRight(sender: UISwipeGestureRecognizer) {
-        grid?.canPlayerMove(inDirection: .right)
-
+        grid?.movePlayer(inDirection: .right)
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
-        grid?.canPlayerMove(inDirection: .left)
+        grid?.movePlayer(inDirection: .left)
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .up)
-
-        // They don't have to slide. They have to go their row on the grid + 64 + 80x or whatever and column at grid + 32 + 80y or whatever!!!
-        // Call player.animate method to change image-- later
     }
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
-//        print("Can player move? \(grid?.canPlayerMove(inDirection: .down))")
         grid?.movePlayer(inDirection: .down)
         // Call player.animate method to change image-- later
     }
-    
-    // Create method to add child to GameScene from Grid
-    
+        
     func didBegin(_ contact: SKPhysicsContact) {
 
     }
