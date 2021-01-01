@@ -27,12 +27,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         grid = Grid(withChildren: self.children)
         grid?.printGrid()
-        
-        // Create array from nodes in self.children and sort them by their x and y values
-        // Start w/ lowest x and highest y
-        // Go thru all the x's on that y level
-        // Then decrease y level
-        
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
@@ -55,31 +49,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // What if the player can only move forward if the block in front of them is of type "floor"? But then how would they push crates?
     
     @objc func swipedRight(sender: UISwipeGestureRecognizer) {
-//        if (playerCanMoveRight()) {
-            player.moveRight(byNumTiles: 1)
-            // Call player.animate method to change image-- later
-            // Move crate if needed
-//        }
-        
+//        grid?.movePlayerRight()
+
+        // Call player.animate method to change image-- later
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
-        player.moveLeft(byNumTiles: 1)
+//        grid?.movePlayerLeft()
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer) {
-        player.moveUp(byNumTiles: 1)
+//        grid?.movePlayerUp()
+        // They don't have to slide. They have to go their row on the grid + 64 + 80x or whatever and column at grid + 32 + 80y or whatever!!!
         // Call player.animate method to change image-- later
     }
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
-        player.moveDown(byNumTiles: 1)
+//        grid?.movePlayerDown()
+
         // Call player.animate method to change image-- later
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("contact")
+
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
