@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer) {
-        grid?.canPlayerMove(inDirection: .up)
+        grid?.movePlayer(inDirection: .up)
 
         // They don't have to slide. They have to go their row on the grid + 64 + 80x or whatever and column at grid + 32 + 80y or whatever!!!
         // Call player.animate method to change image-- later
