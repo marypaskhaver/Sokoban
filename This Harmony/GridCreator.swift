@@ -55,8 +55,8 @@ class GridCreator {
                 if grid[row][col].name == "player" {
                     let player: Player = grid[row][col] as! Player
                     
-                    // Replace w/ Floor tile
-                    grid[row][col] = Floor(texture: SKTexture(imageNamed: "floor"), name: "floor", row: row, column: col)
+                    // Replace w/ Floor tile w/ non-nil player property
+                    grid[row][col] = Floor(row: row, column: col)
                     (grid[row][col] as! Floor).player = player
 
                     childrenToAddToView.append(grid[row][col])
@@ -65,8 +65,8 @@ class GridCreator {
                 } else if grid[row][col].name == "crate" {
                     let crate: Crate = grid[row][col] as! Crate
                     
-                    // Replace w/ Crate tile
-                    grid[row][col] = Floor(texture: SKTexture(imageNamed: "floor"), name: "floor", row: row, column: col)
+                    // Replace w/ Floor tile w/ non-nil crate property
+                    grid[row][col] = Floor(row: row, column: col)
                     (grid[row][col] as! Floor).crate = crate
                     
                     childrenToAddToView.append(grid[row][col])
