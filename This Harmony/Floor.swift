@@ -12,8 +12,12 @@ class Floor: Tile {
     var player: SKSpriteNode?
     var crate: SKSpriteNode?
     
-//    init(image: FloorImageInterface, player: Player = null) {
-//        image = new WoodImage()
-//        player = Player
-//    }
+    init(row: Int, column: Int) {
+        super.init(texture: SKTexture(imageNamed: "floor"), name: "floor", row: row, column: column)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+  
 }
