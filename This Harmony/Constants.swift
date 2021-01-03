@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+class Constants {
+    static let tileSize: Int = 80
+    static let movementAnimationDuration: TimeInterval = 0.2
+}
