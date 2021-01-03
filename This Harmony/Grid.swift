@@ -18,39 +18,39 @@ class Grid {
         self.player = player
     }
     
-    func printGrid() {
-        for row in grid {
-            for node in row {
-                print(node.name, node.row, node.column)
-                
-                if node.name == "floor" {
-                    if (node as! Floor).player != nil {
-                        print("has player")
-                    } else if (node as! Floor).crate != nil {
-                        print("has crate")
-                    }
-                }
-            }
-            print()
-        }
-    }
+//    func printGrid() {
+//        for row in grid {
+//            for node in row {
+//                print(node.name, node.row, node.column)
+//
+//                if node.name == Constants.TileNames.floor.rawValue {
+//                    if (node as! Floor).player != nil {
+//                        print("has player")
+//                    } else if (node as! Floor).crate != nil {
+//                        print("has crate")
+//                    }
+//                }
+//            }
+//            print()
+//        }
+//    }
     
     func canPlayerMove(inDirection dir: Direction) -> Bool {
         switch dir {
         case .up:
-            if player?.row == 1 { print("In row 1, can't move up"); return false }
+            if player!.row == 1 { print("In row 1, can't move up"); return false }
             let tilesInFront = getAdjacentTiles(inDirection: .up)
             return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
         case .down:
-            if player?.row == 6 { print("In row 6, can't move down"); return false }
+            if player!.row == 6 { print("In row 6, can't move down"); return false }
             let tilesInFront = getAdjacentTiles(inDirection: .down)
             return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
         case .left:
-            if player?.column == 1 { print("In col 1, can't move left"); return false }
+            if player!.column == 1 { print("In col 1, can't move left"); return false }
             let tilesInFront = getAdjacentTiles(inDirection: .left)
             return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
         case .right:
-            if player?.column == 10 { print("In col 10, can't move right"); return false }
+            if player!.column == 10 { print("In col 10, can't move right"); return false }
             let tilesInFront = getAdjacentTiles(inDirection: .right)
             return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
         default:
@@ -90,8 +90,8 @@ class Grid {
         let oneTileFromPlayer: Tile = twoTilesInFrontOfPlayer.0
         let twoTilesFromPlayer: Tile = twoTilesInFrontOfPlayer.1
         
-        if oneTileFromPlayer.name == "wall" ||
-            (isFloorThatContainsCrate(oneTileFromPlayer) && twoTilesFromPlayer.name == "wall") ||
+        if oneTileFromPlayer.name == Constants.TileNames.wall.rawValue ||
+            (isFloorThatContainsCrate(oneTileFromPlayer) && twoTilesFromPlayer.name == Constants.TileNames.wall.rawValue) ||
             (isFloorThatContainsCrate(oneTileFromPlayer) && isFloorThatContainsCrate(twoTilesFromPlayer)) {
             return false
         }
@@ -107,6 +107,24 @@ class Grid {
         return false
     }
     
+    struct Point {
+        var row: Int = 0
+        var col: Int = 0
+    }
+    
+    func getRowAndColumnOfFloor(floorNodeInGrid floorNode: Floor) -> Point {
+        for row in 0..<grid.count {
+            for col in 0..<grid[row].count {
+                if grid[row][col] == floorNode {
+                    return Point(row: row, col: col)
+                }
+            }
+        }
+        
+        return Point(row: -1, col: -1)
+    }
+    
+    // The row and col properties of Floors (and Crates) are not changed at all throughout the game-- only the Floors crate and player properties are
     func movePlayer(inDirection dir: Direction) {
         switch dir {
         case .up:
@@ -115,16 +133,17 @@ class Grid {
                 
                 if isFloorThatContainsCrate(oneTileFromPlayer) {
                     let floorThatHoldsCrateInFrontofPlayer: Floor = oneTileFromPlayer as! Floor
+                    let positionOfFloorThatHoldsCrateInFrontOfPlayer = getRowAndColumnOfFloor(floorNodeInGrid: floorThatHoldsCrateInFrontofPlayer)
                     
-                    (grid[oneTileFromPlayer.row - 1][oneTileFromPlayer.column] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
+                    (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row - 1][positionOfFloorThatHoldsCrateInFrontOfPlayer.col] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
                     (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveUp(byNumTiles: 1)
                     floorThatHoldsCrateInFrontofPlayer.crate = nil
                 }
                 
                 ((grid[player!.row][player!.column]) as! Floor).player = nil
-                player?.row -= 1
+                player!.row -= 1
                 (oneTileFromPlayer as! Floor).player = player
-                player?.moveUp(byNumTiles: 1)
+                player!.moveUp(byNumTiles: 1)
             }
             
             break
@@ -137,16 +156,17 @@ class Grid {
                     // Update grid properties: Set current Floor item that the crate is on to not have a crate property; move the crate property to the
                     // square immediately below the current Floor.
                     let floorThatHoldsCrateInFrontofPlayer: Floor = oneTileFromPlayer as! Floor
-                    
-                    (grid[oneTileFromPlayer.row + 1][oneTileFromPlayer.column] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
-                    (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveDown(byNumTiles: 1)
+                    let positionOfFloorThatHoldsCrateInFrontOfPlayer = getRowAndColumnOfFloor(floorNodeInGrid: floorThatHoldsCrateInFrontofPlayer)
+
+                    (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row + 1][positionOfFloorThatHoldsCrateInFrontOfPlayer.col] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
+                    (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveDown(byNumTiles: 1) // Animate crate
                     floorThatHoldsCrateInFrontofPlayer.crate = nil
                 }
                 
                 ((grid[player!.row][player!.column]) as! Floor).player = nil // Set current Floor's player property to nil bc player is moving off of it
-                player?.row += 1 // Inc player's row
+                player!.row += 1 // Inc player's row
                 (oneTileFromPlayer as! Floor).player = player // Set tile in front of player (floor) to have player property
-                player?.moveDown(byNumTiles: 1) // Animate player
+                player!.moveDown(byNumTiles: 1) // Animate player
             }
             
             break
@@ -156,16 +176,17 @@ class Grid {
                 
                 if isFloorThatContainsCrate(oneTileFromPlayer) {
                     let floorThatHoldsCrateInFrontofPlayer: Floor = oneTileFromPlayer as! Floor
-                    
-                    (grid[oneTileFromPlayer.row][oneTileFromPlayer.column - 1] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
+                    let positionOfFloorThatHoldsCrateInFrontOfPlayer = getRowAndColumnOfFloor(floorNodeInGrid: floorThatHoldsCrateInFrontofPlayer)
+
+                    (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col - 1] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
                     (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveLeft(byNumTiles: 1)
                     floorThatHoldsCrateInFrontofPlayer.crate = nil
                 }
                 
                 ((grid[player!.row][player!.column]) as! Floor).player = nil
-                player?.column -= 1
+                player!.column -= 1
                 (oneTileFromPlayer as! Floor).player = player
-                player?.moveLeft(byNumTiles: 1)
+                player!.moveLeft(byNumTiles: 1)
             }
             
             break
@@ -175,16 +196,17 @@ class Grid {
                 
                 if isFloorThatContainsCrate(oneTileFromPlayer) {
                     let floorThatHoldsCrateInFrontofPlayer: Floor = oneTileFromPlayer as! Floor
-                    
-                    (grid[oneTileFromPlayer.row][oneTileFromPlayer.column + 1] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
+                    let positionOfFloorThatHoldsCrateInFrontOfPlayer = getRowAndColumnOfFloor(floorNodeInGrid: floorThatHoldsCrateInFrontofPlayer)
+
+                    (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col + 1] as! Floor).crate = floorThatHoldsCrateInFrontofPlayer.crate as! Crate
                     (floorThatHoldsCrateInFrontofPlayer.crate as! Crate).moveRight(byNumTiles: 1)
                     floorThatHoldsCrateInFrontofPlayer.crate = nil
                 }
                 
                 ((grid[player!.row][player!.column]) as! Floor).player = nil
-                player?.column += 1
+                player!.column += 1
                 (oneTileFromPlayer as! Floor).player = player
-                player?.moveRight(byNumTiles: 1)
+                player!.moveRight(byNumTiles: 1)
             }
                         
             break
