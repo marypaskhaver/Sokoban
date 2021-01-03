@@ -25,8 +25,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player = somePlayer
         }
         
-        grid = Grid(withChildren: self.children)
-        let childrenToAdd: [SKNode] = grid!.childrenToAddToView // There will always be a player and some crates
+        let gridCreator: GridCreator = GridCreator()
+        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children), withPlayerNode: gridCreator.player!) // There will always be a player
+        let childrenToAdd: [SKNode] = gridCreator.childrenToAddToView // There will always be some crates 
         
         for child in childrenToAdd {
             // Calculate position for drawing floors underneath the player and crates
