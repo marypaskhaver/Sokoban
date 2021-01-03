@@ -12,7 +12,7 @@ class Tile: SKSpriteNode {
     var column: Int = 0
     
     init(texture: SKTexture, name: String, row: Int, column: Int) {
-        super.init(texture: texture, color: UIColor.red, size: CGSize(width: 80, height: 80))
+        super.init(texture: texture, color: UIColor.red, size: CGSize(width: Constants.tileSize, height: Constants.tileSize))
         self.row = row
         self.column = column
         self.name = name
