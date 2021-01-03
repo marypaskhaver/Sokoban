@@ -10,7 +10,8 @@ import SpriteKit
 
 class GridCreator {
     var grid: [ [Tile] ] = [ [Tile] ]()
-    var childrenToAddToView: [SKNode] = [SKNode]()
+    var childrenToAddToView: [Floor : CGPoint] = [Floor : CGPoint]()
+
     var player: Player?
     
     func getGridOfScenesChildren(_ children: [SKNode]) -> [ [Tile] ] {
@@ -18,7 +19,7 @@ class GridCreator {
         
         for child in children {
             // A player and crate will always be standing on a floor, so you can add them normally to the arrayOfNodes and just remember they're on Floor tiles;
-            // Maybe create Floor tiles underneath them.
+            // replace them later
             child.position = CGPoint(x: child.getRoundedX(), y: child.getRoundedY())
             arrayOfNodes.append(child as! Tile)
         }
@@ -33,43 +34,53 @@ class GridCreator {
             row = row.sorted(by: { $0.frame.midX < $1.frame.midX })
         }
         
-        assignNodesRowsAndColumns()
+        // Replace player + crate nodes w/ Floor nodes that have crate and player properties
         putFloorsUnderPlayerAndCrates()
-        
+        assignPlayerRowAndColumn()
+
         return grid
     }
     
-    func assignNodesRowsAndColumns() {
+    func assignPlayerRowAndColumn() {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
                 let tile: Tile = grid[row][col] // Every element is at least of type Tile
-                tile.row = row
-                tile.column = col
+                
+                if tile.name == Constants.TileNames.floor.rawValue {
+                    let playerNode: Player? = (tile as! Floor).player as? Player
+                    
+                    if playerNode != nil {
+                        player!.row = row
+                        player!.column = col
+                    }
+                }
             }
         }
     }
     
+    // The way this is built, the player will never start the level on a storage area
     func putFloorsUnderPlayerAndCrates() {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
-                if grid[row][col].name == "player" {
+                
+                if grid[row][col].name == Constants.TileNames.player.rawValue {
                     let player: Player = grid[row][col] as! Player
                     
                     // Replace w/ Floor tile w/ non-nil player property
-                    grid[row][col] = Floor(row: row, column: col)
+                    grid[row][col] = Floor()
                     (grid[row][col] as! Floor).player = player
 
-                    childrenToAddToView.append(grid[row][col])
+                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 64, y: 656 - (row * Constants.tileSize))
                     
                     self.player = player
-                } else if grid[row][col].name == "crate" {
+                } else if grid[row][col].name == Constants.TileNames.crate.rawValue {
                     let crate: Crate = grid[row][col] as! Crate
                     
                     // Replace w/ Floor tile w/ non-nil crate property
-                    grid[row][col] = Floor(row: row, column: col)
+                    grid[row][col] = Floor()
                     (grid[row][col] as! Floor).crate = crate
                     
-                    childrenToAddToView.append(grid[row][col])
+                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 64, y: 656 - (row * Constants.tileSize))
                 }
                 
             }
