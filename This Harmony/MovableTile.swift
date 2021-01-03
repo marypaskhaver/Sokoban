@@ -9,19 +9,21 @@ import Foundation
 import SpriteKit
 
 class MovableTile: Tile {
+    
     func moveRight(byNumTiles numTiles: Int) {
-        self.run(SKAction.moveBy(x: CGFloat(numTiles * 80), y: 0, duration: 0.2))
+        self.run(SKAction.moveBy(x: CGFloat(numTiles * Constants.tileSize), y: 0, duration: Constants.movementAnimationDuration))
     }
     
     func moveLeft(byNumTiles numTiles: Int) {
-        self.run(SKAction.moveBy(x: CGFloat(-numTiles * 80), y: 0, duration: 0.2))
+        self.run(SKAction.moveBy(x: CGFloat(-numTiles * Constants.tileSize), y: 0, duration: Constants.movementAnimationDuration))
     }
     
     func moveUp(byNumTiles numTiles: Int) {
-        self.run(SKAction.moveBy(x: 0, y: CGFloat(numTiles * 80), duration: 0.2))
+        self.run(SKAction.moveBy(x: 0, y: CGFloat(numTiles * Constants.tileSize), duration: Constants.movementAnimationDuration))
     }
     
     func moveDown(byNumTiles numTiles: Int) {
-        self.run(SKAction.moveBy(x: 0, y: CGFloat(-numTiles * 80), duration: 0.2))
+        self.run(SKAction.moveBy(x: 0, y: CGFloat(-numTiles * Constants.tileSize), duration: Constants.movementAnimationDuration))
     }
+    
 }
