@@ -11,7 +11,6 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player?
-    let tileSize: CGFloat = 80.0
     var grid: Grid?
     
     override func didMove(to view: SKView) {
@@ -32,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for child in childrenToAdd {
             // Calculate position for drawing floors underneath the player and crates
             let tile: Tile = child as! Tile
-            child.position = CGPoint(x: tile.column * 80 + 64, y: 656 - (tile.row * 80))
+            child.position = CGPoint(x: tile.column * Constants.tileSize + 64, y: 656 - (tile.row * Constants.tileSize))
             
             scene?.addChild(child)
         }
@@ -56,12 +55,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     @objc func swipedRight(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .right)
-        // Call player.animate method to change image-- later
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .left)
-        // Call player.animate method to change image-- later
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer) {
@@ -70,15 +67,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .down)
-        // Call player.animate method to change image-- later
-    }
-        
-    func didBegin(_ contact: SKPhysicsContact) {
-
-    }
-    
-    func didEnd(_ contact: SKPhysicsContact) {
-
     }
     
 }
