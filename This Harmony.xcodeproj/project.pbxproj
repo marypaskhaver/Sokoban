@@ -25,6 +25,7 @@
 		20F59256259F9D56003C6A1D /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F59255259F9D56003C6A1D /* Direction.swift */; };
 		20F5926125A136C1003C6A1D /* GridCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F5926025A136C1003C6A1D /* GridCreator.swift */; };
 		20F5927225A15C64003C6A1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F5927125A15C64003C6A1D /* Constants.swift */; };
+		20F5927725A17022003C6A1D /* PlayerMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F5927625A17022003C6A1D /* PlayerMover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		20F59255259F9D56003C6A1D /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		20F5926025A136C1003C6A1D /* GridCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCreator.swift; sourceTree = "<group>"; };
 		20F5927125A15C64003C6A1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		20F5927625A17022003C6A1D /* PlayerMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				20E2F808259BC439004BF34B /* Actions.sks */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
 				20F59240259E85D0003C6A1D /* Grid.swift */,
+				20F5927625A17022003C6A1D /* PlayerMover.swift */,
 				20F5926025A136C1003C6A1D /* GridCreator.swift */,
 				20F59255259F9D56003C6A1D /* Direction.swift */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
@@ -297,6 +300,7 @@
 				20E2F80D259BC439004BF34B /* GameViewController.swift in Sources */,
 				20F59231259CE20C003C6A1D /* MovableTile.swift in Sources */,
 				20F59251259F71DD003C6A1D /* Tile.swift in Sources */,
+				20F5927725A17022003C6A1D /* PlayerMover.swift in Sources */,
 				20F59241259E85D0003C6A1D /* Grid.swift in Sources */,
 				20F5926125A136C1003C6A1D /* GridCreator.swift in Sources */,
 				20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */,
