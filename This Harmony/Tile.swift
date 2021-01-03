@@ -8,13 +8,8 @@
 import SpriteKit
 
 class Tile: SKSpriteNode {
-    var row: Int = 0
-    var column: Int = 0
-    
-    init(texture: SKTexture, name: String, row: Int, column: Int) {
+    init(texture: SKTexture, name: String) {
         super.init(texture: texture, color: UIColor.red, size: CGSize(width: Constants.tileSize, height: Constants.tileSize))
-        self.row = row
-        self.column = column
         self.name = name
     }
     
