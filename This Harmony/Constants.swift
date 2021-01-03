@@ -15,5 +15,6 @@ class Constants {
         case floor = "floor"
         case crate = "crate"
         case wall = "wall"
+        case player = "player"
     }
 }
