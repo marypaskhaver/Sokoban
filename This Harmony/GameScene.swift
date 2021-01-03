@@ -12,6 +12,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player?
     var grid: Grid?
+    // Can add vars holding "floorType" and "wallType" to change the images of floors and walls if there are multiple kinds of floors and walls;
+    // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
     
     override func didMove(to view: SKView) {
         
@@ -19,20 +21,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Setup player
         // Make sure the child actually is of the Player class
-        if let somePlayer: Player = self.childNode(withName: "player") as? Player {
+        if let somePlayer: Player = self.childNode(withName: Constants.TileNames.player.rawValue) as? Player {
             // Make the declared variable equal to somePlayer
             player = somePlayer
         }
         
         let gridCreator: GridCreator = GridCreator()
-        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children), withPlayerNode: gridCreator.player!) // There will always be a player
-        let childrenToAdd: [SKNode] = gridCreator.childrenToAddToView // There will always be some crates 
+        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children), withPlayerNode: gridCreator.player!)
+        let childrenToAdd: [Floor : CGPoint] = gridCreator.childrenToAddToView
         
-        for child in childrenToAdd {
-            // Calculate position for drawing floors underneath the player and crates
-            let tile: Tile = child as! Tile
-            child.position = CGPoint(x: tile.column * Constants.tileSize + 64, y: 656 - (tile.row * Constants.tileSize))
-            
+        for child in childrenToAdd.keys { // These will always be Floors to add underneath players and crates bc there will always be a player and some crates
+            child.position = childrenToAdd[child]!
             scene?.addChild(child)
         }
                 
