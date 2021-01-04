@@ -12,6 +12,7 @@ class PlayerMover {
     var grid: [[Tile]] = [ [Tile] ]()
     var player: Player?
     var didMoveCrate: Bool = false
+    var didPlayerMove: Bool = false
     
     init(with2DArrayOfTiles gridTiles: [ [Tile] ], withPlayerNode player: Player) {
         self.grid = gridTiles
@@ -136,6 +137,7 @@ class PlayerMover {
     // The row and col properties of Floors (and Crates) are not changed at all throughout the game-- only the Floors crate and player properties are
     func movePlayer(inDirection dir: Direction) {
         if !canPlayerMove(inDirection: dir) { return }
+        didPlayerMove = true
         
         let oneTileFromPlayer: Tile!
         

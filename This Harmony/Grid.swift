@@ -12,6 +12,7 @@ class Grid {
     
     var grid: [[Tile]] = [ [Tile] ]()
     var player: Player? // Could remove this and get playerInfo thru method that finds Player obj in one of the Floor tiles?
+    var steps: Int = 0
     var cratePushes: Int = 0
     
     init(with2DArrayOfTiles gridTiles: [ [Tile] ], withPlayerNode player: Player) {
@@ -24,6 +25,11 @@ class Grid {
         mover.movePlayer(inDirection: dir)
         grid = mover.grid
         player = mover.player
+        
+        if mover.didPlayerMove {
+            steps += 1
+            // Later, save steps and add onto the saved # each time. Reset steps upon level reset.
+        }
         
         if mover.didMoveCrate {
             cratePushes += 1
