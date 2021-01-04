@@ -13,11 +13,11 @@ class Crate: MovableTile {
     
     func updateImage() {
         if isOnStorageArea {
-//            self.texture = SKTexture(imageNamed: "crateOnStorage")
-            print("changing image to crateOnStorage")
+            self.color = UIColor.green
+            self.colorBlendFactor = 0.4
         } else {
+            self.colorBlendFactor = 0
             self.texture = SKTexture(imageNamed: "crate")
-            print("changing image to default crate")
         }
     }
 }
