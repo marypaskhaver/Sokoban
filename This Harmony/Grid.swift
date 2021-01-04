@@ -38,6 +38,12 @@ class Grid {
         
         // Check if level is complete
     }
+    
+    func isLevelComplete() -> Bool {
+        // Go through the grid and find every Floor node w/ the name "storage"
+        // If all the storage nodes have a crate property (that is, the crate property is not nil), return true
+        return false
+    }
 }
 
 extension Array {
