@@ -9,15 +9,31 @@ import Foundation
 import SpriteKit
 
 class Floor: Tile {
-    var player: SKSpriteNode?
-    var crate: SKSpriteNode?
-    
-    init() {
-        super.init(texture: SKTexture(imageNamed: "floor"), name: Constants.TileNames.floor.rawValue)
+    var player: Player?
+    var crate: Crate?
+    let textureImage: SKTexture
+
+    init(withTexture texture: SKTexture = SKTexture(imageNamed: "floor")) {
+        textureImage = texture
+        super.init(texture: textureImage, name: Constants.TileNames.floor.rawValue)
     }
     
     required init?(coder aDecoder: NSCoder) {
+        textureImage = SKTexture(imageNamed: "floor")
         super.init(coder: aDecoder)
+    }
+    
+    func setCrate(to crate: Crate) {
+        if crate.isOnStorageArea {
+            crate.isOnStorageArea = false
+            crate.updateImage()
+        }
+    
+        self.crate = crate
+    }
+    
+    func setCrateToNil() {
+        self.crate = nil
     }
   
 }
