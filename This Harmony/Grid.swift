@@ -34,15 +34,26 @@ class Grid {
         if mover.didMoveCrate {
             cratePushes += 1
             // Later, save cratePushes and add onto the saved # each time. Reset cratePushes upon level reset.
+            
+            // Check if level is complete
+            print(isLevelComplete())
         }
-        
-        // Check if level is complete
     }
     
     func isLevelComplete() -> Bool {
         // Go through the grid and find every Floor node w/ the name "storage"
         // If all the storage nodes have a crate property (that is, the crate property is not nil), return true
-        return false
+        var storageTiles: [Storage] = [Storage]()
+        
+        for row in grid {
+            for node in row {
+                if node.name == Constants.TileNames.storage.rawValue {
+                    storageTiles.append(node as! Storage)
+                }
+            }
+        }
+        
+        return storageTiles.allSatisfy( { $0.crate != nil } )
     }
 }
 
