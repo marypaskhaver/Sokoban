@@ -47,7 +47,7 @@ class GridCreator {
                 let tile: Tile = grid[row][col] // Every element is at least of type Tile
                 
                 if tile.name == Constants.TileNames.floor.rawValue {
-                    let playerNode: Player? = (tile as! Floor).player as? Player
+                    let playerNode: Player? = (tile as! Floor).player
                     
                     if playerNode != nil {
                         player!.row = row
@@ -64,26 +64,28 @@ class GridCreator {
             for col in 0..<grid[row].count {
                 
                 if grid[row][col].name == Constants.TileNames.player.rawValue {
-                    let player: Player = grid[row][col] as! Player
+                    let playerNode: Player = grid[row][col] as! Player
                     
                     // Replace w/ Floor tile w/ non-nil player property
                     grid[row][col] = Floor()
-                    (grid[row][col] as! Floor).player = player
+                    (grid[row][col] as! Floor).player = playerNode
 
                     childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 64, y: 656 - (row * Constants.tileSize))
                     
-                    self.player = player
+                    self.player = playerNode
                 } else if grid[row][col].name == Constants.TileNames.crate.rawValue {
                     let crate: Crate = grid[row][col] as! Crate
                     
                     // Replace w/ Floor tile w/ non-nil crate property
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).crate = crate
-                    
+                                        
                     childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 64, y: 656 - (row * Constants.tileSize))
                 }
                 
             }
         }
+        
     }
+
 }
