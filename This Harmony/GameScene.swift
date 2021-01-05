@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let gridCreator: GridCreator = GridCreator()
         
-        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children), withPlayerNode: gridCreator.player!)
+        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children))
         let childrenToAdd: [Floor : CGPoint] = gridCreator.childrenToAddToView
 
         for child in childrenToAdd.keys { // These will always be Floors to add underneath players and crates bc there will always be a player and some crates
