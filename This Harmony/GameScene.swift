@@ -10,7 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var grid: Grid?
+    var grid: Grid!
     // Can add vars holding "floorType" and "wallType" to change the images of floors and walls if there are multiple kinds of floors and walls;
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
     
@@ -21,13 +21,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let gridCreator: GridCreator = GridCreator()
         
         grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children))
+        
         let childrenToAdd: [Floor : CGPoint] = gridCreator.childrenToAddToView
 
         for child in childrenToAdd.keys { // These will always be Floors to add underneath players and crates bc there will always be a player and some crates
             child.position = childrenToAdd[child]!
-            scene?.addChild(child)            
+            self.addChild(child)
         }
-                
+    
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
         view.addGestureRecognizer(swipeRight)
