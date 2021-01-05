@@ -11,8 +11,6 @@ import SpriteKit
 class GridCreator {
     var grid: [ [Tile] ] = [ [Tile] ]()
     var childrenToAddToView: [Floor : CGPoint] = [Floor : CGPoint]()
-
-    var player: Player?
     
     func getGridOfScenesChildren(_ children: [SKNode]) -> [ [Tile] ] {
         var arrayOfNodes: [Tile] = []
@@ -53,8 +51,6 @@ class GridCreator {
                     (grid[row][col] as! Floor).player = playerNode
 
                     childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 64, y: 656 - (row * Constants.tileSize))
-                    
-                    self.player = playerNode
                 } else if grid[row][col].name == Constants.TileNames.crate.rawValue {
                     let crate: Crate = grid[row][col] as! Crate
                     
