@@ -36,26 +36,8 @@ class GridCreator {
         
         // Replace player + crate nodes w/ Floor nodes that have crate and player properties
         putFloorsUnderPlayerAndCrates()
-        assignPlayerRowAndColumn()
 
         return grid
-    }
-    
-    func assignPlayerRowAndColumn() {
-        for row in 0..<grid.count {
-            for col in 0..<grid[row].count {
-                let tile: Tile = grid[row][col] // Every element is at least of type Tile
-                
-                if tile.name == Constants.TileNames.floor.rawValue {
-                    let playerNode: Player? = (tile as! Floor).player
-                    
-                    if playerNode != nil {
-                        player!.row = row
-                        player!.column = col
-                    }
-                }
-            }
-        }
     }
     
     // The way this is built, the player will never start the level on a storage area
