@@ -11,20 +11,17 @@ import SpriteKit
 class Grid {
     
     var grid: [[Tile]] = [ [Tile] ]()
-    var player: Player? // Could remove this and get playerInfo thru method that finds Player obj in one of the Floor tiles?
     var steps: Int = 0
     var cratePushes: Int = 0
     
-    init(with2DArrayOfTiles gridTiles: [ [Tile] ], withPlayerNode player: Player) {
+    init(with2DArrayOfTiles gridTiles: [ [Tile] ]) {
         self.grid = gridTiles
-        self.player = player
     }
     
     func movePlayer(inDirection dir: Direction) {
-        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: grid, withPlayerNode: player!)
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: grid)
         mover.movePlayer(inDirection: dir)
         grid = mover.grid
-        player = mover.player
         
         if mover.didPlayerMove {
             steps += 1
