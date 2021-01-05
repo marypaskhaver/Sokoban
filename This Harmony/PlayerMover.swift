@@ -10,30 +10,45 @@ import SpriteKit
 
 class PlayerMover {
     var grid: [[Tile]] = [ [Tile] ]()
-    var player: Player?
     var didMoveCrate: Bool = false
     var didPlayerMove: Bool = false
     
-    init(with2DArrayOfTiles gridTiles: [ [Tile] ], withPlayerNode player: Player) {
+    init(with2DArrayOfTiles gridTiles: [ [Tile] ]) {
         self.grid = gridTiles
-        self.player = player
+    }
+    
+    func getPlayerRowAndCol() -> Point {
+        for row in 0..<grid.count {
+            for col in 0..<grid[row].count {
+                if grid[row][col].name == Constants.TileNames.floor.rawValue {
+                    let node: Floor = grid[row][col] as! Floor
+
+                    if node.player != nil {
+                        return Point(row: row, col: col)
+                    }
+                }
+            }
+        }
+        
+        return Point(row: -1, col: -1)
     }
     
     func canPlayerMove(inDirection dir: Direction) -> Bool {
         var tilesInFront: (Tile, Tile)!
+        let playerLocation: Point = getPlayerRowAndCol()
         
         switch dir {
         case .up:
-            if player!.row == 1 { return false }
+            if playerLocation.row == 1 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .up)
         case .down:
-            if player!.row == 6 { return false }
+            if playerLocation.row == 6 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .down)
         case .left:
-            if player!.column == 1 { return false }
+            if playerLocation.col == 1 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .left)
         case .right:
-            if player!.column == 10 { return false }
+            if playerLocation.col == 10 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .right)
         default:
             print("Unknown direction")
@@ -46,20 +61,21 @@ class PlayerMover {
     func getAdjacentTiles(inDirection dir: Direction) -> (Tile, Tile) {
         var oneTileFromPlayer: Tile!
         var twoTilesFromPlayer: Tile!
-        
+        let playerLocation: Point = getPlayerRowAndCol()
+
         switch dir {
         case .up:
-            oneTileFromPlayer = grid[player!.row - 1][player!.column]
-            twoTilesFromPlayer = grid[player!.row - 2][player!.column]
+            oneTileFromPlayer = grid[playerLocation.row - 1][playerLocation.col]
+            twoTilesFromPlayer = grid[playerLocation.row - 2][playerLocation.col]
         case .down:
-            oneTileFromPlayer = grid[player!.row + 1][player!.column]
-            twoTilesFromPlayer = grid[player!.row + 2][player!.column]
+            oneTileFromPlayer = grid[playerLocation.row + 1][playerLocation.col]
+            twoTilesFromPlayer = grid[playerLocation.row + 2][playerLocation.col]
         case .left:
-            oneTileFromPlayer = grid[player!.row][player!.column - 1]
-            twoTilesFromPlayer = grid[player!.row][player!.column - 2]
+            oneTileFromPlayer = grid[playerLocation.row][playerLocation.col - 1]
+            twoTilesFromPlayer = grid[playerLocation.row][playerLocation.col - 2]
         case .right:
-            oneTileFromPlayer = grid[player!.row][player!.column + 1]
-            twoTilesFromPlayer = grid[player!.row][player!.column + 2]
+            oneTileFromPlayer = grid[playerLocation.row][playerLocation.col + 1]
+            twoTilesFromPlayer = grid[playerLocation.row][playerLocation.col + 2]
         default:
             print("Unknown direction")
         }
@@ -147,44 +163,43 @@ class PlayerMover {
         didPlayerMove = true
 
         let oneTileFromPlayer: Tile!
+        let playerLocation: Point = getPlayerRowAndCol()
+        let playerNode: Player = (grid[playerLocation.row][playerLocation.col] as! Floor).player!
         
         switch dir {
         case .up:
-                oneTileFromPlayer = getAdjacentTiles(inDirection: .up).0
+            oneTileFromPlayer = getAdjacentTiles(inDirection: .up).0
 
-                moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .up)
+            moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .up)
                 
-                ((grid[player!.row][player!.column]) as! Floor).player = nil // Set current Floor's player property to nil bc player is moving off of it
-                player!.row -= 1
-                player!.moveUp(byNumTiles: 1)
+            // Set current Floor's player property to nil bc player is moving off of it
+            ((grid[playerLocation.row][playerLocation.col]) as! Floor).player!.moveUp(byNumTiles: 1) // Animates player
+            ((grid[playerLocation.row][playerLocation.col]) as! Floor).player = nil
         case .down:
-                oneTileFromPlayer = getAdjacentTiles(inDirection: .down).0
+            oneTileFromPlayer = getAdjacentTiles(inDirection: .down).0
                 
-                moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .down)
+            moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .down)
                 
-                ((grid[player!.row][player!.column]) as! Floor).player = nil
-                player!.row += 1 // Inc player's row
-                player!.moveDown(byNumTiles: 1) // Animate player
+            ((grid[playerLocation.row][playerLocation.col]) as! Floor).player!.moveDown(byNumTiles: 1)
+            ((grid[playerLocation.row][playerLocation.col]) as! Floor).player = nil
         case .left:
-                oneTileFromPlayer = getAdjacentTiles(inDirection: .left).0
+            oneTileFromPlayer = getAdjacentTiles(inDirection: .left).0
                 
-                moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .left)
+            moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .left)
                 
-                ((grid[player!.row][player!.column]) as! Floor).player = nil
-                player!.column -= 1
-                player!.moveLeft(byNumTiles: 1)
+            ((grid[playerLocation.row][playerLocation.col]) as! Floor).player!.moveLeft(byNumTiles: 1)
+            ((grid[playerLocation.row][playerLocation.col]) as! Floor).player = nil
         case .right:
-                oneTileFromPlayer = getAdjacentTiles(inDirection: .right).0
+            oneTileFromPlayer = getAdjacentTiles(inDirection: .right).0
                 
-                moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .right)
+            moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .right)
                 
-                ((grid[player!.row][player!.column]) as! Floor).player = nil
-                player!.column += 1
-                player!.moveRight(byNumTiles: 1)
+            ((grid[playerLocation.row][playerLocation.col]) as! Floor).player!.moveRight(byNumTiles: 1)
+            ((grid[playerLocation.row][playerLocation.col]) as! Floor).player = nil
         default:
             print("Unknown direction")
         }
         
-        (oneTileFromPlayer as! Floor).player = player // Set tile in front of player (floor) to have player property
+        (oneTileFromPlayer as! Floor).player = playerNode // Set tile in front of player (floor) to have player property
     }
 }
