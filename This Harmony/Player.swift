@@ -9,7 +9,5 @@ import Foundation
 import SpriteKit
 
 class Player: MovableTile {
-    var row: Int = 0
-    var column: Int = 0
 
 }
