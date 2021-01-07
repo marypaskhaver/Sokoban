@@ -50,7 +50,7 @@ class GridCreator {
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).player = playerNode
 
-                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 64, y: 656 - (row * Constants.tileSize))
+                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 124, y: 680 - (row * Constants.tileSize))
                 } else if grid[row][col].name == Constants.TileNames.crate.rawValue {
                     let crate: Crate = grid[row][col] as! Crate
                     
@@ -58,7 +58,7 @@ class GridCreator {
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).crate = crate
                                         
-                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 64, y: 656 - (row * Constants.tileSize))
+                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 124, y: 680 - (row * Constants.tileSize))
                 }
                 
             }
