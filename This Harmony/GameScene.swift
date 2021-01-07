@@ -15,7 +15,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
     
     override func didMove(to view: SKView) {
-        
         physicsWorld.contactDelegate = self
         
         let gridCreator: GridCreator = GridCreator()
@@ -23,12 +22,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children))
         
         let childrenToAdd: [Floor : CGPoint] = gridCreator.childrenToAddToView
-
+        
         for child in childrenToAdd.keys { // These will always be Floors to add underneath players and crates bc there will always be a player and some crates
             child.position = childrenToAdd[child]!
             self.addChild(child)
         }
-    
+                
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
         view.addGestureRecognizer(swipeRight)
@@ -60,6 +59,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .down)
+    }
+    
+    // Load levels
+    class func level(_ levelNumber: Int) -> GameScene? {
+        guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
+            return nil
+        }
+        
+        scene.scaleMode = .aspectFill
+        return scene
     }
     
 }
