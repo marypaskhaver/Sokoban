@@ -8,7 +8,7 @@
 import Foundation
 
 class Constants {
-    static let tileSize: Int = 80
+    static let tileSize: Int = 70
     static let movementAnimationDuration: TimeInterval = 0.2
     
     enum TileNames: String {
