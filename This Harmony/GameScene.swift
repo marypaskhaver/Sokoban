@@ -81,4 +81,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return scene
     }
     
+    func goToNextLevel() {
+        let nextLevel: GameScene? = GameScene.level(self.level + 1)
+        
+        if nextLevel != nil {
+            self.level += 1
+            self.view?.presentScene(nextLevel)
+        }
+    }
+    
 }
