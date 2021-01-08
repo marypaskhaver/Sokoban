@@ -13,12 +13,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var grid: Grid!
     // Can add vars holding "floorType" and "wallType" to change the images of floors and walls if there are multiple kinds of floors and walls;
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
+    var buttonRestart: MSButtonNode!
+    var level: Int = 1
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
+        // Create grid
         let gridCreator: GridCreator = GridCreator()
-        
         grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children))
         
         let childrenToAdd: [Floor : CGPoint] = gridCreator.childrenToAddToView
@@ -26,6 +28,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for child in childrenToAdd.keys { // These will always be Floors to add underneath players and crates bc there will always be a player and some crates
             child.position = childrenToAdd[child]!
             self.addChild(child)
+        }
+        
+        // Set restart button
+        buttonRestart = self.childNode(withName: "buttonRestart") as! MSButtonNode
+        
+        buttonRestart.selectedHandler = {
+            self.view!.presentScene(GameScene.level(self.level))
         }
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
@@ -61,9 +70,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         grid?.movePlayer(inDirection: .down)
     }
     
-    // Load levels
+    // Load level
     class func level(_ levelNumber: Int) -> GameScene? {
         guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
+            print("Cannot find level \(levelNumber)")
             return nil
         }
         
