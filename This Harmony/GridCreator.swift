@@ -19,7 +19,10 @@ class GridCreator {
             // A player and crate will always be standing on a floor, so you can add them normally to the arrayOfNodes and just remember they're on Floor tiles;
             // replace them later
             child.position = CGPoint(x: child.getRoundedX(), y: child.getRoundedY())
-            arrayOfNodes.append(child as! Tile)
+            
+            if child as? MSButtonNode == nil {
+                arrayOfNodes.append(child as! Tile)
+            }
         }
         
         arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midX < $1.frame.midX })
