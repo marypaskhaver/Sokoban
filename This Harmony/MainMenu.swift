@@ -22,26 +22,28 @@ class MainMenu: SKScene {
     }
     
     func loadGame() {
-        /* 1) Grab reference to our SpriteKit view */
+        // Grab reference to our SpriteKit view
         guard let skView = self.view as SKView? else {
             print("Could not get SKView")
             return
         }
-        
-        guard let scene = GameScene.level(1) else {
+                
+        guard let gameScene = GameScene.level(1) else {
             print("Could not load GameScene with level 1")
             return
         }
+        
+        gameScene.level = 1
 
-        /* 3) Ensure correct aspect mode */
-        scene.scaleMode = .aspectFill
+        // Ensure correct aspect mode
+        gameScene.scaleMode = .aspectFill
 
-        /* Show debug */
+        // Show debug
         skView.showsPhysics = true
         skView.showsDrawCount = true
         skView.showsFPS = true
 
-        /* 4) Start game scene */
-        skView.presentScene(scene)
+        // Start game scene
+        skView.presentScene(gameScene)
     }
 }
