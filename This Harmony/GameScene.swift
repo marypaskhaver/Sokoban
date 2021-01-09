@@ -13,7 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var grid: Grid!
     // Can add vars holding "floorType" and "wallType" to change the images of floors and walls if there are multiple kinds of floors and walls;
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
-    var buttonRestart: MSButtonNode!
+    var buttonRestart: MSButtonNode! // Create these in every scene w/ code so they don't repeat in the scene editor
     var buttonNext: MSButtonNode!
     static var level: Int = 1
     
@@ -30,10 +30,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             child.position = childrenToAdd[child]!
             self.addChild(child)
         }
-        
+                
         // Set buttons
-        buttonRestart = self.childNode(withName: "buttonRestart") as! MSButtonNode
-        buttonNext = self.childNode(withName: "buttonNext") as! MSButtonNode
+        buttonRestart = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 120, height: 68), atPosition: CGPoint(x: 512, y: 80))
+        buttonNext = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 120, height: 68), atPosition: CGPoint(x: 800, y: 80))
 
         buttonRestart.selectedHandler = {
             self.view!.presentScene(GameScene.getLevel(GameScene.level))
@@ -42,6 +42,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buttonNext.selectedHandler = {
             self.goToNextLevel()
         }
+        
+        self.addChild(buttonRestart)
+        self.addChild(buttonNext)
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
