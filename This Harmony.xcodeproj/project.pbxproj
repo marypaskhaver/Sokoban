@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20729D9725A9469B004F996A /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20729D9625A9469B004F996A /* Level_2.sks */; };
 		2076A89625A689D90085DA7A /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2076A89525A689D90085DA7A /* MainMenu.sks */; };
 		2076A89B25A68A920085DA7A /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076A89A25A68A920085DA7A /* MSButtonNode.swift */; };
 		2076A8A025A68BED0085DA7A /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076A89F25A68BED0085DA7A /* MainMenu.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20729D9625A9469B004F996A /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
 		2076A89525A689D90085DA7A /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		2076A89A25A68A920085DA7A /* MSButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		2076A89F25A68BED0085DA7A /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				20E2F804259BC439004BF34B /* AppDelegate.swift */,
 				20E2F806259BC439004BF34B /* Level_1.sks */,
+				20729D9625A9469B004F996A /* Level_2.sks */,
 				20F5922B259CDEED003C6A1D /* Player.swift */,
 				20F59235259CEFC9003C6A1D /* Crate.swift */,
 				20F59230259CE20C003C6A1D /* MovableTile.swift */,
@@ -279,6 +282,7 @@
 				20E2F810259BC439004BF34B /* Main.storyboard in Resources */,
 				20E2F807259BC439004BF34B /* Level_1.sks in Resources */,
 				20E2F812259BC43A004BF34B /* Assets.xcassets in Resources */,
+				20729D9725A9469B004F996A /* Level_2.sks in Resources */,
 				2076A89625A689D90085DA7A /* MainMenu.sks in Resources */,
 				20E2F809259BC439004BF34B /* Actions.sks in Resources */,
 			);
