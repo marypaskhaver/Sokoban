@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Can add vars holding "floorType" and "wallType" to change the images of floors and walls if there are multiple kinds of floors and walls;
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
     var buttonRestart: MSButtonNode!
+    var buttonNext: MSButtonNode!
     var level: Int = 1
     
     override func didMove(to view: SKView) {
@@ -30,11 +31,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(child)
         }
         
-        // Set restart button
+        // Set buttons
         buttonRestart = self.childNode(withName: "buttonRestart") as! MSButtonNode
-        
+        buttonNext = self.childNode(withName: "buttonNext") as! MSButtonNode
+
         buttonRestart.selectedHandler = {
             self.view!.presentScene(GameScene.level(self.level))
+        }
+        
+        buttonNext.selectedHandler = {
+            self.goToNextLevel()
         }
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
