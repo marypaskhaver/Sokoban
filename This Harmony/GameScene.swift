@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
     var buttonRestart: MSButtonNode!
     var buttonNext: MSButtonNode!
-    var level: Int = 1
+    static var level: Int = 1
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -36,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buttonNext = self.childNode(withName: "buttonNext") as! MSButtonNode
 
         buttonRestart.selectedHandler = {
-            self.view!.presentScene(GameScene.level(self.level))
+            self.view!.presentScene(GameScene.getLevel(GameScene.level))
         }
         
         buttonNext.selectedHandler = {
@@ -77,7 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // Load level
-    class func level(_ levelNumber: Int) -> GameScene? {
+    class func getLevel(_ levelNumber: Int) -> GameScene? {
         guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
             print("Cannot find level \(levelNumber)")
             return nil
@@ -88,10 +88,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func goToNextLevel() {
-        let nextLevel: GameScene? = GameScene.level(self.level + 1)
+        let nextLevel: GameScene? = GameScene.getLevel(GameScene.level + 1)
         
         if nextLevel != nil {
-            self.level += 1
+            GameScene.level += 1
             self.view?.presentScene(nextLevel)
         }
     }
