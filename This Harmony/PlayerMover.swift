@@ -20,7 +20,7 @@ class PlayerMover {
     func getPlayerRowAndCol() -> Point {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
-                if grid[row][col].name == Constants.TileNames.floor.rawValue {
+                if grid[row][col] as? Floor != nil {
                     let node: Floor = grid[row][col] as! Floor
 
                     if node.player != nil {
@@ -141,12 +141,10 @@ class PlayerMover {
                 (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col - 1] as! Floor).setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
 
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveLeft(byNumTiles: 1)
-
             case .right:
                 (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col + 1] as! Floor).setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
                 
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveRight(byNumTiles: 1)
-
             default:
                 print("Unknown direction")
             }
