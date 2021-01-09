@@ -28,12 +28,12 @@ class MainMenu: SKScene {
             return
         }
                 
-        guard let gameScene = GameScene.level(1) else {
+        guard let gameScene = GameScene.getLevel(1) else {
             print("Could not load GameScene with level 1")
             return
         }
         
-        gameScene.level = 1
+        GameScene.level = 1
 
         // Ensure correct aspect mode
         gameScene.scaleMode = .aspectFill
