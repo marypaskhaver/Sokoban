@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20092BDD25AB8D5700D4677B /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20092BDC25AB8D5700D4677B /* TextLabel.swift */; };
 		20729D9725A9469B004F996A /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20729D9625A9469B004F996A /* Level_2.sks */; };
 		2076A89625A689D90085DA7A /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2076A89525A689D90085DA7A /* MainMenu.sks */; };
 		2076A89B25A68A920085DA7A /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076A89A25A68A920085DA7A /* MSButtonNode.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20092BDC25AB8D5700D4677B /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
 		20729D9625A9469B004F996A /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
 		2076A89525A689D90085DA7A /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		2076A89A25A68A920085DA7A /* MSButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				20CE23BC25A37D8100200C0C /* Storage.swift */,
 				20E2F808259BC439004BF34B /* Actions.sks */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
+				20092BDC25AB8D5700D4677B /* TextLabel.swift */,
 				20F59240259E85D0003C6A1D /* Grid.swift */,
 				20F5927625A17022003C6A1D /* PlayerMover.swift */,
 				20F5926025A136C1003C6A1D /* GridCreator.swift */,
@@ -315,6 +318,7 @@
 				2076A8A025A68BED0085DA7A /* MainMenu.swift in Sources */,
 				20F59236259CEFC9003C6A1D /* Crate.swift in Sources */,
 				20F59256259F9D56003C6A1D /* Direction.swift in Sources */,
+				20092BDD25AB8D5700D4677B /* TextLabel.swift in Sources */,
 				20E2F80B259BC439004BF34B /* GameScene.swift in Sources */,
 				20E2F80D259BC439004BF34B /* GameViewController.swift in Sources */,
 				20F59231259CE20C003C6A1D /* MovableTile.swift in Sources */,
