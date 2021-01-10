@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
     var buttonRestart: MSButtonNode! // Create these in every scene w/ code so they don't repeat in the scene editor
     var buttonNext: MSButtonNode!
+    var levelLabel: SKLabelNode!
     static var level: Int = 1
     
     override func didMove(to view: SKView) {
@@ -31,9 +32,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(child)
         }
                 
-        // Set buttons
-        buttonRestart = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 120, height: 68), atPosition: CGPoint(x: 512, y: 80))
-        buttonNext = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 120, height: 68), atPosition: CGPoint(x: 800, y: 80))
+        // Set buttons-- change from hardcoded to based off screen size later
+        buttonRestart = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 68, height: 68), atPosition: CGPoint(x: 384, y: 50))
+        buttonNext = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 68, height: 68), atPosition: CGPoint(x: 200, y: 50))
 
         buttonRestart.selectedHandler = {
             self.view!.presentScene(GameScene.getLevel(GameScene.level))
@@ -43,8 +44,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.goToNextLevel()
         }
         
+        levelLabel = SKLabelNode(text: "Level \(GameScene.level)")
+        levelLabel.fontName = "PingFangSC-Semibold"
+        levelLabel.fontSize = 30
+        levelLabel.position = CGPoint(x: 384, y: 975)
+        levelLabel.zPosition = 1
+        
         self.addChild(buttonRestart)
         self.addChild(buttonNext)
+        self.addChild(levelLabel)
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
