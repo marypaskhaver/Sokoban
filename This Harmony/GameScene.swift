@@ -16,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var buttonRestart: MSButtonNode! // Create these in every scene w/ code so they don't repeat in the scene editor
     var buttonNext: MSButtonNode!
     var levelLabel: SKLabelNode!
+    var stepsLabel: SKLabelNode!
     static var level: Int = 1
     
     override func didMove(to view: SKView) {
@@ -33,8 +34,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
                 
         // Set buttons-- change from hardcoded to based off screen size later
-        buttonRestart = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 68, height: 68), atPosition: CGPoint(x: 384, y: 50))
-        buttonNext = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 68, height: 68), atPosition: CGPoint(x: 200, y: 50))
+        buttonRestart = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 384, y: 60))
+        buttonNext = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 200, y: 60))
 
         buttonRestart.selectedHandler = {
             self.view!.presentScene(GameScene.getLevel(GameScene.level))
@@ -50,9 +51,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         levelLabel.position = CGPoint(x: 384, y: 975)
         levelLabel.zPosition = 1
         
+        stepsLabel = SKLabelNode(text: "Steps: \(grid.steps)")
+        stepsLabel.fontName = "PingFangSC-Semibold"
+        stepsLabel.fontSize = 30
+        stepsLabel.position = CGPoint(x: 384, y: 150)
+        stepsLabel.zPosition = 1
+        
         self.addChild(buttonRestart)
         self.addChild(buttonNext)
         self.addChild(levelLabel)
+        self.addChild(stepsLabel)
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
@@ -73,18 +81,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     @objc func swipedRight(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .right)
+        stepsLabel.text = "Steps: \(grid.steps)"
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .left)
+        stepsLabel.text = "Steps: \(grid.steps)"
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .up)
+        stepsLabel.text = "Steps: \(grid.steps)"
     }
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .down)
+        stepsLabel.text = "Steps: \(grid.steps)"
     }
     
     // Load level
