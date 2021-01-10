@@ -15,8 +15,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
     var buttonRestart: MSButtonNode! // Create these in every scene w/ code so they don't repeat in the scene editor
     var buttonNext: MSButtonNode!
-    var levelLabel: SKLabelNode!
-    var stepsLabel: SKLabelNode!
+    var levelLabel: TextLabel!
+    var stepsLabel: TextLabel!
     static var level: Int = 1
     
     override func didMove(to view: SKView) {
@@ -45,17 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.goToNextLevel()
         }
         
-        levelLabel = SKLabelNode(text: "Level \(GameScene.level)")
-        levelLabel.fontName = "PingFangSC-Semibold"
-        levelLabel.fontSize = 30
-        levelLabel.position = CGPoint(x: 384, y: 975)
-        levelLabel.zPosition = 1
-        
-        stepsLabel = SKLabelNode(text: "Steps: \(grid.steps)")
-        stepsLabel.fontName = "PingFangSC-Semibold"
-        stepsLabel.fontSize = 30
-        stepsLabel.position = CGPoint(x: 384, y: 150)
-        stepsLabel.zPosition = 1
+        levelLabel = TextLabel("Level \(GameScene.level)", at: CGPoint(x: 384, y: 975))
+        stepsLabel = TextLabel("Steps: \(grid.steps)", at: CGPoint(x: 384, y: 150))
         
         self.addChild(buttonRestart)
         self.addChild(buttonNext)
