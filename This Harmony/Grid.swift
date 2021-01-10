@@ -12,7 +12,6 @@ class Grid {
     
     var grid: [[Tile]] = [ [Tile] ]()
     var steps: Int = 0
-    var cratePushes: Int = 0
     
     init(with2DArrayOfTiles gridTiles: [ [Tile] ]) {
         self.grid = gridTiles
@@ -28,10 +27,7 @@ class Grid {
             // Later, save steps and add onto the saved # each time. Reset steps upon level reset.
         }
         
-        if mover.didMoveCrate {
-            cratePushes += 1
-            // Later, save cratePushes and add onto the saved # each time. Reset cratePushes upon level reset.
-            
+        if mover.didMoveCrate {            
             // Check if level is complete
             print(isLevelComplete())
         }
