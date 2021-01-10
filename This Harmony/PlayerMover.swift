@@ -42,13 +42,13 @@ class PlayerMover {
             if playerLocation.row == 1 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .up)
         case .down:
-            if playerLocation.row == 6 { return false }
+            if playerLocation.row == 8 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .down)
         case .left:
             if playerLocation.col == 1 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .left)
         case .right:
-            if playerLocation.col == 10 { return false }
+            if playerLocation.col == 6 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .right)
         default:
             print("Unknown direction")
