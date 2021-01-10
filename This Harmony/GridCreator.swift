@@ -28,7 +28,7 @@ class GridCreator {
         arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midX < $1.frame.midX })
         arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midY > $1.frame.midY })
                 
-        grid = arrayOfNodes.chunked(into: 12)
+        grid = arrayOfNodes.chunked(into: 8)
 
         for r in grid {
             var row = r
@@ -53,7 +53,7 @@ class GridCreator {
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).player = playerNode
 
-                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 124, y: 680 - (row * Constants.tileSize))
+                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 139, y: 900 - (row * Constants.tileSize))
                 } else if grid[row][col].name == Constants.TileNames.crate.rawValue {
                     let crate: Crate = grid[row][col] as! Crate
                     
@@ -61,7 +61,7 @@ class GridCreator {
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).crate = crate
                                         
-                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 124, y: 680 - (row * Constants.tileSize))
+                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 139, y: 900 - (row * Constants.tileSize))
                 }
                 
             }
