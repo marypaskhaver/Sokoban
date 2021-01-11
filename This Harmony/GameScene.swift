@@ -13,10 +13,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var grid: Grid!
     // Can add vars holding "floorType" and "wallType" to change the images of floors and walls if there are multiple kinds of floors and walls;
     // this means that every level will have the same floor and same walls across that whole level, though diff. levels can have diff. floors and walls
+    
     var buttonRestart: MSButtonNode! // Create these in every scene w/ code so they don't repeat in the scene editor
     var buttonNext: MSButtonNode!
+    var buttonPrevious: MSButtonNode!
+    
     var levelLabel: TextLabel!
     var stepsLabel: TextLabel!
+    
     static var level: Int = 1
     
     override func didMove(to view: SKView) {
@@ -36,7 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Set buttons-- change from hardcoded to based off screen size later
         buttonRestart = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 384, y: 60))
         buttonNext = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 200, y: 60))
-
+        buttonPrevious = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 100, y: 60))
+        
         buttonRestart.selectedHandler = {
             self.view!.presentScene(GameScene.getLevel(GameScene.level))
         }
@@ -45,11 +50,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.goToNextLevel()
         }
         
+        buttonPrevious.selectedHandler = {
+            self.goToPreviousLevel()
+        }
+        
         levelLabel = TextLabel("Level \(GameScene.level)", at: CGPoint(x: 384, y: 975))
         stepsLabel = TextLabel("Steps: \(grid.steps)", at: CGPoint(x: 384, y: 150))
         
         self.addChild(buttonRestart)
         self.addChild(buttonNext)
+        self.addChild(buttonPrevious)
         self.addChild(levelLabel)
         self.addChild(stepsLabel)
                 
@@ -107,6 +117,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if nextLevel != nil {
             GameScene.level += 1
             self.view?.presentScene(nextLevel)
+        }
+    }
+    
+    func goToPreviousLevel() {
+        let previousLevel: GameScene? = GameScene.getLevel(GameScene.level - 1)
+        
+        if previousLevel != nil {
+            GameScene.level -= 1
+            self.view?.presentScene(previousLevel)
         }
     }
     
