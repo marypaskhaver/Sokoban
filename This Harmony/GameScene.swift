@@ -62,6 +62,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(buttonPrevious)
         self.addChild(levelLabel)
         self.addChild(stepsLabel)
+        
+        disableButtonsIfNeeded()
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
         swipeRight.direction = .right
@@ -103,12 +105,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Load level
     class func getLevel(_ levelNumber: Int) -> GameScene? {
         guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
-            print("Cannot find level \(levelNumber)")
             return nil
         }
-        
+                
         scene.scaleMode = .aspectFill
         return scene
+    }
+    
+    func disableButtonsIfNeeded() {
+        // Disable buttons if needed
+        if GameScene.getLevel(GameScene.level + 1) == nil {
+            buttonNext.state = .disabled
+            buttonNext.reloadInputViews()
+        } else if GameScene.getLevel(GameScene.level - 1) == nil {
+            buttonPrevious.state = .disabled
+            buttonPrevious.reloadInputViews()
+        }
     }
     
     func goToNextLevel() {
@@ -118,6 +130,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             GameScene.level += 1
             self.view?.presentScene(nextLevel)
         }
+        
+        disableButtonsIfNeeded()
     }
     
     func goToPreviousLevel() {
@@ -127,6 +141,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             GameScene.level -= 1
             self.view?.presentScene(previousLevel)
         }
+
+        disableButtonsIfNeeded()
     }
     
 }
