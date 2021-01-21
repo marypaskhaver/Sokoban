@@ -7,6 +7,6 @@
 
 import SpriteKit
 
-class LaserBeam: SKSpriteNode {
+class LaserBeam: Tile {
     
 }
