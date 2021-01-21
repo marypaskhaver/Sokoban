@@ -131,7 +131,7 @@ class GridCreator {
     }
     
     // The way this is built, the player will never start the level on a storage area
-    func putFloorsUnderPlayerAndCrates() {
+    private func putFloorsUnderPlayerAndCrates() {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
                 
