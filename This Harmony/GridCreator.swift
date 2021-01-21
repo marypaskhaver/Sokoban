@@ -20,7 +20,7 @@ class GridCreator {
             // replace them later
             child.position = CGPoint(x: child.getRoundedX(), y: child.getRoundedY())
             
-            if child as? MSButtonNode == nil {
+            if child as? MSButtonNode == nil && child as? LaserPointer == nil {
                 arrayOfNodes.append(child as! Tile)
             }
         }
@@ -39,6 +39,20 @@ class GridCreator {
         putFloorsUnderPlayerAndCrates()
 
         return grid
+    }
+    
+    func getLaserPointerNodesFromScenesChildren(_ children: [SKNode]) -> [LaserPointer] {
+        var laserPointers: [LaserPointer] = []
+
+        for child in children {
+            child.position = CGPoint(x: child.getRoundedX(), y: child.getRoundedY())
+            
+            if child as? LaserPointer != nil {
+                laserPointers.append(child as! LaserPointer)
+            }
+        }
+        
+        return laserPointers
     }
     
     // The way this is built, the player will never start the level on a storage area
