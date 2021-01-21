@@ -13,11 +13,13 @@ class LaserPointer: Tile {
     
     func setDirection() {
         degreeAndDirectionDict[0] = .up
+        degreeAndDirectionDict[180] = .down
         degreeAndDirectionDict[-180] = .down
         degreeAndDirectionDict[90] = .left
         degreeAndDirectionDict[-90] = .right
-        
-        self.direction = degreeAndDirectionDict[Int(self.zRotation)]
+                
+        // Convert zRotation to degrees
+        self.direction = degreeAndDirectionDict[Int(self.zRotation * (180 / .pi ))]
     }
    
 }
