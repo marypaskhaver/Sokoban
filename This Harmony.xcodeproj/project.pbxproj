@@ -140,29 +140,15 @@
 			isa = PBXGroup;
 			children = (
 				20E2F804259BC439004BF34B /* AppDelegate.swift */,
-				20E2F806259BC439004BF34B /* Level_1.sks */,
-				20ED276925B90C4300428A5F /* LaserBeam.swift */,
-				20ED276425B90B5700428A5F /* LaserPointer.swift */,
-				20729D9625A9469B004F996A /* Level_2.sks */,
-				20F5922B259CDEED003C6A1D /* Player.swift */,
-				20F59235259CEFC9003C6A1D /* Crate.swift */,
-				20F59230259CE20C003C6A1D /* MovableTile.swift */,
-				20F59250259F71DD003C6A1D /* Tile.swift */,
+				20ED277A25B92C7100428A5F /* Levels */,
+				20ED277625B92C6500428A5F /* Tiles */,
 				20F5927125A15C64003C6A1D /* Constants.swift */,
-				20F59245259EA747003C6A1D /* Floor.swift */,
-				20CE23BC25A37D8100200C0C /* Storage.swift */,
 				20E2F808259BC439004BF34B /* Actions.sks */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
-				20092BDC25AB8D5700D4677B /* TextLabel.swift */,
-				20F59240259E85D0003C6A1D /* Grid.swift */,
-				20F5927625A17022003C6A1D /* PlayerMover.swift */,
-				20ED276E25B9199900428A5F /* Point.swift */,
-				20F5926025A136C1003C6A1D /* GridCreator.swift */,
-				20F59255259F9D56003C6A1D /* Direction.swift */,
+				20ED278325B92CB200428A5F /* Scene Buttons and Labels */,
+				20ED277B25B92C8C00428A5F /* Grid and Movement */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
-				2076A89525A689D90085DA7A /* MainMenu.sks */,
-				2076A89F25A68BED0085DA7A /* MainMenu.swift */,
-				2076A89A25A68A920085DA7A /* MSButtonNode.swift */,
+				20ED277F25B92CA500428A5F /* Main Menu */,
 				20E2F80E259BC439004BF34B /* Main.storyboard */,
 				20E2F811259BC43A004BF34B /* Assets.xcassets */,
 				20E2F813259BC43A004BF34B /* Info.plist */,
@@ -186,6 +172,60 @@
 				20E2F829259BC43A004BF34B /* Info.plist */,
 			);
 			path = "This HarmonyUITests";
+			sourceTree = "<group>";
+		};
+		20ED277625B92C6500428A5F /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				20ED276925B90C4300428A5F /* LaserBeam.swift */,
+				20ED276425B90B5700428A5F /* LaserPointer.swift */,
+				20F5922B259CDEED003C6A1D /* Player.swift */,
+				20F59235259CEFC9003C6A1D /* Crate.swift */,
+				20F59230259CE20C003C6A1D /* MovableTile.swift */,
+				20F59250259F71DD003C6A1D /* Tile.swift */,
+				20F59245259EA747003C6A1D /* Floor.swift */,
+				20CE23BC25A37D8100200C0C /* Storage.swift */,
+			);
+			path = Tiles;
+			sourceTree = "<group>";
+		};
+		20ED277A25B92C7100428A5F /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				20E2F806259BC439004BF34B /* Level_1.sks */,
+				20729D9625A9469B004F996A /* Level_2.sks */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
+		20ED277B25B92C8C00428A5F /* Grid and Movement */ = {
+			isa = PBXGroup;
+			children = (
+				20F59240259E85D0003C6A1D /* Grid.swift */,
+				20F5927625A17022003C6A1D /* PlayerMover.swift */,
+				20ED276E25B9199900428A5F /* Point.swift */,
+				20F5926025A136C1003C6A1D /* GridCreator.swift */,
+				20F59255259F9D56003C6A1D /* Direction.swift */,
+			);
+			path = "Grid and Movement";
+			sourceTree = "<group>";
+		};
+		20ED277F25B92CA500428A5F /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				2076A89525A689D90085DA7A /* MainMenu.sks */,
+				2076A89F25A68BED0085DA7A /* MainMenu.swift */,
+			);
+			path = "Main Menu";
+			sourceTree = "<group>";
+		};
+		20ED278325B92CB200428A5F /* Scene Buttons and Labels */ = {
+			isa = PBXGroup;
+			children = (
+				20092BDC25AB8D5700D4677B /* TextLabel.swift */,
+				2076A89A25A68A920085DA7A /* MSButtonNode.swift */,
+			);
+			path = "Scene Buttons and Labels";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
