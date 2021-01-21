@@ -53,12 +53,16 @@ class Grid {
     
     func activateLaserBeams() {
         // Find laser pointer nodes and their row/col in the grid
+        print("there are \(laserPointers.count)")
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
                 for lp in laserPointers {
                     if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY {
                         // For each laser pointer, check its rotation to find out which direction to place the beams (0 deg = pointing up, then -90 deg turns clockwise)
                         let clearTiles: [Floor] = getLongestClearPathOfFloor(from: Point(row: row, col: col), inDirection: lp.direction)
+                        for tile in clearTiles {
+                            print(tile.frame.midX, tile.frame.midY, tile.name)
+                        }
                     }
                 }
             }
@@ -72,31 +76,44 @@ class Grid {
     
     func getLongestClearPathOfFloor(from point: Point, inDirection dir: Direction) -> [Floor] {
         var row: Int = point.row, col: Int = point.col
+        var tilesInFront: [Floor] = [Floor]()
         
         switch dir {
         case .up:
-            row -= 1
-            
+            row -= 1 // Don't count wall which laser is attached to
             // Check if path free of crates and walls-- does this cover all scenarios?
             while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
-                print("uppity")
+                tilesInFront.append(grid[row][col] as! Floor)
                 row -= 1
             }
-            
-            print("collision at \(row), \(col)")
-            break
+
+            print("collision up at \(row), \(col)")
         case .down:
-            print("a")
-            break
+            row += 1
+            while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
+                tilesInFront.append(grid[row][col] as! Floor)
+                row += 1
+            }
+            print("collision down at \(row), \(col)")
         case .left:
-            print("b")
-            break
+            col -= 1
+            while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
+                tilesInFront.append(grid[row][col] as! Floor)
+                col -= 1
+            }
+            
+            print("collision left at \(row), \(col)")
         case .right:
-            print("c")
-            break
+            col += 1
+            while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
+                tilesInFront.append(grid[row][col] as! Floor)
+                col += 1
+            }
+
+            print("collision right at \(row), \(col)")
         }
         
-        return []
+        return tilesInFront
     }
 }
 
