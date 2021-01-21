@@ -28,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Create grid
         let gridCreator: GridCreator = GridCreator()
-        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children))
+        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children), laserPointers: gridCreator.getLaserPointerNodesFromScenesChildren(children))
         
         let childrenToAdd: [Floor : CGPoint] = gridCreator.childrenToAddToView
         
