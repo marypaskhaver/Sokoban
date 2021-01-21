@@ -27,10 +27,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         // Create grid
-        let gridCreator: GridCreator = GridCreator()
-        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children), laserPointers: gridCreator.getLaserPointerNodesFromScenesChildren(children))
+        let gridCreator: GridCreator = GridCreator(withChildren: children)
+        grid = Grid(with2DArrayOfTiles: gridCreator.grid)
+//        grid = Grid(with2DArrayOfTiles: gridCreator.getGridOfScenesChildren(children), laserPointers: gridCreator.getLaserPointerNodesFromScenesChildren(children))
         
-        let childrenToAdd: [Floor : CGPoint] = gridCreator.childrenToAddToView
+        let childrenToAdd: [Tile : CGPoint] = gridCreator.childrenToAddToView
         
         for child in childrenToAdd.keys { // These will always be Floors to add underneath players and crates bc there will always be a player and some crates
             child.position = childrenToAdd[child]!
