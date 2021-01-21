@@ -9,12 +9,14 @@ import Foundation
 import SpriteKit
 
 class Grid {
-    
     var grid: [[Tile]] = [ [Tile] ]()
     var steps: Int = 0
+    var laserPointers: [LaserPointer]
     
-    init(with2DArrayOfTiles gridTiles: [ [Tile] ]) {
+    init(with2DArrayOfTiles gridTiles: [ [Tile] ], laserPointers: [LaserPointer]) {
         self.grid = gridTiles
+        self.laserPointers = laserPointers
+        activateLaserBeams()
     }
     
     func movePlayer(inDirection dir: Direction) {
@@ -47,6 +49,14 @@ class Grid {
         }
         
         return storageTiles.allSatisfy( { $0.crate != nil } )
+    }
+    
+    func activateLaserBeams() {
+        // Find laser pointer nodes and their row/col in the grid
+        // For each laser pointer, check its rotation to find out which direction to place the beams (0 deg = pointing up, other dirs are clockwise in sets of 90)
+        // Check how far a clear path extends in that direction on the grid-- that is, clear rows and cols (laser cannot go thru walls or crates)
+        // For each of the clear rows/cols in the grid, place a laser beam node rotated to the proper amount there
+        // For the Floors the laser beam crosses over, set its laserBeam property to that laserBeam node
     }
 }
 
