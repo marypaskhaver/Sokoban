@@ -53,10 +53,50 @@ class Grid {
     
     func activateLaserBeams() {
         // Find laser pointer nodes and their row/col in the grid
+        for row in 0..<grid.count {
+            for col in 0..<grid[row].count {
+                for lp in laserPointers {
+                    if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY {
+                        // For each laser pointer, check its rotation to find out which direction to place the beams (0 deg = pointing up, then -90 deg turns clockwise)
+                        let clearTiles: [Floor] = getLongestClearPathOfFloor(from: Point(row: row, col: col), inDirection: lp.direction)
+                    }
+                }
+            }
+        }
+        // Find laser pointer nodes and their row/col in the grid
         // For each laser pointer, check its rotation to find out which direction to place the beams (0 deg = pointing up, other dirs are clockwise in sets of 90)
         // Check how far a clear path extends in that direction on the grid-- that is, clear rows and cols (laser cannot go thru walls or crates)
         // For each of the clear rows/cols in the grid, place a laser beam node rotated to the proper amount there
         // For the Floors the laser beam crosses over, set its laserBeam property to that laserBeam node
+    }
+    
+    func getLongestClearPathOfFloor(from point: Point, inDirection dir: Direction) -> [Floor] {
+        var row: Int = point.row, col: Int = point.col
+        
+        switch dir {
+        case .up:
+            row -= 1
+            
+            // Check if path free of crates and walls-- does this cover all scenarios?
+            while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
+                print("uppity")
+                row -= 1
+            }
+            
+            print("collision at \(row), \(col)")
+            break
+        case .down:
+            print("a")
+            break
+        case .left:
+            print("b")
+            break
+        case .right:
+            print("c")
+            break
+        }
+        
+        return []
     }
 }
 
