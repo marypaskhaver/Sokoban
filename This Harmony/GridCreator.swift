@@ -48,6 +48,7 @@ class GridCreator {
             child.position = CGPoint(x: child.getRoundedX(), y: child.getRoundedY())
             
             if child as? LaserPointer != nil {
+                (child as? LaserPointer)?.setDirection()
                 laserPointers.append(child as! LaserPointer)
             }
         }
