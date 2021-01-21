@@ -104,11 +104,6 @@ class PlayerMover {
         return false
     }
     
-    struct Point {
-        var row: Int = 0
-        var col: Int = 0
-    }
-    
     func getRowAndColumnOfFloor(floorNodeInGrid floorNode: Floor) -> Point {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
