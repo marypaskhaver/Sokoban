@@ -11,12 +11,9 @@ import SpriteKit
 class Grid {
     var grid: [[Tile]] = [ [Tile] ]()
     var steps: Int = 0
-    var laserPointers: [LaserPointer]
     
-    init(with2DArrayOfTiles gridTiles: [ [Tile] ], laserPointers: [LaserPointer]) {
+    init(with2DArrayOfTiles gridTiles: [ [Tile] ]) {
         self.grid = gridTiles
-        self.laserPointers = laserPointers
-        activateLaserBeams()
     }
     
     func movePlayer(inDirection dir: Direction) {
@@ -51,70 +48,6 @@ class Grid {
         return storageTiles.allSatisfy( { $0.crate != nil } )
     }
     
-    func activateLaserBeams() {
-        // Find laser pointer nodes and their row/col in the grid
-        print("there are \(laserPointers.count)")
-        for row in 0..<grid.count {
-            for col in 0..<grid[row].count {
-                for lp in laserPointers {
-                    if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY {
-                        // For each laser pointer, check its rotation to find out which direction to place the beams (0 deg = pointing up, then -90 deg turns clockwise)
-                        let clearTiles: [Floor] = getLongestClearPathOfFloor(from: Point(row: row, col: col), inDirection: lp.direction)
-                        for tile in clearTiles {
-                            print(tile.frame.midX, tile.frame.midY, tile.name)
-                        }
-                    }
-                }
-            }
-        }
-        // Find laser pointer nodes and their row/col in the grid
-        // For each laser pointer, check its rotation to find out which direction to place the beams (0 deg = pointing up, other dirs are clockwise in sets of 90)
-        // Check how far a clear path extends in that direction on the grid-- that is, clear rows and cols (laser cannot go thru walls or crates)
-        // For each of the clear rows/cols in the grid, place a laser beam node rotated to the proper amount there
-        // For the Floors the laser beam crosses over, set its laserBeam property to that laserBeam node
-    }
-    
-    func getLongestClearPathOfFloor(from point: Point, inDirection dir: Direction) -> [Floor] {
-        var row: Int = point.row, col: Int = point.col
-        var tilesInFront: [Floor] = [Floor]()
-        
-        switch dir {
-        case .up:
-            row -= 1 // Don't count wall which laser is attached to
-            // Check if path free of crates and walls-- does this cover all scenarios?
-            while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
-                tilesInFront.append(grid[row][col] as! Floor)
-                row -= 1
-            }
-
-            print("collision up at \(row), \(col)")
-        case .down:
-            row += 1
-            while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
-                tilesInFront.append(grid[row][col] as! Floor)
-                row += 1
-            }
-            print("collision down at \(row), \(col)")
-        case .left:
-            col -= 1
-            while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
-                tilesInFront.append(grid[row][col] as! Floor)
-                col -= 1
-            }
-            
-            print("collision left at \(row), \(col)")
-        case .right:
-            col += 1
-            while (grid[row][col] as? Floor)?.crate == nil && grid[row][col].name != Constants.TileNames.wall.rawValue {
-                tilesInFront.append(grid[row][col] as! Floor)
-                col += 1
-            }
-
-            print("collision right at \(row), \(col)")
-        }
-        
-        return tilesInFront
-    }
 }
 
 extension Array {
