@@ -17,5 +17,7 @@ class Constants {
         case wall = "wall"
         case player = "player"
         case storage = "storage"
+        case laserPointer = "laser_pointer"
+        case laserBeam = "laser_beam"
     }
 }
