@@ -11,6 +11,8 @@ import SpriteKit
 class Floor: Tile {
     var player: Player?
     var crate: Crate?
+    var laserBeam: LaserBeam?
+    
     let textureImage: SKTexture
 
     init(withTexture texture: SKTexture = SKTexture(imageNamed: "floor")) {
