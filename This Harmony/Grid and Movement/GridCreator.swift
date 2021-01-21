@@ -67,6 +67,9 @@ class GridCreator {
                     // Replace w/ Floor tile w/ non-nil player property
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).player = playerNode
+                    
+                    let position: CGPoint = CGPoint(x: col * Constants.tileSize + 139, y: 900 - (row * Constants.tileSize))
+                    (grid[row][col] as! Floor).position = position
 
                     childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 139, y: 900 - (row * Constants.tileSize))
                 } else if grid[row][col].name == Constants.TileNames.crate.rawValue {
@@ -75,8 +78,11 @@ class GridCreator {
                     // Replace w/ Floor tile w/ non-nil crate property
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).crate = crate
-                                        
-                    childrenToAddToView[grid[row][col] as! Floor] = CGPoint(x: col * Constants.tileSize + 139, y: 900 - (row * Constants.tileSize))
+
+                    let position: CGPoint = CGPoint(x: col * Constants.tileSize + 139, y: 900 - (row * Constants.tileSize))
+                    (grid[row][col] as! Floor).position = position
+                    
+                    childrenToAddToView[grid[row][col] as! Floor] = position
                 }
                 
             }
