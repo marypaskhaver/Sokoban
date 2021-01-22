@@ -13,7 +13,7 @@ class SoundPlayer {
 
     static func playPlayerCantMoveSound() {
         guard let url = Bundle.main.url(forResource: "player_cant_move", withExtension: "wav") else {
-            print("url not found")
+            print("player_cant_move url not found")
             return
         }
 
@@ -25,9 +25,9 @@ class SoundPlayer {
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
 
             guard let player = player else { return }
+            player.prepareToPlay()
             player.volume = 1
             player.play()
-            player.prepareToPlay()
 
         } catch let error {
             print(error.localizedDescription)
