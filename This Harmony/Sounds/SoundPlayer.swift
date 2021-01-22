@@ -10,10 +10,10 @@ import AVFoundation
 
 class SoundPlayer {
     private static var player: AVAudioPlayer!
-
-    static func playPlayerCantMoveSound() {
-        guard let url = Bundle.main.url(forResource: "player_cant_move", withExtension: "wav") else {
-            print("player_cant_move url not found")
+    
+    static func playSound(_ sound: Sound) {
+        guard let url = Bundle.main.url(forResource: Sound.playerCantMove.rawValue, withExtension: nil) else {
+            print("\(sound.rawValue) url not found")
             return
         }
 
@@ -28,9 +28,9 @@ class SoundPlayer {
             player.prepareToPlay()
             player.volume = 1
             player.play()
-
         } catch let error {
             print(error.localizedDescription)
         }
+        
     }
 }
