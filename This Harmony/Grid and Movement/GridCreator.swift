@@ -81,6 +81,13 @@ class GridCreator {
                                 let laserBeam: LaserBeam = LaserBeam(inDirection: lp.direction, atPoint: tile.position)
                                 tile.laserBeam = laserBeam
                                 childrenToAddToView[laserBeam] = laserBeam.position
+                            } else {
+                                // If laser has already been drawn, don't add it as laserBeam property, but do load image in view there
+                                if clearTiles.contains(tile) {
+                                    let laserBeam: LaserBeam = LaserBeam(inDirection: lp.direction, atPoint: tile.position)
+                                    laserBeam.isHidden = false
+                                    childrenToAddToView[laserBeam] = laserBeam.position
+                                }
                             }
                         }
                         
