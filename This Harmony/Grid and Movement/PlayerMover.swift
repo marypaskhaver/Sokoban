@@ -194,5 +194,8 @@ class PlayerMover {
         }
         
         (oneTileFromPlayer as! Floor).player = playerNode // Set tile in front of player (floor) to have player property
+        if (oneTileFromPlayer as! Floor).laserBeam != nil {
+            print("standing on laserBeam tile. is beam hidden? \((oneTileFromPlayer as! Floor).laserBeam!.isHidden)")
+        }
     }
 }
