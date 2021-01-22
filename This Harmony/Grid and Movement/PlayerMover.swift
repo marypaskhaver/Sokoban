@@ -87,10 +87,16 @@ class PlayerMover {
         let oneTileFromPlayer: Tile = twoTilesInFrontOfPlayer.0
         let twoTilesFromPlayer: Tile = twoTilesInFrontOfPlayer.1
         
+        // Check if player is 1 tile in front of wall, in front of crate and wall, or in front of 2 crates
         if  oneTileFromPlayer.name == Constants.TileNames.wall.rawValue ||
             (isFloorThatContainsCrate(oneTileFromPlayer) && twoTilesFromPlayer.name == Constants.TileNames.wall.rawValue) ||
             (isFloorThatContainsCrate(oneTileFromPlayer) && isFloorThatContainsCrate(twoTilesFromPlayer)) {
             return false
+        }
+        
+        // Check if player is standing on laserBeam-- if it's hidden, they can move; else, they can't
+        if let laserBeam = (oneTileFromPlayer as? Floor)?.laserBeam {
+            return laserBeam.isHidden
         }
         
         return true
