@@ -76,13 +76,16 @@ class GridCreator {
                         
                         // Place lasers on all tiles, and hide them from all the tiles that are blocked / not clear
                         for tile in allFloorTilesInFrontOfLP {
-                            let laserBeam: LaserBeam = LaserBeam(inDirection: lp.direction, atPoint: tile.position)
-                            tile.laserBeam = laserBeam
-                            childrenToAddToView[laserBeam] = laserBeam.position
-                            
-                            if !clearTiles.contains(tile) {
-                                tile.laserBeam!.isHidden = true
+                            // Avoid drawing over other laser beams? But then if two beams cross, only one is rendered in that spot
+                            if tile.laserBeam == nil {
+                                let laserBeam: LaserBeam = LaserBeam(inDirection: lp.direction, atPoint: tile.position)
+                                tile.laserBeam = laserBeam
+                                childrenToAddToView[laserBeam] = laserBeam.position
                             }
+                        }
+                        
+                        for tile in clearTiles {
+                            tile.laserBeam?.isHidden = false
                         }
                     }
                 }
