@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		20092BDD25AB8D5700D4677B /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20092BDC25AB8D5700D4677B /* TextLabel.swift */; };
+		20583A7F25BA740900A74914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F811259BC43A004BF34B /* Assets.xcassets */; };
+		20583A8425BA752600A74914 /* player_cant_move.wav in Resources */ = {isa = PBXBuildFile; fileRef = 20583A8325BA752600A74914 /* player_cant_move.wav */; };
+		20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20583A8B25BA75C500A74914 /* SoundPlayer.swift */; };
 		20729D9725A9469B004F996A /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20729D9625A9469B004F996A /* Level_2.sks */; };
 		2076A89625A689D90085DA7A /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2076A89525A689D90085DA7A /* MainMenu.sks */; };
 		2076A89B25A68A920085DA7A /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076A89A25A68A920085DA7A /* MSButtonNode.swift */; };
@@ -19,7 +22,6 @@
 		20E2F80B259BC439004BF34B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F80A259BC439004BF34B /* GameScene.swift */; };
 		20E2F80D259BC439004BF34B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F80C259BC439004BF34B /* GameViewController.swift */; };
 		20E2F810259BC439004BF34B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F80E259BC439004BF34B /* Main.storyboard */; };
-		20E2F812259BC43A004BF34B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F811259BC43A004BF34B /* Assets.xcassets */; };
 		20E2F81D259BC43A004BF34B /* This_HarmonyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F81C259BC43A004BF34B /* This_HarmonyTests.swift */; };
 		20E2F828259BC43A004BF34B /* This_HarmonyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F827259BC43A004BF34B /* This_HarmonyUITests.swift */; };
 		20ED276525B90B5700428A5F /* LaserPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED276425B90B5700428A5F /* LaserPointer.swift */; };
@@ -56,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		20092BDC25AB8D5700D4677B /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		20583A8325BA752600A74914 /* player_cant_move.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = player_cant_move.wav; sourceTree = "<group>"; };
+		20583A8B25BA75C500A74914 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		20729D9625A9469B004F996A /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
 		2076A89525A689D90085DA7A /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		2076A89A25A68A920085DA7A /* MSButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
@@ -146,10 +150,12 @@
 				20E2F808259BC439004BF34B /* Actions.sks */,
 				20ED278325B92CB200428A5F /* Scene Buttons and Labels */,
 				20ED277B25B92C8C00428A5F /* Grid and Movement */,
+				20583A8B25BA75C500A74914 /* SoundPlayer.swift */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
 				20ED277F25B92CA500428A5F /* Main Menu */,
 				20E2F80E259BC439004BF34B /* Main.storyboard */,
+				20583A8325BA752600A74914 /* player_cant_move.wav */,
 				20E2F811259BC43A004BF34B /* Assets.xcassets */,
 				20E2F813259BC43A004BF34B /* Info.plist */,
 			);
@@ -332,10 +338,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				20E2F810259BC439004BF34B /* Main.storyboard in Resources */,
+				20583A8425BA752600A74914 /* player_cant_move.wav in Resources */,
 				20E2F807259BC439004BF34B /* Level_1.sks in Resources */,
-				20E2F812259BC43A004BF34B /* Assets.xcassets in Resources */,
 				20729D9725A9469B004F996A /* Level_2.sks in Resources */,
 				2076A89625A689D90085DA7A /* MainMenu.sks in Resources */,
+				20583A7F25BA740900A74914 /* Assets.xcassets in Resources */,
 				20E2F809259BC439004BF34B /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20F59246259EA747003C6A1D /* Floor.swift in Sources */,
+				20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */,
 				20CE23BD25A37D8100200C0C /* Storage.swift in Sources */,
 				20F5922C259CDEED003C6A1D /* Player.swift in Sources */,
 				20ED276525B90B5700428A5F /* LaserPointer.swift in Sources */,
