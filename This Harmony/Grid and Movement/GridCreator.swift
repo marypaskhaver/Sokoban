@@ -80,6 +80,10 @@ class GridCreator {
                             // For the Floors the laser beam crosses over, set its laserBeam property to that laserBeam node
                             tile.laserBeam = laserBeam
                             childrenToAddToView[laserBeam] = laserBeam.position
+                            
+                            // If a crate moves in front of a beam, the laser at that spot should be disabled / hidden? But what about it being the laserBeam property of the Floor beneath it?
+                            // If a laser begins by being blocked and the crate is then moved, the rest of the Floors the beam previously didn't cover should have their
+                            // laser beam properties set, too --> Call activateLaserBeams or similar after every crate movement?
                         }
                     }
                 }
