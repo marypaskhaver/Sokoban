@@ -25,6 +25,7 @@ class LaserBeam: Tile {
         self.position = pt
         rotate(toBePointing: dir)
         self.zPosition = 1
+        self.isHidden = true // Hide initially
     }
     
     required init?(coder aDecoder: NSCoder) {
