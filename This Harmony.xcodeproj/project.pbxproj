@@ -120,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20583A9325BA780400A74914 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				20583A8B25BA75C500A74914 /* SoundPlayer.swift */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		20E2F7F8259BC439004BF34B = {
 			isa = PBXGroup;
 			children = (
@@ -150,7 +158,7 @@
 				20E2F808259BC439004BF34B /* Actions.sks */,
 				20ED278325B92CB200428A5F /* Scene Buttons and Labels */,
 				20ED277B25B92C8C00428A5F /* Grid and Movement */,
-				20583A8B25BA75C500A74914 /* SoundPlayer.swift */,
+				20583A9325BA780400A74914 /* Sounds */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
 				20ED277F25B92CA500428A5F /* Main Menu */,
