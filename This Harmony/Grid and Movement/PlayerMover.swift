@@ -100,6 +100,15 @@ class PlayerMover {
             return beams.filter( { !$0.isHidden } ).count > 0 ? false : true
         }
         
+        // Also check if player can get hit from multiple sides w/ lasers. Ex, player should not be able to push down here bc would get hit by LP on the right
+        // Check for all directions
+        //
+        //      player
+        //      crate    <----- LP
+        //
+        //       ^
+        //       |
+        //       LP
         return true
     }
     
