@@ -16,6 +16,9 @@ class GridCreator {
     init(withChildren children: [SKNode]) {
         _ = getGridOfScenesChildren(children)
         laserPointers = getLaserPointerNodesFromScenesChildren(children)
+        
+//        for lp in laserPointers { print(lp.direction) }
+        
         activateLaserBeams()
     }
     
@@ -69,36 +72,28 @@ class GridCreator {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
                 for lp in laserPointers {
-                    if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY {
+                    if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY { // <-- ?
                         // clearTiles will include only the Floor tiles that do not have crates, whereas allFloor contains all, regardless of crates
                         let allFloorTilesInFrontOfLP: [Floor] = getAllFloorTilesInFrontOf(point: Point(row: row, col: col), inDirection: lp.direction)
                         let clearTiles: [Floor] = getClearFloorTiles(from: allFloorTilesInFrontOfLP)
                         
                         // Place lasers on all tiles, and hide them from all the tiles that are blocked / not clear
                         for tile in allFloorTilesInFrontOfLP {
-                            // Avoid drawing over other laser beams? But then if two beams cross, only one is rendered in that spot
-                            if tile.laserBeam == nil {
-                                let laserBeam: LaserBeam = LaserBeam(inDirection: lp.direction, atPoint: tile.position)
-                                tile.laserBeam = laserBeam
-                                childrenToAddToView[laserBeam] = laserBeam.position
-                            } else {
-                                // If laser has already been drawn, don't add it as laserBeam property, but do load image in view there
-                                if clearTiles.contains(tile) {
-                                    let laserBeam: LaserBeam = LaserBeam(inDirection: lp.direction, atPoint: tile.position)
-                                    laserBeam.isHidden = false
-                                    childrenToAddToView[laserBeam] = laserBeam.position
-                                }
-                            }
+                            let laserBeam: LaserBeam = LaserBeam(inDirection: lp.direction, atPoint: tile.position)
+                            tile.laserBeams.append(laserBeam)
+                            lp.laserBeams.append(laserBeam)
+                            childrenToAddToView[laserBeam] = laserBeam.position
                         }
                         
                         for tile in clearTiles {
-                            tile.laserBeam?.isHidden = false
+                            for lb in tile.laserBeams {
+                                lb.isHidden = false
+                            }
                         }
                     }
                 }
             }
         }
-        
     }
     
     func getAllFloorTilesInFrontOf(point pt: Point, inDirection dir: Direction) -> [Floor] {
