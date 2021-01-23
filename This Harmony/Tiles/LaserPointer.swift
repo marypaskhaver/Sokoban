@@ -10,6 +10,7 @@ import SpriteKit
 class LaserPointer: Tile {
     var direction: Direction!
     var degreeAndDirectionDict: [Int : Direction] = [Int : Direction]()
+    var laserBeams: [LaserBeam] = [LaserBeam]()
     
     func setDirection() {
         degreeAndDirectionDict[0] = .up
