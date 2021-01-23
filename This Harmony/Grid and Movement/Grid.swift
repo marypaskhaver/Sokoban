@@ -63,6 +63,7 @@ class Grid {
                     if !clearTiles.contains(tile) {
                         // Can't ever have two laser pointers of the same direction on one spot
                         // Does the abs make a risk for deleting the wrong beam? Ie, if two beams (L + R or U + D) are opposite ea. o.
+                        // Could be fixed by converting all -180 to 180 and -90 to 270
                         tile.laserBeams.first(where: { abs($0.zRotation) == abs(lp.zRotation) })?.isHidden = true
                     }
                 }
