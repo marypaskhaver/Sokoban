@@ -36,6 +36,7 @@ class PlayerMover {
     func canPlayerMove(inDirection dir: Direction) -> Bool {
         var tilesInFront: (Tile, Tile)!
         let playerLocation: Point = getPlayerRowAndCol()
+        print("player at: \(playerLocation)")
         
         switch dir {
         case .up:
@@ -53,7 +54,7 @@ class PlayerMover {
         default:
             print("Unknown direction")
         }
-        
+
         return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
 
     }
@@ -95,8 +96,8 @@ class PlayerMover {
         }
         
         // Check if player is standing on laserBeam-- if it's hidden, they can move; else, they can't
-        if let laserBeam = (oneTileFromPlayer as? Floor)?.laserBeam {
-            return laserBeam.isHidden
+        if let beams = (oneTileFromPlayer as? Floor)?.laserBeams {
+            return beams.filter( { !$0.isHidden } ).count > 0 ? false : true
         }
         
         return true
@@ -131,20 +132,20 @@ class PlayerMover {
             
             switch dir {
             case .up:
-                (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row - 1][positionOfFloorThatHoldsCrateInFrontOfPlayer.col] as! Floor).setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
-                
+                let oneTileUp: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row - 1][positionOfFloorThatHoldsCrateInFrontOfPlayer.col] as! Floor)
+                oneTileUp.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveUp(byNumTiles: 1)
             case .down:
-                (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row + 1][positionOfFloorThatHoldsCrateInFrontOfPlayer.col] as! Floor).setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
-                
+                let oneTileDown: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row + 1][positionOfFloorThatHoldsCrateInFrontOfPlayer.col] as! Floor)
+                oneTileDown.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveDown(byNumTiles: 1)
             case .left:
-                (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col - 1] as! Floor).setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
-
+                let oneTileLeft: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col - 1] as! Floor)
+                oneTileLeft.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveLeft(byNumTiles: 1)
             case .right:
-                (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col + 1] as! Floor).setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
-                
+                let oneTileRight: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col + 1] as! Floor)
+                oneTileRight.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveRight(byNumTiles: 1)
             default:
                 print("Unknown direction")
@@ -200,8 +201,5 @@ class PlayerMover {
         }
         
         (oneTileFromPlayer as! Floor).player = playerNode // Set tile in front of player (floor) to have player property
-        if (oneTileFromPlayer as! Floor).laserBeam != nil {
-            print("standing on laserBeam tile. is beam hidden? \((oneTileFromPlayer as! Floor).laserBeam!.isHidden)")
-        }
     }
 }
