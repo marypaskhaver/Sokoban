@@ -11,7 +11,7 @@ import SpriteKit
 class Floor: Tile {
     var player: Player?
     var crate: Crate?
-    var laserBeam: LaserBeam?
+    var laserBeams: [LaserBeam] = [LaserBeam]()
     
     let textureImage: SKTexture
 
