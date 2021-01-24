@@ -38,17 +38,6 @@ class PlayerMover {
         let playerLocation: Point = getPlayerRowAndCol()
         var notMovingCratesOnActiveLasers: Bool = true
         
-        // This is still an issue: Check if player can get hit from multiple sides w/ lasers.
-        // Ex, player should not be able to push down here bc would get hit by LP on the right
-
-        //
-        //      player
-        //      crate    <----- LP
-        //
-        //       ^
-        //       |
-        //       LP
-        
         switch dir {
         case .up:
             if playerLocation.row == 1 { return false }
@@ -203,7 +192,6 @@ class PlayerMover {
                 let oneTileRight: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col + 1] as! Floor)
                 oneTileRight.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
                 oneTileRight.crate?.isOnActiveLaserBeam = oneTileRight.laserBeams.filter( { !$0.isHidden } ).count > 0 ? true : false
-                print("is crate now on  beam? \(oneTileRight.crate?.isOnActiveLaserBeam)")
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveRight(byNumTiles: 1)
             default:
                 print("Unknown direction")
