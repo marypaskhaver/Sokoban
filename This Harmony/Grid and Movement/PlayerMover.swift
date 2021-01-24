@@ -38,6 +38,17 @@ class PlayerMover {
         let playerLocation: Point = getPlayerRowAndCol()
         var notMovingCratesOnActiveLasers: Bool = true
         
+        // This is still an issue: Check if player can get hit from multiple sides w/ lasers.
+        // Ex, player should not be able to push down here bc would get hit by LP on the right
+
+        //
+        //      player
+        //      crate    <----- LP
+        //
+        //       ^
+        //       |
+        //       LP
+        
         switch dir {
         case .up:
             if playerLocation.row == 1 { return false }
@@ -46,7 +57,7 @@ class PlayerMover {
             if isFloorThatContainsCrate(tilesInFront.0) {
                 if let crate = (tilesInFront.0 as! Floor).crate {
                     if crate.isOnActiveLaserBeam {
-                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.isHidden && $0.direction == .down }) != nil ? true : false
+                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.direction == .down }) != nil ? true : false
                     }
                 }
             }
@@ -58,7 +69,7 @@ class PlayerMover {
             if isFloorThatContainsCrate(tilesInFront.0) {
                 if let crate = (tilesInFront.0 as! Floor).crate {
                     if crate.isOnActiveLaserBeam {
-                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.isHidden && $0.direction == .up }) != nil ? true : false
+                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.direction == .up }) != nil ? true : false
                     }
                 }
             }
@@ -70,7 +81,7 @@ class PlayerMover {
             if isFloorThatContainsCrate(tilesInFront.0) {
                 if let crate = (tilesInFront.0 as! Floor).crate {
                     if crate.isOnActiveLaserBeam {
-                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.isHidden && $0.direction == .right }) != nil ? true : false
+                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.direction == .right }) != nil ? true : false
                     }
                 }
             }
@@ -82,7 +93,7 @@ class PlayerMover {
             if isFloorThatContainsCrate(tilesInFront.0) {
                 if let crate = (tilesInFront.0 as! Floor).crate {
                     if crate.isOnActiveLaserBeam {
-                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.isHidden && $0.direction == .left }) != nil ? true : false
+                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.direction == .left }) != nil ? true : false
                     }
                 }
             }
@@ -131,21 +142,17 @@ class PlayerMover {
             return false
         }
         
-        // Check if player is standing on laserBeam-- if it's hidden, they can move; else, they can't
-        if let beams = (oneTileFromPlayer as? Floor)?.laserBeams {
-            return beams.filter( { !$0.isHidden } ).count > 0 ? false : true
+        // Check if player is going to move onto laserBeam-- if it's hidden, they can move; else, they can't
+        if let floor = (oneTileFromPlayer as? Floor) {
+            let beams = (oneTileFromPlayer as! Floor).laserBeams
+
+            if floor.crate == nil {
+                return beams.filter( { !$0.isHidden } ).count > 0 ? false : true
+            } else if beams.filter( { !$0.isHidden } ).count > 1 {
+                return false
+            }
         }
         
-        
-        // Also check if player can get hit from multiple sides w/ lasers. Ex, player should not be able to push down here bc would get hit by LP on the right
-        // Check for all directions --> Does the crate have a laser beam property?
-        //
-        //      player
-        //      crate    <----- LP
-        //
-        //       ^
-        //       |
-        //       LP
         return true
     }
     
