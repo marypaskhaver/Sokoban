@@ -10,6 +10,7 @@ import SpriteKit
 
 class Crate: MovableTile {
     var isOnStorageArea: Bool = false
+    var isOnActiveLaserBeam: Bool = false
     
     func updateImage() {
         if isOnStorageArea {
