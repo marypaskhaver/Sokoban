@@ -12,6 +12,8 @@
 		20583A8425BA752600A74914 /* player_cant_move.wav in Resources */ = {isa = PBXBuildFile; fileRef = 20583A8325BA752600A74914 /* player_cant_move.wav */; };
 		20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20583A8B25BA75C500A74914 /* SoundPlayer.swift */; };
 		206BC54C25BAFEBB00CD5967 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BC54B25BAFEBB00CD5967 /* Sound.swift */; };
+		20724FFC25BE1B7800F278CC /* Array+Chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20724FFB25BE1B7800F278CC /* Array+Chunked.swift */; };
+		2072500125BE1BAC00F278CC /* SKNode+RoundedPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072500025BE1BAC00F278CC /* SKNode+RoundedPosition.swift */; };
 		20729D9725A9469B004F996A /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20729D9625A9469B004F996A /* Level_2.sks */; };
 		2076A89625A689D90085DA7A /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2076A89525A689D90085DA7A /* MainMenu.sks */; };
 		2076A89B25A68A920085DA7A /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076A89A25A68A920085DA7A /* MSButtonNode.swift */; };
@@ -62,6 +64,8 @@
 		20583A8325BA752600A74914 /* player_cant_move.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = player_cant_move.wav; sourceTree = "<group>"; };
 		20583A8B25BA75C500A74914 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		206BC54B25BAFEBB00CD5967 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		20724FFB25BE1B7800F278CC /* Array+Chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunked.swift"; sourceTree = "<group>"; };
+		2072500025BE1BAC00F278CC /* SKNode+RoundedPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+RoundedPosition.swift"; sourceTree = "<group>"; };
 		20729D9625A9469B004F996A /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
 		2076A89525A689D90085DA7A /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		2076A89A25A68A920085DA7A /* MSButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
@@ -131,6 +135,15 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		2072500525BE1BBB00F278CC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				20724FFB25BE1B7800F278CC /* Array+Chunked.swift */,
+				2072500025BE1BAC00F278CC /* SKNode+RoundedPosition.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		20E2F7F8259BC439004BF34B = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +182,7 @@
 				20583A8325BA752600A74914 /* player_cant_move.wav */,
 				20E2F811259BC43A004BF34B /* Assets.xcassets */,
 				20E2F813259BC43A004BF34B /* Info.plist */,
+				2072500525BE1BBB00F278CC /* Extensions */,
 			);
 			path = "This Harmony";
 			sourceTree = "<group>";
@@ -383,10 +397,12 @@
 				206BC54C25BAFEBB00CD5967 /* Sound.swift in Sources */,
 				20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */,
 				20CE23BD25A37D8100200C0C /* Storage.swift in Sources */,
+				2072500125BE1BAC00F278CC /* SKNode+RoundedPosition.swift in Sources */,
 				20F5922C259CDEED003C6A1D /* Player.swift in Sources */,
 				20ED276525B90B5700428A5F /* LaserPointer.swift in Sources */,
 				2076A8A025A68BED0085DA7A /* MainMenu.swift in Sources */,
 				20F59236259CEFC9003C6A1D /* Crate.swift in Sources */,
+				20724FFC25BE1B7800F278CC /* Array+Chunked.swift in Sources */,
 				20F59256259F9D56003C6A1D /* Direction.swift in Sources */,
 				20092BDD25AB8D5700D4677B /* TextLabel.swift in Sources */,
 				20E2F80B259BC439004BF34B /* GameScene.swift in Sources */,
