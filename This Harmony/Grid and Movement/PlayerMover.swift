@@ -36,26 +36,62 @@ class PlayerMover {
     func canPlayerMove(inDirection dir: Direction) -> Bool {
         var tilesInFront: (Tile, Tile)!
         let playerLocation: Point = getPlayerRowAndCol()
-        print("player at: \(playerLocation)")
+        var notMovingCratesOnActiveLasers: Bool = true
         
         switch dir {
         case .up:
             if playerLocation.row == 1 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .up)
+            
+            if isFloorThatContainsCrate(tilesInFront.0) {
+                if let crate = (tilesInFront.0 as! Floor).crate {
+                    if crate.isOnActiveLaserBeam {
+                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.isHidden && $0.direction == .down }) != nil ? true : false
+                    }
+                }
+            }
+            
         case .down:
             if playerLocation.row == 8 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .down)
+            
+            if isFloorThatContainsCrate(tilesInFront.0) {
+                if let crate = (tilesInFront.0 as! Floor).crate {
+                    if crate.isOnActiveLaserBeam {
+                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.isHidden && $0.direction == .up }) != nil ? true : false
+                    }
+                }
+            }
+            
         case .left:
             if playerLocation.col == 1 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .left)
+            
+            if isFloorThatContainsCrate(tilesInFront.0) {
+                if let crate = (tilesInFront.0 as! Floor).crate {
+                    if crate.isOnActiveLaserBeam {
+                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.isHidden && $0.direction == .right }) != nil ? true : false
+                    }
+                }
+            }
+
         case .right:
             if playerLocation.col == 6 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .right)
+            
+            if isFloorThatContainsCrate(tilesInFront.0) {
+                if let crate = (tilesInFront.0 as! Floor).crate {
+                    if crate.isOnActiveLaserBeam {
+                        notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.isHidden && $0.direction == .left }) != nil ? true : false
+                    }
+                }
+            }
+            
         default:
             print("Unknown direction")
         }
 
-        return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront)
+        return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront) && notMovingCratesOnActiveLasers
 
     }
     
@@ -100,8 +136,9 @@ class PlayerMover {
             return beams.filter( { !$0.isHidden } ).count > 0 ? false : true
         }
         
+        
         // Also check if player can get hit from multiple sides w/ lasers. Ex, player should not be able to push down here bc would get hit by LP on the right
-        // Check for all directions
+        // Check for all directions --> Does the crate have a laser beam property?
         //
         //      player
         //      crate    <----- LP
@@ -143,18 +180,23 @@ class PlayerMover {
             case .up:
                 let oneTileUp: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row - 1][positionOfFloorThatHoldsCrateInFrontOfPlayer.col] as! Floor)
                 oneTileUp.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
+                oneTileUp.crate?.isOnActiveLaserBeam = oneTileUp.laserBeams.filter( { !$0.isHidden } ).count > 0 ? true : false
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveUp(byNumTiles: 1)
             case .down:
                 let oneTileDown: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row + 1][positionOfFloorThatHoldsCrateInFrontOfPlayer.col] as! Floor)
                 oneTileDown.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
+                oneTileDown.crate?.isOnActiveLaserBeam = oneTileDown.laserBeams.filter( { !$0.isHidden } ).count > 0 ? true : false
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveDown(byNumTiles: 1)
             case .left:
                 let oneTileLeft: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col - 1] as! Floor)
                 oneTileLeft.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
+                oneTileLeft.crate?.isOnActiveLaserBeam = oneTileLeft.laserBeams.filter( { !$0.isHidden } ).count > 0 ? true : false
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveLeft(byNumTiles: 1)
             case .right:
                 let oneTileRight: Floor = (grid[positionOfFloorThatHoldsCrateInFrontOfPlayer.row][positionOfFloorThatHoldsCrateInFrontOfPlayer.col + 1] as! Floor)
                 oneTileRight.setCrate(to: floorThatHoldsCrateInFrontofPlayer.crate!)
+                oneTileRight.crate?.isOnActiveLaserBeam = oneTileRight.laserBeams.filter( { !$0.isHidden } ).count > 0 ? true : false
+                print("is crate now on  beam? \(oneTileRight.crate?.isOnActiveLaserBeam)")
                 (floorThatHoldsCrateInFrontofPlayer.crate!).moveRight(byNumTiles: 1)
             default:
                 print("Unknown direction")
@@ -171,7 +213,7 @@ class PlayerMover {
 
         didPlayerMove = true
 
-        let oneTileFromPlayer: Tile!
+        var oneTileFromPlayer: Tile!
         let playerLocation: Point = getPlayerRowAndCol()
         let playerNode: Player = (grid[playerLocation.row][playerLocation.col] as! Floor).player!
         
@@ -180,7 +222,7 @@ class PlayerMover {
             oneTileFromPlayer = getAdjacentTiles(inDirection: .up).0
 
             moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .up)
-                
+            
             // Set current Floor's player property to nil bc player is moving off of it
             ((grid[playerLocation.row][playerLocation.col]) as! Floor).player!.moveUp(byNumTiles: 1) // Animates player
             ((grid[playerLocation.row][playerLocation.col]) as! Floor).player = nil
@@ -193,7 +235,7 @@ class PlayerMover {
             ((grid[playerLocation.row][playerLocation.col]) as! Floor).player = nil
         case .left:
             oneTileFromPlayer = getAdjacentTiles(inDirection: .left).0
-                
+            
             moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .left)
                 
             ((grid[playerLocation.row][playerLocation.col]) as! Floor).player!.moveLeft(byNumTiles: 1)
@@ -202,7 +244,7 @@ class PlayerMover {
             oneTileFromPlayer = getAdjacentTiles(inDirection: .right).0
                 
             moveCrateIfNeeded(onTile: oneTileFromPlayer, inDirection: .right)
-                
+    
             ((grid[playerLocation.row][playerLocation.col]) as! Floor).player!.moveRight(byNumTiles: 1)
             ((grid[playerLocation.row][playerLocation.col]) as! Floor).player = nil
         default:
