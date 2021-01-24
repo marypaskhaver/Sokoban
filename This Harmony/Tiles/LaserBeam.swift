@@ -9,6 +9,7 @@ import SpriteKit
 
 class LaserBeam: Tile {
     var directionAndDegreeDict: [Direction : Int] = [Direction : Int]()
+    var direction: Direction!
     
     func rotate(toBePointing dir: Direction) {
         directionAndDegreeDict[.up] = 0
@@ -24,6 +25,7 @@ class LaserBeam: Tile {
         super.init(texture: SKTexture(imageNamed: "laser_beam_pointing_up"), name: Constants.TileNames.laserBeam.rawValue)
         self.position = pt
         rotate(toBePointing: dir)
+        self.direction = dir
         self.zPosition = 1
         self.isHidden = true // Hide initially
     }
