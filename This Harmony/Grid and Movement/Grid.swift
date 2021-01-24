@@ -36,22 +36,6 @@ class Grid {
         }
     }
     
-    // Doesn't work if blocks multiple beams
-    func getRowAndColOfBlockedLaserBeam() -> Point {
-        print("blocked beam!")
-        for row in 0..<grid.count {
-            for col in 0..<grid[row].count {
-                if let floor = grid[row][col] as? Floor {
-                    if floor.laserBeams.filter( { !$0.isHidden } ).count > 0 && floor.crate != nil {
-                        return Point(row: row, col: col)
-                    }
-                }
-            }
-        }
-        
-        return Point(row: -1, col: -1)
-    }
-    
     func hideBlockedLaserBeams() {
         for lp in laserPointers {
             // This reloads all the laser pointers-- make it reload just the one(s) w/ a blocked beam
@@ -143,22 +127,4 @@ class Grid {
         return storageTiles.allSatisfy( { $0.crate != nil } )
     }
     
-}
-
-extension Array {
-    func chunked(into size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
-            Array(self[$0 ..< Swift.min($0 + size, count)])
-        }
-    }
-}
-
-extension SKNode {
-    func getRoundedX() -> CGFloat {
-        return self.position.x.rounded()
-    }
-    
-    func getRoundedY() -> CGFloat {
-        return self.position.y.rounded()
-    }
 }
