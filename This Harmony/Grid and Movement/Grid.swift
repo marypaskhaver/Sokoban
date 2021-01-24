@@ -66,6 +66,9 @@ class Grid {
                         // Does the abs make a risk for deleting the wrong beam? Ie, if two beams (L + R or U + D) are opposite ea. o.
                         // Could be fixed by converting all -180 to 180 and -90 to 270
                         tile.laserBeams.first(where: { abs($0.zRotation) == abs(lp.zRotation) })?.isHidden = true
+                        if let crate = tile.crate {
+                            crate.isOnActiveLaserBeam = false
+                        }
                     }
                 }
             }
@@ -116,6 +119,7 @@ class Grid {
                 clearTiles.append(tile)
             } else {
                 // When you encounter a crate, cut off immediately, bc there should be no lasers after it
+                clearTiles.append(tile)
                 return clearTiles
             }
         }
