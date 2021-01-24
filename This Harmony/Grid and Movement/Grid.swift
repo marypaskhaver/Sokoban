@@ -36,7 +36,9 @@ class Grid {
         }
     }
     
+    // Doesn't work if blocks multiple beams
     func getRowAndColOfBlockedLaserBeam() -> Point {
+        print("blocked beam!")
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
                 if let floor = grid[row][col] as? Floor {
@@ -51,14 +53,13 @@ class Grid {
     }
     
     func hideBlockedLaserBeams() {
-        print(getRowAndColOfBlockedLaserBeam())
         for lp in laserPointers {
+            // This reloads all the laser pointers-- make it reload just the one(s) w/ a blocked beam
             let lpRowAndCol: Point = Point(row: (-Int(lp.position.y) + 900) / Constants.tileSize, col: (Int(lp.position.x) - 139) / Constants.tileSize)
             let allFloorTilesInFrontOfLP: [Floor] = getAllFloorTilesInFrontOf(point: Point(row: lpRowAndCol.row, col: lpRowAndCol.col), inDirection: lp.direction)
             let clearTiles: [Floor] = getClearFloorTiles(from: allFloorTilesInFrontOfLP)
                 
             if clearTiles.count < lp.laserBeams.filter( { !$0.isHidden } ).count {
-                print("lp w/ direction \(lp.direction) had its beam blocked")
                 for tile in allFloorTilesInFrontOfLP {
                     if !clearTiles.contains(tile) {
                         // Can't ever have two laser pointers of the same direction on one spot
