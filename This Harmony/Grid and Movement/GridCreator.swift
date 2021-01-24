@@ -83,12 +83,15 @@ class GridCreator {
                             tile.laserBeams.append(laserBeam)
                             lp.laserBeams.append(laserBeam)
                             childrenToAddToView[laserBeam] = laserBeam.position
+
                         }
                         
                         for tile in clearTiles {
                             for lb in tile.laserBeams {
                                 lb.isHidden = false
                             }
+                            
+                            if tile.crate != nil { tile.crate?.isOnActiveLaserBeam = true }
                         }
                     }
                 }
@@ -140,6 +143,7 @@ class GridCreator {
                 clearTiles.append(tile)
             } else {
                 // When you encounter a crate, cut off immediately, bc there should be no lasers after it
+                clearTiles.append(tile)
                 return clearTiles
             }
         }
