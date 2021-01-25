@@ -74,8 +74,9 @@ class GridCreator {
                 for lp in laserPointers {
                     if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY { // <-- ?
                         // clearTiles will include only the Floor tiles that do not have crates, whereas allFloor contains all, regardless of crates
-                        let allFloorTilesInFrontOfLP: [Floor] = getAllFloorTilesInFrontOf(point: Point(row: row, col: col), inDirection: lp.direction)
-                        let clearTiles: [Floor] = getClearFloorTiles(from: allFloorTilesInFrontOfLP)
+                        let lsu: LaserSetterUpper = LaserSetterUpper(with: grid)
+                        let allFloorTilesInFrontOfLP: [Floor] = lsu.getAllFloorTilesInFrontOf(point: Point(row: row, col: col), inDirection: lp.direction)
+                        let clearTiles: [Floor] = lsu.getClearFloorTiles(from: allFloorTilesInFrontOfLP)
                         
                         // Place lasers on all tiles, and hide them from all the tiles that are blocked / not clear
                         for tile in allFloorTilesInFrontOfLP {
@@ -83,7 +84,6 @@ class GridCreator {
                             tile.laserBeams.append(laserBeam)
                             lp.laserBeams.append(laserBeam)
                             childrenToAddToView[laserBeam] = laserBeam.position
-
                         }
                         
                         for tile in clearTiles {
@@ -97,58 +97,6 @@ class GridCreator {
                 }
             }
         }
-    }
-    
-    func getAllFloorTilesInFrontOf(point pt: Point, inDirection dir: Direction) -> [Floor] {
-        var row: Int = pt.row, col: Int = pt.col
-        var tilesInFront: [Floor] = [Floor]()
-        
-        switch dir {
-        case .up:
-            row -= 1 // Don't count wall which laser is attached to
-            // Go until you hit a wall
-            while grid[row][col].name != Constants.TileNames.wall.rawValue {
-                tilesInFront.append(grid[row][col] as! Floor)
-                row -= 1
-            }
-        case .down:
-            row += 1
-            while grid[row][col].name != Constants.TileNames.wall.rawValue {
-                tilesInFront.append(grid[row][col] as! Floor)
-                row += 1
-            }
-        case .left:
-            col -= 1
-            while grid[row][col].name != Constants.TileNames.wall.rawValue {
-                tilesInFront.append(grid[row][col] as! Floor)
-                col -= 1
-            }
-        case .right:
-            col += 1
-            while grid[row][col].name != Constants.TileNames.wall.rawValue {
-                tilesInFront.append(grid[row][col] as! Floor)
-                col += 1
-            }
-        }
-        
-        return tilesInFront
-    }
-    
-    // No crates
-    func getClearFloorTiles(from floorTiles: [Floor]) -> [Floor] {
-        var clearTiles: [Floor] = [Floor]()
-        
-        for tile in floorTiles {
-            if tile.crate == nil {
-                clearTiles.append(tile)
-            } else {
-                // When you encounter a crate, cut off immediately, bc there should be no lasers after it
-                clearTiles.append(tile)
-                return clearTiles
-            }
-        }
-        
-        return clearTiles
     }
     
     // The way this is built, the player will never start the level on a storage area
