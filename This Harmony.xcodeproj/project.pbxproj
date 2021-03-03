@@ -30,6 +30,7 @@
 		20E2F828259BC43A004BF34B /* This_HarmonyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F827259BC43A004BF34B /* This_HarmonyUITests.swift */; };
 		20EB18B825F02071004914A0 /* SelectLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EB18B725F02071004914A0 /* SelectLevelViewController.swift */; };
 		20EB18C025F02D7D004914A0 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EB18BF25F02D7D004914A0 /* LevelCell.swift */; };
+		20EB18C525F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EB18C425F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift */; };
 		20ED276525B90B5700428A5F /* LaserPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED276425B90B5700428A5F /* LaserPointer.swift */; };
 		20ED276A25B90C4300428A5F /* LaserBeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED276925B90C4300428A5F /* LaserBeam.swift */; };
 		20ED276F25B9199900428A5F /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED276E25B9199900428A5F /* Point.swift */; };
@@ -92,6 +93,7 @@
 		20E2F829259BC43A004BF34B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20EB18B725F02071004914A0 /* SelectLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLevelViewController.swift; sourceTree = SOURCE_ROOT; };
 		20EB18BF25F02D7D004914A0 /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
+		20EB18C425F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneButtonAndLabelMaker.swift; sourceTree = "<group>"; };
 		20ED276425B90B5700428A5F /* LaserPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserPointer.swift; sourceTree = "<group>"; };
 		20ED276925B90C4300428A5F /* LaserBeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserBeam.swift; sourceTree = "<group>"; };
 		20ED276E25B9199900428A5F /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				20ED277B25B92C8C00428A5F /* Grid and Movement */,
 				20583A9325BA780400A74914 /* Sounds */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
+				20EB18C425F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
 				20ED277F25B92CA500428A5F /* Main Menu */,
 				20E2F80E259BC439004BF34B /* Main.storyboard */,
@@ -410,6 +413,7 @@
 				2072500125BE1BAC00F278CC /* SKNode+RoundedPosition.swift in Sources */,
 				20F5922C259CDEED003C6A1D /* Player.swift in Sources */,
 				20ED276525B90B5700428A5F /* LaserPointer.swift in Sources */,
+				20EB18C525F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift in Sources */,
 				20EB18B825F02071004914A0 /* SelectLevelViewController.swift in Sources */,
 				2076A8A025A68BED0085DA7A /* MainMenu.swift in Sources */,
 				20F59236259CEFC9003C6A1D /* Crate.swift in Sources */,
