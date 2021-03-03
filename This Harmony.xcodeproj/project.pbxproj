@@ -131,6 +131,7 @@
 		20583A9325BA780400A74914 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				20583A8325BA752600A74914 /* player_cant_move.wav */,
 				20583A8B25BA75C500A74914 /* SoundPlayer.swift */,
 				206BC54B25BAFEBB00CD5967 /* Sound.swift */,
 			);
@@ -181,7 +182,6 @@
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
 				20ED277F25B92CA500428A5F /* Main Menu */,
 				20E2F80E259BC439004BF34B /* Main.storyboard */,
-				20583A8325BA752600A74914 /* player_cant_move.wav */,
 				20E2F811259BC43A004BF34B /* Assets.xcassets */,
 				20E2F813259BC43A004BF34B /* Info.plist */,
 				2072500525BE1BBB00F278CC /* Extensions */,
