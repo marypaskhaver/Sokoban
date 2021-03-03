@@ -63,7 +63,8 @@ class GameViewController: UIViewController {
         }
 
         GameScene.level = number
-
+        gameScene.gvc = self
+        
         // Ensure correct aspect mode
         gameScene.scaleMode = .aspectFill
 
