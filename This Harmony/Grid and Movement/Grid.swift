@@ -32,7 +32,7 @@ class Grid {
             hideBlockedLaserBeams()
             
             // Check if level is complete
-            print(isLevelComplete())
+//            print(isLevelComplete())
         }
     }
     
