@@ -15,8 +15,6 @@ class SelectLevelViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
-        print("hello!")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
