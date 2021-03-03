@@ -18,7 +18,7 @@ class GameViewController: UIViewController {
             if let scene = MainMenu(fileNamed: "MainMenu") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
+                scene.gvc = self
                 // Present the scene
                 view.presentScene(scene)
             }
@@ -44,5 +44,9 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+ 
+    func presentLevelMenu() {
+        self.performSegue(withIdentifier: "showLevelMenu", sender: self)
     }
 }
