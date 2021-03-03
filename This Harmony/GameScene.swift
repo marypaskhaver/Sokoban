@@ -40,37 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
                 
         // Set buttons-- change from hardcoded to based off screen size later
-        buttonRestart = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 384, y: 60))
-        buttonNext = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 200, y: 60))
-        buttonPrevious = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 100, y: 60))
-        buttonMenu = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60, height: 60), atPosition: CGPoint(x: 80, y: 970))
-
-        buttonRestart.selectedHandler = {
-            self.view!.presentScene(GameScene.getLevel(GameScene.level))
-        }
-        
-        buttonNext.selectedHandler = {
-            self.goToNextLevel()
-        }
-        
-        buttonPrevious.selectedHandler = {
-            self.goToPreviousLevel()
-        }
-        
-        buttonMenu.selectedHandler = {
-            self.showPauseAndSettingsMenu()
-        }
-        
-        levelLabel = TextLabel("Level \(GameScene.level)", at: CGPoint(x: 384, y: 970))
-        stepsLabel = TextLabel("Steps: \(grid.steps)", at: CGPoint(x: 384, y: 150))
-        
-        self.addChild(buttonRestart)
-        self.addChild(buttonNext)
-        self.addChild(buttonPrevious)
-        self.addChild(buttonMenu)
-        self.addChild(levelLabel)
-        self.addChild(stepsLabel)
-        
+        GameSceneButtonAndLabelMaker.addButtonsAndLabels(toGameScene: self)
         disableButtonsIfNeeded()
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
@@ -163,6 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         levelMenuLabel.selectedHandler = {
             self.gvc.presentLevelMenu()
         }
+        
         menuBox.addChild(levelMenuLabel)
         
         self.scene?.addChild(menuBox)
