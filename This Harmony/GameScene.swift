@@ -23,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var stepsLabel: TextLabel!
     
     static var level: Int = 1
+    var gvc: GameViewController!
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -54,6 +55,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         buttonPrevious.selectedHandler = {
             self.goToPreviousLevel()
+        }
+        
+        buttonMenu.selectedHandler = {
+            self.showPauseAndSettingsMenu()
         }
         
         levelLabel = TextLabel("Level \(GameScene.level)", at: CGPoint(x: 384, y: 970))
@@ -146,6 +151,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         disableButtonsIfNeeded()
+    }
+    
+    func showPauseAndSettingsMenu() {
+        let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 500, height: 700))
+        menuBox.zPosition = 2
+        menuBox.fillColor = .white
+        
+        let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "player"), CGSize(width: 200, height: 200), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY))
+        
+        levelMenuLabel.selectedHandler = {
+            self.gvc.presentLevelMenu()
+        }
+        menuBox.addChild(levelMenuLabel)
+        
+        self.scene?.addChild(menuBox)
     }
     
 }
