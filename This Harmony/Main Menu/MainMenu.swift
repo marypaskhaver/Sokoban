@@ -18,35 +18,9 @@ class MainMenu: SKScene {
         buttonPlay = self.childNode(withName: "buttonPlay") as! MSButtonNode
         
         buttonPlay.selectedHandler = {
-//            self.loadGame()
             self.gvc?.presentLevelMenu()
         }
         
     }
     
-    func loadGame() {
-        // Grab reference to our SpriteKit view
-        guard let skView = self.view as SKView? else {
-            print("Could not get SKView")
-            return
-        }
-                
-        guard let gameScene = GameScene.getLevel(1) else {
-            print("Could not load GameScene with level 1")
-            return
-        }
-        
-        GameScene.level = 1
-
-        // Ensure correct aspect mode
-        gameScene.scaleMode = .aspectFill
-
-        // Show debug
-        skView.showsPhysics = true
-        skView.showsDrawCount = true
-        skView.showsFPS = true
-
-        // Start game scene
-        skView.presentScene(gameScene)
-    }
 }
