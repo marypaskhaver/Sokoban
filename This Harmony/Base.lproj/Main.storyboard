@@ -20,7 +20,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <segue destination="9At-yB-ekw" kind="presentation" identifier="showLevelMenu" id="zeR-Mp-HQx"/>
+                        <segue destination="9At-yB-ekw" kind="presentation" identifier="showLevelMenu" destinationCreationSelector="levelSelected:" id="zeR-Mp-HQx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
