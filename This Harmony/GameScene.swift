@@ -17,7 +17,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var buttonRestart: MSButtonNode! // Create these in every scene w/ code so they don't repeat in the scene editor
     var buttonNext: MSButtonNode!
     var buttonPrevious: MSButtonNode!
-    
+    var buttonMenu: MSButtonNode!
+
     var levelLabel: TextLabel!
     var stepsLabel: TextLabel!
     
@@ -41,7 +42,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buttonRestart = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 384, y: 60))
         buttonNext = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 200, y: 60))
         buttonPrevious = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 100, y: 60))
-        
+        buttonMenu = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60, height: 60), atPosition: CGPoint(x: 80, y: 970))
+
         buttonRestart.selectedHandler = {
             self.view!.presentScene(GameScene.getLevel(GameScene.level))
         }
@@ -54,12 +56,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.goToPreviousLevel()
         }
         
-        levelLabel = TextLabel("Level \(GameScene.level)", at: CGPoint(x: 384, y: 975))
+        levelLabel = TextLabel("Level \(GameScene.level)", at: CGPoint(x: 384, y: 970))
         stepsLabel = TextLabel("Steps: \(grid.steps)", at: CGPoint(x: 384, y: 150))
         
         self.addChild(buttonRestart)
         self.addChild(buttonNext)
         self.addChild(buttonPrevious)
+        self.addChild(buttonMenu)
         self.addChild(levelLabel)
         self.addChild(stepsLabel)
         
