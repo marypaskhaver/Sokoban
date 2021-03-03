@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SpriteKit
 import Foundation
 
 class SelectLevelViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -19,7 +20,7 @@ class SelectLevelViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -30,7 +31,10 @@ class SelectLevelViewController: UIViewController, UICollectionViewDataSource, U
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        (self.presentingViewController as! GameViewController).loadLevel(number: indexPath.row + 1)
+        self.dismiss(animated: true, completion: {})
+    }
     
     
 }
