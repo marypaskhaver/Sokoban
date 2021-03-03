@@ -49,4 +49,31 @@ class GameViewController: UIViewController {
     func presentLevelMenu() {
         self.performSegue(withIdentifier: "showLevelMenu", sender: self)
     }
+    
+    func loadLevel(number: Int) {
+        // Grab reference to our SpriteKit view
+        guard let skView = self.view as! SKView? else {
+            print("Could not get SKView")
+            return
+        }
+
+        guard let gameScene = GameScene.getLevel(number) else {
+            print("Could not load GameScene with level \(number)")
+            return
+        }
+
+        GameScene.level = number
+
+        // Ensure correct aspect mode
+        gameScene.scaleMode = .aspectFill
+
+        // Show debug
+        skView.showsPhysics = true
+        skView.showsDrawCount = true
+        skView.showsFPS = true
+
+        // Start game scene
+        skView.presentScene(gameScene)
+    }
+    
 }
