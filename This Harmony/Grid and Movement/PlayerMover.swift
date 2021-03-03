@@ -52,7 +52,7 @@ class PlayerMover {
             }
             
         case .down:
-            if playerLocation.row == 8 { return false }
+            if playerLocation.row == grid.count - 2 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .down)
             
             if isFloorThatContainsCrate(tilesInFront.0) {
@@ -76,7 +76,7 @@ class PlayerMover {
             }
 
         case .right:
-            if playerLocation.col == 6 { return false }
+            if playerLocation.col == grid[playerLocation.row].count - 2 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .right)
             
             if isFloorThatContainsCrate(tilesInFront.0) {
@@ -123,6 +123,10 @@ class PlayerMover {
     func isPlayersPathClear(twoTilesInFrontOfPlayer: (Tile, Tile)) -> Bool {
         let oneTileFromPlayer: Tile = twoTilesInFrontOfPlayer.0
         let twoTilesFromPlayer: Tile = twoTilesInFrontOfPlayer.1
+        
+        if  oneTileFromPlayer.name == Constants.TileNames.wall.rawValue {
+            print("wall in front")
+        }
         
         // Check if player is 1 tile in front of wall, in front of crate and wall, or in front of 2 crates
         if  oneTileFromPlayer.name == Constants.TileNames.wall.rawValue ||
