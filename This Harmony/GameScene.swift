@@ -131,7 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuBox.zPosition = 2
         menuBox.fillColor = .white
         
-        let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "player"), CGSize(width: 200, height: 200), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY))
+        let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: 200, height: 100), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY))
         
         levelMenuLabel.selectedHandler = {
             self.gvc.presentLevelMenu()
