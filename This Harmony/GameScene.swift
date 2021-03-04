@@ -23,7 +23,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var stepsLabel: TextLabel!
     
     static var level: Int = 1
+    
     var gvc: GameViewController!
+    var buttonAndLabelMaker: GameSceneButtonAndLabelMaker!
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -40,7 +42,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
                 
         // Set buttons-- change from hardcoded to based off screen size later
-        GameSceneButtonAndLabelMaker.addButtonsAndLabels(toGameScene: self)
+        buttonAndLabelMaker = GameSceneButtonAndLabelMaker(with: self)
+        buttonAndLabelMaker.addButtonsAndLabels()
         disableButtonsIfNeeded()
                 
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
