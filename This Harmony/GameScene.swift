@@ -130,16 +130,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 500, height: 700))
         menuBox.zPosition = 2
         menuBox.fillColor = .white
-        
+        menuBox.name = "menu-box"
+
         let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: 200, height: 100), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY))
-        
+
         levelMenuLabel.selectedHandler = {
             self.gvc.presentLevelMenu()
         }
-        
+
         menuBox.addChild(levelMenuLabel)
+                
+        // Filter scene's children for any nodes w/ the name "menu-box"
+        let menuBoxNodes: [SKNode] = children.filter { (node) -> Bool in
+            node.name == "menu-box"
+        }
         
-        self.scene?.addChild(menuBox)
+        if menuBoxNodes.count == 0 {
+            self.scene?.addChild(menuBox)
+        }
     }
     
 }
