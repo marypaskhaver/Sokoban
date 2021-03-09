@@ -141,11 +141,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuBox.addChild(levelMenuLabel)
                 
         // Filter scene's children for any nodes w/ the name "menu-box"
-        let menuBoxNodes: [SKNode] = children.filter { (node) -> Bool in
+        let nodesNamedMenuBox: [SKNode] = children.filter { (node) -> Bool in
             node.name == "menu-box"
         }
         
-        if menuBoxNodes.count == 0 {
+        if nodesNamedMenuBox.count == 0 {
             self.scene?.addChild(menuBox)
         }
     }
