@@ -127,15 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func showPauseAndSettingsMenu() {
-        let menuBox: SKShapeNode = PauseMenuBoxMaker().getBox()
-
-        let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: 200, height: 100), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY))
-
-        levelMenuLabel.selectedHandler = {
-            self.gvc.presentLevelMenu()
-        }
-
-        menuBox.addChild(levelMenuLabel)
+        let menuBox: SKShapeNode = PauseMenuBoxMaker().getBox(for: self)
                 
         // Filter scene's children for any nodes w/ the name "menu-box"
         let nodesNamedMenuBox: [SKNode] = children.filter { (node) -> Bool in
