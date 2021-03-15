@@ -25,6 +25,8 @@ class SelectLevelViewController: UIViewController, UICollectionViewDataSource, U
         var cell: LevelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LevelCell
         let cellNumber: Int = indexPath.row + 1
         cell.levelNumberLabel.text = String(cellNumber)
+                
+//        Toggle cell's checkmarkView
         
         return cell
     }

@@ -58,8 +58,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3w-hY-NlS">
-                                                    <rect key="frame" x="84" y="82" width="44" height="44"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXM-7k-eJg">
+                                                    <rect key="frame" x="78" y="78" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
@@ -70,7 +70,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="checkmarkView" destination="c3w-hY-NlS" id="ZCC-bO-vDZ"/>
+                                            <outlet property="checkmarkView" destination="AXM-7k-eJg" id="IfT-JV-MgJ"/>
                                             <outlet property="levelNumberLabel" destination="Qm3-gA-yfQ" id="adt-zk-78G"/>
                                         </connections>
                                     </collectionViewCell>
