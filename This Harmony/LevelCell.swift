@@ -11,6 +11,7 @@ import Foundation
 class LevelCell: UICollectionViewCell {
     
     @IBOutlet weak var levelNumberLabel: UILabel!
+    @IBOutlet weak var checkmarkView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
