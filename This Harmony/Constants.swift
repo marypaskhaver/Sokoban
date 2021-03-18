@@ -20,4 +20,7 @@ class Constants {
         case laserPointer = "laser_pointer"
         case laserBeam = "laser_beam"
     }
+    
+    static var numLevels = 2
+    static var completeLevels: [Int] = []
 }
