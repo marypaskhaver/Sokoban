@@ -58,19 +58,21 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXM-7k-eJg">
-                                                    <rect key="frame" x="78" y="78" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                </view>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ftX-Hl-uOI">
+                                                    <rect key="frame" x="83" y="83" width="45" height="45"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ftX-Hl-uOI" secondAttribute="trailing" id="1qV-8b-08t"/>
+                                                <constraint firstItem="ftX-Hl-uOI" firstAttribute="leading" secondItem="q1P-TG-6ef" secondAttribute="leading" constant="83" id="CDi-Dc-yo0"/>
                                                 <constraint firstItem="Qm3-gA-yfQ" firstAttribute="centerY" secondItem="q1P-TG-6ef" secondAttribute="centerY" id="CoQ-UZ-Tzd"/>
+                                                <constraint firstAttribute="bottom" secondItem="ftX-Hl-uOI" secondAttribute="bottom" id="ZpB-bR-hI5"/>
                                                 <constraint firstItem="Qm3-gA-yfQ" firstAttribute="centerX" secondItem="q1P-TG-6ef" secondAttribute="centerX" id="kME-Sy-RY3"/>
+                                                <constraint firstItem="ftX-Hl-uOI" firstAttribute="top" secondItem="q1P-TG-6ef" secondAttribute="top" constant="83" id="nBi-ya-iUt"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="checkmarkView" destination="AXM-7k-eJg" id="IfT-JV-MgJ"/>
+                                            <outlet property="checkmarkView" destination="ftX-Hl-uOI" id="ecg-3S-fDO"/>
                                             <outlet property="levelNumberLabel" destination="Qm3-gA-yfQ" id="adt-zk-78G"/>
                                         </connections>
                                     </collectionViewCell>
