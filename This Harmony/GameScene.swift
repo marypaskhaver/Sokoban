@@ -66,21 +66,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func swipedRight(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .right)
         stepsLabel.text = "Steps: \(grid.steps)"
+        if grid.isLevelComplete() { Constants.completeLevels.append(GameScene.level) }
     }
     
     @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .left)
         stepsLabel.text = "Steps: \(grid.steps)"
+        if grid.isLevelComplete() { Constants.completeLevels.append(GameScene.level) }
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .up)
         stepsLabel.text = "Steps: \(grid.steps)"
+        if grid.isLevelComplete() { Constants.completeLevels.append(GameScene.level) }
     }
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
         grid?.movePlayer(inDirection: .down)
         stepsLabel.text = "Steps: \(grid.steps)"
+        if grid.isLevelComplete() { Constants.completeLevels.append(GameScene.level) }
     }
     
     // Load level
