@@ -30,9 +30,6 @@ class Grid {
         
         if mover.didMoveCrate {
             hideBlockedLaserBeams()
-            
-            // Check if level is complete
-//            print(isLevelComplete())
         }
     }
     
