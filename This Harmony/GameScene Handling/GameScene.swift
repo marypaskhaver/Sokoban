@@ -51,6 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buttonAndLabelMaker.addButtonsAndLabels()
         disableButtonsIfNeeded()
         
+        // Set up trackers to track UISwipeGestureRecognizers and move character, update grid when swipe occurs
         rightTracker = SwipeRightTracker(for: self)
         leftTracker = SwipeLeftTracker(for: self)
         upTracker = SwipeUpTracker(for: self)
