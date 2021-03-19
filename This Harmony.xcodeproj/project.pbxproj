@@ -154,6 +154,20 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		206B702526055E5500B9716A /* GameScene Handling */ = {
+			isa = PBXGroup;
+			children = (
+				20E2F80A259BC439004BF34B /* GameScene.swift */,
+				206B702026055D0A00B9716A /* SwipeDownTracker.swift */,
+				206B701B26055C9F00B9716A /* SwipeUpTracker.swift */,
+				206B701626055C0E00B9716A /* SwipeLeftTracker.swift */,
+				206B700E2605599800B9716A /* SwipeRightTracker.swift */,
+				20CF046E25F8342800AB5086 /* PauseMenuBoxMaker.swift */,
+				20EB18C425F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift */,
+			);
+			path = "GameScene Handling";
+			sourceTree = "<group>";
+		};
 		2072500525BE1BBB00F278CC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,13 +208,7 @@
 				20ED278325B92CB200428A5F /* Scene Buttons and Labels */,
 				20ED277B25B92C8C00428A5F /* Grid and Movement */,
 				20583A9325BA780400A74914 /* Sounds */,
-				20E2F80A259BC439004BF34B /* GameScene.swift */,
-				206B702026055D0A00B9716A /* SwipeDownTracker.swift */,
-				206B701B26055C9F00B9716A /* SwipeUpTracker.swift */,
-				206B701626055C0E00B9716A /* SwipeLeftTracker.swift */,
-				206B700E2605599800B9716A /* SwipeRightTracker.swift */,
-				20CF046E25F8342800AB5086 /* PauseMenuBoxMaker.swift */,
-				20EB18C425F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift */,
+				206B702526055E5500B9716A /* GameScene Handling */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
 				20ED277F25B92CA500428A5F /* Main Menu */,
 				20E2F80E259BC439004BF34B /* Main.storyboard */,
