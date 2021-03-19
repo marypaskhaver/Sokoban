@@ -11,6 +11,10 @@
 		20583A7F25BA740900A74914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F811259BC43A004BF34B /* Assets.xcassets */; };
 		20583A8425BA752600A74914 /* player_cant_move.wav in Resources */ = {isa = PBXBuildFile; fileRef = 20583A8325BA752600A74914 /* player_cant_move.wav */; };
 		20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20583A8B25BA75C500A74914 /* SoundPlayer.swift */; };
+		206B700F2605599800B9716A /* SwipeRightTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B700E2605599800B9716A /* SwipeRightTracker.swift */; };
+		206B701726055C0E00B9716A /* SwipeLeftTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B701626055C0E00B9716A /* SwipeLeftTracker.swift */; };
+		206B701C26055C9F00B9716A /* SwipeUpTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B701B26055C9F00B9716A /* SwipeUpTracker.swift */; };
+		206B702126055D0A00B9716A /* SwipeDownTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B702026055D0A00B9716A /* SwipeDownTracker.swift */; };
 		206BC54C25BAFEBB00CD5967 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BC54B25BAFEBB00CD5967 /* Sound.swift */; };
 		20724FFC25BE1B7800F278CC /* Array+Chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20724FFB25BE1B7800F278CC /* Array+Chunked.swift */; };
 		2072500125BE1BAC00F278CC /* SKNode+RoundedPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072500025BE1BAC00F278CC /* SKNode+RoundedPosition.swift */; };
@@ -68,6 +72,10 @@
 		20092BDC25AB8D5700D4677B /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
 		20583A8325BA752600A74914 /* player_cant_move.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = player_cant_move.wav; sourceTree = "<group>"; };
 		20583A8B25BA75C500A74914 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		206B700E2605599800B9716A /* SwipeRightTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightTracker.swift; sourceTree = "<group>"; };
+		206B701626055C0E00B9716A /* SwipeLeftTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeLeftTracker.swift; sourceTree = "<group>"; };
+		206B701B26055C9F00B9716A /* SwipeUpTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeUpTracker.swift; sourceTree = "<group>"; };
+		206B702026055D0A00B9716A /* SwipeDownTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDownTracker.swift; sourceTree = "<group>"; };
 		206BC54B25BAFEBB00CD5967 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		20724FFB25BE1B7800F278CC /* Array+Chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunked.swift"; sourceTree = "<group>"; };
 		2072500025BE1BAC00F278CC /* SKNode+RoundedPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+RoundedPosition.swift"; sourceTree = "<group>"; };
@@ -187,6 +195,10 @@
 				20ED277B25B92C8C00428A5F /* Grid and Movement */,
 				20583A9325BA780400A74914 /* Sounds */,
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
+				206B702026055D0A00B9716A /* SwipeDownTracker.swift */,
+				206B701B26055C9F00B9716A /* SwipeUpTracker.swift */,
+				206B701626055C0E00B9716A /* SwipeLeftTracker.swift */,
+				206B700E2605599800B9716A /* SwipeRightTracker.swift */,
 				20CF046E25F8342800AB5086 /* PauseMenuBoxMaker.swift */,
 				20EB18C425F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
@@ -416,6 +428,7 @@
 				2072500125BE1BAC00F278CC /* SKNode+RoundedPosition.swift in Sources */,
 				20CF046F25F8342800AB5086 /* PauseMenuBoxMaker.swift in Sources */,
 				20F5922C259CDEED003C6A1D /* Player.swift in Sources */,
+				206B701C26055C9F00B9716A /* SwipeUpTracker.swift in Sources */,
 				20ED276525B90B5700428A5F /* LaserPointer.swift in Sources */,
 				20EB18C525F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift in Sources */,
 				20EB18B825F02071004914A0 /* SelectLevelViewController.swift in Sources */,
@@ -433,9 +446,12 @@
 				20F59241259E85D0003C6A1D /* Grid.swift in Sources */,
 				20F5926125A136C1003C6A1D /* GridCreator.swift in Sources */,
 				20ED276F25B9199900428A5F /* Point.swift in Sources */,
+				206B700F2605599800B9716A /* SwipeRightTracker.swift in Sources */,
+				206B702126055D0A00B9716A /* SwipeDownTracker.swift in Sources */,
 				20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */,
 				20ED276A25B90C4300428A5F /* LaserBeam.swift in Sources */,
 				2072500A25BE41AE00F278CC /* LaserSetterUpper.swift in Sources */,
+				206B701726055C0E00B9716A /* SwipeLeftTracker.swift in Sources */,
 				20F5927225A15C64003C6A1D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
