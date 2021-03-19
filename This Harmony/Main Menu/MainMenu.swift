@@ -11,14 +11,14 @@ import SpriteKit
 class MainMenu: SKScene {
 
     var buttonPlay: MSButtonNode!
-    var gvc: GameViewController?
+    var gvc: GameViewController!
     
     override func didMove(to view: SKView) {
         // Set UI connections
         buttonPlay = self.childNode(withName: "buttonPlay") as! MSButtonNode
         
         buttonPlay.selectedHandler = {
-            self.gvc?.presentLevelMenu()
+            self.gvc.presentLevelMenu()
         }
         
     }
