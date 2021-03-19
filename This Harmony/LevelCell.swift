@@ -18,8 +18,11 @@ class LevelCell: UICollectionViewCell {
         self.backgroundColor = .lightGray
         
         let checkmarkImage: UIImage = UIImage(named: "checkmark")!
-        let smallerCheckmarkImage: UIImage = resizeImage(image: checkmarkImage, targetSize: CGSize(width: 45, height: 45))
+        let smallerCheckmarkImage: UIImage = resizeImage(image: checkmarkImage, targetSize: CGSize(width: self.frame.width / 2, height: self.frame.height / 2))
+        
         checkmarkView.image = smallerCheckmarkImage
+        
+        self.setNeedsLayout()
     }
     
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
