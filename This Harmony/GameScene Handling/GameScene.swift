@@ -82,6 +82,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let nextLevel: GameScene? = GameScene.getLevel(GameScene.level + 1)
         
         if nextLevel != nil {
+            nextLevel!.gvc = gvc
             GameScene.level += 1
             self.view?.presentScene(nextLevel)
         }
@@ -93,6 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let previousLevel: GameScene? = GameScene.getLevel(GameScene.level - 1)
         
         if previousLevel != nil {
+            previousLevel!.gvc = gvc
             GameScene.level -= 1
             self.view?.presentScene(previousLevel)
         }
