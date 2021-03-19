@@ -158,14 +158,22 @@
 			isa = PBXGroup;
 			children = (
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
-				206B702026055D0A00B9716A /* SwipeDownTracker.swift */,
-				206B701B26055C9F00B9716A /* SwipeUpTracker.swift */,
-				206B701626055C0E00B9716A /* SwipeLeftTracker.swift */,
-				206B700E2605599800B9716A /* SwipeRightTracker.swift */,
+				206B702926055E9500B9716A /* Swipe Handling */,
 				20CF046E25F8342800AB5086 /* PauseMenuBoxMaker.swift */,
 				20EB18C425F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift */,
 			);
 			path = "GameScene Handling";
+			sourceTree = "<group>";
+		};
+		206B702926055E9500B9716A /* Swipe Handling */ = {
+			isa = PBXGroup;
+			children = (
+				206B702026055D0A00B9716A /* SwipeDownTracker.swift */,
+				206B701B26055C9F00B9716A /* SwipeUpTracker.swift */,
+				206B701626055C0E00B9716A /* SwipeLeftTracker.swift */,
+				206B700E2605599800B9716A /* SwipeRightTracker.swift */,
+			);
+			path = "Swipe Handling";
 			sourceTree = "<group>";
 		};
 		2072500525BE1BBB00F278CC /* Extensions */ = {
