@@ -27,6 +27,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gvc: GameViewController!
     var buttonAndLabelMaker: GameSceneButtonAndLabelMaker!
     
+    var rightTracker: SwipeRightTracker!
+    var leftTracker: SwipeLeftTracker!
+    var upTracker: SwipeUpTracker!
+    var downTracker: SwipeDownTracker!
+
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
@@ -45,46 +50,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buttonAndLabelMaker = GameSceneButtonAndLabelMaker(with: self)
         buttonAndLabelMaker.addButtonsAndLabels()
         disableButtonsIfNeeded()
-                
-        let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
-        swipeRight.direction = .right
-        view.addGestureRecognizer(swipeRight)
-
-        let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft(sender:)))
-        swipeLeft.direction = .left
-        view.addGestureRecognizer(swipeLeft)
-
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp(sender:)))
-        swipeUp.direction = .up
-        view.addGestureRecognizer(swipeUp)
-
-        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown(sender:)))
-        swipeDown.direction = .down
-        view.addGestureRecognizer(swipeDown)
-    }
         
-    @objc func swipedRight(sender: UISwipeGestureRecognizer) {
-        grid?.movePlayer(inDirection: .right)
-        stepsLabel.text = "Steps: \(grid.steps)"
-        if grid.isLevelComplete() { Constants.completeLevels.append(GameScene.level) }
-    }
-    
-    @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
-        grid?.movePlayer(inDirection: .left)
-        stepsLabel.text = "Steps: \(grid.steps)"
-        if grid.isLevelComplete() { Constants.completeLevels.append(GameScene.level) }
-    }
-    
-    @objc func swipedUp(sender: UISwipeGestureRecognizer) {
-        grid?.movePlayer(inDirection: .up)
-        stepsLabel.text = "Steps: \(grid.steps)"
-        if grid.isLevelComplete() { Constants.completeLevels.append(GameScene.level) }
-    }
-    
-    @objc func swipedDown(sender: UISwipeGestureRecognizer) {
-        grid?.movePlayer(inDirection: .down)
-        stepsLabel.text = "Steps: \(grid.steps)"
-        if grid.isLevelComplete() { Constants.completeLevels.append(GameScene.level) }
+        rightTracker = SwipeRightTracker(for: self)
+        leftTracker = SwipeLeftTracker(for: self)
+        upTracker = SwipeUpTracker(for: self)
+        downTracker = SwipeDownTracker(for: self)
     }
     
     // Load level
