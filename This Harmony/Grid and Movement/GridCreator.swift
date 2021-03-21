@@ -16,9 +16,7 @@ class GridCreator {
     init(withChildren children: [SKNode]) {
         _ = getGridOfScenesChildren(children)
         laserPointers = getLaserPointerNodesFromScenesChildren(children)
-        
-//        for lp in laserPointers { print(lp.direction) }
-        
+
         activateLaserBeams()
     }
     
