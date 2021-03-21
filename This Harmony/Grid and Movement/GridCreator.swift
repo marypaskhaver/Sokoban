@@ -109,7 +109,9 @@ class GridCreator {
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).player = playerNode
                     
-                    let position: CGPoint = CGPoint(x: col * Constants.tileSize + 139, y: 900 - (row * Constants.tileSize))
+                    let firstNodePosition: CGPoint = grid[0][0].position // Assumes grid is a rectangle
+
+                    let position: CGPoint = CGPoint(x: col * Constants.tileSize + Int(firstNodePosition.x), y: Int(firstNodePosition.y) - (row * Constants.tileSize))
                     (grid[row][col] as! Floor).position = position
 
                     childrenToAddToView[grid[row][col] as! Floor] = position
@@ -120,7 +122,9 @@ class GridCreator {
                     grid[row][col] = Floor()
                     (grid[row][col] as! Floor).crate = crate
 
-                    let position: CGPoint = CGPoint(x: col * Constants.tileSize + 139, y: 900 - (row * Constants.tileSize))
+                    let firstNodePosition: CGPoint = grid[0][0].position // Assumes grid is a rectangle
+
+                    let position: CGPoint = CGPoint(x: col * Constants.tileSize + Int(firstNodePosition.x), y: Int(firstNodePosition.y) - (row * Constants.tileSize))
                     (grid[row][col] as! Floor).position = position
                     
                     childrenToAddToView[grid[row][col] as! Floor] = position
