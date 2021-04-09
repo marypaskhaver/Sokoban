@@ -21,7 +21,7 @@ class This_HarmonyTests: XCTestCase {
         gc.loadViewIfNeeded()
         
         let skView = gc.view as! SKView
-        (skView.scene as! MainMenu).loadGame()
+        gc.loadLevel(number: 1)
         gc.loadViewIfNeeded()
     }
     
@@ -31,8 +31,26 @@ class This_HarmonyTests: XCTestCase {
     }
     
     func testCantGoToPrevLevelFromLevel1() {
-        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        var scene: GameScene = (gc.view as! SKView).scene as! GameScene
         XCTAssert(scene.buttonPrevious.state == .disabled)
+        
+        scene.goToNextLevel()
+        
+        // When the next level is loaded, a new GameScene is presented in GameScene's view
+        scene = (gc.view as! SKView).scene as! GameScene
+        XCTAssert(scene.buttonPrevious.state == .active)
+    }
+    
+    func testCantGoToNextLevelFromLastLevel() {
+        gc.loadLevel(number: 2) // Currently the last level
+        var scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        XCTAssert(scene.buttonNext.state == .disabled)
+
+        scene.goToPreviousLevel()
+
+        // When the previous level is loaded, a new GameScene is presented in GameScene's view
+        scene = (gc.view as! SKView).scene as! GameScene
+        XCTAssert(scene.buttonNext.state == .active)
     }
 
     override func tearDownWithError() throws {
