@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class PauseMenuBoxMaker {
+class MenuBoxMaker {
     
     func getBox(for gameScene: GameScene) -> SKShapeNode {
         let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 500, height: 700))
