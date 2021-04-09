@@ -8,8 +8,9 @@
 import Foundation
 import SpriteKit
 
-enum MenuBox {
-    case pauseLevelMenu, levelCompleteMenu
+enum MenuBox: String {
+    case pauseLevelMenu = "pause-level-menu"
+    case levelCompleteMenu = "level-complete-menu"
 }
 
 class MenuBoxMaker {
@@ -27,7 +28,7 @@ class MenuBoxMaker {
         let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 500, height: 700))
         menuBox.zPosition = 2
         menuBox.fillColor = .white
-        menuBox.name = "menu-box"
+        menuBox.name = MenuBox.pauseLevelMenu.rawValue
         
         let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: 200, height: 100), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY))
 

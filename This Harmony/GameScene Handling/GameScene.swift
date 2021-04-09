@@ -108,7 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
         // Filter scene's children for any nodes w/ the name "menu-box"
         let nodesNamedMenuBox: [SKNode] = children.filter { (node) -> Bool in
-            node.name == "menu-box"
+            node.name == MenuBox.pauseLevelMenu.rawValue
         }
         
         if nodesNamedMenuBox.count == 0 {
