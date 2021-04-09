@@ -8,9 +8,22 @@
 import Foundation
 import SpriteKit
 
+enum MenuBox {
+    case pauseLevelMenu, levelCompleteMenu
+}
+
 class MenuBoxMaker {
     
-    func getBox(for gameScene: GameScene) -> SKShapeNode {
+    func getBox(ofType type: MenuBox, for gameScene: GameScene) -> SKShapeNode {
+        switch (type) {
+            case .pauseLevelMenu:
+                return getPauseLevelMenu(for: gameScene)
+            case .levelCompleteMenu:
+                return getLevelCompleteMenu(for: gameScene)
+            }
+    }
+    
+    private func getPauseLevelMenu(for gameScene: GameScene) -> SKShapeNode {
         let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 500, height: 700))
         menuBox.zPosition = 2
         menuBox.fillColor = .white
@@ -23,6 +36,14 @@ class MenuBoxMaker {
         }
         
         menuBox.addChild(levelMenuLabel)
+        
+        return menuBox
+    }
+    
+    private func getLevelCompleteMenu(for gameScene: GameScene) -> SKShapeNode {
+        let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 200, height: 500))
+        menuBox.zPosition = 2
+        menuBox.fillColor = .red
         
         return menuBox
     }
