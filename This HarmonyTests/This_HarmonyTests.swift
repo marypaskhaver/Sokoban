@@ -20,7 +20,6 @@ class This_HarmonyTests: XCTestCase {
         gc = storyboard.instantiateViewController(identifier: "GameViewController") as? GameViewController
         gc.loadViewIfNeeded()
         
-        let skView = gc.view as! SKView
         gc.loadLevel(number: 1)
         gc.loadViewIfNeeded()
     }
