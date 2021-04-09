@@ -49,7 +49,10 @@ class Grid {
                         // Could be fixed by converting all -180 to 180 and -90 to 270
                         tile.laserBeams.first(where: { abs($0.zRotation) == abs(lp.zRotation) })?.isHidden = true
                         if let crate = tile.crate {
-                            crate.isOnActiveLaserBeam = false
+                            if tile.laserBeams.filter( { $0.isHidden } ).count == tile.laserBeams.count {
+                                print("Crate no longer on active beam")
+                                crate.isOnActiveLaserBeam = false
+                            }
                         }
                     }
                 }
