@@ -36,6 +36,17 @@ class CoreDataManagerTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK: - Testing creating CompletedLevels
+    func initializeCompletedLevelStubs() {
+        cdm.insertCompletedLevel(lowestSteps: 20)
+        cdm.save()
+    }
+    
+    func testCreatingCompletedLevel() {
+        let level = cdm.insertCompletedLevel(lowestSteps: 20)
+        XCTAssertNotNil(level)
+    }
+    
     // MARK: - Context Notification methods
     func contextSaved(notification: Notification ) {
         saveNotificationCompleteHandler?(notification)
