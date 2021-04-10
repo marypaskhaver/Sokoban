@@ -17,6 +17,7 @@ class Grid {
     init(with2DArrayOfTiles gridTiles: [ [Tile] ], laserPointers lp: [LaserPointer]) {
         self.grid = gridTiles
         self.laserPointers = lp
+        updateStepData()
     }
     
     func movePlayer(inDirection dir: Direction) {
@@ -35,10 +36,7 @@ class Grid {
     }
     
     func updateStepData() {
-        oldSteps = steps
-        steps = 0
-        
-        // Save to CoreData
+        // Load oldSteps from CoreData, if they exist
     }
     
     func hideBlockedLaserBeams() {
