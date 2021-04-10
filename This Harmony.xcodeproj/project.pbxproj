@@ -27,6 +27,7 @@
 		20A04B2526212E9700C3BB1F /* SwipeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B2426212E9700C3BB1F /* SwipeTracker.swift */; };
 		20A04B332621388D00C3BB1F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B322621388D00C3BB1F /* CoreDataManager.swift */; };
 		20A04B3C262139C200C3BB1F /* MockDataModelObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B3B262139C200C3BB1F /* MockDataModelObjects.swift */; };
+		20A04B4226213A3E00C3BB1F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4026213A3E00C3BB1F /* DataModel.xcdatamodeld */; };
 		20CE23BD25A37D8100200C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE23BC25A37D8100200C0C /* Storage.swift */; };
 		20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */; };
 		20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F804259BC439004BF34B /* AppDelegate.swift */; };
@@ -92,6 +93,7 @@
 		20A04B2426212E9700C3BB1F /* SwipeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTracker.swift; sourceTree = "<group>"; };
 		20A04B322621388D00C3BB1F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		20A04B3B262139C200C3BB1F /* MockDataModelObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModelObjects.swift; sourceTree = "<group>"; };
+		20A04B4126213A3E00C3BB1F /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		20CE23BC25A37D8100200C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBoxMaker.swift; sourceTree = "<group>"; };
 		20E2F801259BC439004BF34B /* This Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "This Harmony.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				20A04B322621388D00C3BB1F /* CoreDataManager.swift */,
+				20A04B4026213A3E00C3BB1F /* DataModel.xcdatamodeld */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				20F5927725A17022003C6A1D /* PlayerMover.swift in Sources */,
 				20F59241259E85D0003C6A1D /* Grid.swift in Sources */,
 				20F5926125A136C1003C6A1D /* GridCreator.swift in Sources */,
+				20A04B4226213A3E00C3BB1F /* DataModel.xcdatamodeld in Sources */,
 				20ED276F25B9199900428A5F /* GridPoint.swift in Sources */,
 				206B700F2605599800B9716A /* SwipeRightTracker.swift in Sources */,
 				206B702126055D0A00B9716A /* SwipeDownTracker.swift in Sources */,
@@ -817,6 +821,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		20A04B4026213A3E00C3BB1F /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				20A04B4126213A3E00C3BB1F /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 20A04B4126213A3E00C3BB1F /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 20E2F7F9259BC439004BF34B /* Project object */;
 }
