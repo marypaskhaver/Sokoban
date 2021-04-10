@@ -10,8 +10,8 @@ import SpriteKit
 
 class Grid {
     var grid: [[Tile]] = [ [Tile] ]()
-    var oldSteps: Int = 0
-    var steps: Int = 0
+    var lowestSteps: Int = 0
+    var currentSteps: Int = 0
     var laserPointers: [LaserPointer] = [LaserPointer]()
 
     init(with2DArrayOfTiles gridTiles: [ [Tile] ], laserPointers lp: [LaserPointer]) {
@@ -26,7 +26,7 @@ class Grid {
         grid = mover.grid
         
         if mover.didPlayerMove {
-            steps += 1
+            currentSteps += 1
             // Later, save steps and add onto the saved # each time. Reset steps upon level reset.
         }
         

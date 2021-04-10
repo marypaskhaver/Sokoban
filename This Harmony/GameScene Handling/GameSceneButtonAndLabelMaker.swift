@@ -27,7 +27,7 @@ class GameSceneButtonAndLabelMaker {
         gc.buttonMenu = buttonMenu
         
         gc.levelLabel = TextLabel("Level \(GameScene.level)", at: CGPoint(x: 384, y: 970))
-        gc.stepsLabel = TextLabel("Steps: \(gc.grid.steps)", at: CGPoint(x: 384, y: 150))
+        gc.stepsLabel = TextLabel("Steps: \(gc.grid.currentSteps)", at: CGPoint(x: 384, y: 150))
         
         setButtonHandlers()
         addButtonsAndLabelsToSceneChildren()

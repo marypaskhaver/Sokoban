@@ -46,8 +46,8 @@ class MenuBoxMaker {
         menuBox.zPosition = 2
         menuBox.fillColor = .white
         
-        let oldStepsLabel: StepLabel = StepLabel(withText: "Old Steps: \(gameScene.grid.oldSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + 50))
-        let newStepsLabel: StepLabel = StepLabel(withText: "New Steps: \(gameScene.grid.steps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY - 50))
+        let oldStepsLabel: StepLabel = StepLabel(withText: "Old Steps: \(gameScene.grid.lowestSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + 50))
+        let newStepsLabel: StepLabel = StepLabel(withText: "New Steps: \(gameScene.grid.currentSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY - 50))
         
         menuBox.addChild(oldStepsLabel)
         menuBox.addChild(newStepsLabel)

@@ -22,7 +22,7 @@ class SwipeDownTracker: SwipeTracker {
     
     @objc func swipedDown(sender: UISwipeGestureRecognizer) {
         self.gameScene.grid.movePlayer(inDirection: .down)
-        self.gameScene.stepsLabel.text = "Steps: \(self.gameScene.grid.steps)"
+        self.gameScene.stepsLabel.text = "Steps: \(self.gameScene.grid.currentSteps)"
         
         super.showGameScenesLevelCompleteMenu()
     }
