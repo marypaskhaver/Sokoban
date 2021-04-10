@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    var cdm: CoreDataManager = CoreDataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
