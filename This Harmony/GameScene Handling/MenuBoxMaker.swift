@@ -51,9 +51,7 @@ class MenuBoxMaker {
         
         menuBox.addChild(oldStepsLabel)
         menuBox.addChild(newStepsLabel)
-        
-        menuBox.reloadInputViews()
-        
+                
         return menuBox
     }
     
