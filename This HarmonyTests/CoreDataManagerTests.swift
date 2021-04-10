@@ -31,7 +31,7 @@ class CoreDataManagerTests: XCTestCase {
     }
     
     override func tearDown() {
-        // Flush data here
+        flushCompletedLevelData()
         cdm = nil
         super.tearDown()
     }
@@ -45,6 +45,18 @@ class CoreDataManagerTests: XCTestCase {
     func testCreatingCompletedLevel() {
         let level = cdm.insertCompletedLevel(lowestSteps: 20)
         XCTAssertNotNil(level)
+    }
+    
+    func flushCompletedLevelData() {
+       let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CompletedLevel")
+       
+       let objs = try! mockPersistentContainer.viewContext.fetch(fetchRequest)
+
+       for case let obj as NSManagedObject in objs {
+           mockPersistentContainer.viewContext.delete(obj)
+       }
+       
+       try! mockPersistentContainer.viewContext.save()
     }
     
     // MARK: - Context Notification methods
