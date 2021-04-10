@@ -38,7 +38,7 @@ class CoreDataManagerTests: XCTestCase {
     
     // MARK: - Initializing + deleting CompletedLevel stubs
     func initializeCompletedLevelStubs() {
-        _ = cdm.insertCompletedLevel(lowestSteps: 20)
+        _ = cdm.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: 20)
         cdm.save()
     }
     
@@ -56,7 +56,7 @@ class CoreDataManagerTests: XCTestCase {
     
     // MARK: - Testing CompletedLevels
     func testCreatingCompletedLevel() {
-        let level = cdm.insertCompletedLevel(lowestSteps: 20)
+        let level = cdm.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: 20)
         XCTAssertNotNil(level)
     }
     
@@ -70,7 +70,7 @@ class CoreDataManagerTests: XCTestCase {
             expect = nil
         }
         
-        _ = cdm.insertCompletedLevel(lowestSteps: 10)
+        _ = cdm.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: 10)
         cdm.save()
 
         // Assert save is called via notification (wait)
