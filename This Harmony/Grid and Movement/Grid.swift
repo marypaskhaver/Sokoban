@@ -42,9 +42,9 @@ class Grid {
     func hideBlockedLaserBeams() {
         for lp in laserPointers {
             // This reloads all the laser pointers-- make it reload just the one(s) w/ a blocked beam
-            let lpRowAndCol: Point = Point(row: (-Int(lp.position.y) + 900) / Constants.tileSize, col: (Int(lp.position.x) - 139) / Constants.tileSize)
+            let lpRowAndCol: GridPoint = GridPoint(row: (-Int(lp.position.y) + 900) / Constants.tileSize, col: (Int(lp.position.x) - 139) / Constants.tileSize)
             let lsu: LaserSetterUpper = LaserSetterUpper(with: grid)
-            let allFloorTilesInFrontOfLP: [Floor] = lsu.getAllFloorTilesInFrontOf(point: Point(row: lpRowAndCol.row, col: lpRowAndCol.col), inDirection: lp.direction)
+            let allFloorTilesInFrontOfLP: [Floor] = lsu.getAllFloorTilesInFrontOf(point: GridPoint(row: lpRowAndCol.row, col: lpRowAndCol.col), inDirection: lp.direction)
             let clearTiles: [Floor] = lsu.getClearFloorTiles(from: allFloorTilesInFrontOfLP)
             
             if clearTiles.count < lp.laserBeams.filter( { !$0.isHidden } ).count {

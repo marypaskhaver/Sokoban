@@ -73,7 +73,7 @@ class GridCreator {
                     if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY { // <-- ?
                         // clearTiles will include only the Floor tiles that do not have crates, whereas allFloor contains all, regardless of crates
                         let lsu: LaserSetterUpper = LaserSetterUpper(with: grid)
-                        let allFloorTilesInFrontOfLP: [Floor] = lsu.getAllFloorTilesInFrontOf(point: Point(row: row, col: col), inDirection: lp.direction)
+                        let allFloorTilesInFrontOfLP: [Floor] = lsu.getAllFloorTilesInFrontOf(point: GridPoint(row: row, col: col), inDirection: lp.direction)
                         let clearTiles: [Floor] = lsu.getClearFloorTiles(from: allFloorTilesInFrontOfLP)
                         
                         // Place lasers on all tiles, and hide them from all the tiles that are blocked / not clear

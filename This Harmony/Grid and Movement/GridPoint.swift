@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Point {
+struct GridPoint {
     var row: Int = 0
     var col: Int = 0
 }

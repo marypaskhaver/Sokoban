@@ -17,25 +17,25 @@ class PlayerMover {
         self.grid = gridTiles
     }
     
-    func getPlayerRowAndCol() -> Point {
+    func getPlayerRowAndCol() -> GridPoint {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
                 if grid[row][col] as? Floor != nil {
                     let node: Floor = grid[row][col] as! Floor
 
                     if node.player != nil {
-                        return Point(row: row, col: col)
+                        return GridPoint(row: row, col: col)
                     }
                 }
             }
         }
         
-        return Point(row: -1, col: -1)
+        return GridPoint(row: -1, col: -1)
     }
     
     func canPlayerMove(inDirection dir: Direction) -> Bool {
         var tilesInFront: (Tile, Tile)!
-        let playerLocation: Point = getPlayerRowAndCol()
+        let playerLocation: GridPoint = getPlayerRowAndCol()
         var notMovingCratesOnActiveLasers: Bool = true
         
         switch dir {
@@ -98,7 +98,7 @@ class PlayerMover {
     func getAdjacentTiles(inDirection dir: Direction) -> (Tile, Tile) {
         var oneTileFromPlayer: Tile!
         var twoTilesFromPlayer: Tile!
-        let playerLocation: Point = getPlayerRowAndCol()
+        let playerLocation: GridPoint = getPlayerRowAndCol()
 
         switch dir {
         case .up:
@@ -157,16 +157,16 @@ class PlayerMover {
         return false
     }
     
-    func getRowAndColumnOfFloor(floorNodeInGrid floorNode: Floor) -> Point {
+    func getRowAndColumnOfFloor(floorNodeInGrid floorNode: Floor) -> GridPoint {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
                 if grid[row][col] == floorNode {
-                    return Point(row: row, col: col)
+                    return GridPoint(row: row, col: col)
                 }
             }
         }
         
-        return Point(row: -1, col: -1)
+        return GridPoint(row: -1, col: -1)
     }
     
     // Update grid properties: Set current Floor item that the crate is on to not have a crate property; move the crate property to the
@@ -174,7 +174,7 @@ class PlayerMover {
     func moveCrateIfNeeded(onTile tile: Tile, inDirection dir: Direction) {
         if isFloorThatContainsCrate(tile) {
             let floorThatHoldsCrateInFrontofPlayer: Floor = tile as! Floor
-            let positionOfFloorThatHoldsCrateInFrontOfPlayer: Point = getRowAndColumnOfFloor(floorNodeInGrid: floorThatHoldsCrateInFrontofPlayer)
+            let positionOfFloorThatHoldsCrateInFrontOfPlayer: GridPoint = getRowAndColumnOfFloor(floorNodeInGrid: floorThatHoldsCrateInFrontofPlayer)
             
             switch dir {
             case .up:
@@ -213,7 +213,7 @@ class PlayerMover {
         didPlayerMove = true
 
         var oneTileFromPlayer: Tile!
-        let playerLocation: Point = getPlayerRowAndCol()
+        let playerLocation: GridPoint = getPlayerRowAndCol()
         let playerNode: Player = (grid[playerLocation.row][playerLocation.col] as! Floor).player!
         
         switch dir {

@@ -14,7 +14,7 @@ class LaserSetterUpper {
         self.grid = grid
     }
     
-    func getAllFloorTilesInFrontOf(point pt: Point, inDirection dir: Direction) -> [Floor] {
+    func getAllFloorTilesInFrontOf(point pt: GridPoint, inDirection dir: Direction) -> [Floor] {
         var row: Int = pt.row, col: Int = pt.col
         var tilesInFront: [Floor] = [Floor]()
         
