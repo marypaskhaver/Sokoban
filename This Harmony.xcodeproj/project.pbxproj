@@ -29,6 +29,9 @@
 		20A04B3C262139C200C3BB1F /* MockDataModelObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B3B262139C200C3BB1F /* MockDataModelObjects.swift */; };
 		20A04B4226213A3E00C3BB1F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4026213A3E00C3BB1F /* DataModel.xcdatamodeld */; };
 		20A04B4A26213F8D00C3BB1F /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4926213F8D00C3BB1F /* CoreDataManagerTests.swift */; };
+		20A04B512621F55E00C3BB1F /* CompletedLevel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4F2621F55E00C3BB1F /* CompletedLevel+CoreDataProperties.swift */; };
+		20A04B792622011D00C3BB1F /* CompletedLevel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4E2621F55E00C3BB1F /* CompletedLevel+CoreDataClass.swift */; };
+		20A04B7D2622012300C3BB1F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4026213A3E00C3BB1F /* DataModel.xcdatamodeld */; };
 		20CE23BD25A37D8100200C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE23BC25A37D8100200C0C /* Storage.swift */; };
 		20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */; };
 		20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F804259BC439004BF34B /* AppDelegate.swift */; };
@@ -96,6 +99,8 @@
 		20A04B3B262139C200C3BB1F /* MockDataModelObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModelObjects.swift; sourceTree = "<group>"; };
 		20A04B4126213A3E00C3BB1F /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		20A04B4926213F8D00C3BB1F /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
+		20A04B4E2621F55E00C3BB1F /* CompletedLevel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletedLevel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		20A04B4F2621F55E00C3BB1F /* CompletedLevel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletedLevel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		20CE23BC25A37D8100200C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBoxMaker.swift; sourceTree = "<group>"; };
 		20E2F801259BC439004BF34B /* This Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "This Harmony.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +206,8 @@
 		20A04B372621389900C3BB1F /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				20A04B4E2621F55E00C3BB1F /* CompletedLevel+CoreDataClass.swift */,
+				20A04B4F2621F55E00C3BB1F /* CompletedLevel+CoreDataProperties.swift */,
 				20A04B322621388D00C3BB1F /* CoreDataManager.swift */,
 				20A04B4026213A3E00C3BB1F /* DataModel.xcdatamodeld */,
 			);
@@ -468,6 +475,7 @@
 				20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */,
 				20CE23BD25A37D8100200C0C /* Storage.swift in Sources */,
 				2072500125BE1BAC00F278CC /* SKNode+RoundedPosition.swift in Sources */,
+				20A04B792622011D00C3BB1F /* CompletedLevel+CoreDataClass.swift in Sources */,
 				20A04B332621388D00C3BB1F /* CoreDataManager.swift in Sources */,
 				20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */,
 				20F5922C259CDEED003C6A1D /* Player.swift in Sources */,
@@ -495,6 +503,7 @@
 				206B700F2605599800B9716A /* SwipeRightTracker.swift in Sources */,
 				206B702126055D0A00B9716A /* SwipeDownTracker.swift in Sources */,
 				20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */,
+				20A04B512621F55E00C3BB1F /* CompletedLevel+CoreDataProperties.swift in Sources */,
 				20ED276A25B90C4300428A5F /* LaserBeam.swift in Sources */,
 				2072500A25BE41AE00F278CC /* LaserSetterUpper.swift in Sources */,
 				206B701726055C0E00B9716A /* SwipeLeftTracker.swift in Sources */,
@@ -507,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20A04B3C262139C200C3BB1F /* MockDataModelObjects.swift in Sources */,
+				20A04B7D2622012300C3BB1F /* DataModel.xcdatamodeld in Sources */,
 				20A04B4A26213F8D00C3BB1F /* CoreDataManagerTests.swift in Sources */,
 				20E2F81D259BC43A004BF34B /* This_HarmonyTests.swift in Sources */,
 			);
