@@ -16,12 +16,7 @@ class This_HarmonyTests: XCTestCase {
     override func setUpWithError() throws {
         super.setUp()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        gc = storyboard.instantiateViewController(identifier: "GameViewController") as? GameViewController
-        gc.loadViewIfNeeded()
-        
-        gc.loadLevel(number: 1)
-        gc.loadViewIfNeeded()
+        gc = MockDataModelObjects().createGameViewController()
     }
     
     func testLevel1GridExist() {
