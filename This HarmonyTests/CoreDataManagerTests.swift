@@ -60,6 +60,23 @@ class CoreDataManagerTests: XCTestCase {
         XCTAssertNotNil(level)
     }
     
+    func testSavingCompletedLevel() {
+        var expect: XCTestExpectation? = expectation(description: "Context Saved")
+        
+        waitForSavedNotification { (notification) in
+            expect?.fulfill()
+            
+            // Fulfill and remove. Optional chaining ends execution on nil.
+            expect = nil
+        }
+        
+        _ = cdm.insertCompletedLevel(lowestSteps: 10)
+        cdm.save()
+
+        // Assert save is called via notification (wait)
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
     // MARK: - Context Notification methods
     func contextSaved(notification: Notification ) {
         saveNotificationCompleteHandler?(notification)
