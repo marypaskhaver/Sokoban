@@ -31,6 +31,15 @@ class CoreDataManager {
         return self.persistentContainer.newBackgroundContext()
     }()
     
+    // MARK: - Adding data
+    func insertCompletedLevel(lowestSteps: Int32) -> CompletedLevel? {
+        guard let level = NSEntityDescription.insertNewObject(forEntityName: "CompletedLevel", into: backgroundContext) as? CompletedLevel else { return nil }
+        
+        level.lowestSteps = lowestSteps
+        
+        return level
+    }
+    
     // MARK: - Universal save
     func save() {
         if backgroundContext.hasChanges {
