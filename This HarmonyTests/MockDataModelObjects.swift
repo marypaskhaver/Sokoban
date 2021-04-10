@@ -5,9 +5,14 @@
 //  Created by Mary Paskhaver on 4/9/21.
 //
 
+import Foundation
+import UIKit
 import CoreData
 
+@testable import This_Harmony
+
 class MockDataModelObjects {
+    
     lazy var managedObjectModel: NSManagedObjectModel = {
             let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))] )!
             return managedObjectModel
@@ -33,4 +38,18 @@ class MockDataModelObjects {
     
         return container
     }()
+    
+    func createGameViewController() -> GameViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let gc: GameViewController = storyboard.instantiateViewController(identifier: "GameViewController") as! GameViewController
+        gc.loadViewIfNeeded()
+        
+        gc.cdm = CoreDataManager(container: persistentContainer)
+        
+        gc.loadLevel(number: 1)
+        gc.loadViewIfNeeded()
+            
+        return gc
+    }
 }
