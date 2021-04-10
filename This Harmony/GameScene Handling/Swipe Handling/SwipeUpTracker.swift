@@ -7,10 +7,11 @@
 
 import UIKit
 
-class SwipeUpTracker {
-    var gameScene: GameScene!
+class SwipeUpTracker: SwipeTracker {
     
     init(for gameScene: GameScene) {
+        super.init()
+
         self.gameScene = gameScene
         
         let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp(sender:)))
@@ -23,9 +24,6 @@ class SwipeUpTracker {
         self.gameScene.grid.movePlayer(inDirection: .up)
         self.gameScene.stepsLabel.text = "Steps: \(self.gameScene.grid.steps)"
         
-        if self.gameScene.grid.isLevelComplete() {
-            Constants.completeLevels.append(GameScene.level)
-            self.gameScene.showLevelCompleteMenu()
-        }
+        super.showGameScenesLevelCompleteMenu()
     }
 }
