@@ -24,6 +24,7 @@
 		2076A89B25A68A920085DA7A /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076A89A25A68A920085DA7A /* MSButtonNode.swift */; };
 		2076A8A025A68BED0085DA7A /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076A89F25A68BED0085DA7A /* MainMenu.swift */; };
 		20A04B1A26212DBC00C3BB1F /* StepLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B1526212D7500C3BB1F /* StepLabel.swift */; };
+		20A04B2526212E9700C3BB1F /* SwipeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B2426212E9700C3BB1F /* SwipeTracker.swift */; };
 		20CE23BD25A37D8100200C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE23BC25A37D8100200C0C /* Storage.swift */; };
 		20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */; };
 		20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F804259BC439004BF34B /* AppDelegate.swift */; };
@@ -86,6 +87,7 @@
 		2076A89A25A68A920085DA7A /* MSButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		2076A89F25A68BED0085DA7A /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		20A04B1526212D7500C3BB1F /* StepLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StepLabel.swift; path = "This Harmony/Scene Buttons and Labels/StepLabel.swift"; sourceTree = SOURCE_ROOT; };
+		20A04B2426212E9700C3BB1F /* SwipeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTracker.swift; sourceTree = "<group>"; };
 		20CE23BC25A37D8100200C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBoxMaker.swift; sourceTree = "<group>"; };
 		20E2F801259BC439004BF34B /* This Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "This Harmony.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 		206B702926055E9500B9716A /* Swipe Handling */ = {
 			isa = PBXGroup;
 			children = (
+				20A04B2426212E9700C3BB1F /* SwipeTracker.swift */,
 				206B702026055D0A00B9716A /* SwipeDownTracker.swift */,
 				206B701B26055C9F00B9716A /* SwipeUpTracker.swift */,
 				206B701626055C0E00B9716A /* SwipeLeftTracker.swift */,
@@ -455,6 +458,7 @@
 				2076A8A025A68BED0085DA7A /* MainMenu.swift in Sources */,
 				20F59236259CEFC9003C6A1D /* Crate.swift in Sources */,
 				20724FFC25BE1B7800F278CC /* Array+Chunked.swift in Sources */,
+				20A04B2526212E9700C3BB1F /* SwipeTracker.swift in Sources */,
 				20F59256259F9D56003C6A1D /* Direction.swift in Sources */,
 				20092BDD25AB8D5700D4677B /* TextLabel.swift in Sources */,
 				20E2F80B259BC439004BF34B /* GameScene.swift in Sources */,
