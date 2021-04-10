@@ -24,7 +24,7 @@ class CoreDataManagerTests: XCTestCase {
         super.setUp()
         cdm = CoreDataManager(container: mockPersistentContainer)
         
-        // Initialize data stubs here
+        initializeCompletedLevelStubs()
         
         // When a context has an item saved to it, it puts out a notification
         NotificationCenter.default.addObserver(self, selector: #selector(contextSaved(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil )
@@ -38,7 +38,7 @@ class CoreDataManagerTests: XCTestCase {
     
     // MARK: - Initializing + deleting CompletedLevel stubs
     func initializeCompletedLevelStubs() {
-        cdm.insertCompletedLevel(lowestSteps: 20)
+        _ = cdm.insertCompletedLevel(lowestSteps: 20)
         cdm.save()
     }
     
