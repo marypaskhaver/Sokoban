@@ -41,46 +41,37 @@ class MenuBoxMaker {
         return menuBox
     }
     
+    class StepLabel: SKLabelNode {
+                
+        init(withText text: String, at position: CGPoint) {
+            super.init()
+            
+            self.text = text
+            self.position = CGPoint(x: position.x, y: position.y)
+            self.fontSize = 60
+            self.horizontalAlignmentMode = .center
+            self.fontColor = SKColor(displayP3Red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0)
+            self.fontName = "PingFangSC-Semibold"
+            self.zPosition = 3
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+        }
+    }
+    
     private func getLevelCompleteMenu(for gameScene: GameScene) -> SKShapeNode {
         let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 500, height: 500))
         menuBox.zPosition = 2
         menuBox.fillColor = .white
         
-        let label: SKLabelNode = SKLabelNode(text: "New Steps: \(gameScene.grid.steps)")
-        label.position = CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY)
-        label.fontSize = 60
-        label.fontColor = SKColor(displayP3Red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0)
-        label.fontName = "PingFangSC-Semibold"
+        let oldStepsLabel: StepLabel = StepLabel(withText: "Old Steps: \(gameScene.grid.oldSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + 50))
+        let newStepsLabel: StepLabel = StepLabel(withText: "New Steps: \(gameScene.grid.steps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY - 50))
         
-        for i in 1..<5 {
-            let outline: SKLabelNode = SKLabelNode(text: label.text)
-            outline.text = label.text
-            outline.fontSize = 60
-            outline.fontColor = SKColor(displayP3Red: 0.9, green: 0.8, blue: 0.125, alpha: 1.0)
-            outline.fontName = "PingFangSC-Semibold"
-
-            let offAmt: CGFloat = 2.5
-            
-            if (i == 1) {
-                outline.position = CGPoint(x: menuBox.frame.midX - offAmt, y: menuBox.frame.midY + offAmt)
-            }
-            
-            if (i == 2) {
-                outline.position = CGPoint(x: menuBox.frame.midX + offAmt, y: menuBox.frame.midY + offAmt)
-            }
-                
-            if (i == 3) {
-                outline.position = CGPoint(x: menuBox.frame.midX - offAmt, y: menuBox.frame.midY - offAmt)
-            }
-                
-            if (i == 4) {
-                outline.position = CGPoint(x: menuBox.frame.midX + offAmt, y: menuBox.frame.midY - offAmt)
-            }
-            
-            menuBox.addChild(outline)
-        }
+        menuBox.addChild(oldStepsLabel)
+        menuBox.addChild(newStepsLabel)
         
-        menuBox.addChild(label)
+        menuBox.reloadInputViews()
         
         return menuBox
     }

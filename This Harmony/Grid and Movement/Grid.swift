@@ -10,6 +10,7 @@ import SpriteKit
 
 class Grid {
     var grid: [[Tile]] = [ [Tile] ]()
+    var oldSteps: Int = 0
     var steps: Int = 0
     var laserPointers: [LaserPointer] = [LaserPointer]()
 
@@ -31,6 +32,13 @@ class Grid {
         if mover.didMoveCrate {
             hideBlockedLaserBeams()
         }
+    }
+    
+    func updateStepData() {
+        oldSteps = steps
+        steps = 0
+        
+        // Save to CoreData
     }
     
     func hideBlockedLaserBeams() {
