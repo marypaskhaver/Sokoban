@@ -26,6 +26,7 @@
 		20A04B1A26212DBC00C3BB1F /* StepLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B1526212D7500C3BB1F /* StepLabel.swift */; };
 		20A04B2526212E9700C3BB1F /* SwipeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B2426212E9700C3BB1F /* SwipeTracker.swift */; };
 		20A04B332621388D00C3BB1F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B322621388D00C3BB1F /* CoreDataManager.swift */; };
+		20A04B3C262139C200C3BB1F /* MockDataModelObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B3B262139C200C3BB1F /* MockDataModelObjects.swift */; };
 		20CE23BD25A37D8100200C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE23BC25A37D8100200C0C /* Storage.swift */; };
 		20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */; };
 		20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F804259BC439004BF34B /* AppDelegate.swift */; };
@@ -90,6 +91,7 @@
 		20A04B1526212D7500C3BB1F /* StepLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StepLabel.swift; path = "This Harmony/Scene Buttons and Labels/StepLabel.swift"; sourceTree = SOURCE_ROOT; };
 		20A04B2426212E9700C3BB1F /* SwipeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTracker.swift; sourceTree = "<group>"; };
 		20A04B322621388D00C3BB1F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		20A04B3B262139C200C3BB1F /* MockDataModelObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModelObjects.swift; sourceTree = "<group>"; };
 		20CE23BC25A37D8100200C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBoxMaker.swift; sourceTree = "<group>"; };
 		20E2F801259BC439004BF34B /* This Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "This Harmony.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				20E2F81C259BC43A004BF34B /* This_HarmonyTests.swift */,
+				20A04B3B262139C200C3BB1F /* MockDataModelObjects.swift */,
 				20E2F81E259BC43A004BF34B /* Info.plist */,
 			);
 			path = "This HarmonyTests";
@@ -496,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A04B3C262139C200C3BB1F /* MockDataModelObjects.swift in Sources */,
 				20E2F81D259BC43A004BF34B /* This_HarmonyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
