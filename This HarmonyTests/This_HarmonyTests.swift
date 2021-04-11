@@ -84,6 +84,23 @@ class This_HarmonyTests: XCTestCase {
         XCTAssert(scene.grid.lowestSteps == 10)
         XCTAssert(scene.grid.currentSteps == 0)
     }
+    
+    func testGridMarksLevelComplete() {
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        XCTAssertFalse(scene.grid.isLevelComplete())
+        
+        // Fill up all storage places w/ crates
+        for row in scene.grid.grid {
+            for tile in row {
+                if (tile.name == Constants.TileNames.storage.rawValue) {
+                    (tile as! Storage).setCrate(to: Crate(texture: SKTexture(imageNamed: "crate"), name: Constants.TileNames.crate.rawValue))
+                }
+            }
+        }
+        
+        XCTAssertTrue(scene.grid.isLevelComplete())
+
+    }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
