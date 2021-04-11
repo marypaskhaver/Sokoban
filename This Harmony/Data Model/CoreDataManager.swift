@@ -41,6 +41,25 @@ class CoreDataManager {
         return level
     }
     
+    func fetchCompletedLevelWithLowestSteps(with request: NSFetchRequest<CompletedLevel> = CompletedLevel.fetchRequest()) -> CompletedLevel {
+        // What about levelNumber?
+        let request: NSFetchRequest<CompletedLevel> = CompletedLevel.fetchRequest()
+        request.predicate = NSPredicate(format: "levelNumber = %d", GameScene.level)
+        request.sortDescriptors = [NSSortDescriptor(key: "lowestSteps", ascending: false)]
+        request.fetchLimit = 1
+
+        let results = try? persistentContainer.viewContext.fetch(request)
+
+        // No previous CompletedLevels have ever been saved
+        if (results?.count == 0) {
+            let newCompletedLevel = self.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: 0)!
+            self.save()
+            return newCompletedLevel
+        }
+
+        return (results?[0])!
+    }
+    
     // MARK: - Universal save
     func save() {
         if backgroundContext.hasChanges {
