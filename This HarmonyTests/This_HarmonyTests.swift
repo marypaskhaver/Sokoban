@@ -47,7 +47,7 @@ class This_HarmonyTests: XCTestCase {
         XCTAssert(scene.buttonNext.state == .active)
     }
     
-    func testStepDataGetsUpdatedWhenLevelCompletedWithFewerSteps() {
+    func testStepDataGetsUpdatedWhenLevelIsCompletedInFewerSteps() {
         // Default # of lowestSteps stored in CoreData is 0
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         
