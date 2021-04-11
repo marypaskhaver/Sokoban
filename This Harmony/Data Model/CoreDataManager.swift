@@ -45,18 +45,19 @@ class CoreDataManager {
         // What about levelNumber?
         let request: NSFetchRequest<CompletedLevel> = CompletedLevel.fetchRequest()
         request.predicate = NSPredicate(format: "levelNumber = %d", GameScene.level)
-        request.sortDescriptors = [NSSortDescriptor(key: "lowestSteps", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "lowestSteps", ascending: true)]
         request.fetchLimit = 1
 
         let results = try? persistentContainer.viewContext.fetch(request)
 
         // No previous CompletedLevels have ever been saved
         if (results?.count == 0) {
-            let newCompletedLevel = self.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: 0)!
+            print("create")
+            let newCompletedLevel = self.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: Int32.max)!
             self.save()
             return newCompletedLevel
         }
-
+        
         return (results?[0])!
     }
     
