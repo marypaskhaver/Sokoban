@@ -141,7 +141,7 @@ class PlayerMover {
 
             if floor.crate == nil {
                 return beams.filter( { !$0.isHidden } ).count > 0 ? false : true
-            } else if beams.filter( { !$0.isHidden } ).count > 1 {
+            } else if beams.filter( { !$0.isHidden } ).count > 1 { // If there's only 1 beam and in it's from the same dir as you're pushing the box, you should be able to push it towards the box
                 return false
             }
         }
