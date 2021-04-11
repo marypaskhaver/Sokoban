@@ -119,7 +119,8 @@ class This_HarmonyTests: XCTestCase {
         
         // Set player position to max value
         let player: Player = ((scene.grid.grid[mover.getPlayerRowAndCol().row][mover.getPlayerRowAndCol().col]) as! Floor).player!
-        player.position = CGPoint(x: CGFloat(maxCol * Constants.tileSize + 139), y: -(CGFloat(maxRow * Constants.tileSize - 900)))
+        let topLeftNode: Tile = scene.grid.grid[0][0]
+        player.position = CGPoint(x: CGFloat(maxCol * Constants.tileSize) + topLeftNode.position.x, y: -(CGFloat(maxRow * Constants.tileSize) - topLeftNode.position.y))
         
         ((scene.grid.grid[mover.getPlayerRowAndCol().row][mover.getPlayerRowAndCol().col]) as! Floor).player = nil
         ((scene.grid.grid[maxRow][maxCol]) as! Floor).player = player
