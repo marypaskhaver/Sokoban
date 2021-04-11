@@ -24,7 +24,7 @@ class CoreDataManagerTests: XCTestCase {
         super.setUp()
         cdm = CoreDataManager(container: mockPersistentContainer)
         
-        initializeCompletedLevelStubs()
+//        initializeCompletedLevelStubs()
         
         // When a context has an item saved to it, it puts out a notification
         NotificationCenter.default.addObserver(self, selector: #selector(contextSaved(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil )
@@ -98,7 +98,7 @@ class CoreDataManagerTests: XCTestCase {
         _ = cdm.insertCompletedLevel(levelNumber: 3, lowestSteps: 3)
         cdm.save()
         
-        XCTAssertEqual(numberOfItemsInPersistentStore(withEntityName: "CompletedLevel"), 4)
+        XCTAssertEqual(numberOfItemsInPersistentStore(withEntityName: "CompletedLevel"), 3)
         
         cdm.deleteAllData(forEntityNamed: "CompletedLevel", fromViewContext: mockPersistentContainer.viewContext)
         cdm.save()
