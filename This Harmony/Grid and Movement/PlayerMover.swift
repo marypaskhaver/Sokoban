@@ -91,7 +91,7 @@ class PlayerMover {
             print("Unknown direction")
         }
 
-        return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront) && notMovingCratesOnActiveLasers
+        return isPlayersPathClear(twoTilesInFrontOfPlayer: tilesInFront, inDirection: dir) && notMovingCratesOnActiveLasers
 
     }
     
@@ -120,7 +120,7 @@ class PlayerMover {
         return (oneTileFromPlayer, twoTilesFromPlayer)
     }
     
-    func isPlayersPathClear(twoTilesInFrontOfPlayer: (Tile, Tile)) -> Bool {
+    func isPlayersPathClear(twoTilesInFrontOfPlayer: (Tile, Tile), inDirection dir: Direction) -> Bool {
         let oneTileFromPlayer: Tile = twoTilesInFrontOfPlayer.0
         let twoTilesFromPlayer: Tile = twoTilesInFrontOfPlayer.1
         
@@ -141,12 +141,28 @@ class PlayerMover {
 
             if floor.crate == nil {
                 return beams.filter( { !$0.isHidden } ).count > 0 ? false : true
-            } else if beams.filter( { !$0.isHidden } ).count > 1 { // If there's only 1 beam and in it's from the same dir as you're pushing the box, you should be able to push it towards the box
+            } else if beams.filter( { !$0.isHidden } ).count > 1 { // If there's only 1 beam and in it's from the same dir as you're pushing the box, you should be able to push it towards the box. Otherwise, you shouldn't.
                 return false
+            } else if beams.filter( { !$0.isHidden } ).count == 1 {
+                // Check direction of beam
+                return beams.filter( { !$0.isHidden } )[0].direction == getOppositeOf(direction: dir)
             }
         }
         
         return true
+    }
+    
+    func getOppositeOf(direction: Direction) -> Direction {
+        switch(direction) {
+        case .up:
+            return .down
+        case .down:
+            return .up
+        case .left:
+            return .right
+        case .right:
+            return .left
+        }
     }
     
     func isFloorThatContainsCrate(_ tile: Tile) -> Bool {
