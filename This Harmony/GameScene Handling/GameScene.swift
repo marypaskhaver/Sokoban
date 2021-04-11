@@ -119,6 +119,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func showLevelCompleteMenu() {
         let menuBox: SKShapeNode = MenuBoxMaker().getBox(ofType: .levelCompleteMenu, for: self)
         self.scene?.addChild(menuBox)
+        
+        buttonRestart.state = .disabled
+        buttonNext.state = .disabled
+        buttonPrevious.state = .disabled
+        
         grid.updateStepDataIfNeeded()
     }
     
