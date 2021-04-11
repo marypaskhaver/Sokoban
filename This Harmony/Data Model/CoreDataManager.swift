@@ -62,17 +62,21 @@ class CoreDataManager {
     }
     
     // MARK: - Removing data
-    func deleteAllData(forEntityNamed name: String) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let batchDeleteCompletedLevelsRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: name))
-       
-        do {
-            try managedContext.execute(batchDeleteCompletedLevelsRequest)
-        }
+    func deleteAllData(forEntityNamed name: String, fromViewContext managedContext: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext) {
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+        fetchRequest.returnsObjectsAsFaults = false
         
-        catch {
-            print(error)
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                managedContext.delete(objectData)
+            }
+            
+        } catch let error {
+            print("Detele all data in \(name) error :", error)
         }
         
     }
