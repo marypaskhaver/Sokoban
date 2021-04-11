@@ -40,7 +40,7 @@ class Grid {
     
     func loadStepData() {
         lowestSteps = Int(cdm.fetchCompletedLevelWithLowestSteps().lowestSteps)
-        print(cdm.fetchCompletedLevelWithLowestSteps())
+//        print(cdm.fetchCompletedLevelWithLowestSteps())
         print("Loading step data ~ lowest steps: \(lowestSteps)")
     }
     
