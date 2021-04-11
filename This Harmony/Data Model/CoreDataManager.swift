@@ -32,9 +32,10 @@ class CoreDataManager {
     }()
     
     // MARK: - Adding data
-    func insertCompletedLevel(lowestSteps: Int32) -> CompletedLevel? {
+    func insertCompletedLevel(levelNumber num: Int32, lowestSteps: Int32) -> CompletedLevel? {
         guard let level = NSEntityDescription.insertNewObject(forEntityName: "CompletedLevel", into: backgroundContext) as? CompletedLevel else { return nil }
         
+        level.levelNumber = num
         level.lowestSteps = lowestSteps
         
         return level

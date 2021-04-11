@@ -17,5 +17,6 @@ extension CompletedLevel {
     }
 
     @NSManaged public var lowestSteps: Int32
+    @NSManaged public var levelNumber: Int32
 
 }
