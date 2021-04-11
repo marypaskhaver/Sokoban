@@ -59,7 +59,6 @@ class MenuBoxMaker {
         
         menuBox.addChild(buttonRestart)
         
-                
         return menuBox
     }
     
