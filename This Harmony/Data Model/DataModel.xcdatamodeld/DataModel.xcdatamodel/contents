@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="CompletedLevel">
     <entity name="CompletedLevel" representedClassName="CompletedLevel" syncable="YES">
         <attribute name="levelNumber" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="lowestSteps" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lowestSteps" attributeType="Integer 32" defaultValueString="2147483647" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="CompletedLevel" positionX="-63" positionY="-18" width="128" height="59"/>
