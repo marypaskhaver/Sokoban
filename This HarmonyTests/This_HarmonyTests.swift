@@ -46,6 +46,22 @@ class This_HarmonyTests: XCTestCase {
         scene = (gc.view as! SKView).scene as! GameScene
         XCTAssert(scene.buttonNext.state == .active)
     }
+    
+    func testStepDataGetsUpdatedWhenLevelCompletedWithFewerSteps() {
+        // Default # of lowestSteps stored in CoreData is 0
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        
+        XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == 0)
+
+        scene.grid.currentSteps = 10 // Current steps are lower than previously saved lowestSteps-- user beat the level in less moves
+        scene.grid.lowestSteps = 20 // So 10 should be saved as new lowestSteps
+        
+        scene.showLevelCompleteMenu()
+        
+        print(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps)
+        
+        XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == 10)
+    }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
