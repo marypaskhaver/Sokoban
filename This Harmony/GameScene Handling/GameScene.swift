@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Create grid
         let gridCreator: GridCreator = GridCreator(withChildren: children)
-        grid = Grid(with2DArrayOfTiles: gridCreator.grid, laserPointers: gridCreator.laserPointers)
+        grid = Grid(with2DArrayOfTiles: gridCreator.grid, laserPointers: gridCreator.laserPointers, withCoreDataManager: gvc.cdm)
         
         let childrenToAdd: [Tile : CGPoint] = gridCreator.childrenToAddToView
         
@@ -119,6 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func showLevelCompleteMenu() {
         let menuBox: SKShapeNode = MenuBoxMaker().getBox(ofType: .levelCompleteMenu, for: self)
         self.scene?.addChild(menuBox)
+        grid.updateStepDataIfNeeded()
     }
     
 }
