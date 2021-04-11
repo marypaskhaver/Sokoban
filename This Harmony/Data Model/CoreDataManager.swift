@@ -61,6 +61,22 @@ class CoreDataManager {
         return (results?[0])!
     }
     
+    // MARK: - Removing data
+    func deleteAllData(forEntityNamed name: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let batchDeleteCompletedLevelsRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: name))
+       
+        do {
+            try managedContext.execute(batchDeleteCompletedLevelsRequest)
+        }
+        
+        catch {
+            print(error)
+        }
+        
+    }
+    
     // MARK: - Universal save
     func save() {
         if backgroundContext.hasChanges {
