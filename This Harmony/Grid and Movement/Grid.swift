@@ -61,7 +61,7 @@ class Grid {
             // This reloads all the laser pointers-- make it reload just the one(s) w/ a blocked beam
             let topLeftNode: Tile = self.grid[0][0]
             
-            let lpRowAndCol: GridPoint = GridPoint(row: (-Int(lp.position.y) + Int(topLeftNode.getRoundedY())) / Constants.tileSize, col: (Int(lp.position.x) - Int(topLeftNode.getRoundedX())) / Constants.tileSize)            
+            let lpRowAndCol: GridPoint = GridPoint(row: (-Int(lp.position.y) + Int(topLeftNode.getRoundedY())) / Constants.tileSize, col: (Int(lp.position.x) - Int(topLeftNode.getRoundedX())) / Constants.tileSize)
             let lsu: LaserSetterUpper = LaserSetterUpper(with: grid)
             let allFloorTilesInFrontOfLP: [Floor] = lsu.getAllFloorTilesInFrontOf(point: GridPoint(row: lpRowAndCol.row, col: lpRowAndCol.col), inDirection: lp.direction)
             let clearTiles: [Floor] = lsu.getClearFloorTiles(from: allFloorTilesInFrontOfLP)
@@ -73,9 +73,9 @@ class Grid {
                         // Does the abs make a risk for deleting the wrong beam? Ie, if two beams (L + R or U + D) are opposite ea. o.
                         // Could be fixed by converting all -180 to 180 and -90 to 270
                         tile.laserBeams.first(where: { abs($0.zRotation) == abs(lp.zRotation) })?.isHidden = true
+                        
                         if let crate = tile.crate {
                             if tile.laserBeams.filter( { $0.isHidden } ).count == tile.laserBeams.count {
-                                print("Crate no longer on active beam")
                                 crate.isOnActiveLaserBeam = false
                             }
                         }
