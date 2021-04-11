@@ -19,7 +19,7 @@ class This_HarmonyTests: XCTestCase {
         gc = MockDataModelObjects().createGameViewController()
     }
     
-    func testLevel1GridExist() {
+    func testLevel1GridExists() {
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         XCTAssertNotNil(scene.grid)
     }
@@ -47,20 +47,42 @@ class This_HarmonyTests: XCTestCase {
         XCTAssert(scene.buttonNext.state == .active)
     }
     
-    func testStepDataGetsUpdatedWhenLevelIsCompletedInFewerSteps() {
-        // Default # of lowestSteps stored in CoreData is 0
+    func testStepDataIsLoadedWhenLevelResets() {
+        // Default # of lowestSteps stored in CoreData is Int32.max
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         
-        XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == 0)
+        XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == Int32.max)
 
         scene.grid.currentSteps = 10 // Current steps are lower than previously saved lowestSteps-- user beat the level in less moves
         scene.grid.lowestSteps = 20 // So 10 should be saved as new lowestSteps
         
         scene.showLevelCompleteMenu()
+                
+        XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == 10) // Check if 10 is saved to lowestSteps
+        XCTAssert(scene.grid.lowestSteps == 10)
         
-        print(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps)
+        // Reload level
+        gc.loadLevel(number: GameScene.level)
         
         XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == 10)
+        XCTAssert(scene.grid.lowestSteps == 10)
+        XCTAssert(scene.grid.currentSteps == 0)
+    }
+    
+    func testStepDataGetsUpdatedWhenLevelIsCompletedInFewerSteps() {
+        // Default # of lowestSteps stored in CoreData is Int32.max
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        
+        XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == Int32.max)
+
+        scene.grid.currentSteps = 10 // Current steps are lower than previously saved lowestSteps-- user beat the level in less moves
+        scene.grid.lowestSteps = 20 // So 10 should be saved as new lowestSteps
+        
+        scene.showLevelCompleteMenu()
+                
+        XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == 10)
+        XCTAssert(scene.grid.lowestSteps == 10)
+        XCTAssert(scene.grid.currentSteps == 0)
     }
 
     override func tearDownWithError() throws {
