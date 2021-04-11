@@ -85,4 +85,25 @@ class CoreDataManagerTests: XCTestCase {
     func waitForSavedNotification(completeHandler: @escaping ((Notification)->()) ) {
         saveNotificationCompleteHandler = completeHandler
     }
+    
+    func numberOfItemsInPersistentStore(withEntityName name: String) -> Int {
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: name)
+        let results = try! mockPersistentContainer.viewContext.fetch(request)
+        return results.count
+    }
+    
+    func testDeletingCompletedLevels() {
+        _ = cdm.insertCompletedLevel(levelNumber: 1, lowestSteps: 1)
+        _ = cdm.insertCompletedLevel(levelNumber: 2, lowestSteps: 2)
+        _ = cdm.insertCompletedLevel(levelNumber: 3, lowestSteps: 3)
+        cdm.save()
+        
+        XCTAssertEqual(numberOfItemsInPersistentStore(withEntityName: "CompletedLevel"), 4)
+        
+        cdm.deleteAllData(forEntityNamed: "CompletedLevel", fromViewContext: mockPersistentContainer.viewContext)
+        cdm.save()
+        
+        XCTAssertEqual(numberOfItemsInPersistentStore(withEntityName: "CompletedLevel"), 0)
+
+    }
 }
