@@ -13,11 +13,14 @@ class Grid {
     var lowestSteps: Int = 0
     var currentSteps: Int = 0
     var laserPointers: [LaserPointer] = [LaserPointer]()
+    var cdm: CoreDataManager!
 
-    init(with2DArrayOfTiles gridTiles: [ [Tile] ], laserPointers lp: [LaserPointer]) {
+    init(with2DArrayOfTiles gridTiles: [ [Tile] ], laserPointers lp: [LaserPointer], withCoreDataManager cdm: CoreDataManager) {
         self.grid = gridTiles
         self.laserPointers = lp
-        updateStepData()
+        self.cdm = cdm
+        
+        loadStepData()
     }
     
     func movePlayer(inDirection dir: Direction) {
@@ -35,8 +38,17 @@ class Grid {
         }
     }
     
-    func updateStepData() {
-        // Load oldSteps from CoreData, if they exist
+    func loadStepData() {
+        lowestSteps = Int(cdm.fetchCompletedLevelWithLowestSteps().lowestSteps)
+    }
+    
+    func updateStepDataIfNeeded() {
+        // If currentSteps are the lowest ever, set them as the level's lowestSteps in CoreData
+        if currentSteps < lowestSteps || lowestSteps == 0 {
+            _ = cdm.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: Int32(currentSteps))
+            currentSteps = lowestSteps
+            cdm.save()
+        }
     }
     
     func hideBlockedLaserBeams() {
