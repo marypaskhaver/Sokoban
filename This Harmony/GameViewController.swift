@@ -15,6 +15,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        cdm.deleteAllData(forEntityNamed: "CompletedLevel")
+        
         if let view = self.view as! SKView? {
             if let scene = MainMenu(fileNamed: "MainMenu") {
                 // Set the scale mode to scale to fit the window
