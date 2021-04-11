@@ -49,7 +49,7 @@ class MenuBoxMaker {
         let oldStepsLabel: StepLabel = StepLabel(withText: "Old Steps: \(gameScene.grid.lowestSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + 50))
         let newStepsLabel: StepLabel = StepLabel(withText: "New Steps: \(gameScene.grid.currentSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY - 50))
         
-        menuBox.addChild(oldStepsLabel)
+        if gameScene.grid.lowestSteps != Int32.max { menuBox.addChild(oldStepsLabel) }
         menuBox.addChild(newStepsLabel)
         
         let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 50, y: menuBox.frame.minY + 50))
