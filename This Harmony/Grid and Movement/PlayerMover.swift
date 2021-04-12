@@ -124,10 +124,6 @@ class PlayerMover {
         let oneTileFromPlayer: Tile = twoTilesInFrontOfPlayer.0
         let twoTilesFromPlayer: Tile = twoTilesInFrontOfPlayer.1
         
-        if  oneTileFromPlayer.name == Constants.TileNames.wall.rawValue {
-            print("wall in front")
-        }
-        
         // Check if player is 1 tile in front of wall, in front of crate and wall, or in front of 2 crates
         if  oneTileFromPlayer.name == Constants.TileNames.wall.rawValue ||
             (isFloorThatContainsCrate(oneTileFromPlayer) && twoTilesFromPlayer.name == Constants.TileNames.wall.rawValue) ||
