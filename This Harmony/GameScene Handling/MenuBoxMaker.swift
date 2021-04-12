@@ -53,12 +53,21 @@ class MenuBoxMaker {
         menuBox.addChild(newStepsLabel)
         
         let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 50, y: menuBox.frame.minY + 50))
+        
         buttonRestart.selectedHandler = {
             gameScene.gvc.loadLevel(number: GameScene.level)
         }
         
-        menuBox.addChild(buttonRestart)
+        // Disable next button if there is no next level
+        let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 150, y: menuBox.frame.minY + 50))
+
+        buttonNext.selectedHandler = {
+            gameScene.goToNextLevel()
+        }
         
+        menuBox.addChild(buttonRestart)
+        menuBox.addChild(buttonNext)
+
         return menuBox
     }
     
