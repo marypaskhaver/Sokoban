@@ -21,6 +21,15 @@ class Constants {
         case laserBeam = "laser_beam"
     }
     
-    static var numLevels = 2
+    static var numLevels: Int {
+        get {
+            let resourceURL = Bundle.main.resourceURL!
+            let resourcesContent = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
+            let levelCount = resourcesContent.filter { $0.lastPathComponent.hasPrefix("Level_") }.count
+            
+            return levelCount
+        }
+    }
+    
     static var completeLevels: [Int] = []
 }
