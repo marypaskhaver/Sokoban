@@ -79,6 +79,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func disableSwipeTrackers() {
+        _ = self.view!.gestureRecognizers?.map( { $0.isEnabled = false } )
+    }
+    
     func goToNextLevel() {
         let nextLevel: GameScene? = GameScene.getLevel(GameScene.level + 1)
         
@@ -114,6 +118,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if nodesNamedMenuBox.count == 0 {
             self.scene?.addChild(menuBox)
         }
+        
+        disableSwipeTrackers() // So user can't move while menu is open
     }
     
     func showLevelCompleteMenu() {
@@ -125,6 +131,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buttonPrevious.state = .disabled
         
         grid.updateStepDataIfNeeded()
+        
+        disableSwipeTrackers() // So user can't move while menu is open
     }
     
 }
