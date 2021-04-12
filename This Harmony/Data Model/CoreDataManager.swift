@@ -75,8 +75,10 @@ class CoreDataManager {
                 managedContext.delete(objectData)
             }
             
+            print("Deleted \(name) data")
+            
         } catch let error {
-            print("Detele all data in \(name) error :", error)
+            print("Delete all data in \(name) error :", error)
         }
         
     }
