@@ -58,7 +58,7 @@ class MenuBoxMaker {
             gameScene.gvc.loadLevel(number: GameScene.level)
         }
         
-        // Disable next button if there is no next level
+        // Remove next button if there is no next level
         let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 150, y: menuBox.frame.minY + 50))
 
         buttonNext.selectedHandler = {
@@ -66,7 +66,7 @@ class MenuBoxMaker {
         }
         
         menuBox.addChild(buttonRestart)
-        menuBox.addChild(buttonNext)
+        if GameScene.level != Constants.numLevels { menuBox.addChild(buttonNext) }
 
         return menuBox
     }
