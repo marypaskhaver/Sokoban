@@ -32,6 +32,7 @@
 		20A04B512621F55E00C3BB1F /* CompletedLevel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4F2621F55E00C3BB1F /* CompletedLevel+CoreDataProperties.swift */; };
 		20A04B792622011D00C3BB1F /* CompletedLevel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4E2621F55E00C3BB1F /* CompletedLevel+CoreDataClass.swift */; };
 		20A04B7D2622012300C3BB1F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B4026213A3E00C3BB1F /* DataModel.xcdatamodeld */; };
+		20A04B942623E1C100C3BB1F /* CrateMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B932623E1C100C3BB1F /* CrateMover.swift */; };
 		20CE23BD25A37D8100200C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE23BC25A37D8100200C0C /* Storage.swift */; };
 		20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */; };
 		20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F804259BC439004BF34B /* AppDelegate.swift */; };
@@ -101,6 +102,7 @@
 		20A04B4926213F8D00C3BB1F /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		20A04B4E2621F55E00C3BB1F /* CompletedLevel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletedLevel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		20A04B4F2621F55E00C3BB1F /* CompletedLevel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletedLevel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		20A04B932623E1C100C3BB1F /* CrateMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrateMover.swift; sourceTree = "<group>"; };
 		20CE23BC25A37D8100200C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBoxMaker.swift; sourceTree = "<group>"; };
 		20E2F801259BC439004BF34B /* This Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "This Harmony.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +311,7 @@
 				20F59240259E85D0003C6A1D /* Grid.swift */,
 				20F5926025A136C1003C6A1D /* GridCreator.swift */,
 				20F5927625A17022003C6A1D /* PlayerMover.swift */,
+				20A04B932623E1C100C3BB1F /* CrateMover.swift */,
 				20ED276E25B9199900428A5F /* GridPoint.swift */,
 				2072500925BE41AE00F278CC /* LaserSetterUpper.swift */,
 				20F59255259F9D56003C6A1D /* Direction.swift */,
@@ -488,6 +491,7 @@
 				20F59236259CEFC9003C6A1D /* Crate.swift in Sources */,
 				20724FFC25BE1B7800F278CC /* Array+Chunked.swift in Sources */,
 				20A04B2526212E9700C3BB1F /* SwipeTracker.swift in Sources */,
+				20A04B942623E1C100C3BB1F /* CrateMover.swift in Sources */,
 				20F59256259F9D56003C6A1D /* Direction.swift in Sources */,
 				20092BDD25AB8D5700D4677B /* TextLabel.swift in Sources */,
 				20E2F80B259BC439004BF34B /* GameScene.swift in Sources */,
