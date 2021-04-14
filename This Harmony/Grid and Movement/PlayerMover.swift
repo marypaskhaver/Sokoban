@@ -17,25 +17,9 @@ class PlayerMover {
         self.grid = gridTiles
     }
     
-    func getPlayerRowAndCol() -> GridPoint {
-        for row in 0..<grid.count {
-            for col in 0..<grid[row].count {
-                if grid[row][col] as? Floor != nil {
-                    let node: Floor = grid[row][col] as! Floor
-
-                    if node.player != nil {
-                        return GridPoint(row: row, col: col)
-                    }
-                }
-            }
-        }
-        
-        return GridPoint(row: -1, col: -1)
-    }
-    
     func canPlayerMove(inDirection dir: Direction) -> Bool {
         var tilesInFront: (Tile, Tile)!
-        let playerLocation: GridPoint = getPlayerRowAndCol()
+        let playerLocation: GridPoint = GridInformation(withGrid: grid).getPlayerRowAndCol()
         var notMovingCratesOnActiveLasers: Bool = true
         
         switch dir {
@@ -43,7 +27,7 @@ class PlayerMover {
             if playerLocation.row == 1 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .up)
             
-            if isFloorThatContainsCrate(tilesInFront.0) {
+            if GridInformation(withGrid: grid).isFloorThatContainsCrate(tilesInFront.0) {
                 if let crate = (tilesInFront.0 as! Floor).crate {
                     if crate.isOnActiveLaserBeam {
                         notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.direction == .down }) != nil ? true : false
@@ -55,7 +39,7 @@ class PlayerMover {
             if playerLocation.row == grid.count - 2 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .down)
             
-            if isFloorThatContainsCrate(tilesInFront.0) {
+            if GridInformation(withGrid: grid).isFloorThatContainsCrate(tilesInFront.0) {
                 if let crate = (tilesInFront.0 as! Floor).crate {
                     if crate.isOnActiveLaserBeam {
                         notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.direction == .up }) != nil ? true : false
@@ -67,7 +51,7 @@ class PlayerMover {
             if playerLocation.col == 1 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .left)
             
-            if isFloorThatContainsCrate(tilesInFront.0) {
+            if GridInformation(withGrid: grid).isFloorThatContainsCrate(tilesInFront.0) {
                 if let crate = (tilesInFront.0 as! Floor).crate {
                     if crate.isOnActiveLaserBeam {
                         notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.direction == .right }) != nil ? true : false
@@ -79,7 +63,7 @@ class PlayerMover {
             if playerLocation.col == grid[playerLocation.row].count - 2 { return false }
             tilesInFront = getAdjacentTiles(inDirection: .right)
             
-            if isFloorThatContainsCrate(tilesInFront.0) {
+            if GridInformation(withGrid: grid).isFloorThatContainsCrate(tilesInFront.0) {
                 if let crate = (tilesInFront.0 as! Floor).crate {
                     if crate.isOnActiveLaserBeam {
                         notMovingCratesOnActiveLasers = (tilesInFront.0 as! Floor).laserBeams.first(where: { $0.direction == .left }) != nil ? true : false
@@ -98,7 +82,7 @@ class PlayerMover {
     func getAdjacentTiles(inDirection dir: Direction) -> (Tile, Tile) {
         var oneTileFromPlayer: Tile!
         var twoTilesFromPlayer: Tile!
-        let playerLocation: GridPoint = getPlayerRowAndCol()
+        let playerLocation: GridPoint = GridInformation(withGrid: grid).getPlayerRowAndCol()
 
         switch dir {
         case .up:
@@ -123,11 +107,12 @@ class PlayerMover {
     func isPlayersPathClear(twoTilesInFrontOfPlayer: (Tile, Tile), inDirection dir: Direction) -> Bool {
         let oneTileFromPlayer: Tile = twoTilesInFrontOfPlayer.0
         let twoTilesFromPlayer: Tile = twoTilesInFrontOfPlayer.1
+        let gridInfo: GridInformation = GridInformation(withGrid: grid)
         
         // Check if player is 1 tile in front of wall, in front of crate and wall, or in front of 2 crates
         if  oneTileFromPlayer.name == Constants.TileNames.wall.rawValue ||
-            (isFloorThatContainsCrate(oneTileFromPlayer) && twoTilesFromPlayer.name == Constants.TileNames.wall.rawValue) ||
-            (isFloorThatContainsCrate(oneTileFromPlayer) && isFloorThatContainsCrate(twoTilesFromPlayer)) {
+                (gridInfo.isFloorThatContainsCrate(oneTileFromPlayer) && twoTilesFromPlayer.name == Constants.TileNames.wall.rawValue) ||
+                (gridInfo.isFloorThatContainsCrate(oneTileFromPlayer) && gridInfo.isFloorThatContainsCrate(twoTilesFromPlayer)) {
             return false
         }
         
@@ -160,31 +145,11 @@ class PlayerMover {
             return .left
         }
     }
-    
-    func isFloorThatContainsCrate(_ tile: Tile) -> Bool {
-        if let floor = tile as? Floor {
-            return floor.crate != nil
-        }
-        
-        return false
-    }
-    
-    func getRowAndColumnOfFloor(floorNodeInGrid floorNode: Floor) -> GridPoint {
-        for row in 0..<grid.count {
-            for col in 0..<grid[row].count {
-                if grid[row][col] == floorNode {
-                    return GridPoint(row: row, col: col)
-                }
-            }
-        }
-        
-        return GridPoint(row: -1, col: -1)
-    }
-    
+ 
     // Update grid properties: Set current Floor item that the crate is on to not have a crate property; move the crate property to the
     // square immediately below the current Floor.
     func moveCrateIfNeeded(onTile tile: Tile, inDirection dir: Direction) {
-        if isFloorThatContainsCrate(tile) {
+        if GridInformation(withGrid: grid).isFloorThatContainsCrate(tile) {
             CrateMover(withGrid: grid).moveCrate(onTile: tile, inDirection: dir) // Test if grid, CompleteLevel, etc update fully
             didMoveCrate = true
         }
@@ -197,7 +162,7 @@ class PlayerMover {
         didPlayerMove = true
 
         var oneTileFromPlayer: Tile!
-        let playerLocation: GridPoint = getPlayerRowAndCol()
+        let playerLocation: GridPoint = GridInformation(withGrid: grid).getPlayerRowAndCol()
         let playerNode: Player = (grid[playerLocation.row][playerLocation.col] as! Floor).player!
         
         switch dir {

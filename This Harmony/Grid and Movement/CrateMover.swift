@@ -16,7 +16,7 @@ class CrateMover {
     
     func moveCrate(onTile tile: Tile, inDirection dir: Direction) {
         let floorThatHoldsCrateInFrontofPlayer: Floor = tile as! Floor
-        let positionOfFloorThatHoldsCrateInFrontOfPlayer: GridPoint = getRowAndColumnOfFloor(floorNodeInGrid: floorThatHoldsCrateInFrontofPlayer)
+        let positionOfFloorThatHoldsCrateInFrontOfPlayer: GridPoint = GridInformation(withGrid: grid).getRowAndColumnOfFloor(floorNodeInGrid: floorThatHoldsCrateInFrontofPlayer)
         
         switch dir {
         case .up:
@@ -48,15 +48,4 @@ class CrateMover {
 //        return grid?
     }
     
-    func getRowAndColumnOfFloor(floorNodeInGrid floorNode: Floor) -> GridPoint {
-        for row in 0..<grid.count {
-            for col in 0..<grid[row].count {
-                if grid[row][col] == floorNode {
-                    return GridPoint(row: row, col: col)
-                }
-            }
-        }
-        
-        return GridPoint(row: -1, col: -1)
-    }
 }
