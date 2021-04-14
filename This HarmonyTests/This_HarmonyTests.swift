@@ -106,7 +106,7 @@ class This_HarmonyTests: XCTestCase {
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
         
-        let playerPosition: GridPoint = mover.getPlayerRowAndCol()
+        let playerPosition: GridPoint = GridInformation(withGrid: mover.grid).getPlayerRowAndCol()
         XCTAssertEqual(playerPosition.row, 1)
         XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
         
@@ -118,11 +118,11 @@ class This_HarmonyTests: XCTestCase {
         let maxCol: Int = scene.grid.grid[maxRow].count - 2
         
         // Set player position to max value
-        let player: Player = ((scene.grid.grid[mover.getPlayerRowAndCol().row][mover.getPlayerRowAndCol().col]) as! Floor).player!
+        let player: Player = ((scene.grid.grid[GridInformation(withGrid: mover.grid).getPlayerRowAndCol().row][GridInformation(withGrid: mover.grid).getPlayerRowAndCol().col]) as! Floor).player!
         let topLeftNode: Tile = scene.grid.grid[0][0]
         player.position = CGPoint(x: CGFloat(maxCol * Constants.tileSize) + topLeftNode.position.x, y: -(CGFloat(maxRow * Constants.tileSize) - topLeftNode.position.y))
         
-        ((scene.grid.grid[mover.getPlayerRowAndCol().row][mover.getPlayerRowAndCol().col]) as! Floor).player = nil
+        ((scene.grid.grid[GridInformation(withGrid: mover.grid).getPlayerRowAndCol().row][GridInformation(withGrid: mover.grid).getPlayerRowAndCol().col]) as! Floor).player = nil
         ((scene.grid.grid[maxRow][maxCol]) as! Floor).player = player
         
         XCTAssertFalse(mover.canPlayerMove(inDirection: .down))
