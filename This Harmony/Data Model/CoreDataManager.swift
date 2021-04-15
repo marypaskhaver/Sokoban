@@ -50,8 +50,8 @@ class CoreDataManager {
 
         let results = try? persistentContainer.viewContext.fetch(request)
 
-        // No previous CompletedLevels have ever been saved
-        if (results?.count == 0) {
+        // No previous CompletedLevels have ever been saved or the default data contains 0 steps-- no level can be completed w/ 0 steps
+        if (results?.count == 0 || (results?.count == 1 && results?[0].lowestSteps == 0)) {
             print("create")
             let newCompletedLevel = self.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: Int32.max)!
             self.save()
