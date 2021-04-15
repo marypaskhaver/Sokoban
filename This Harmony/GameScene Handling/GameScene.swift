@@ -26,11 +26,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var gvc: GameViewController!
     var buttonAndLabelMaker: GameSceneButtonAndLabelMaker!
-    
-    var rightTracker: SwipeRightTracker!
-    var leftTracker: SwipeLeftTracker!
-    var upTracker: SwipeUpTracker!
-    var downTracker: SwipeDownTracker!
+
+    var trackers: [SwipeTracker] = []
 
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -52,10 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         disableButtonsIfNeeded()
         
         // Set up trackers to track UISwipeGestureRecognizers and move character, update grid when swipe occurs
-        rightTracker = SwipeRightTracker(for: self)
-        leftTracker = SwipeLeftTracker(for: self)
-        upTracker = SwipeUpTracker(for: self)
-        downTracker = SwipeDownTracker(for: self)
+        trackers = [SwipeRightTracker(for: self), SwipeLeftTracker(for: self), SwipeUpTracker(for: self), SwipeDownTracker(for: self)]
     }
     
     // Load level
