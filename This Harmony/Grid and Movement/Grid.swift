@@ -21,6 +21,7 @@ class Grid {
         self.cdm = cdm
         print("INITIALIZING GRID")
         loadStepData()
+        hideBlockedLaserBeams()
     }
     
     func movePlayer(inDirection dir: Direction) {
