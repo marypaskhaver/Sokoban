@@ -36,7 +36,16 @@ class GridCreator {
         arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midX < $1.frame.midX })
         arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midY > $1.frame.midY })
                 
-        grid = arrayOfNodes.chunked(into: 8)
+//        Assumes grid will be square. Will find max number of nodes w/ same y-val (# of columns) and chunk grid by that.
+        let firstYVal = arrayOfNodes[0].frame.midY
+        
+        let maxNumOfNodesWithFirstYVal: Int = arrayOfNodes.filter { (tile: Tile) -> Bool in
+            tile.frame.midY == firstYVal
+        }.count
+        
+        print("maxNumOfNodesWithFirstYVal: \(maxNumOfNodesWithFirstYVal)")
+        
+        grid = arrayOfNodes.chunked(into: maxNumOfNodesWithFirstYVal)
 
         for r in grid {
             var row = r
