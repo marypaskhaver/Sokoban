@@ -5,8 +5,8 @@
 //  Created by Mary Paskhaver on 4/9/21.
 //
 
-import Foundation
 import UIKit
+import SpriteKit
 import CoreData
 
 @testable import This_Harmony
@@ -45,11 +45,22 @@ class MockDataModelObjects {
         let gc: GameViewController = storyboard.instantiateViewController(identifier: "GameViewController") as! GameViewController
         gc.loadViewIfNeeded()
         
+        gc.gameSceneClass = MockGameScene.self
         gc.cdm = CoreDataManager(container: persistentContainer)
-        
-        gc.loadLevel(number: 1)
-        gc.loadViewIfNeeded()
-            
+
         return gc
+    }
+    
+    class MockGameScene: GameScene {
+        
+        override class func getLevel(_ levelNumber: Int) -> GameScene? {
+            guard let scene = GameScene(fileNamed: "Test_Level_\(levelNumber)") else {
+                print("No test level found w/ name: Test_Level_\(levelNumber)")
+                return nil
+            }
+                    
+            scene.scaleMode = .aspectFill
+            return scene
+        }
     }
 }
