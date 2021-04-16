@@ -11,7 +11,8 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     var cdm: CoreDataManager = CoreDataManager()
-
+    var gameSceneClass: GameScene.Type = GameScene.self
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,12 +61,13 @@ class GameViewController: UIViewController {
             return
         }
 
-        guard let gameScene = GameScene.getLevel(number) else {
-            print("Could not load GameScene with level \(number)")
+        gameSceneClass.level = number
+
+        guard let gameScene: GameScene = gameSceneClass.getLevel(number) else {
+            print("Could not load GameScene with level \(number), gameScene \(gameSceneClass)")
             return
         }
-
-        GameScene.level = number
+                
         gameScene.gvc = self
         
         // Ensure correct aspect mode
