@@ -86,6 +86,26 @@ class PlayerMoverTests: XCTestCase {
         playerCantMoveInAllDirections(withMover: mover)
     }
     
+    // Check in all directions
+    func testPlayerCantPushCratesOnBeamsEvenIfGoingTowardLaserPointer() {
+        gc.loadLevel(number: 7)
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
+
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
+    }
+    
+    func testPlayerCanPushCrateOnBeamIfGoingTowardLaserPointer() {
+        gc.loadLevel(number: 8)
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
+        
+        XCTAssertTrue(mover.canPlayerMove(inDirection: .up))
+        XCTAssertTrue(mover.canPlayerMove(inDirection: .down))
+        XCTAssertTrue(mover.canPlayerMove(inDirection: .left))
+        XCTAssertTrue(mover.canPlayerMove(inDirection: .right))
+    }
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         gc = nil
