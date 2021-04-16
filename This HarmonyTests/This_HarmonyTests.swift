@@ -161,6 +161,17 @@ class This_HarmonyTests: XCTestCase {
         XCTAssertFalse(mover.canPlayerMove(inDirection: .left))
         XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
     }
+    
+    func testPlayerCantPushCrateThroughWall() {
+        gc.loadLevel(number: 5)
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
+        
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .down))
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .left))
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
+    }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
