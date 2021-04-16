@@ -12,7 +12,7 @@ import SpriteKit
 
 class This_HarmonyTests: XCTestCase {
     var gc: GameViewController!
-    
+
     override func setUpWithError() throws {
         super.setUp()
         
@@ -20,11 +20,15 @@ class This_HarmonyTests: XCTestCase {
     }
     
     func testLevel1GridExists() {
+        gc.loadLevel(number: 1)
+
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         XCTAssertNotNil(scene.grid)
     }
     
     func testCantGoToPrevLevelFromLevel1() {
+        gc.loadLevel(number: 1)
+        
         var scene: GameScene = (gc.view as! SKView).scene as! GameScene
         XCTAssert(scene.buttonPrevious.state == .disabled)
         
@@ -36,7 +40,8 @@ class This_HarmonyTests: XCTestCase {
     }
     
     func testCantGoToNextLevelFromLastLevel() {
-        gc.loadLevel(number: Constants.numLevels) // Currently the last level
+        gc.loadLevel(number: 2) // Currently the last level
+
         var scene: GameScene = (gc.view as! SKView).scene as! GameScene
         XCTAssert(scene.buttonNext.state == .disabled)
 
@@ -48,6 +53,8 @@ class This_HarmonyTests: XCTestCase {
     }
     
     func testStepDataIsLoadedWhenLevelResets() {
+        gc.loadLevel(number: 1)
+        
         // Default # of lowestSteps stored in CoreData is Int32.max
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         
@@ -70,6 +77,8 @@ class This_HarmonyTests: XCTestCase {
     }
     
     func testStepDataGetsUpdatedWhenLevelIsCompletedInFewerSteps() {
+        gc.loadLevel(number: 1)
+        
         // Default # of lowestSteps stored in CoreData is Int32.max
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         
@@ -86,6 +95,7 @@ class This_HarmonyTests: XCTestCase {
     }
     
     func testGridMarksLevelComplete() {
+        gc.loadLevel(number: 1)
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         XCTAssertFalse(scene.grid.isLevelComplete())
         
@@ -103,6 +113,7 @@ class This_HarmonyTests: XCTestCase {
     }
     
     func testPlayerCantMoveOutsideGridWallBounds() {
+        gc.loadLevel(number: 1)
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
         
@@ -131,6 +142,7 @@ class This_HarmonyTests: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        gc = nil
     }
 
 }
