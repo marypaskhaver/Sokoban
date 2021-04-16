@@ -42,9 +42,7 @@ class GridCreator {
         let maxNumOfNodesWithFirstYVal: Int = arrayOfNodes.filter { (tile: Tile) -> Bool in
             tile.frame.midY == firstYVal
         }.count
-        
-        print("maxNumOfNodesWithFirstYVal: \(maxNumOfNodesWithFirstYVal)")
-        
+                
         grid = arrayOfNodes.chunked(into: maxNumOfNodesWithFirstYVal)
 
         for r in grid {
