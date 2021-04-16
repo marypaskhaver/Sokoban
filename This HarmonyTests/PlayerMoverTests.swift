@@ -47,15 +47,19 @@ class PlayerMoverTests: XCTestCase {
         XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
     }
     
+    func playerCantMoveInAllDirections(withMover mover: PlayerMover) {
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .down))
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .left))
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
+    }
+    
     func testPlayerCantMoveThroughWall() {
         gc.loadLevel(number: 3)
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
         
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .down))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .left))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
+        playerCantMoveInAllDirections(withMover: mover)
     }
     
     func testPlayerCantPushTwoCratesAtOnce() {
@@ -63,10 +67,7 @@ class PlayerMoverTests: XCTestCase {
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
         
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .down))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .left))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
+        playerCantMoveInAllDirections(withMover: mover)
     }
     
     func testPlayerCantPushCrateThroughWall() {
@@ -74,10 +75,7 @@ class PlayerMoverTests: XCTestCase {
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
         
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .down))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .left))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
+        playerCantMoveInAllDirections(withMover: mover)
     }
     
     func testPlayerCantMoveThroughLaserBeams() {
@@ -85,10 +83,7 @@ class PlayerMoverTests: XCTestCase {
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
         
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .down))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .left))
-        XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
+        playerCantMoveInAllDirections(withMover: mover)
     }
     
     override func tearDownWithError() throws {
