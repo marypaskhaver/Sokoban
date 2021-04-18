@@ -53,6 +53,9 @@
 		20DA9BCC262A2244005B11A1 /* Test_Level_7.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20DA9BCA262A2244005B11A1 /* Test_Level_7.sks */; };
 		20DA9BD1262A2499005B11A1 /* Test_Level_8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20DA9BD0262A2499005B11A1 /* Test_Level_8.sks */; };
 		20DA9BD2262A2499005B11A1 /* Test_Level_8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20DA9BD0262A2499005B11A1 /* Test_Level_8.sks */; };
+		20DA9BDB262C82E9005B11A1 /* SwipeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA9BD9262C82E9005B11A1 /* SwipeTrackerTests.swift */; };
+		20DA9BE3262C84AD005B11A1 /* Test_Level_9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20DA9BE2262C84AD005B11A1 /* Test_Level_9.sks */; };
+		20DA9BE4262C84AD005B11A1 /* Test_Level_9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20DA9BE2262C84AD005B11A1 /* Test_Level_9.sks */; };
 		20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F804259BC439004BF34B /* AppDelegate.swift */; };
 		20E2F807259BC439004BF34B /* Level_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F806259BC439004BF34B /* Level_1.sks */; };
 		20E2F809259BC439004BF34B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F808259BC439004BF34B /* Actions.sks */; };
@@ -133,6 +136,8 @@
 		20DA9BC52629C9A1005B11A1 /* PlayerMoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMoverTests.swift; sourceTree = "<group>"; };
 		20DA9BCA262A2244005B11A1 /* Test_Level_7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test_Level_7.sks; sourceTree = "<group>"; };
 		20DA9BD0262A2499005B11A1 /* Test_Level_8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test_Level_8.sks; sourceTree = "<group>"; };
+		20DA9BD9262C82E9005B11A1 /* SwipeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTrackerTests.swift; sourceTree = "<group>"; };
+		20DA9BE2262C84AD005B11A1 /* Test_Level_9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test_Level_9.sks; sourceTree = "<group>"; };
 		20E2F801259BC439004BF34B /* This Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "This Harmony.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E2F804259BC439004BF34B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20E2F806259BC439004BF34B /* Level_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1.sks; sourceTree = "<group>"; };
@@ -202,6 +207,7 @@
 				20DA9BBF2629C591005B11A1 /* Test_Level_6.sks */,
 				20DA9BCA262A2244005B11A1 /* Test_Level_7.sks */,
 				20DA9BD0262A2499005B11A1 /* Test_Level_8.sks */,
+				20DA9BE2262C84AD005B11A1 /* Test_Level_9.sks */,
 			);
 			path = TestLevels;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 				20A04B3B262139C200C3BB1F /* MockDataModelObjects.swift */,
 				20A04B4926213F8D00C3BB1F /* CoreDataManagerTests.swift */,
 				20E2F81E259BC43A004BF34B /* Info.plist */,
+				20DA9BD9262C82E9005B11A1 /* SwipeTrackerTests.swift */,
 			);
 			path = "This HarmonyTests";
 			sourceTree = "<group>";
@@ -501,6 +508,7 @@
 				20DA9BC02629C591005B11A1 /* Test_Level_6.sks in Resources */,
 				20DA9BB42629C1F5005B11A1 /* Test_Level_4.sks in Resources */,
 				20DA9BAF2629BC71005B11A1 /* Test_Level_3.sks in Resources */,
+				20DA9BE3262C84AD005B11A1 /* Test_Level_9.sks in Resources */,
 				20E2F809259BC439004BF34B /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +522,7 @@
 				20DA9BB52629C1F5005B11A1 /* Test_Level_4.sks in Resources */,
 				200093802628960C00FA4E98 /* Test_Level_2.sks in Resources */,
 				20DA9BBB2629C44E005B11A1 /* Test_Level_5.sks in Resources */,
+				20DA9BE4262C84AD005B11A1 /* Test_Level_9.sks in Resources */,
 				20DA9BD2262A2499005B11A1 /* Test_Level_8.sks in Resources */,
 				20DA9BAB2629BB80005B11A1 /* Test_Level_3.sks in Resources */,
 				20DA9BC12629C591005B11A1 /* Test_Level_6.sks in Resources */,
@@ -587,6 +596,7 @@
 				20A04B7D2622012300C3BB1F /* DataModel.xcdatamodeld in Sources */,
 				20A04B4A26213F8D00C3BB1F /* CoreDataManagerTests.swift in Sources */,
 				20E2F81D259BC43A004BF34B /* This_HarmonyTests.swift in Sources */,
+				20DA9BDB262C82E9005B11A1 /* SwipeTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
