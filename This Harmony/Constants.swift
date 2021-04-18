@@ -32,4 +32,9 @@ class Constants {
     }
     
     static var completeLevels: [Int] = []
+    
+    static var levelThemes: [Int : Theme] = [
+        1 : Default(),
+        2 : Default2()
+    ]
 }
