@@ -45,6 +45,7 @@ class MenuBoxMaker {
         let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 500, height: 500))
         menuBox.zPosition = 2
         menuBox.fillColor = .white
+        menuBox.name = MenuBox.levelCompleteMenu.rawValue
         
         let oldStepsLabel: StepLabel = StepLabel(withText: "Old Steps: \(gameScene.grid.lowestSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + 50))
         let newStepsLabel: StepLabel = StepLabel(withText: "New Steps: \(gameScene.grid.currentSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY - 50))
