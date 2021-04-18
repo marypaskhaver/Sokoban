@@ -19,6 +19,22 @@ class SwipeTrackerTests: XCTestCase {
         gc = MockDataModelObjects().createGameViewController()
     }
     
+    func getPlayerPosition(inScene scene: GameScene) -> CGPoint {
+        for row in 0..<scene.grid.grid.count {
+            for col in 0..<scene.grid.grid[row].count {
+                if scene.grid.grid[row][col] as? Floor != nil {
+                    let node: Floor = scene.grid.grid[row][col] as! Floor
+
+                    if node.player != nil {
+                        return node.position
+                    }
+                }
+            }
+        }
+        
+        return CGPoint(x: -1, y: -1)
+    }
+    
     func testSwipingDownMovesPlayerDownInGrid() {
         gc.loadLevel(number: 9)
         
@@ -34,6 +50,22 @@ class SwipeTrackerTests: XCTestCase {
 
         XCTAssertEqual(originalplayerPosition.row + 1, newPlayerPosition.row)
         XCTAssertEqual(originalplayerPosition.col, newPlayerPosition.col)
+    }
+    
+    func testSwipingDownMovesPlayerPositionOnScreen() {
+        gc.loadLevel(number: 9)
+        
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        
+        let originalplayerPosition: CGPoint = getPlayerPosition(inScene: scene)
+        
+        let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
+        swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
+        
+        let newPlayerPosition: CGPoint = getPlayerPosition(inScene: scene)
+
+        XCTAssertEqual(originalplayerPosition.x, newPlayerPosition.x)
+        XCTAssertEqual(originalplayerPosition.y - CGFloat(Constants.tileSize), newPlayerPosition.y)
     }
     
     override func tearDownWithError() throws {
