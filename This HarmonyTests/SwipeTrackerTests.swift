@@ -137,6 +137,40 @@ class SwipeTrackerTests: XCTestCase {
         XCTAssertEqual(originalplayerPosition.y, newPlayerPosition.y)
     }
     
+    // MARK: Test Swiping Right
+    func testSwipingRightMovesPlayerRightInGrid() {
+        gc.loadLevel(number: 9)
+        
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
+        
+        let originalplayerPosition: GridPoint = GridInformation(withGrid: mover.grid).getPlayerRowAndCol()
+        
+        let swipeRightTracker: SwipeRightTracker = scene.trackers.filter( { type(of: $0) == SwipeRightTracker.self } )[0] as! SwipeRightTracker
+        swipeRightTracker.swipedRight(sender: UISwipeGestureRecognizer())
+        
+        let newPlayerPosition: GridPoint = GridInformation(withGrid: mover.grid).getPlayerRowAndCol()
+
+        XCTAssertEqual(originalplayerPosition.row, newPlayerPosition.row)
+        XCTAssertEqual(originalplayerPosition.col + 1, newPlayerPosition.col)
+    }
+    
+    func testSwipingRightMovesPlayerPositionOnScreen() {
+        gc.loadLevel(number: 9)
+        
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        
+        let originalplayerPosition: CGPoint = getPlayerPosition(inScene: scene)
+        
+        let swipeRightTracker: SwipeRightTracker = scene.trackers.filter( { type(of: $0) == SwipeRightTracker.self } )[0] as! SwipeRightTracker
+        swipeRightTracker.swipedRight(sender: UISwipeGestureRecognizer())
+
+        let newPlayerPosition: CGPoint = getPlayerPosition(inScene: scene)
+
+        XCTAssertEqual(originalplayerPosition.x + CGFloat(Constants.tileSize), newPlayerPosition.x)
+        XCTAssertEqual(originalplayerPosition.y, newPlayerPosition.y)
+    }
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         gc = nil
