@@ -10,7 +10,7 @@ import SpriteKit
 
 class Storage: Floor {    
     init() {
-        super.init(withTexture: SKTexture(imageNamed: "storage"))
+        super.init(withTexture: SKTexture(imageNamed: Constants.levelThemes[GameScene.level]!.storageImage))
     }
     
     required init?(coder aDecoder: NSCoder) {
