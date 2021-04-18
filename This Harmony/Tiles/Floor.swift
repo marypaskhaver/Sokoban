@@ -15,7 +15,7 @@ class Floor: Tile {
     
     let textureImage: SKTexture
 
-    init(withTexture texture: SKTexture = SKTexture(imageNamed: "floor")) {
+    init(withTexture texture: SKTexture = SKTexture(imageNamed: Constants.levelThemes[GameScene.level]!.floorImage)) {
         textureImage = texture
         super.init(texture: textureImage, name: Constants.TileNames.floor.rawValue)
     }
