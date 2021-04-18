@@ -113,8 +113,7 @@ class GridCreator {
                     let playerNode: Player = grid[row][col] as! Player
                     
                     // Replace w/ Floor tile w/ non-nil player property
-                    let theme: Theme = Constants.levelThemes[GameScene.level]!
-                    grid[row][col] = Floor(withTexture: SKTexture(imageNamed: theme.floorImage))
+                    grid[row][col] = Floor()
                     
                     (grid[row][col] as! Floor).player = playerNode
                     
@@ -128,8 +127,7 @@ class GridCreator {
                     let crate: Crate = grid[row][col] as! Crate
                     
                     // Replace w/ Floor tile w/ non-nil crate property
-                    let theme: Theme = Constants.levelThemes[GameScene.level]!
-                    grid[row][col] = Floor(withTexture: SKTexture(imageNamed: theme.floorImage))
+                    grid[row][col] = Floor()
 
                     (grid[row][col] as! Floor).crate = crate
 
