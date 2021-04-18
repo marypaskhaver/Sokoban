@@ -35,6 +35,7 @@ class SwipeTrackerTests: XCTestCase {
         return CGPoint(x: -1, y: -1)
     }
     
+    // MARK: - Test Swiping Down
     func testSwipingDownMovesPlayerDownInGrid() {
         gc.loadLevel(number: 9)
         
@@ -66,6 +67,40 @@ class SwipeTrackerTests: XCTestCase {
 
         XCTAssertEqual(originalplayerPosition.x, newPlayerPosition.x)
         XCTAssertEqual(originalplayerPosition.y - CGFloat(Constants.tileSize), newPlayerPosition.y)
+    }
+    
+    // MARK: Test Swiping Up
+    func testSwipingUpMovesPlayerUpInGrid() {
+        gc.loadLevel(number: 9)
+        
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
+        
+        let originalplayerPosition: GridPoint = GridInformation(withGrid: mover.grid).getPlayerRowAndCol()
+        
+        let swipeUpTracker: SwipeUpTracker = scene.trackers.filter( { type(of: $0) == SwipeUpTracker.self } )[0] as! SwipeUpTracker
+        swipeUpTracker.swipedUp(sender: UISwipeGestureRecognizer())
+        
+        let newPlayerPosition: GridPoint = GridInformation(withGrid: mover.grid).getPlayerRowAndCol()
+
+        XCTAssertEqual(originalplayerPosition.row - 1, newPlayerPosition.row)
+        XCTAssertEqual(originalplayerPosition.col, newPlayerPosition.col)
+    }
+    
+    func testSwipingUpMovesPlayerPositionOnScreen() {
+        gc.loadLevel(number: 9)
+        
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        
+        let originalplayerPosition: CGPoint = getPlayerPosition(inScene: scene)
+        
+        let swipeUpTracker: SwipeUpTracker = scene.trackers.filter( { type(of: $0) == SwipeUpTracker.self } )[0] as! SwipeUpTracker
+        swipeUpTracker.swipedUp(sender: UISwipeGestureRecognizer())
+
+        let newPlayerPosition: CGPoint = getPlayerPosition(inScene: scene)
+
+        XCTAssertEqual(originalplayerPosition.x, newPlayerPosition.x)
+        XCTAssertEqual(originalplayerPosition.y + CGFloat(Constants.tileSize), newPlayerPosition.y)
     }
     
     override func tearDownWithError() throws {
