@@ -56,6 +56,7 @@
 		20DA9BDB262C82E9005B11A1 /* SwipeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA9BD9262C82E9005B11A1 /* SwipeTrackerTests.swift */; };
 		20DA9BE3262C84AD005B11A1 /* Test_Level_9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20DA9BE2262C84AD005B11A1 /* Test_Level_9.sks */; };
 		20DA9BE4262C84AD005B11A1 /* Test_Level_9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20DA9BE2262C84AD005B11A1 /* Test_Level_9.sks */; };
+		20DA9BE9262CCE8D005B11A1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA9BE8262CCE8D005B11A1 /* Theme.swift */; };
 		20E2F805259BC439004BF34B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E2F804259BC439004BF34B /* AppDelegate.swift */; };
 		20E2F807259BC439004BF34B /* Level_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F806259BC439004BF34B /* Level_1.sks */; };
 		20E2F809259BC439004BF34B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F808259BC439004BF34B /* Actions.sks */; };
@@ -138,6 +139,7 @@
 		20DA9BD0262A2499005B11A1 /* Test_Level_8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test_Level_8.sks; sourceTree = "<group>"; };
 		20DA9BD9262C82E9005B11A1 /* SwipeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTrackerTests.swift; sourceTree = "<group>"; };
 		20DA9BE2262C84AD005B11A1 /* Test_Level_9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test_Level_9.sks; sourceTree = "<group>"; };
+		20DA9BE8262CCE8D005B11A1 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		20E2F801259BC439004BF34B /* This Harmony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "This Harmony.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E2F804259BC439004BF34B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20E2F806259BC439004BF34B /* Level_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1.sks; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				20EB18BF25F02D7D004914A0 /* LevelCell.swift */,
 				20EB18B725F02071004914A0 /* SelectLevelViewController.swift */,
 				20E2F811259BC43A004BF34B /* Assets.xcassets */,
+				20DA9BE8262CCE8D005B11A1 /* Theme.swift */,
 				20E2F813259BC43A004BF34B /* Info.plist */,
 				2072500525BE1BBB00F278CC /* Extensions */,
 			);
@@ -570,6 +573,7 @@
 				20E2F80D259BC439004BF34B /* GameViewController.swift in Sources */,
 				20F59231259CE20C003C6A1D /* MovableTile.swift in Sources */,
 				20F59251259F71DD003C6A1D /* Tile.swift in Sources */,
+				20DA9BE9262CCE8D005B11A1 /* Theme.swift in Sources */,
 				2076A89B25A68A920085DA7A /* MSButtonNode.swift in Sources */,
 				20F5927725A17022003C6A1D /* PlayerMover.swift in Sources */,
 				20F59241259E85D0003C6A1D /* Grid.swift in Sources */,
