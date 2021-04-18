@@ -9,6 +9,7 @@ import Foundation
 
 protocol Theme {
     var floorImage: String { get }
+    var storageImage: String { get }
 //    var wallImage: String { get }
 //    var laserPointerImage: String { get }
 //    var laserBeamImage: String { get }
@@ -16,9 +17,11 @@ protocol Theme {
 
 class Default: Theme {
     var floorImage: String = Constants.TileNames.floor.rawValue
+    var storageImage: String = Constants.TileNames.storage.rawValue
 }
 
 class Default2: Theme {
-    // Temporary-- just seeing if I can use diff image for floor in levels w/ diff themes
+    // Temporary-- just seeing if I can use diff images in levels w/ diff themes
     var floorImage: String = Constants.TileNames.player.rawValue
+    var storageImage: String = Constants.TileNames.wall.rawValue
 }
