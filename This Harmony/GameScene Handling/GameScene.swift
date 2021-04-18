@@ -28,6 +28,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var buttonAndLabelMaker: GameSceneButtonAndLabelMaker!
 
     var trackers: [SwipeTracker] = []
+    
+    lazy var theme: Theme = Constants.levelThemes[GameScene.level]!
 
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
