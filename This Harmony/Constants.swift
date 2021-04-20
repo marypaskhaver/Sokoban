@@ -35,6 +35,7 @@ class Constants {
     
     static var levelThemes: [Int : Theme] = [
         1 : Default(),
-        2 : Default2()
+        2 : Default2(),
+        3 : Beach()
     ]
 }
