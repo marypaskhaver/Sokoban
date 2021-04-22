@@ -13,6 +13,18 @@ class SelectLevelViewController: UICollectionViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 70, left: 40, bottom: 0, right: 0)
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 0
+        layout.estimatedItemSize = CGSize(width: 64, height: 64)
+//        layout.scrollDirection = .vertical
+        layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.size.width, height: 60)
+        layout.sectionHeadersPinToVisibleBounds = true
+        self.collectionView!.collectionViewLayout = layout
+        
+        self.collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,4 +75,46 @@ class SelectLevelViewController: UICollectionViewController {
         self.dismiss(animated: true, completion: {})
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:
+                "header", for: indexPath) as! Header
+        
+        switch indexPath.section {
+        case 0:
+            header.title.text = "Default Levels"
+        case 1:
+            header.title.text = "Default2 Levels"
+        case 2:
+            header.title.text = "Beach Levels"
+        default:
+            break
+        }
+        
+            return header
+    }
+    
+}
+
+class Header: UICollectionViewCell  {
+    let title: UILabel = UILabel()
+
+    override init(frame: CGRect)    {
+        super.init(frame: frame)
+        setupHeaderViews()
+    }
+
+    func setupHeaderViews()   {
+        addSubview(title)
+
+        title.translatesAutoresizingMaskIntoConstraints = false
+        
+        title.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        title.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        title.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        title.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
