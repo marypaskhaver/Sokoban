@@ -53,9 +53,14 @@ class SelectLevelViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        (self.presentingViewController as! GameViewController).loadLevel(number: indexPath.row + 1)
+        var numberOfCellsBeforeThisOne: Int = 0
+        
+        for _ in 0..<indexPath.section {
+            numberOfCellsBeforeThisOne += collectionView.numberOfItems(inSection: indexPath.section)
+        }
+        
+        (self.presentingViewController as! GameViewController).loadLevel(number: indexPath.row + 1 + numberOfCellsBeforeThisOne)
         self.dismiss(animated: true, completion: {})
     }
-    
     
 }
