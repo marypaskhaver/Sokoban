@@ -9,19 +9,39 @@ import UIKit
 import SpriteKit
 import Foundation
 
-class SelectLevelViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    @IBOutlet weak var collectionView: UICollectionView!
-    
+class SelectLevelViewController: UICollectionViewController {
+        
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Constants.numLevels
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch (section) {
+        case 0:
+            return Constants.levelThemes.values.filter( { type(of: $0) == Default.self } ).count
+        case 1:
+            return Constants.levelThemes.values.filter( { type(of: $0) == Default2.self } ).count
+        case 2:
+            return Constants.levelThemes.values.filter( { type(of: $0) == Beach.self } ).count
+        default:
+            return 0
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        var uniqueThemes: [Theme] = []
+
+        // Get number of unique levelThemes (values in Constants levelThemes dict)
+        for theme in Constants.levelThemes.values {
+            if !uniqueThemes.contains(theme) {
+                uniqueThemes.append(theme)
+            }
+        }
+
+        return uniqueThemes.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LevelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LevelCell
         let cellNumber: Int = indexPath.row + 1
         cell.levelNumberLabel.text = String(cellNumber)
@@ -32,7 +52,7 @@ class SelectLevelViewController: UIViewController, UICollectionViewDataSource, U
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         (self.presentingViewController as! GameViewController).loadLevel(number: indexPath.row + 1)
         self.dismiss(animated: true, completion: {})
     }
