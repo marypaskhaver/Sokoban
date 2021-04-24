@@ -15,11 +15,10 @@ class SelectLevelViewController: UICollectionViewController {
         super.viewDidLoad()
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 70, left: 40, bottom: 0, right: 0)
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 0
-        layout.estimatedItemSize = CGSize(width: 64, height: 64)
-//        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        layout.minimumInteritemSpacing = 20
+        layout.minimumLineSpacing = 20
+//        layout.estimatedItemSize = CGSize(width: 96, height: 96)
         layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.size.width, height: 60)
         layout.sectionHeadersPinToVisibleBounds = true
         self.collectionView!.collectionViewLayout = layout
@@ -109,7 +108,7 @@ class Header: UICollectionViewCell  {
         title.translatesAutoresizingMaskIntoConstraints = false
         
         title.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        title.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        title.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         title.widthAnchor.constraint(equalToConstant: 120).isActive = true
         title.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
