@@ -87,12 +87,36 @@ class PlayerMoverTests: XCTestCase {
     }
     
     // Check in all directions
-    func testPlayerCantPushCratesOnBeamsEvenIfGoingTowardLaserPointer() {
+    func testPlayerCantPushCratesOnBeamsEvenIfGoingTowardLaserPointerUp() {
         gc.loadLevel(number: 7)
         let scene: GameScene = (gc.view as! SKView).scene as! GameScene
         let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
 
         XCTAssertFalse(mover.canPlayerMove(inDirection: .up))
+    }
+    
+    func testPlayerCantPushCratesOnBeamsEvenIfGoingTowardLaserPointerRight() {
+        gc.loadLevel(number: 10)
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
+
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .right))
+    }
+    
+    func testPlayerCantPushCratesOnBeamsEvenIfGoingTowardLaserPointerDown() {
+        gc.loadLevel(number: 11)
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
+
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .down))
+    }
+    
+    func testPlayerCantPushCratesOnBeamsEvenIfGoingTowardLaserPointerLeft() {
+        gc.loadLevel(number: 12)
+        let scene: GameScene = (gc.view as! SKView).scene as! GameScene
+        let mover: PlayerMover = PlayerMover(with2DArrayOfTiles: scene.grid.grid)
+
+        XCTAssertFalse(mover.canPlayerMove(inDirection: .left))
     }
     
     func testPlayerCanPushCrateOnBeamIfGoingTowardLaserPointer() {
