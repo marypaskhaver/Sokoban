@@ -58,8 +58,14 @@ class SelectLevelViewController: UICollectionViewController {
         cell.levelNumberLabel.text = String(cellNumber)
 
         // Toggle cell's checkmarkView
-        cell.checkmarkView.isHidden = Constants.completeLevels.contains(cellNumber) ? false : true
+        var numberOfCellsBeforeThisOne: Int = 0
         
+        for _ in 0..<indexPath.section {
+            numberOfCellsBeforeThisOne += collectionView.numberOfItems(inSection: indexPath.section)
+        }
+
+        cell.checkmarkView.isHidden = Constants.completeLevels.contains(indexPath.row + 1 + numberOfCellsBeforeThisOne) ? false : true
+
         return cell
     }
     
