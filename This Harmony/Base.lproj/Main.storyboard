@@ -30,7 +30,7 @@
         <!--Select Level View Controller-->
         <scene sceneID="GBr-wl-OpE">
             <objects>
-                <collectionViewController id="1SP-Oq-Buu" customClass="SelectLevelViewController" customModule="This_Harmony" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="SelectLevelViewController" id="1SP-Oq-Buu" customClass="SelectLevelViewController" customModule="This_Harmony" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="iTc-Bv-er9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
