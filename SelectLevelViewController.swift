@@ -58,9 +58,13 @@ class SelectLevelViewController: UICollectionViewController {
         cell.levelNumberLabel.text = String(cellNumber)
 
         // Toggle cell's checkmarkView
-        cell.checkmarkView.isHidden = Constants.completeLevels.contains(indexPath.row + 1 + getNumberOfCellsBeforeThisOne(at: indexPath)) ? false : true
+        cell.checkmarkView.isHidden = Constants.completeLevels.contains(getLevelNumberFromCell(at: indexPath)) ? false : true
 
         return cell
+    }
+    
+    func getLevelNumberFromCell(at indexPath: IndexPath) -> Int {
+        return indexPath.row + 1 + getNumberOfCellsBeforeThisOne(at: indexPath)
     }
     
     func getNumberOfCellsBeforeThisOne(at indexPath: IndexPath) -> Int {
@@ -74,7 +78,7 @@ class SelectLevelViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        (self.presentingViewController as! GameViewController).loadLevel(number: indexPath.row + 1 + getNumberOfCellsBeforeThisOne(at: indexPath))
+        (self.presentingViewController as! GameViewController).loadLevel(number: getLevelNumberFromCell(at: indexPath))
         self.dismiss(animated: true, completion: {})
     }
     
