@@ -18,13 +18,10 @@ class SelectLevelViewControllerTests: XCTestCase {
         super.setUp()
         
         gvc = MockDataModelObjects().createGameViewController()
-    }
-    
-    func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
+        
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         
         // Must get rootViewController like so instead of just gvc to avoid SelectLevelViewController's view not in window hierarchy error
-        // Potential fix would be putting SelectViewController's layout code in viewDidAppear instead of viewDidLoad?
         if var topController = keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
@@ -37,7 +34,9 @@ class SelectLevelViewControllerTests: XCTestCase {
             slvc = topController.presentedViewController as? SelectLevelViewController
             slvc.collectionView.layoutIfNeeded()
         }
-        
+    }
+    
+    func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
         XCTAssertEqual(slvc.collectionView.visibleCells.count, Constants.numLevels)
     }
 
