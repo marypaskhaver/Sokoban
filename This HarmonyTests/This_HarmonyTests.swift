@@ -17,6 +17,7 @@ class This_HarmonyTests: XCTestCase {
         super.setUp()
         
         gc = MockDataModelObjects().createGameViewController()
+        Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
     }
     
     func testLevel1GridExists() {
