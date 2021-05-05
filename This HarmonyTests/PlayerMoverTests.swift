@@ -17,6 +17,7 @@ class PlayerMoverTests: XCTestCase {
         super.setUp()
         
         gc = MockDataModelObjects().createGameViewController()
+        Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
     }
     
     func testPlayerCantMoveOutsideGridWallBounds() {
@@ -38,7 +39,7 @@ class PlayerMoverTests: XCTestCase {
         // Set player position to max value
         let player: Player = ((scene.grid.grid[GridInformation(withGrid: mover.grid).getPlayerRowAndCol().row][GridInformation(withGrid: mover.grid).getPlayerRowAndCol().col]) as! Floor).player!
         let topLeftNode: Tile = scene.grid.grid[0][0]
-        player.position = CGPoint(x: CGFloat(maxCol * Constants.tileSize) + topLeftNode.position.x, y: -(CGFloat(maxRow * Constants.tileSize) - topLeftNode.position.y))
+        player.position = CGPoint(x: CGFloat(maxCol * Constants().tileSize) + topLeftNode.position.x, y: -(CGFloat(maxRow * Constants().tileSize) - topLeftNode.position.y))
         
         ((scene.grid.grid[GridInformation(withGrid: mover.grid).getPlayerRowAndCol().row][GridInformation(withGrid: mover.grid).getPlayerRowAndCol().col]) as! Floor).player = nil
         ((scene.grid.grid[maxRow][maxCol]) as! Floor).player = player

@@ -25,7 +25,7 @@ class MenuBoxMaker {
     }
     
     private func getPauseLevelMenu(for gameScene: GameScene) -> SKShapeNode {
-        let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX - CGFloat(Constants.tileSize / 4), y: UIScreen.main.bounds.midY, width: 500, height: 500))
+        let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX - CGFloat(Constants().tileSize / 4), y: UIScreen.main.bounds.midY, width: 500, height: 500))
         menuBox.zPosition = 2
         menuBox.fillColor = .white
         menuBox.name = MenuBox.pauseLevelMenu.rawValue
@@ -67,7 +67,7 @@ class MenuBoxMaker {
         }
         
         menuBox.addChild(buttonRestart)
-        if GameScene.level != Constants.numLevels { menuBox.addChild(buttonNext) }
+        if GameScene.level != Constants().numLevels { menuBox.addChild(buttonNext) }
 
         return menuBox
     }

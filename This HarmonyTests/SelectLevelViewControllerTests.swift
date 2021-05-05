@@ -37,7 +37,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     }
     
     func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
-        XCTAssertEqual(slvc.collectionView.visibleCells.count, Constants.numLevels)
+        XCTAssertEqual(slvc.collectionView.visibleCells.count, Constants().numLevels)
     }
 
 }

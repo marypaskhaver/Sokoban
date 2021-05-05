@@ -12,7 +12,7 @@ class SwipeTracker {
     
     func showGameScenesLevelCompleteMenu() {
         if self.gameScene.grid.isLevelComplete() {
-            Constants.completeLevels.append(GameScene.level)
+            Constants().completeLevels.append(GameScene.level)
             self.gameScene.showLevelCompleteMenu()
         }
     }

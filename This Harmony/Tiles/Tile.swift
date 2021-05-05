@@ -9,7 +9,7 @@ import SpriteKit
 
 class Tile: SKSpriteNode {
     init(texture: SKTexture, name: String) {
-        super.init(texture: texture, color: UIColor.red, size: CGSize(width: Constants.tileSize, height: Constants.tileSize))
+        super.init(texture: texture, color: UIColor.red, size: CGSize(width: Constants().tileSize, height: Constants().tileSize))
         self.name = name
     }
     

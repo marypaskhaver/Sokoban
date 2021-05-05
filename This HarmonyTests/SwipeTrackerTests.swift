@@ -66,7 +66,7 @@ class SwipeTrackerTests: XCTestCase {
         let newPlayerPosition: CGPoint = getPlayerPosition(inScene: scene)
 
         XCTAssertEqual(originalplayerPosition.x, newPlayerPosition.x)
-        XCTAssertEqual(originalplayerPosition.y - CGFloat(Constants.tileSize), newPlayerPosition.y)
+        XCTAssertEqual(originalplayerPosition.y - CGFloat(Constants().tileSize), newPlayerPosition.y)
     }
     
     // MARK: Test Swiping Up
@@ -100,7 +100,7 @@ class SwipeTrackerTests: XCTestCase {
         let newPlayerPosition: CGPoint = getPlayerPosition(inScene: scene)
 
         XCTAssertEqual(originalplayerPosition.x, newPlayerPosition.x)
-        XCTAssertEqual(originalplayerPosition.y + CGFloat(Constants.tileSize), newPlayerPosition.y)
+        XCTAssertEqual(originalplayerPosition.y + CGFloat(Constants().tileSize), newPlayerPosition.y)
     }
     
     // MARK: Test Swiping Left
@@ -133,7 +133,7 @@ class SwipeTrackerTests: XCTestCase {
 
         let newPlayerPosition: CGPoint = getPlayerPosition(inScene: scene)
 
-        XCTAssertEqual(originalplayerPosition.x - CGFloat(Constants.tileSize), newPlayerPosition.x)
+        XCTAssertEqual(originalplayerPosition.x - CGFloat(Constants().tileSize), newPlayerPosition.x)
         XCTAssertEqual(originalplayerPosition.y, newPlayerPosition.y)
     }
     
@@ -167,7 +167,7 @@ class SwipeTrackerTests: XCTestCase {
 
         let newPlayerPosition: CGPoint = getPlayerPosition(inScene: scene)
 
-        XCTAssertEqual(originalplayerPosition.x + CGFloat(Constants.tileSize), newPlayerPosition.x)
+        XCTAssertEqual(originalplayerPosition.x + CGFloat(Constants().tileSize), newPlayerPosition.x)
         XCTAssertEqual(originalplayerPosition.y, newPlayerPosition.y)
     }
     
