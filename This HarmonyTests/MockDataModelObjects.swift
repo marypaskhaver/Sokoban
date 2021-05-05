@@ -63,4 +63,33 @@ class MockDataModelObjects {
             return scene
         }
     }
+    
+    class MockConstants: Constants {
+        
+        override init() {
+            super.init()
+            
+            let resourceURL = Bundle.main.resourceURL!
+            let resourcesContent = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
+            let levelCount = resourcesContent.filter { $0.lastPathComponent.hasPrefix("Test_Level_") }.count // Have String passing in prefix?
+            
+            numLevels = levelCount
+            
+            levelThemes = [
+                1 : Default(),
+                2 : Default(),
+                3 : Default(),
+                4 : Default(),
+                5 : Default(),
+                6 : Default(),
+                7 : Default(),
+                8 : Default(),
+                9 : Default(),
+                10 : Default(),
+                11 : Default(),
+                12 : Default()
+            ]
+        }
+        
+    }
 }
