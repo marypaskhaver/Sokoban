@@ -10,7 +10,9 @@ import SpriteKit
 import Foundation
 
 class SelectLevelViewController: UICollectionViewController {
-        
+    
+    var constants: Constants = Constants()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,11 +31,11 @@ class SelectLevelViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch (section) {
         case 0:
-            return Constants().levelThemes.values.filter( { type(of: $0) == Default.self } ).count
+            return constants.levelThemes.values.filter( { type(of: $0) == Default.self } ).count
         case 1:
-            return Constants().levelThemes.values.filter( { type(of: $0) == Default2.self } ).count
+            return constants.levelThemes.values.filter( { type(of: $0) == Default2.self } ).count
         case 2:
-            return Constants().levelThemes.values.filter( { type(of: $0) == Beach.self } ).count
+            return constants.levelThemes.values.filter( { type(of: $0) == Beach.self } ).count
         default:
             return 0
         }
@@ -43,7 +45,7 @@ class SelectLevelViewController: UICollectionViewController {
         var uniqueThemes: [Theme] = []
 
         // Get number of unique levelThemes (values in Constants levelThemes dict)
-        for theme in Constants().levelThemes.values {
+        for theme in constants.levelThemes.values {
             if !uniqueThemes.contains(theme) {
                 uniqueThemes.append(theme)
             }
@@ -58,7 +60,7 @@ class SelectLevelViewController: UICollectionViewController {
         cell.levelNumberLabel.text = String(cellNumber)
 
         // Toggle cell's checkmarkView
-        cell.checkmarkView.isHidden = Constants().completeLevels.contains(getLevelNumberFromCell(at: indexPath)) ? false : true
+        cell.checkmarkView.isHidden = constants.completeLevels.contains(getLevelNumberFromCell(at: indexPath)) ? false : true
 
         return cell
     }
