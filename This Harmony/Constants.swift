@@ -20,16 +20,6 @@ class Constants {
         case laserPointer = "laser_pointer"
         case laserBeam = "laser_beam"
     }
-        
-    var numLevels: Int {
-        get {
-            let resourceURL = Bundle.main.resourceURL!
-            let resourcesContent = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
-            let levelCount = resourcesContent.filter { $0.lastPathComponent.hasPrefix("Level_") }.count // Have String passing in prefix?
-            
-            return levelCount
-        }
-    }
     
     var completeLevels: [Int] = []
     
@@ -38,4 +28,14 @@ class Constants {
         2 : Default2(),
         3 : Beach()
     ]
+    
+    var numLevels: Int = 0
+
+    init() {
+        let resourceURL = Bundle.main.resourceURL!
+        let resourcesContent = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
+        let levelCount = resourcesContent.filter { $0.lastPathComponent.hasPrefix("Level_") }.count
+        
+        numLevels = levelCount
+    }
 }
