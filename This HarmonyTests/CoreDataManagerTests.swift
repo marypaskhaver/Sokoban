@@ -56,7 +56,7 @@ class CoreDataManagerTests: XCTestCase {
     
     // MARK: - Testing CompletedLevels
     func testCreatingCompletedLevel() {
-        let level = cdm.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: 20)
+        let level = cdm.insertCompletedLevel(levelNumber: 2, lowestSteps: 20)
         XCTAssertNotNil(level)
     }
     
@@ -70,7 +70,7 @@ class CoreDataManagerTests: XCTestCase {
             expect = nil
         }
         
-        _ = cdm.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: 10)
+        _ = cdm.insertCompletedLevel(levelNumber: 2, lowestSteps: 10)
         cdm.save()
 
         // Assert save is called via notification (wait)
