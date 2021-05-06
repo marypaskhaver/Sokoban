@@ -8,6 +8,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+//import CoreData
 
 class GameViewController: UIViewController {
     var cdm: CoreDataManager = CoreDataManager()
@@ -17,6 +18,15 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
 //        cdm.deleteAllData(forEntityNamed: "CompletedLevel")
+//        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CompletedLevel")
+//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//        let context = ( UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
+//
+//        do {
+//            try CoreDataManager().persistentContainer.viewContext.execute(deleteRequest)
+//        } catch let error as NSError {
+//            // TODO: handle the error
+//        }
         
         if let view = self.view as! SKView? {
             if let scene = MainMenu(fileNamed: "MainMenu") {
