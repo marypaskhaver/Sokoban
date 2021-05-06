@@ -12,7 +12,6 @@ import SpriteKit
 
 class SelectLevelViewControllerTests: XCTestCase {
     var gvc: GameViewController!
-    var slvc: SelectLevelViewController!
 
     override func setUpWithError() throws {
         super.setUp()
