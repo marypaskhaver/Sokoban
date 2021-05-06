@@ -17,6 +17,7 @@ class SwipeTrackerTests: XCTestCase {
         super.setUp()
         
         gc = MockDataModelObjects().createGameViewController()
+        Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
     }
     
     func getPlayerPosition(inScene scene: GameScene) -> CGPoint {
