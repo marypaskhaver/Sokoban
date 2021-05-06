@@ -21,11 +21,16 @@ class SelectLevelViewControllerTests: XCTestCase {
         Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
     }
     
-    func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
+    func createSelectLevelViewController(withConstants constants: Constants = MockDataModelObjects.MockConstants()) -> SelectLevelViewController {
         let slvc: SelectLevelViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SelectLevelViewController")
-        slvc.constants = MockDataModelObjects.MockConstants()
+        slvc.constants = constants
         slvc.collectionView.layoutIfNeeded()
-      
+        
+        return slvc
+    }
+    
+    func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
+        let slvc: SelectLevelViewController = createSelectLevelViewController()
         XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants().numLevels)
     }
     
@@ -41,9 +46,7 @@ class SelectLevelViewControllerTests: XCTestCase {
         let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
         swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
 
-        let slvc: SelectLevelViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SelectLevelViewController")
-        slvc.constants = SwipeTracker.constants
-        slvc.collectionView.layoutIfNeeded()
+        let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants)
     
         XCTAssert(slvc.constants.completeLevels.contains(7))
         
