@@ -28,12 +28,7 @@ class SelectLevelViewControllerTests: XCTestCase {
         return slvc
     }
     
-    func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
-        let slvc: SelectLevelViewController = createSelectLevelViewController()
-        XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants().numLevels)
-    }
-    
-    func testCompletedLevelsAreAddedToConstants() {
+    func createLevelAndMoveCrateToFinishIt() {
         SwipeTracker.constants = MockDataModelObjects.MockConstants()
         SwipeTracker.gameSceneClass = MockDataModelObjects.MockGameScene.self
 
@@ -44,6 +39,15 @@ class SelectLevelViewControllerTests: XCTestCase {
         // Have player push crate down onto only storage space
         let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
         swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
+    }
+    
+    func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
+        let slvc: SelectLevelViewController = createSelectLevelViewController()
+        XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants().numLevels)
+    }
+    
+    func testCompletedLevelsAreAddedToConstants() {
+        createLevelAndMoveCrateToFinishIt()
 
         let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants)
     
@@ -51,16 +55,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     }
     
     func testCompletedLevelsAreCheckmarkedInSelectLevelViewController() {
-        SwipeTracker.constants = MockDataModelObjects.MockConstants()
-        SwipeTracker.gameSceneClass = MockDataModelObjects.MockGameScene.self
-
-        gvc.loadLevel(number: 7)
-        
-        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
-        
-        // Have player push crate down onto only storage space
-        let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
-        swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
+        createLevelAndMoveCrateToFinishIt()
         
         let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants)
 
