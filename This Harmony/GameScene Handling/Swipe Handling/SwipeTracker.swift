@@ -9,10 +9,12 @@ import Foundation
 
 class SwipeTracker {
     var gameScene: GameScene!
+    static var gameSceneClass: GameScene.Type = GameScene.self
+    static var constants: Constants = Constants()
     
     func showGameScenesLevelCompleteMenu() {
         if self.gameScene.grid.isLevelComplete() {
-            Constants().completeLevels.append(GameScene.level)
+            SwipeTracker.constants.completeLevels.append(SwipeTracker.gameSceneClass.level)
             self.gameScene.showLevelCompleteMenu()
         }
     }
