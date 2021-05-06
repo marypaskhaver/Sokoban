@@ -71,10 +71,10 @@ class MockDataModelObjects {
             
             let resourceURL = Bundle.main.resourceURL!
             let resourcesContent = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
-            let levelCount = resourcesContent.filter { $0.lastPathComponent.hasPrefix("Test_Level_") }.count // Have String passing in prefix?
-            
+            let levelCount = resourcesContent.filter { $0.lastPathComponent.hasPrefix("Test_Level_") }.count
+
             numLevels = levelCount
-            
+
             levelThemes = [
                 1 : Default(),
                 2 : Default(),
