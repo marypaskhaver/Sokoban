@@ -41,6 +41,7 @@ class CoreDataManager {
         return level
     }
     
+    // MARK: - Retrieving data
     func fetchCompletedLevelWithLowestSteps(with request: NSFetchRequest<CompletedLevel> = CompletedLevel.fetchRequest()) -> CompletedLevel {
         // What about levelNumber?
         let request: NSFetchRequest<CompletedLevel> = CompletedLevel.fetchRequest()
@@ -59,6 +60,15 @@ class CoreDataManager {
         }
         
         return (results?[0])!
+    }
+    
+    func fetchAllCompletedLevelsInAscendingOrderAndLowestSteps() -> [CompletedLevel] {
+        let request: NSFetchRequest<CompletedLevel> = CompletedLevel.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "lowestSteps", ascending: true)]
+
+        let results = try? persistentContainer.viewContext.fetch(request)
+        
+        return (results?.count ?? 0) > 0 ? results! : []
     }
     
     // MARK: - Removing data
