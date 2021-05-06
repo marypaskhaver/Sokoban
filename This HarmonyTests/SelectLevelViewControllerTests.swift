@@ -48,7 +48,22 @@ class SelectLevelViewControllerTests: XCTestCase {
         let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants)
     
         XCTAssert(slvc.constants.completeLevels.contains(7))
+    }
+    
+    func testCompletedLevelsAreCheckmarkedInSelectLevelViewController() {
+        SwipeTracker.constants = MockDataModelObjects.MockConstants()
+        SwipeTracker.gameSceneClass = MockDataModelObjects.MockGameScene.self
+
+        gvc.loadLevel(number: 7)
         
+        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
+        
+        // Have player push crate down onto only storage space
+        let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
+        swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
+        
+        let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants)
+
         let numCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
             return !(cell as! LevelCell).checkmarkView.isHidden
         }.count
