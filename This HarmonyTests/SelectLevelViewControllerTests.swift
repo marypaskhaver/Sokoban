@@ -26,6 +26,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     }
     
     override func tearDown() {
+        gvc.gameSceneClass.level = 1 // Resets GameScene or MockGameScene level to default number: 1
         gvc = nil
     }
     

@@ -131,6 +131,7 @@ class This_HarmonyTests: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        gc.gameSceneClass.level = 1 // Resets GameScene or MockGameScene level to default number: 1
         gc = nil
     }
 
