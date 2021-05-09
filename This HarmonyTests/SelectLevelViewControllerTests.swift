@@ -76,9 +76,6 @@ class SelectLevelViewControllerTests: XCTestCase {
         let slvc: SelectLevelViewController = createSelectLevelViewController()
 
         let numCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
-            if !(cell as! LevelCell).checkmarkView.isHidden {
-                print("Active: \((cell as! LevelCell).levelNumberLabel.text)")
-            }
             return !(cell as! LevelCell).checkmarkView.isHidden
         }.count
 

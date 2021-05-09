@@ -42,14 +42,7 @@ class Constants {
         
         // Load completeLevels
         let allCompletedLevels: [CompletedLevel] = cdm.fetchAllCompletedLevelsInAscendingOrderAndLowestSteps()
-        print("ALL COMPLETED LEVELS")
-        for level in allCompletedLevels {
-            print("Level! Number: \(level.levelNumber), steps: \(level.lowestSteps)")
-        }
-        
-        print("----------------------------------------------------------------")
-        
-        print("UNIQUE LEVELS")
+
         var uniqueCompleteLevels: [CompletedLevel] = []
         var uniqueCompleteLevelNumbers: [Int] = []
 
@@ -57,11 +50,8 @@ class Constants {
             if !uniqueCompleteLevelNumbers.contains(Int(level.levelNumber)) {
                 uniqueCompleteLevels.append(level)
                 uniqueCompleteLevelNumbers.append(Int(level.levelNumber))
-                print("Unique level found! Number: \(level.levelNumber)")
             }
         }
-        
-        print("----------------------------------------------------------------")
         
         for level in uniqueCompleteLevels {
             if level.lowestSteps < Int32.max {
