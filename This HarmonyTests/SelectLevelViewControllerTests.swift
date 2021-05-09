@@ -75,5 +75,30 @@ class SelectLevelViewControllerTests: XCTestCase {
         XCTAssertEqual(slvc.collectionView.visibleCells.count, 12)
         XCTAssertEqual(numCheckedCells, 1)
     }
+    
+    func testCompletedLevelsStayCheckmarkedWhenGameViewControllerReloads() {
+        createLevelAndMoveCrateToFinishIt()
+
+        var slvc: SelectLevelViewController = createSelectLevelViewController()
+
+        let originalNumCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
+            return !(cell as! LevelCell).checkmarkView.isHidden
+        }.count
+
+        XCTAssertEqual(slvc.collectionView.visibleCells.count, 12)
+        XCTAssertEqual(originalNumCheckedCells, 1)
+
+        // Reset gvc-- bc CoreData is used, it should have the same data / workings as before
+        gvc = MockDataModelObjects().createGameViewController()
+        slvc = createSelectLevelViewController()
+
+        let currentNumCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
+            return !(cell as! LevelCell).checkmarkView.isHidden
+        }.count
+
+        XCTAssertEqual(slvc.collectionView.visibleCells.count, 12)
+        XCTAssertEqual(currentNumCheckedCells, 1)
+
+    }
 
 }
