@@ -30,16 +30,18 @@ class Constants {
     ]
     
     var numLevels: Int = 0
+    var cdm: CoreDataManager
     
-    init() {
+    init(withCoreDataManager cdm: CoreDataManager = CoreDataManager()) {
         let resourceURL = Bundle.main.resourceURL!
         let resourcesContent = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
         let levelCount = resourcesContent.filter { $0.lastPathComponent.hasPrefix("Level_") }.count
         
         numLevels = levelCount
+        self.cdm = cdm
         
         // Load completeLevels
-        let allCompletedLevels: [CompletedLevel] = CoreDataManager().fetchAllCompletedLevelsInAscendingOrderAndLowestSteps()
+        let allCompletedLevels: [CompletedLevel] = cdm.fetchAllCompletedLevelsInAscendingOrderAndLowestSteps()
         print("ALL COMPLETED LEVELS")
         for level in allCompletedLevels {
             print("Level! Number: \(level.levelNumber), steps: \(level.lowestSteps)")
