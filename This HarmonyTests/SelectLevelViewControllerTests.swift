@@ -20,16 +20,22 @@ class SelectLevelViewControllerTests: XCTestCase {
         Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
     }
     
-    func createSelectLevelViewController(withConstants constants: Constants = MockDataModelObjects.MockConstants()) -> SelectLevelViewController {
-        let slvc: SelectLevelViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SelectLevelViewController")
+    func createSelectLevelViewController(withConstants constants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()) -> SelectLevelViewController {
+        let slvc: SelectLevelViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SelectLevelViewController") // You initialize it but w/ old constants
+
         slvc.constants = constants
+        slvc.constants.cdm = constants.cdm
+               
         slvc.collectionView.layoutIfNeeded()
         
         return slvc
     }
     
     func createLevelAndMoveCrateToFinishIt() {
-        SwipeTracker.constants = MockDataModelObjects.MockConstants()
+        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
+        swipeTrackerConstants.cdm = CoreDataManager(container: MockDataModelObjects().persistentContainer)
+
+        SwipeTracker.constants = swipeTrackerConstants
         SwipeTracker.gameSceneClass = MockDataModelObjects.MockGameScene.self
 
         gvc.loadLevel(number: 7)
@@ -49,17 +55,20 @@ class SelectLevelViewControllerTests: XCTestCase {
     func testCompletedLevelsAreAddedToConstants() {
         createLevelAndMoveCrateToFinishIt()
 
-        let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants)
-    
-        XCTAssert(slvc.constants.completeLevels.contains(7))
+        let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants as! MockDataModelObjects.MockConstants)
+
+        XCTAssertTrue(slvc.constants.completeLevels.contains(7))
     }
-    
+
     func testCompletedLevelsAreCheckmarkedInSelectLevelViewController() {
         createLevelAndMoveCrateToFinishIt()
-        
-        let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants)
+
+        let slvc: SelectLevelViewController = createSelectLevelViewController()
 
         let numCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
+            if !(cell as! LevelCell).checkmarkView.isHidden {
+                print("Active: \((cell as! LevelCell).levelNumberLabel.text)")
+            }
             return !(cell as! LevelCell).checkmarkView.isHidden
         }.count
 
