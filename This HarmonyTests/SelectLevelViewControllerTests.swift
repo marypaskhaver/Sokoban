@@ -114,5 +114,41 @@ class SelectLevelViewControllerTests: XCTestCase {
         XCTAssertEqual(slvc.collectionView.numberOfSections, 2)
     }
     
+    func testClickingCellLoadsLevel() {
+        XCTAssertNil(gvc.presentedViewController)
+        
+        // Check if gvc's scene is nil-- it should be, bc nothing has been loaded yet
+        var scene: GameScene? = (gvc.view as! SKView).scene as? GameScene
+        XCTAssertNil(scene)
+        XCTAssertEqual(gvc.gameSceneClass.level, 1) // Default level to load for GameScene
 
+        // Necessary to enable gvc to present SelectLevelViewController in the window hierarchy, as this gvc instance is not seen as a rootViewController by the AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = gvc
+        
+        // Show and getSelectLevelViewController
+        gvc.presentLevelMenu()
+        let slvc = gvc.presentedViewController as! SelectLevelViewController
+                
+        // Select item
+        slvc.collectionView(slvc.collectionView, didSelectItemAt: IndexPath(row: 1, section: 0)) // Level 2
+    
+        // Check if now, gvc's scene exists
+        scene = (gvc.view as! SKView).scene as! GameScene
+        
+        // Load level normally w/ second gvc
+//        let gvc2: GameViewController = MockDataModelObjects().createGameViewController()
+//        gvc2.loadLevel(number: 2)
+//        let scene2 = (gvc2.view as! SKView).scene as! GameScene
+//
+//        // Check if level loaded successfully in first gvc by comparing node names to second gvc's nodes
+//        for row in 0..<scene!.grid.grid.count {
+//            for col in 0..<scene!.grid.grid[row].count {
+//                XCTAssertTrue(scene!.grid.grid[row][col].name == scene2.grid.grid[row][col].name)
+//            }
+//        }
+        
+        XCTAssertNotNil(scene)
+        XCTAssert(gvc.gameSceneClass.level == 2)
+    }
 }
