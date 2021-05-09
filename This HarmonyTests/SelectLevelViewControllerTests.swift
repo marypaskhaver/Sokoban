@@ -17,17 +17,26 @@ class SelectLevelViewControllerTests: XCTestCase {
         super.setUp()
         
         gvc = MockDataModelObjects().createGameViewController()
+        
+        // Necessary to enable gvc to present SelectLevelViewController in the window hierarchy, as this gvc instance is not seen as a rootViewController by the AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = gvc
+
         Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
     }
     
+    override func tearDown() {
+        gvc = nil
+    }
+    
     func createSelectLevelViewController(withConstants constants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()) -> SelectLevelViewController {
-        let slvc: SelectLevelViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SelectLevelViewController") // You initialize it but w/ old constants
-
+        gvc.presentLevelMenu()
+        let slvc: SelectLevelViewController = gvc.presentedViewController as! SelectLevelViewController
+        
         slvc.constants = constants
         slvc.constants.cdm = constants.cdm
-               
         slvc.collectionView.layoutIfNeeded()
-        
+
         return slvc
     }
     
@@ -49,6 +58,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     
     func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
         let slvc: SelectLevelViewController = createSelectLevelViewController()
+        gvc.presentLevelMenu()
         XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants().numLevels)
     }
     
@@ -77,7 +87,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     }
     
     func testCompletedLevelsStayCheckmarkedWhenGameViewControllerReloads() {
-        createLevelAndMoveCrateToFinishIt()
+        createLevelAndMoveCrateToFinishIt() // Finish level. Should check that numCheckedCells is 0 beforehand.
 
         var slvc: SelectLevelViewController = createSelectLevelViewController()
 
@@ -90,6 +100,10 @@ class SelectLevelViewControllerTests: XCTestCase {
 
         // Reset gvc-- bc CoreData is used, it should have the same data / workings as before
         gvc = MockDataModelObjects().createGameViewController()
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = gvc
+
         slvc = createSelectLevelViewController()
 
         let currentNumCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
@@ -121,10 +135,6 @@ class SelectLevelViewControllerTests: XCTestCase {
         var scene: GameScene? = (gvc.view as! SKView).scene as? GameScene
         XCTAssertNil(scene)
         XCTAssertEqual(gvc.gameSceneClass.level, 1) // Default level to load for GameScene
-
-        // Necessary to enable gvc to present SelectLevelViewController in the window hierarchy, as this gvc instance is not seen as a rootViewController by the AppDelegate
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = gvc
         
         // Show and getSelectLevelViewController
         gvc.presentLevelMenu()
