@@ -65,17 +65,25 @@ class MockDataModelObjects {
     }
     
     class MockConstants: Constants {
-        
-        override init() {
+        init() {
             super.init()
-            
+            initMockProperties()
+        }
+        
+        override init(withCoreDataManager cdm: CoreDataManager) {
+            super.init()
+            self.cdm = cdm
+            initMockProperties()
+        }
+        
+        func initMockProperties() {
             let resourceURL = Bundle.main.resourceURL!
             let resourcesContent = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
             let levelCount = resourcesContent.filter { $0.lastPathComponent.hasPrefix("Test_Level_") }.count
 
-            numLevels = levelCount
+            self.numLevels = levelCount
 
-            levelThemes = [
+            self.levelThemes = [
                 1 : Default(),
                 2 : Default(),
                 3 : Default(),
