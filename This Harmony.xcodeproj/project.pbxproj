@@ -320,10 +320,10 @@
 				20ED277F25B92CA500428A5F /* Main Menu */,
 				20E2F80E259BC439004BF34B /* Main.storyboard */,
 				20EB18BF25F02D7D004914A0 /* LevelCell.swift */,
-				20EB18B725F02071004914A0 /* SelectLevelViewController.swift */,
 				20E2F811259BC43A004BF34B /* Assets.xcassets */,
 				20DA9BE8262CCE8D005B11A1 /* Theme.swift */,
 				20E2F813259BC43A004BF34B /* Info.plist */,
+				20EB18B725F02071004914A0 /* SelectLevelViewController.swift */,
 				2072500525BE1BBB00F278CC /* Extensions */,
 			);
 			path = "This Harmony";
