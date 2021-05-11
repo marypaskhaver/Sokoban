@@ -10,10 +10,12 @@ import Foundation
 class Theme: Equatable {
     var floorImages: [String]
     var storageImages: [String]
+    var playerImage: String
     
-    init(floorImage: [String] = [Constants.TileNames.floor.rawValue], storageImage: [String] = [Constants.TileNames.storage.rawValue]) {
+    init(floorImage: [String] = [Constants.TileNames.floor.rawValue], storageImage: [String] = [Constants.TileNames.storage.rawValue], playerImage: String = Constants.TileNames.player.rawValue) {
         self.floorImages = floorImage
         self.storageImages = storageImage
+        self.playerImage = playerImage
     }
     
     static func == (lhs: Theme, rhs: Theme) -> Bool {
@@ -48,7 +50,8 @@ class Beach: Theme {
     init() {
         let floorImages: [String] = ["beach_floor1", "beach_floor2", "beach_floor3", "beach_floor4"]
         let storageImages: [String] = [Constants.TileNames.storage.rawValue]
-        
-        super.init(floorImage: floorImages, storageImage: storageImages)
+        let playerImage: String = "beach_player"
+            
+        super.init(floorImage: floorImages, storageImage: storageImages, playerImage: playerImage)
     }
 }
