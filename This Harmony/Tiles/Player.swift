@@ -9,7 +9,6 @@ import Foundation
 import SpriteKit
 
 class Player: MovableTile {
-    // R, L, U, D
     
     override func moveRight(byNumTiles numTiles: Int) {
         super.moveRight(byNumTiles: numTiles)
@@ -34,6 +33,20 @@ class Player: MovableTile {
                     SKTexture(imageNamed: currentTextureName + "_walkl_1"),
                     SKTexture(imageNamed: currentTextureName + "_walkl_2"),
                     SKTexture(imageNamed: currentTextureName + "_walkl_stand")
+                    ], timePerFrame: 0.15)
+        
+        self.run(SKAction.repeat(anim, count: 1))
+    }
+    
+    override func moveUp(byNumTiles numTiles: Int) {
+        super.moveUp(byNumTiles: numTiles)
+        
+        let currentTextureName: String = Constants().levelThemes[GameScene.level]!.playerImage
+        
+        let anim = SKAction.animate(with: [
+                    SKTexture(imageNamed: currentTextureName + "_walku_1"),
+                    SKTexture(imageNamed: currentTextureName + "_walku_2"),
+                    SKTexture(imageNamed: currentTextureName + "_walku_stand")
                     ], timePerFrame: 0.15)
         
         self.run(SKAction.repeat(anim, count: 1))
