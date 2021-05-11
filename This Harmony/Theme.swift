@@ -8,16 +8,16 @@
 import Foundation
 
 class Theme: Equatable {
-    var floorImage: [String]
-    var storageImage: [String]
+    var floorImages: [String]
+    var storageImages: [String]
     
     init(floorImage: [String] = [Constants.TileNames.floor.rawValue], storageImage: [String] = [Constants.TileNames.storage.rawValue]) {
-        self.floorImage = floorImage
-        self.storageImage = storageImage
+        self.floorImages = floorImage
+        self.storageImages = storageImage
     }
     
     static func == (lhs: Theme, rhs: Theme) -> Bool {
-        return lhs.floorImage == rhs.floorImage && lhs.storageImage == rhs.storageImage
+        return lhs.floorImages == rhs.floorImages && lhs.storageImages == rhs.storageImages
     }
     
 //    var wallImage: String { get }
