@@ -10,19 +10,21 @@ import SpriteKit
 
 class Player: MovableTile {
     
-    func createAnimationAction(inDirection dir: Direction) -> SKAction {
-        var dirLetter: String = ""
-        
+    func getDirectionLetter(forDirection dir: Direction) -> String {
         switch dir {
         case .right:
-            dirLetter = "r"
+            return "r"
         case .left:
-            dirLetter = "l"
+            return "l"
         case .up:
-            dirLetter = "u"
+            return "u"
         case .down:
-            dirLetter = "d"
+            return "d"
         }
+    }
+    
+    func createAnimationAction(inDirection dir: Direction) -> SKAction {
+        let dirLetter: String = getDirectionLetter(forDirection: dir)
         
         let currentTextureName: String = Constants().levelThemes[GameScene.level]!.playerImage
         let standImageName = currentTextureName + (dirLetter == "d" ? "" : "_walk\(dirLetter)_stand")
