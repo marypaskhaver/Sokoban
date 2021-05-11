@@ -27,11 +27,11 @@ class Player: MovableTile {
         let dirLetter: String = getDirectionLetter(forDirection: dir)
         
         let currentTextureName: String = Constants().levelThemes[GameScene.level]!.playerImage
-        let standImageName = currentTextureName + (dirLetter == "d" ? "" : "_walk\(dirLetter)_stand")
+        let standImageName = currentTextureName + (dirLetter == "d" ? "" : "_\(dirLetter)_stand")
         
         let anim = SKAction.animate(with: [
-                    SKTexture(imageNamed: currentTextureName + "_walk" + dirLetter + "_1"),
-                    SKTexture(imageNamed: currentTextureName + "_walk" + dirLetter + "_2"),
+                    SKTexture(imageNamed: currentTextureName + "_" + dirLetter + "_1"),
+                    SKTexture(imageNamed: currentTextureName + "_" + dirLetter + "_2"),
                     SKTexture(imageNamed: standImageName)
                     ], timePerFrame: 0.15)
         
