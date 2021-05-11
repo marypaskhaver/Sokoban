@@ -22,7 +22,7 @@ class Player: MovableTile {
                     SKTexture(imageNamed: currentTextureName + "_walkl_stand")
                     ], timePerFrame: 0.15)
         
-        self.run(SKAction.repeat(anim, count: 1), withKey: "walkLeft")
+        self.run(SKAction.repeat(anim, count: 1))
     }
     
     override func moveDown(byNumTiles numTiles: Int) {
@@ -36,7 +36,6 @@ class Player: MovableTile {
                     SKTexture(imageNamed: currentTextureName) // Current texture when standing still-- right now, all player images load looking down
                     ], timePerFrame: 0.15)
         
-        self.run(SKAction.repeat(anim, count: 1), withKey: "walkDown")
-        
+        self.run(SKAction.repeat(anim, count: 1))
     }
 }
