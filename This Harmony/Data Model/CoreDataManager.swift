@@ -10,6 +10,7 @@ import UIKit
 
 class CoreDataManager {
     let persistentContainer: NSPersistentContainer!
+    static var gameSceneClass: GameScene.Type = GameScene.self
     
     // MARK: - Init with dependency
     init(container: NSPersistentContainer) {
@@ -45,7 +46,7 @@ class CoreDataManager {
     func fetchCompletedLevelWithLowestSteps(with request: NSFetchRequest<CompletedLevel> = CompletedLevel.fetchRequest()) -> CompletedLevel {
         // What about levelNumber?
         let request: NSFetchRequest<CompletedLevel> = CompletedLevel.fetchRequest()
-        request.predicate = NSPredicate(format: "levelNumber = %d", GameScene.level)
+        request.predicate = NSPredicate(format: "levelNumber = %d", CoreDataManager.gameSceneClass.level)
         request.sortDescriptors = [NSSortDescriptor(key: "lowestSteps", ascending: true)]
         request.fetchLimit = 1
 
@@ -54,7 +55,7 @@ class CoreDataManager {
         // No previous CompletedLevels have ever been saved or the default data contains 0 steps-- no level can be completed w/ 0 steps
         if (results?.count == 0 || (results?.count == 1 && results?[0].lowestSteps == 0)) {
             print("create")
-            let newCompletedLevel = self.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: Int32.max)!
+            let newCompletedLevel = self.insertCompletedLevel(levelNumber: Int32(CoreDataManager.gameSceneClass.level), lowestSteps: Int32.max)!
             self.save()
             return newCompletedLevel
         }
