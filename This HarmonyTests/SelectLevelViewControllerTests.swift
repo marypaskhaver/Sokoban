@@ -16,6 +16,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     override func setUpWithError() throws {
         super.setUp()
         
+        CoreDataManager.gameSceneClass = MockDataModelObjects.MockGameScene.self
         gvc = MockDataModelObjects().createGameViewController()
         
         // Necessary to enable gvc to present SelectLevelViewController in the window hierarchy, as this gvc instance is not seen as a rootViewController by the AppDelegate
@@ -23,14 +24,11 @@ class SelectLevelViewControllerTests: XCTestCase {
         appDelegate.window?.rootViewController = gvc
 
         Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
-        CoreDataManager.gameSceneClass = MockDataModelObjects.MockGameScene.self
-        Player.gameSceneClass = MockDataModelObjects.MockGameScene.self
         Player.constants = MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm)
     }
     
     override func tearDown() {
         CoreDataManager.gameSceneClass.level = 1
-        Player.gameSceneClass.level = 1
         gvc.gameSceneClass.level = 1 // Resets GameScene or MockGameScene level to default number: 1
         gvc = nil
     }
@@ -52,17 +50,16 @@ class SelectLevelViewControllerTests: XCTestCase {
     
     func createLevelAndMoveCrateToFinishIt() {
         let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm)
-        swipeTrackerConstants.cdm = CoreDataManager(container: MockDataModelObjects().persistentContainer)
 
         SwipeTracker.constants = swipeTrackerConstants
         Player.constants = swipeTrackerConstants
-        SwipeTracker.gameSceneClass = MockDataModelObjects.MockGameScene.self
-        Player.gameSceneClass = MockDataModelObjects.MockGameScene.self
-        
+
         gvc.loadLevel(number: 7)
         
         let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
         
+        Player.constants = swipeTrackerConstants
+
         // Have player push crate down onto only storage space
         let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
         swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
@@ -70,7 +67,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     
     func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
         let slvc: SelectLevelViewController = createSelectLevelViewController()
-//        gvc.presentLevelMenu()
+
         XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm).numLevels)
     }
     
