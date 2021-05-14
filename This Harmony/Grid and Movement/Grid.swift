@@ -49,7 +49,7 @@ class Grid {
         // If currentSteps are the lowest ever, set them as the level's lowestSteps in CoreData
         if currentSteps < lowestSteps || lowestSteps == 0 {
             print("current steps are lower than lowestSteps-- update data")
-            _ = cdm.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: Int32(currentSteps))
+            _ = cdm.insertCompletedLevel(levelNumber: Int32(CoreDataManager.gameSceneClass.level), lowestSteps: Int32(currentSteps))
             lowestSteps = currentSteps
             cdm.save()
         }
