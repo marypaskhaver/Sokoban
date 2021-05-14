@@ -9,6 +9,8 @@ import Foundation
 import SpriteKit
 
 class Player: MovableTile {
+    static var constants: Constants = Constants()
+    static var gameSceneClass: GameScene.Type = GameScene.self
     
     func getDirectionLetter(forDirection dir: Direction) -> String {
         switch dir {
@@ -26,13 +28,12 @@ class Player: MovableTile {
     func createAnimationAction(inDirection dir: Direction) -> SKAction {
         let dirLetter: String = getDirectionLetter(forDirection: dir)
         
-        let currentTextureName: String = Constants().levelThemes[GameScene.level]!.playerImage
-        let standImageName = currentTextureName + (dirLetter == "d" ? "" : "_\(dirLetter)_stand")
+        let currentTextureName: String = Player.constants.levelThemes[Player.gameSceneClass.level]!.playerImage
         
         let anim = SKAction.animate(with: [
                     SKTexture(imageNamed: currentTextureName + "_" + dirLetter + "_1"),
                     SKTexture(imageNamed: currentTextureName + "_" + dirLetter + "_2"),
-                    SKTexture(imageNamed: standImageName)
+                    SKTexture(imageNamed: currentTextureName + "_" + dirLetter + "_stand")
                     ], timePerFrame: 0.15)
         
         return anim
