@@ -67,7 +67,7 @@ class MenuBoxMaker {
         }
         
         menuBox.addChild(buttonRestart)
-        if GameScene.level != Constants().numLevels { menuBox.addChild(buttonNext) }
+        if CoreDataManager.gameSceneClass.level != Constants().numLevels { menuBox.addChild(buttonNext) }
 
         return menuBox
     }
