@@ -23,31 +23,42 @@ class SelectLevelViewControllerTests: XCTestCase {
         appDelegate.window?.rootViewController = gvc
 
         Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
+        CoreDataManager.gameSceneClass = MockDataModelObjects.MockGameScene.self
+        Player.gameSceneClass = MockDataModelObjects.MockGameScene.self
+        Player.constants = MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm)
     }
     
     override func tearDown() {
+        CoreDataManager.gameSceneClass.level = 1
+        Player.gameSceneClass.level = 1
         gvc.gameSceneClass.level = 1 // Resets GameScene or MockGameScene level to default number: 1
         gvc = nil
     }
     
-    func createSelectLevelViewController(withConstants constants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()) -> SelectLevelViewController {
-        gvc.presentLevelMenu()
-        let slvc: SelectLevelViewController = gvc.presentedViewController as! SelectLevelViewController
+    func createSelectLevelViewController(withConstants constants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants(withCoreDataManager: CoreDataManager(container: MockDataModelObjects().persistentContainer))) -> SelectLevelViewController {
         
+        gvc.presentLevelMenu()
+        
+        let slvc: SelectLevelViewController = gvc.presentedViewController as! SelectLevelViewController
+            
         slvc.constants = constants
         slvc.constants.cdm = constants.cdm
+            
+        slvc.collectionView.reloadData()
         slvc.collectionView.layoutIfNeeded()
 
         return slvc
     }
     
     func createLevelAndMoveCrateToFinishIt() {
-        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
+        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm)
         swipeTrackerConstants.cdm = CoreDataManager(container: MockDataModelObjects().persistentContainer)
 
         SwipeTracker.constants = swipeTrackerConstants
+        Player.constants = swipeTrackerConstants
         SwipeTracker.gameSceneClass = MockDataModelObjects.MockGameScene.self
-
+        Player.gameSceneClass = MockDataModelObjects.MockGameScene.self
+        
         gvc.loadLevel(number: 7)
         
         let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
@@ -59,8 +70,8 @@ class SelectLevelViewControllerTests: XCTestCase {
     
     func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
         let slvc: SelectLevelViewController = createSelectLevelViewController()
-        gvc.presentLevelMenu()
-        XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants().numLevels)
+//        gvc.presentLevelMenu()
+        XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm).numLevels)
     }
     
     func testCompletedLevelsAreAddedToConstants() {
@@ -74,20 +85,19 @@ class SelectLevelViewControllerTests: XCTestCase {
     func testCompletedLevelsAreCheckmarkedInSelectLevelViewController() {
         createLevelAndMoveCrateToFinishIt()
 
-        let slvc: SelectLevelViewController = createSelectLevelViewController()
+        let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants as! MockDataModelObjects.MockConstants)
 
         let numCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
             return !(cell as! LevelCell).checkmarkView.isHidden
         }.count
-
+        
         XCTAssertEqual(slvc.collectionView.visibleCells.count, 12)
         XCTAssertEqual(numCheckedCells, 1)
     }
     
     func testCompletedLevelsStayCheckmarkedWhenGameViewControllerReloads() {
         createLevelAndMoveCrateToFinishIt() // Finish level. Should check that numCheckedCells is 0 beforehand.
-
-        var slvc: SelectLevelViewController = createSelectLevelViewController()
+        var slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants as! MockDataModelObjects.MockConstants)
 
         let originalNumCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
             return !(cell as! LevelCell).checkmarkView.isHidden
@@ -102,7 +112,7 @@ class SelectLevelViewControllerTests: XCTestCase {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = gvc
 
-        slvc = createSelectLevelViewController()
+        slvc = createSelectLevelViewController(withConstants: SwipeTracker.constants as! MockDataModelObjects.MockConstants)
 
         let currentNumCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
             return !(cell as! LevelCell).checkmarkView.isHidden
@@ -117,12 +127,12 @@ class SelectLevelViewControllerTests: XCTestCase {
 
         // Since currently all 12 test_levels are listed as Default levels, there should only be one section w/ all 12 test_levels
         XCTAssertEqual(slvc.collectionView.numberOfSections, 1)
-        
+
         // Replace test_level 1's theme from Default to Beach
         slvc.constants.levelThemes[1] = Beach()
-        
+
         slvc.collectionView.reloadData()
-        
+
         XCTAssertEqual(slvc.collectionView.numberOfSections, 2)
     }
     
