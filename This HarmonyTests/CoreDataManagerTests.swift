@@ -38,7 +38,7 @@ class CoreDataManagerTests: XCTestCase {
     
     // MARK: - Initializing + deleting CompletedLevel stubs
     func initializeCompletedLevelStubs() {
-        _ = cdm.insertCompletedLevel(levelNumber: Int32(GameScene.level), lowestSteps: 20)
+        _ = cdm.insertCompletedLevel(levelNumber: Int32(CoreDataManager.gameSceneClass.level), lowestSteps: 20)
         cdm.save()
     }
     
