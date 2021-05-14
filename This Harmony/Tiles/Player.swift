@@ -10,7 +10,6 @@ import SpriteKit
 
 class Player: MovableTile {
     static var constants: Constants = Constants()
-    static var gameSceneClass: GameScene.Type = GameScene.self
     
     func getDirectionLetter(forDirection dir: Direction) -> String {
         switch dir {
@@ -28,7 +27,7 @@ class Player: MovableTile {
     func createAnimationAction(inDirection dir: Direction) -> SKAction {
         let dirLetter: String = getDirectionLetter(forDirection: dir)
         
-        let currentTextureName: String = Player.constants.levelThemes[Player.gameSceneClass.level]!.playerImage
+        let currentTextureName: String = Player.constants.levelThemes[CoreDataManager.gameSceneClass.level]!.playerImage
         
         let anim = SKAction.animate(with: [
                     SKTexture(imageNamed: currentTextureName + "_" + dirLetter + "_1"),
