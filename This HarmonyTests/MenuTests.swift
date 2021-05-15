@@ -68,7 +68,26 @@ class MenuTests: XCTestCase {
         swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
         
         XCTAssert(nextButton.state == .disabled)
+    }
+    
+    func testPrevButtonDisabledWhenLevelComplete() {
+        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
+
+        SwipeTracker.constants = swipeTrackerConstants
+        Player.constants = swipeTrackerConstants
+
+        gvc.loadLevel(number: 7)
         
+        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
+        
+        let nextButton: MSButtonNode = scene.children.first(where: { $0.name == "prev_button" }) as! MSButtonNode
+        
+        XCTAssert(nextButton.state == .active)
+        
+        let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
+        swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
+        
+        XCTAssert(nextButton.state == .disabled)
     }
 
 }
