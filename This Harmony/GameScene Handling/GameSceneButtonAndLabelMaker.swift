@@ -26,7 +26,7 @@ class GameSceneButtonAndLabelMaker {
         gc.buttonPrevious = buttonPrevious
         gc.buttonMenu = buttonMenu
         
-        gc.levelLabel = TextLabel("Level \(GameScene.level)", at: CGPoint(x: 384, y: 970))
+        gc.levelLabel = TextLabel("Level \(CoreDataManager.gameSceneClass.level)", at: CGPoint(x: 384, y: 970))
         gc.stepsLabel = TextLabel("Steps: \(gc.grid.currentSteps)", at: CGPoint(x: 384, y: 150))
         
         setButtonHandlers()
