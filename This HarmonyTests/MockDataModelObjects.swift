@@ -66,16 +66,10 @@ class MockDataModelObjects {
     
     class MockConstants: Constants {
         init() {
-            super.init()
+            super.init(withCoreDataManager: CoreDataManager(container: MockDataModelObjects().persistentContainer))
             initMockProperties()
         }
-        
-        override init(withCoreDataManager cdm: CoreDataManager) {
-            super.init()
-            self.cdm = cdm
-            initMockProperties()
-        }
-        
+                
         func initMockProperties() {
             let resourceURL = Bundle.main.resourceURL!
             let resourcesContent = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
