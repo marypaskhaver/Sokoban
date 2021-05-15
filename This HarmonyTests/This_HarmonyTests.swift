@@ -42,7 +42,7 @@ class This_HarmonyTests: XCTestCase {
     }
     
     func testCantGoToNextLevelFromLastLevel() {
-        gc.loadLevel(number: Constants().numLevels) // Currently the last level
+        gc.loadLevel(number: MockDataModelObjects.MockConstants().numLevels) // Currently the last level
 
         var scene: GameScene = (gc.view as! SKView).scene as! GameScene
         XCTAssert(scene.buttonNext.state == .disabled)
