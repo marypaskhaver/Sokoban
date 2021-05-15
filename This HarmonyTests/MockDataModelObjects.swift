@@ -46,8 +46,6 @@ class MockDataModelObjects {
         gc.loadViewIfNeeded()
         
         gc.gameSceneClass = MockGameScene.self
-        
-        CoreDataManager.gameSceneClass = MockGameScene.self
         gc.cdm = CoreDataManager(container: persistentContainer)
 
         return gc
