@@ -129,6 +129,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         grid.updateStepDataIfNeeded()
         
         disableSwipeTrackers() // So user can't move while menu is open
+        disablePauseButton() // So user can't open list of levels while their level-complete data is showing
+    }
+    
+    func disablePauseButton() {
+        let nodesNamedMenuButton: [SKNode] = children.filter { (node) -> Bool in
+            node.name == "menu_button"
+        }
+        
+        ((nodesNamedMenuButton.first) as! MSButtonNode).state = .disabled
+        ((nodesNamedMenuButton.first) as! MSButtonNode).reloadInputViews()
     }
     
 }
