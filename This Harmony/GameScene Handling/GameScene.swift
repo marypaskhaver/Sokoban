@@ -116,6 +116,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         disableSwipeTrackers() // So user can't move while menu is open
+        
+        buttonRestart.state = .disabled
+        buttonNext.state = .disabled
+        buttonPrevious.state = .disabled
     }
     
     func showLevelCompleteMenu() {
