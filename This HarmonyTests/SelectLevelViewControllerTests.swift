@@ -74,6 +74,7 @@ class SelectLevelViewControllerTests: XCTestCase {
 
         let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants as! MockDataModelObjects.MockConstants)
 
+        XCTAssertEqual(slvc.constants.completeLevels.count, 1)
         XCTAssertTrue(slvc.constants.completeLevels.contains(7))
     }
 
