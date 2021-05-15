@@ -40,7 +40,7 @@ class GameSceneButtonAndLabelMaker {
     
     private func setButtonHandlers() {
         gc.buttonRestart.selectedHandler = {
-            self.gc.gvc.loadLevel(number: GameScene.level)
+            self.gc.gvc.loadLevel(number: CoreDataManager.gameSceneClass.level)
         }
         
         gc.buttonNext.selectedHandler = {

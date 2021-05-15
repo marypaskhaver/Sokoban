@@ -66,10 +66,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func disableButtonsIfNeeded() {
         // Disable buttons if needed
-        if CoreDataManager.gameSceneClass.getLevel(GameScene.level + 1) == nil {
+        if CoreDataManager.gameSceneClass.getLevel(CoreDataManager.gameSceneClass.level + 1) == nil {
             buttonNext.state = .disabled
             buttonNext.reloadInputViews()
-        } else if CoreDataManager.gameSceneClass.getLevel(GameScene.level - 1) == nil {
+        } else if CoreDataManager.gameSceneClass.getLevel(CoreDataManager.gameSceneClass.level - 1) == nil {
             buttonPrevious.state = .disabled
             buttonPrevious.reloadInputViews()
         }
@@ -80,11 +80,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func goToNextLevel() {
-        let nextLevel: GameScene? = CoreDataManager.gameSceneClass.getLevel(GameScene.level + 1)
+        let nextLevel: GameScene? = CoreDataManager.gameSceneClass.getLevel(CoreDataManager.gameSceneClass.level + 1)
         
         if nextLevel != nil {
             nextLevel!.gvc = gvc
-            GameScene.level += 1
+            CoreDataManager.gameSceneClass.level += 1
             self.view?.presentScene(nextLevel)
         }
         
@@ -92,11 +92,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func goToPreviousLevel() {
-        let previousLevel: GameScene? = CoreDataManager.gameSceneClass.getLevel(GameScene.level - 1)
+        let previousLevel: GameScene? = CoreDataManager.gameSceneClass.getLevel(CoreDataManager.gameSceneClass.level - 1)
         
         if previousLevel != nil {
             previousLevel!.gvc = gvc
-            GameScene.level -= 1
+            CoreDataManager.gameSceneClass.level -= 1
             self.view?.presentScene(previousLevel)
         }
 

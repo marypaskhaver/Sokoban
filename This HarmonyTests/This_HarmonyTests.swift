@@ -71,7 +71,7 @@ class This_HarmonyTests: XCTestCase {
         XCTAssert(scene.grid.lowestSteps == 10)
         
         // Reload level
-        gc.loadLevel(number: GameScene.level)
+        gc.loadLevel(number: CoreDataManager.gameSceneClass.level)
         
         XCTAssert(gc.cdm.fetchCompletedLevelWithLowestSteps().lowestSteps == 10)
         XCTAssert(scene.grid.lowestSteps == 10)
