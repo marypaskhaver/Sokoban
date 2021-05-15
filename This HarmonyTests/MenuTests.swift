@@ -29,7 +29,8 @@ class MenuTests: XCTestCase {
         gvc = nil
     }
     
-    func testLevelCompleteMenuShowsWhenLevelComplete() {
+    // MARK: - Creating level conditions for tests
+    func getCompletedLevelScene() -> GameScene {
         let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
 
         SwipeTracker.constants = swipeTrackerConstants
@@ -37,7 +38,12 @@ class MenuTests: XCTestCase {
 
         gvc.loadLevel(number: 7)
         
-        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
+        return (gvc.view as! SKView).scene as! GameScene
+    }
+    
+    // MARK: - LevelCompleteMenu tests
+    func testLevelCompleteMenuShowsWhenLevelComplete() {
+        let scene: GameScene = getCompletedLevelScene()
         
         var menuBoxes = scene.children.filter( { $0.name == MenuBox.levelCompleteMenu.rawValue } )
         XCTAssertEqual(menuBoxes.count, 0)
@@ -54,15 +60,8 @@ class MenuTests: XCTestCase {
     
     // MARK: - Next Button
     func testNextButtonDisabledWhenLevelComplete() {
-        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
+        let scene: GameScene = getCompletedLevelScene()
 
-        SwipeTracker.constants = swipeTrackerConstants
-        Player.constants = swipeTrackerConstants
-
-        gvc.loadLevel(number: 7)
-        
-        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
-        
         let nextButton: MSButtonNode = scene.children.first(where: { $0.name == "next_button" }) as! MSButtonNode
         
         XCTAssert(nextButton.state == .active)
@@ -90,15 +89,8 @@ class MenuTests: XCTestCase {
     
     // MARK: - Prev Button
     func testPrevButtonDisabledWhenLevelComplete() {
-        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
+        let scene: GameScene = getCompletedLevelScene()
 
-        SwipeTracker.constants = swipeTrackerConstants
-        Player.constants = swipeTrackerConstants
-
-        gvc.loadLevel(number: 7)
-        
-        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
-        
         let prevButton: MSButtonNode = scene.children.first(where: { $0.name == "prev_button" }) as! MSButtonNode
         
         XCTAssert(prevButton.state == .active)
@@ -126,15 +118,8 @@ class MenuTests: XCTestCase {
     
     // MARK: - Reset Button
     func testResetButtonDisabledWhenLevelComplete() {
-        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
+        let scene: GameScene = getCompletedLevelScene()
 
-        SwipeTracker.constants = swipeTrackerConstants
-        Player.constants = swipeTrackerConstants
-
-        gvc.loadLevel(number: 7)
-        
-        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
-        
         let resetButton: MSButtonNode = scene.children.first(where: { $0.name == "reset_button" }) as! MSButtonNode
         
         XCTAssert(resetButton.state == .active)
@@ -162,15 +147,8 @@ class MenuTests: XCTestCase {
     
     // MARK: - Pause Button
     func testPauseButtonDisabledWhenLevelComplete() {
-        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
+        let scene: GameScene = getCompletedLevelScene()
 
-        SwipeTracker.constants = swipeTrackerConstants
-        Player.constants = swipeTrackerConstants
-
-        gvc.loadLevel(number: 7)
-        
-        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
-        
         let pauseButton: MSButtonNode = scene.children.first(where: { $0.name == "menu_button" }) as! MSButtonNode
         
         XCTAssert(pauseButton.state == .active)
