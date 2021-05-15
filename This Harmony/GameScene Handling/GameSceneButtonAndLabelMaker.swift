@@ -21,6 +21,9 @@ class GameSceneButtonAndLabelMaker {
         let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: 100, y: 60))
         let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60, height: 60), atPosition: CGPoint(x: 80, y: 970))
         
+        buttonRestart.name = "reset_button"
+        buttonNext.name = "next_button"
+        buttonPrevious.name = "prev_button"
         buttonMenu.name = "menu_button"
         
         gc.buttonRestart = buttonRestart
