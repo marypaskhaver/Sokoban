@@ -66,10 +66,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func disableButtonsIfNeeded() {
         // Disable buttons if needed
-        if GameScene.getLevel(GameScene.level + 1) == nil {
+        if CoreDataManager.gameSceneClass.getLevel(GameScene.level + 1) == nil {
             buttonNext.state = .disabled
             buttonNext.reloadInputViews()
-        } else if GameScene.getLevel(GameScene.level - 1) == nil {
+        } else if CoreDataManager.gameSceneClass.getLevel(GameScene.level - 1) == nil {
             buttonPrevious.state = .disabled
             buttonPrevious.reloadInputViews()
         }
