@@ -56,7 +56,7 @@ class MenuBoxMaker {
         let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 50, y: menuBox.frame.minY + 50))
         
         buttonRestart.selectedHandler = {
-            gameScene.gvc.loadLevel(number: GameScene.level)
+            gameScene.gvc.loadLevel(number: CoreDataManager.gameSceneClass.level)
         }
         
         // Remove next button if there is no next level
