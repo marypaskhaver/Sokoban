@@ -28,7 +28,7 @@ class MenuTests: XCTestCase {
     }
     
     func testLevelCompleteMenuShowsWhenLevelComplete() {
-        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm)
+        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
 
         SwipeTracker.constants = swipeTrackerConstants
         Player.constants = swipeTrackerConstants
