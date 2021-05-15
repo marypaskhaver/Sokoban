@@ -10,6 +10,8 @@ import SpriteKit
 
 @testable import This_Harmony
 
+// Also check if SwipeTrackers get disabled
+
 class MenuTests: XCTestCase {
     var gvc: GameViewController!
 
@@ -50,6 +52,7 @@ class MenuTests: XCTestCase {
         XCTAssertTrue(scene.intersects(menuBoxes[0]))
     }
     
+    // MARK: - Next Button
     func testNextButtonDisabledWhenLevelComplete() {
         let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
 
@@ -70,6 +73,22 @@ class MenuTests: XCTestCase {
         XCTAssert(nextButton.state == .disabled)
     }
     
+    func testNextButtonDisabledWhenLevelPaused() {
+        gvc.loadLevel(number: 7)
+        
+        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
+        
+        let nextButton: MSButtonNode = scene.children.first(where: { $0.name == "next_button" }) as! MSButtonNode
+        
+        XCTAssert(nextButton.state == .active)
+        
+        let pauseButton: MSButtonNode = scene.children.first(where: { $0.name == "menu_button" }) as! MSButtonNode
+        pauseButton.selectedHandler()
+        
+        XCTAssert(nextButton.state == .disabled)
+    }
+    
+    // MARK: - Prev Button
     func testPrevButtonDisabledWhenLevelComplete() {
         let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
 
@@ -90,6 +109,22 @@ class MenuTests: XCTestCase {
         XCTAssert(nextButton.state == .disabled)
     }
     
+    func testPrevButtonDisabledWhenLevelPaused() {
+        gvc.loadLevel(number: 7)
+        
+        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
+        
+        let prevButton: MSButtonNode = scene.children.first(where: { $0.name == "prev_button" }) as! MSButtonNode
+        
+        XCTAssert(prevButton.state == .active)
+        
+        let pauseButton: MSButtonNode = scene.children.first(where: { $0.name == "menu_button" }) as! MSButtonNode
+        pauseButton.selectedHandler()
+        
+        XCTAssert(prevButton.state == .disabled)
+    }
+    
+    // MARK: - Reset Button
     func testResetButtonDisabledWhenLevelComplete() {
         let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
 
@@ -128,6 +163,21 @@ class MenuTests: XCTestCase {
         swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
         
         XCTAssert(nextButton.state == .disabled)
+    }
+    
+    func testResetButtonDisabledWhenLevelPaused() {
+        gvc.loadLevel(number: 7)
+        
+        let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
+        
+        let resetButton: MSButtonNode = scene.children.first(where: { $0.name == "prev_button" }) as! MSButtonNode
+        
+        XCTAssert(resetButton.state == .active)
+        
+        let pauseButton: MSButtonNode = scene.children.first(where: { $0.name == "menu_button" }) as! MSButtonNode
+        pauseButton.selectedHandler()
+        
+        XCTAssert(resetButton.state == .disabled)
     }
 
 }
