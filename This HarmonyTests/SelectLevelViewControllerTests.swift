@@ -24,7 +24,7 @@ class SelectLevelViewControllerTests: XCTestCase {
         appDelegate.window?.rootViewController = gvc
 
         Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
-        Player.constants = MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm)
+        Player.constants = MockDataModelObjects.MockConstants()
     }
     
     override func tearDown() {
@@ -33,15 +33,15 @@ class SelectLevelViewControllerTests: XCTestCase {
         gvc = nil
     }
     
-    func createSelectLevelViewController(withConstants constants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants(withCoreDataManager: CoreDataManager(container: MockDataModelObjects().persistentContainer))) -> SelectLevelViewController {
+    func createSelectLevelViewController(withConstants constants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()) -> SelectLevelViewController {
         
         gvc.presentLevelMenu()
         
         let slvc: SelectLevelViewController = gvc.presentedViewController as! SelectLevelViewController
-            
+
         slvc.constants = constants
         slvc.constants.cdm = constants.cdm
-            
+
         slvc.collectionView.reloadData()
         slvc.collectionView.layoutIfNeeded()
 
@@ -49,7 +49,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     }
     
     func createLevelAndMoveCrateToFinishIt() {
-        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm)
+        let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
 
         SwipeTracker.constants = swipeTrackerConstants
         Player.constants = swipeTrackerConstants
@@ -58,7 +58,7 @@ class SelectLevelViewControllerTests: XCTestCase {
         
         let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
         
-        Player.constants = swipeTrackerConstants
+        Player.constants = swipeTrackerConstants // Remove?
 
         // Have player push crate down onto only storage space
         let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
@@ -68,7 +68,7 @@ class SelectLevelViewControllerTests: XCTestCase {
     func testSelectLevelViewControllerNumberOfCellsEqualsNumberOfLevels() {
         let slvc: SelectLevelViewController = createSelectLevelViewController()
 
-        XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants(withCoreDataManager: gvc.cdm).numLevels)
+        XCTAssertEqual(slvc.collectionView.visibleCells.count, MockDataModelObjects.MockConstants().numLevels)
     }
     
     func testCompletedLevelsAreAddedToConstants() {
@@ -83,7 +83,7 @@ class SelectLevelViewControllerTests: XCTestCase {
         createLevelAndMoveCrateToFinishIt()
 
         let slvc: SelectLevelViewController = createSelectLevelViewController(withConstants: SwipeTracker.constants as! MockDataModelObjects.MockConstants)
-
+        
         let numCheckedCells = slvc.collectionView.visibleCells.filter { (cell: UICollectionViewCell) in
             return !(cell as! LevelCell).checkmarkView.isHidden
         }.count
