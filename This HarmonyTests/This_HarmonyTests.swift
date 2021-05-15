@@ -16,6 +16,7 @@ class This_HarmonyTests: XCTestCase {
     override func setUpWithError() throws {
         super.setUp()
         
+        CoreDataManager.gameSceneClass = MockDataModelObjects.MockGameScene.self
         gc = MockDataModelObjects().createGameViewController()
         Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
     }
