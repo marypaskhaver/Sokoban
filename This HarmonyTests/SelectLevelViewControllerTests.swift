@@ -58,8 +58,6 @@ class SelectLevelViewControllerTests: XCTestCase {
         
         let scene: GameScene = (gvc.view as! SKView).scene as! GameScene
         
-        Player.constants = swipeTrackerConstants // Remove?
-
         // Have player push crate down onto only storage space
         let swipeDownTracker: SwipeDownTracker = scene.trackers.filter( { type(of: $0) == SwipeDownTracker.self } )[0] as! SwipeDownTracker
         swipeDownTracker.swipedDown(sender: UISwipeGestureRecognizer())
