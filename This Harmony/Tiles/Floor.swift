@@ -12,11 +12,11 @@ class Floor: Tile {
     var player: Player?
     var crate: Crate?
     var laserBeams: [LaserBeam] = [LaserBeam]()
-    
-    static var defaultTexture = SKTexture(imageNamed: Constants().levelThemes[CoreDataManager.gameSceneClass.level]!.floorImages[0])
-    
-    init(withTexture texture: SKTexture = defaultTexture) {
-        super.init(texture: texture, name: Constants.TileNames.floor.rawValue)
+
+    init() {
+        let defaultTexture: SKTexture = SKTexture(imageNamed: Floor.constants.levelThemes[CoreDataManager.gameSceneClass.level]!.floorImages[0])
+        
+        super.init(texture: defaultTexture, name: Constants.TileNames.floor.rawValue)
     }
     
     required init?(coder aDecoder: NSCoder) {
