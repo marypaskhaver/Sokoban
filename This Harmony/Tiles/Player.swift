@@ -9,7 +9,6 @@ import Foundation
 import SpriteKit
 
 class Player: MovableTile {
-    static var constants: Constants = Constants()
     
     func getDirectionLetter(forDirection dir: Direction) -> String {
         switch dir {
