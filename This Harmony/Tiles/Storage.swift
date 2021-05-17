@@ -8,14 +8,7 @@
 import Foundation
 import SpriteKit
 
-class Storage: Floor {    
-    init() {
-        super.init(withTexture: SKTexture(imageNamed: Constants().levelThemes[GameScene.level]!.storageImages[0]))
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+class Storage: Floor {
     
     override func setCrate(to crate: Crate) {
         crate.isOnStorageArea = true
