@@ -23,8 +23,7 @@ class SelectLevelViewControllerTests: XCTestCase {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = gvc
 
-        Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
-        Player.constants = MockDataModelObjects.MockConstants()
+        Tile.constants = MockDataModelObjects.MockConstants()
     }
     
     override func tearDown() {
@@ -52,7 +51,7 @@ class SelectLevelViewControllerTests: XCTestCase {
         let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
 
         SwipeTracker.constants = swipeTrackerConstants
-        Player.constants = swipeTrackerConstants
+//        Player.constants = swipeTrackerConstants
 
         gvc.loadLevel(number: 7)
         
