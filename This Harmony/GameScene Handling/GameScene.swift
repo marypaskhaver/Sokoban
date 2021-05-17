@@ -44,6 +44,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             child.position = childrenToAdd[child]!
             self.addChild(child)
         }
+        
+        // Add camera and make its position the center of the node grid
+        CameraMaker(forGameScene: self).addCamera()
                 
         // Set buttons-- change from hardcoded to based off screen size later
         buttonAndLabelMaker = GameSceneButtonAndLabelMaker(with: self)
@@ -52,9 +55,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Set up trackers to track UISwipeGestureRecognizers and move character, update grid when swipe occurs
         trackers = [SwipeRightTracker(for: self), SwipeLeftTracker(for: self), SwipeUpTracker(for: self), SwipeDownTracker(for: self)]
-        
-        // Add camera and make its position the center of the node grid
-        CameraMaker(forGameScene: self).addCamera()
     }
     
     // Load level
