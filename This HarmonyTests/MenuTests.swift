@@ -20,7 +20,7 @@ class MenuTests: XCTestCase {
         
         CoreDataManager.gameSceneClass = MockDataModelObjects.MockGameScene.self
         gvc = MockDataModelObjects().createGameViewController()
-        Floor.defaultTexture = SKTexture(imageNamed: Constants.TileNames.floor.rawValue)
+        Tile.constants = MockDataModelObjects.MockConstants()
     }
     
     override func tearDownWithError() throws {
@@ -34,7 +34,6 @@ class MenuTests: XCTestCase {
         let swipeTrackerConstants: MockDataModelObjects.MockConstants = MockDataModelObjects.MockConstants()
 
         SwipeTracker.constants = swipeTrackerConstants
-        Player.constants = swipeTrackerConstants
 
         gvc.loadLevel(number: 7)
         
