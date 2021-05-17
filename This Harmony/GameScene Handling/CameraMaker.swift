@@ -18,6 +18,8 @@ class CameraMaker {
     func addCamera() {
         // Add camera and make its position the center of the node grid
         let cam = SKCameraNode()
+        cam.name = "camera"
+        
         let grid: Grid = scene.grid
         
         // Grid will always be a rectangle, so get x by averaging midX's of first and last node in row 0 and first and last node in column 0
