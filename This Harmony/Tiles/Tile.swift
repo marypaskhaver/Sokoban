@@ -8,10 +8,10 @@
 import SpriteKit
 
 class Tile: SKSpriteNode {
-    let constants: Constants = Constants()
+    static var constants: Constants = Constants()
     
     init(texture: SKTexture, name: String) {
-        super.init(texture: texture, color: UIColor.red, size: CGSize(width: constants.tileSize, height: constants.tileSize))
+        super.init(texture: texture, color: UIColor.red, size: CGSize(width: Tile.constants.tileSize, height: Tile.constants.tileSize))
         self.name = name
     }
     
