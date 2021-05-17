@@ -37,6 +37,7 @@
 		20A04B942623E1C100C3BB1F /* CrateMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B932623E1C100C3BB1F /* CrateMover.swift */; };
 		20A04BAC2626844500C3BB1F /* GridInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A04B982626824900C3BB1F /* GridInformation.swift */; };
 		20C877D3264F59B50004B963 /* MenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C877D2264F59B50004B963 /* MenuTests.swift */; };
+		20C877D52652EF1F0004B963 /* CameraMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C877D42652EF1F0004B963 /* CameraMaker.swift */; };
 		20CE23BD25A37D8100200C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE23BC25A37D8100200C0C /* Storage.swift */; };
 		20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */; };
 		20DA9BA22629B782005B11A1 /* Test_Level_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20009385262898FE00FA4E98 /* Test_Level_1.sks */; };
@@ -138,6 +139,7 @@
 		20A04B932623E1C100C3BB1F /* CrateMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrateMover.swift; sourceTree = "<group>"; };
 		20A04B982626824900C3BB1F /* GridInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridInformation.swift; sourceTree = "<group>"; };
 		20C877D2264F59B50004B963 /* MenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTests.swift; sourceTree = "<group>"; };
+		20C877D42652EF1F0004B963 /* CameraMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMaker.swift; sourceTree = "<group>"; };
 		20CE23BC25A37D8100200C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBoxMaker.swift; sourceTree = "<group>"; };
 		20DA9BAA2629BB80005B11A1 /* Test_Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test_Level_3.sks; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				20E2F80A259BC439004BF34B /* GameScene.swift */,
+				20C877D42652EF1F0004B963 /* CameraMaker.swift */,
 				206B702926055E9500B9716A /* Swipe Handling */,
 				20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */,
 				20EB18C425F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift */,
@@ -585,6 +588,7 @@
 				20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */,
 				20F5922C259CDEED003C6A1D /* Player.swift in Sources */,
 				206B701C26055C9F00B9716A /* SwipeUpTracker.swift in Sources */,
+				20C877D52652EF1F0004B963 /* CameraMaker.swift in Sources */,
 				20ED276525B90B5700428A5F /* LaserPointer.swift in Sources */,
 				20EB18C525F053EC004914A0 /* GameSceneButtonAndLabelMaker.swift in Sources */,
 				20EB18B825F02071004914A0 /* SelectLevelViewController.swift in Sources */,
