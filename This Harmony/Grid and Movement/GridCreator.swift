@@ -15,10 +15,35 @@ class GridCreator {
     
     init(withChildren children: [SKNode]) {
         _ = getGridOfScenesChildren(children)
+        
+//        printGrid()
+        
         laserPointers = getLaserPointerNodesFromScenesChildren(children)
 
         activateLaserBeams()
     }
+    
+//    func printGrid() {
+//        for row in grid {
+//            for node in row {
+//
+//                if node as? Floor != nil {
+//                    if node as? Storage != nil {
+//                        print("storage ")
+//                    } else if (node as! Floor).player != nil {
+//                        print("player ")
+//                    } else if (node as! Floor).crate != nil {
+//                        print("crate ")
+//                    } else {
+//                        print("floor ")
+//                    }
+//                } else {
+//                    print(node.name ?? "no name" + " ")
+//                }
+//            }
+//            print()
+//        }
+//    }
     
     private func getGridOfScenesChildren(_ children: [SKNode]) -> [ [Tile] ] {
         var arrayOfNodes: [Tile] = []
