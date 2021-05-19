@@ -47,8 +47,7 @@ class Default2: Theme {
 }
 
 class Beach: Theme {
-    init() {
-        let floorImages: [String] = ["beach_floor1", "beach_floor2", "beach_floor3", "beach_floor4"]
+    init(withFloorImages floorImages: [String] = ["beach_floor1", "beach_floor2", "beach_floor3", "beach_floor4"]) {
         let storageImages: [String] = [Constants.TileNames.storage.rawValue]
         let playerImage: String = "beach_player"
             
