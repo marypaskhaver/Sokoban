@@ -8,18 +8,16 @@
 import Foundation
 
 class Theme: Equatable {
-    var floorImages: [String]
-    var storageImages: [String]
+    var floorImage: String // Same floor image goes underneath player and all crates
     var playerImage: String
     
-    init(floorImage: [String] = [Constants.TileNames.floor.rawValue], storageImage: [String] = [Constants.TileNames.storage.rawValue], playerImage: String = Constants.TileNames.player.rawValue) {
-        self.floorImages = floorImage
-        self.storageImages = storageImage
+    init(floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue) {
+        self.floorImage = floorImage
         self.playerImage = playerImage
     }
     
     static func == (lhs: Theme, rhs: Theme) -> Bool {
-        return lhs.floorImages == rhs.floorImages && lhs.storageImages == rhs.storageImages
+        return lhs.floorImage == rhs.floorImage
     }
     
 //    var wallImage: String { get }
@@ -29,28 +27,25 @@ class Theme: Equatable {
 
 class Default: Theme {
     init() {
-        let floorImages: [String] = [Constants.TileNames.floor.rawValue]
-        let storageImages: [String] = [Constants.TileNames.storage.rawValue]
+        let floorImage: String = Constants.TileNames.floor.rawValue
 
-        super.init(floorImage: floorImages, storageImage: storageImages)
+        super.init(floorImage: floorImage)
     }
 }
 
 class Default2: Theme {
     // Temporary-- just seeing if I can use diff images in levels w/ diff themes
     init() {
-        let floorImages: [String] = [Constants.TileNames.player.rawValue]
-        let storageImages: [String] = [Constants.TileNames.wall.rawValue]
-
-        super.init(floorImage: floorImages, storageImage: storageImages)
+        let floorImage: String = Constants.TileNames.player.rawValue
+        
+        super.init(floorImage: floorImage)
     }
 }
 
 class Beach: Theme {
-    init(withFloorImages floorImages: [String] = ["beach_floor1", "beach_floor2", "beach_floor3", "beach_floor4"]) {
-        let storageImages: [String] = [Constants.TileNames.storage.rawValue]
+    init(withFloorImage floorImage: String = "beach_floor1") {
         let playerImage: String = "beach_player"
             
-        super.init(floorImage: floorImages, storageImage: storageImages, playerImage: playerImage)
+        super.init(floorImage: floorImage, playerImage: playerImage)
     }
 }
