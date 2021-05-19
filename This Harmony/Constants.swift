@@ -59,4 +59,8 @@ class Constants {
             }
         }
     }
+    
+    func getLevelTheme() -> Theme {
+        return Tile.constants.levelThemes[CoreDataManager.gameSceneClass.level]!
+    }
 }
