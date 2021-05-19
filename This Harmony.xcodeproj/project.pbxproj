@@ -39,6 +39,7 @@
 		20C877D3264F59B50004B963 /* MenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C877D2264F59B50004B963 /* MenuTests.swift */; };
 		20C877D52652EF1F0004B963 /* CameraMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C877D42652EF1F0004B963 /* CameraMaker.swift */; };
 		20C877D7265594BE0004B963 /* Level_4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20C877D6265594BE0004B963 /* Level_4.sks */; };
+		20C877D92655A7170004B963 /* Level_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20C877D82655A7170004B963 /* Level_5.sks */; };
 		20CE23BD25A37D8100200C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE23BC25A37D8100200C0C /* Storage.swift */; };
 		20CF046F25F8342800AB5086 /* MenuBoxMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */; };
 		20DA9BA22629B782005B11A1 /* Test_Level_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20009385262898FE00FA4E98 /* Test_Level_1.sks */; };
@@ -142,6 +143,7 @@
 		20C877D2264F59B50004B963 /* MenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTests.swift; sourceTree = "<group>"; };
 		20C877D42652EF1F0004B963 /* CameraMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMaker.swift; sourceTree = "<group>"; };
 		20C877D6265594BE0004B963 /* Level_4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_4.sks; sourceTree = "<group>"; };
+		20C877D82655A7170004B963 /* Level_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_5.sks; sourceTree = "<group>"; };
 		20CE23BC25A37D8100200C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		20CF046E25F8342800AB5086 /* MenuBoxMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBoxMaker.swift; sourceTree = "<group>"; };
 		20DA9BAA2629BB80005B11A1 /* Test_Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Test_Level_3.sks; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				20729D9625A9469B004F996A /* Level_2.sks */,
 				20DA9BF3262E2689005B11A1 /* Level_3.sks */,
 				20C877D6265594BE0004B963 /* Level_4.sks */,
+				20C877D82655A7170004B963 /* Level_5.sks */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				20E2F810259BC439004BF34B /* Main.storyboard in Resources */,
 				20583A8425BA752600A74914 /* player_cant_move.wav in Resources */,
 				20DA9BBA2629C44E005B11A1 /* Test_Level_5.sks in Resources */,
+				20C877D92655A7170004B963 /* Level_5.sks in Resources */,
 				20E2F807259BC439004BF34B /* Level_1.sks in Resources */,
 				20729D9725A9469B004F996A /* Level_2.sks in Resources */,
 				2076A89625A689D90085DA7A /* MainMenu.sks in Resources */,
