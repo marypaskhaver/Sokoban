@@ -26,7 +26,8 @@ class Constants {
     var levelThemes: [Int : Theme] = [
         1 : Default(),
         2 : Default2(),
-        3 : Beach()
+        3 : Beach(),
+        4 : Beach()
     ]
     
     var numLevels: Int = 0
