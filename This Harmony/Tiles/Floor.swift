@@ -14,8 +14,8 @@ class Floor: Tile {
     var laserBeams: [LaserBeam] = [LaserBeam]()
 
     init() {
-        let defaultTexture: SKTexture = SKTexture(imageNamed: Floor.constants.levelThemes[CoreDataManager.gameSceneClass.level]!.floorImages[0])
-        
+        let defaultTexture: SKTexture = SKTexture(imageNamed: Floor.constants.getLevelTheme().floorImages[0])
+
         super.init(texture: defaultTexture, name: Constants.TileNames.floor.rawValue)
     }
     

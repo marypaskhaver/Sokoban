@@ -26,8 +26,8 @@ class Player: MovableTile {
     func createAnimationAction(inDirection dir: Direction) -> SKAction {
         let dirLetter: String = getDirectionLetter(forDirection: dir)
         
-        let currentTextureName: String = Player.constants.levelThemes[CoreDataManager.gameSceneClass.level]!.playerImage
-        
+        let currentTextureName: String = Player.constants.getLevelTheme().playerImage
+
         let anim = SKAction.animate(with: [
                     SKTexture(imageNamed: currentTextureName + "_" + dirLetter + "_1"),
                     SKTexture(imageNamed: currentTextureName + "_" + dirLetter + "_2"),
