@@ -37,8 +37,10 @@ class GameSceneButtonAndLabelMaker {
         gc.buttonPrevious = buttonPrevious
         gc.buttonMenu = buttonMenu
         
-        gc.levelLabel = TextLabel("Level \(CoreDataManager.gameSceneClass.level)", at: CGPoint(x: cameraPosition.x, y: cameraPosition.y + 0.9 * UIScreen.main.bounds.height))
-        gc.stepsLabel = TextLabel("Steps: \(gc.grid.currentSteps)", at: CGPoint(x: cameraPosition.x, y: cameraPosition.y - 0.75 * UIScreen.main.bounds.height))
+        // Button and label positions screwy on iPads
+        gc.levelLabel = TextLabel("Level \(CoreDataManager.gameSceneClass.level)", at: CGPoint(x: cameraPosition.x, y: gc.grid.grid[0][0].frame.midY + 80))
+
+        gc.stepsLabel = TextLabel("Steps: \(gc.grid.currentSteps)", at: CGPoint(x: cameraPosition.x, y: (gc.grid.grid[gc.grid.grid.count - 1][0].frame.midY + (gc.buttonRestart.frame.midY)) / 2))
         
         setButtonHandlers()
         addButtonsAndLabelsToSceneChildren()
