@@ -20,6 +20,8 @@ class GameSceneButtonAndLabelMaker {
         let cameraPosition: CGPoint = gc.children.first(where: {$0.name == "camera"})!.position
 
         // Zoom camera so each grid takes up same amt of space
+        let zoomInAction = SKAction.scale(to: CGFloat(gc.grid.grid[0].count) / 8.0, duration: 0)
+        gc.children.first(where: {$0.name == "camera"})!.run(zoomInAction)
         
         let buttonsStartingX: CGFloat = gc.grid.grid[0][0].frame.midX / 2
 
