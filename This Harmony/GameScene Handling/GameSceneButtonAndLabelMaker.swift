@@ -23,13 +23,18 @@ class GameSceneButtonAndLabelMaker {
         let zoomInAction = SKAction.scale(to: CGFloat(gc.grid.grid[0].count) / 8.0, duration: 0)
         gc.children.first(where: {$0.name == "camera"})!.run(zoomInAction)
         
-        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: gc.grid.grid[0][0].frame.midX / 2, y: gc.grid.grid[gc.grid.grid.count - 1][0].frame.midY / 2))
+        // Edit node size based on zoom action
+        let sizeMultiplier: CGFloat = 1 + abs(1.0 - CGFloat(gc.grid.grid[0].count) / 8.0)
         
-        let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonPrevious.position.x + 90, y: buttonPrevious.frame.midY))
+        let buttonSize = CGSize(width: 80 * sizeMultiplier, height: 80 * sizeMultiplier)
+        
+        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), buttonSize, atPosition: CGPoint(x: gc.grid.grid[0][0].frame.midX * sizeMultiplier / 2, y: gc.grid.grid[gc.grid.grid.count - 1][0].frame.midY * sizeMultiplier / 2))
+        
+        let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), buttonSize, atPosition: CGPoint(x: buttonPrevious.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
 
-        let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonNext.position.x + 90, y: buttonPrevious.frame.midY))
+        let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), buttonSize, atPosition: CGPoint(x: buttonNext.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
 
-        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60, height: 60), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20, y: gc.grid.grid[0][0].frame.midY + 80))
+        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20, y: gc.grid.grid[0][0].frame.midY + 80 * sizeMultiplier))
 
         buttonRestart.name = "reset_button"
         buttonNext.name = "next_button"
@@ -42,7 +47,7 @@ class GameSceneButtonAndLabelMaker {
         gc.buttonMenu = buttonMenu
         
         // Button and label positions screwy on iPads
-        gc.levelLabel = TextLabel("Level \(CoreDataManager.gameSceneClass.level)", at: CGPoint(x: cameraPosition.x, y: gc.grid.grid[0][0].frame.midY + 80))
+        gc.levelLabel = TextLabel("Level \(CoreDataManager.gameSceneClass.level)", at: CGPoint(x: cameraPosition.x, y: gc.grid.grid[0][0].frame.midY + 80 * sizeMultiplier))
         gc.stepsLabel = TextLabel("Steps: \(gc.grid.currentSteps)", at: CGPoint(x: cameraPosition.x, y: (gc.grid.grid[gc.grid.grid.count - 1][0].frame.midY + (gc.buttonRestart.frame.midY)) / 2))
         
         setButtonHandlers()
