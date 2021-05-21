@@ -19,14 +19,18 @@ class GameSceneButtonAndLabelMaker {
         // Camera is always set up before buttons and is the center of the grid
         let cameraPosition: CGPoint = gc.children.first(where: {$0.name == "camera"})!.position
 
-        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: cameraPosition.x / 3.75, y: 100))
+        // Zoom camera so each grid takes up same amt of space
         
-        let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonPrevious.position.x + 90, y: 100))
+        let buttonsStartingX: CGFloat = gc.grid.grid[0][0].frame.midX / 2
 
-        let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonNext.position.x + 90, y: 100))
-
-        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60, height: 60), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20, y: 1000))
+        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonsStartingX, y: gc.grid.grid[gc.grid.grid.count - 1][0].frame.midY / 2))
         
+        let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonPrevious.position.x + 90, y: buttonPrevious.frame.midY))
+
+        let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonNext.position.x + 90, y: buttonPrevious.frame.midY))
+
+        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60, height: 60), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20, y: gc.grid.grid[0][0].frame.midY + 80))
+
         buttonRestart.name = "reset_button"
         buttonNext.name = "next_button"
         buttonPrevious.name = "prev_button"
