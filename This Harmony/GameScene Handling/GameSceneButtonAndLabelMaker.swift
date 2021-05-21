@@ -19,13 +19,11 @@ class GameSceneButtonAndLabelMaker {
         // Camera is always set up before buttons and is the center of the grid
         let cameraPosition: CGPoint = gc.children.first(where: {$0.name == "camera"})!.position
 
-        // Zoom camera so each grid takes up same amt of space
+        // Zoom camera so each grid takes up same amt of space. Based off # columns-- how to address rows?
         let zoomInAction = SKAction.scale(to: CGFloat(gc.grid.grid[0].count) / 8.0, duration: 0)
         gc.children.first(where: {$0.name == "camera"})!.run(zoomInAction)
         
-        let buttonsStartingX: CGFloat = gc.grid.grid[0][0].frame.midX / 2
-
-        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonsStartingX, y: gc.grid.grid[gc.grid.grid.count - 1][0].frame.midY / 2))
+        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: gc.grid.grid[0][0].frame.midX / 2, y: gc.grid.grid[gc.grid.grid.count - 1][0].frame.midY / 2))
         
         let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonPrevious.position.x + 90, y: buttonPrevious.frame.midY))
 
