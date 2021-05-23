@@ -16,7 +16,7 @@ class GameSceneButtonAndLabelMaker {
     }
     
     func addButtonsAndLabels() {
-        
+        // Not always going to keep level 1 the same way so save these constants elsewhere or make it level 0 or something
         let gc1: GameScene = GameScene.getLevel(1)!
         let gridCreator: GridCreator = GridCreator(withChildren: gc1.children)
         let grid = Grid(with2DArrayOfTiles: gridCreator.grid, laserPointers: gridCreator.laserPointers, withCoreDataManager: CoreDataManager())
