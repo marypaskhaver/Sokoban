@@ -35,10 +35,36 @@ class GameSceneButtonAndLabelMaker {
         
         let buttonSize = CGSize(width: 80 * sizeMultiplier, height: 80 * sizeMultiplier)
             
-        let positionBeforeApplyingVector: CGFloat = grid.grid[grid.grid.count - 1][0].frame.midY * sizeMultiplier - 0.35 * sizeMultiplier * UIScreen.main.bounds.height * sizeMultiplier
-        let tileShift: CGFloat = abs(1 - sizeMultiplier) * CGFloat(Tile.constants.tileSize)
-    
-        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), buttonSize, atPosition: CGPoint(x: grid.grid[0][0].frame.midX * sizeMultiplier / 2, y: positionBeforeApplyingVector - (75 * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
+        var positionBeforeApplyingVector: CGFloat {
+            switch UIDevice.current.userInterfaceIdiom {
+            case .phone:
+                return grid.grid[grid.grid.count - 1][0].frame.midY * sizeMultiplier - 0.35 * sizeMultiplier * UIScreen.main.bounds.height * sizeMultiplier
+            case .pad:
+                return grid.grid[grid.grid.count - 1][0].frame.midY * sizeMultiplier - 0.35 * sizeMultiplier * UIScreen.main.bounds.height * sizeMultiplier
+            default:
+                return -1
+            }
+        }
+        
+        
+        var tileShift: CGFloat = abs(1 - sizeMultiplier) * CGFloat(Tile.constants.tileSize)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            tileShift = 2.4 * -tileShift
+        }
+        
+        var moveDownAmt: CGFloat {
+            switch UIDevice.current.userInterfaceIdiom {
+            case .phone:
+                return 75
+            case .pad:
+                return -390
+            default:
+                return -1
+            }
+        }
+        
+        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), buttonSize, atPosition: CGPoint(x: grid.grid[0][0].frame.midX * sizeMultiplier / 2, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
                 
         // 75 won't work for all hardcoding-- what about diff phone sizes, iPads?
         
