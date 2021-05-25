@@ -71,8 +71,22 @@ class GameSceneButtonAndLabelMaker {
         let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), buttonSize, atPosition: CGPoint(x: buttonPrevious.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
 
         let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), buttonSize, atPosition: CGPoint(x: buttonNext.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
+        
+        var moveDownAmt2: CGFloat {
+            switch UIDevice.current.userInterfaceIdiom {
+            case .phone:
+                return 75
+            case .pad:
+                if tileShift == 0 { return -200 }
 
-        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (75 + vector.dy) - 4 * tileShift))
+                tileShift = tileShift / 2.4
+                return floor(5 * tileShift)
+            default:
+                return -1
+            }
+        }
+
+        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - 4 * tileShift))
 
         buttonRestart.name = "reset_button"
         buttonNext.name = "next_button"
