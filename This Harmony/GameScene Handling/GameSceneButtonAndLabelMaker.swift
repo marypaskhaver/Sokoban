@@ -79,7 +79,7 @@ class GameSceneButtonAndLabelMaker {
             case .pad:
                 if tileShift == 0 { return -200 }
 
-                tileShift = tileShift / 2.4
+                tileShift /= 2.4
                 return floor(5 * tileShift)
             default:
                 return -1
