@@ -10,10 +10,12 @@ import Foundation
 class Theme: Equatable {
     var floorImage: String // Same floor image goes underneath player and all crates
     var playerImage: String
+    var laserBeamImage: String
     
-    init(floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue) {
+    init(floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImage: String = "laser_beam_pointing_up") {
         self.floorImage = floorImage
         self.playerImage = playerImage
+        self.laserBeamImage = laserBeamImage
     }
     
     static func == (lhs: Theme, rhs: Theme) -> Bool {
@@ -45,7 +47,8 @@ class Default2: Theme {
 class Beach: Theme {
     init(withFloorImage floorImage: String = "beach_floor1") {
         let playerImage: String = "beach_player"
-            
-        super.init(floorImage: floorImage, playerImage: playerImage)
+        let laserBeamImage: String = "beach_laser_beam_pointing_up"
+
+        super.init(floorImage: floorImage, playerImage: playerImage, laserBeamImage: laserBeamImage)
     }
 }
