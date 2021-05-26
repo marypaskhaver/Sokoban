@@ -22,7 +22,8 @@ class LaserBeam: Tile {
     }
     
     init(inDirection dir: Direction, atPoint pt: CGPoint) {
-        super.init(texture: SKTexture(imageNamed: "laser_beam_pointing_up"), name: Constants.TileNames.laserBeam.rawValue)
+        super.init(texture: SKTexture(imageNamed: Tile.constants.getLevelTheme().laserBeamImage), name: Constants.TileNames.laserBeam.rawValue)
+        
         self.position = pt
         rotate(toBePointing: dir)
         self.direction = dir
