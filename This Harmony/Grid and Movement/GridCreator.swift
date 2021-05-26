@@ -61,7 +61,7 @@ class GridCreator {
         arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midX < $1.frame.midX })
         arrayOfNodes = arrayOfNodes.sorted(by: { $0.frame.midY > $1.frame.midY })
                 
-//        Assumes grid will be square. Will find max number of nodes w/ same y-val (# of columns) and chunk grid by that.
+//        Assumes grid will be rect. Will find max number of nodes w/ same y-val (# of columns) and chunk grid by that.
         let firstYVal = arrayOfNodes[0].frame.midY
         
         let maxNumOfNodesWithFirstYVal: Int = arrayOfNodes.filter { (tile: Tile) -> Bool in
@@ -88,7 +88,7 @@ class GridCreator {
             child.position = CGPoint(x: child.getRoundedX(), y: child.getRoundedY())
             
             if child as? LaserPointer != nil {
-                (child as? LaserPointer)?.setDirection()
+                (child as! LaserPointer).setDirection()
                 laserPointers.append(child as! LaserPointer)
             }
         }
@@ -102,7 +102,7 @@ class GridCreator {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
                 for lp in laserPointers {
-                    if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY { // <-- ?
+                    if grid[row][col].frame.midX == lp.frame.midX && grid[row][col].frame.midY == lp.frame.midY { // Locate pointer
                         // clearTiles will include only the Floor tiles that do not have crates, whereas allFloor contains all, regardless of crates
                         let lsu: LaserSetterUpper = LaserSetterUpper(with: grid)
                         let allFloorTilesInFrontOfLP: [Floor] = lsu.getAllFloorTilesInFrontOf(point: GridPoint(row: row, col: col), inDirection: lp.direction)
