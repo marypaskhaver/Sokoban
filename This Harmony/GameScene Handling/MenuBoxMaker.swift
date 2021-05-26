@@ -14,18 +14,33 @@ enum MenuBox: String {
 }
 
 class MenuBoxMaker {
+    var gameScene: GameScene
     
-    func getBox(ofType type: MenuBox, for gameScene: GameScene) -> SKShapeNode {
+    init(for gameScene: GameScene) {
+        self.gameScene = gameScene
+    }
+    
+    func getBox(ofType type: MenuBox) -> SKShapeNode {
         switch (type) {
             case .pauseLevelMenu:
-                return getPauseLevelMenu(for: gameScene)
+                return getPauseLevelMenu()
             case .levelCompleteMenu:
-                return getLevelCompleteMenu(for: gameScene)
+                return getLevelCompleteMenu()
             }
     }
     
-    private func getPauseLevelMenu(for gameScene: GameScene) -> SKShapeNode {
-        let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX - CGFloat(Constants().tileSize / 4), y: UIScreen.main.bounds.midY, width: 500, height: 500))
+    private func getCameraPosition() -> CGPoint {
+        return self.gameScene.children.first(where: { $0.name == "camera" })!.position
+    }
+    
+    private func getPauseLevelMenu() -> SKShapeNode {
+        // Edit node size based on zoom action
+        let sizeMultiplier: CGFloat = 1 + abs(1.0 - CGFloat(self.gameScene.grid.grid[0].count) / 8.0)
+
+        let cameraPosition: CGPoint = getCameraPosition()
+        let boxLength: CGFloat = 500 * sizeMultiplier
+        
+        let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: cameraPosition.x - boxLength / 2, y: cameraPosition.y - boxLength / 2, width: boxLength, height: boxLength))
         menuBox.zPosition = 2
         menuBox.fillColor = .white
         menuBox.name = MenuBox.pauseLevelMenu.rawValue
@@ -33,7 +48,7 @@ class MenuBoxMaker {
         let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY))
 
         levelMenuLabel.selectedHandler = {
-            gameScene.gvc.presentLevelMenu()
+            self.gameScene.gvc.presentLevelMenu()
         }
         
         menuBox.addChild(levelMenuLabel)
@@ -41,8 +56,14 @@ class MenuBoxMaker {
         return menuBox
     }
     
-    private func getLevelCompleteMenu(for gameScene: GameScene) -> SKShapeNode {
-        let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 500, height: 500))
+    private func getLevelCompleteMenu() -> SKShapeNode {
+        // Edit node size based on zoom action
+        let sizeMultiplier: CGFloat = 1 + abs(1.0 - CGFloat(self.gameScene.grid.grid[0].count) / 8.0)
+
+        let cameraPosition: CGPoint = getCameraPosition()
+        let boxLength: CGFloat = 500 * sizeMultiplier
+
+        let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: cameraPosition.x - boxLength / 2, y: cameraPosition.y - boxLength / 2, width: boxLength, height: boxLength))
         menuBox.zPosition = 2
         menuBox.fillColor = .white
         menuBox.name = MenuBox.levelCompleteMenu.rawValue
@@ -56,14 +77,14 @@ class MenuBoxMaker {
         let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 50, y: menuBox.frame.minY + 50))
         
         buttonRestart.selectedHandler = {
-            gameScene.gvc.loadLevel(number: CoreDataManager.gameSceneClass.level)
+            self.gameScene.gvc.loadLevel(number: CoreDataManager.gameSceneClass.level)
         }
         
         // Remove next button if there is no next level
         let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 150, y: menuBox.frame.minY + 50))
 
         buttonNext.selectedHandler = {
-            gameScene.goToNextLevel()
+            self.gameScene.goToNextLevel()
         }
         
         menuBox.addChild(buttonRestart)
