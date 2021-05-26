@@ -22,9 +22,6 @@ class Theme: Equatable {
         return lhs.floorImage == rhs.floorImage
     }
     
-//    var wallImage: String { get }
-//    var laserPointerImage: String { get }
-//    var laserBeamImage: String { get }
 }
 
 class Default: Theme {
