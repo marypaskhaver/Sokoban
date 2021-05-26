@@ -107,7 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func showPauseAndSettingsMenu() {
-        let menuBox: SKShapeNode = MenuBoxMaker().getBox(ofType: .pauseLevelMenu, for: self)
+        let menuBox: SKShapeNode = MenuBoxMaker(for: self).getBox(ofType: .pauseLevelMenu)
                 
         // Filter scene's children for any nodes w/ the name "pause-level-menu"
         let nodesNamedMenuBox: [SKNode] = children.filter { (node) -> Bool in
@@ -126,7 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func showLevelCompleteMenu() {
-        let menuBox: SKShapeNode = MenuBoxMaker().getBox(ofType: .levelCompleteMenu, for: self)
+        let menuBox: SKShapeNode = MenuBoxMaker(for: self).getBox(ofType: .levelCompleteMenu)
         self.scene?.addChild(menuBox)
         
         buttonRestart.state = .disabled
