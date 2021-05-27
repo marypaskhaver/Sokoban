@@ -10,13 +10,13 @@ import Foundation
 class Theme: Equatable {
     var floorImage: String // Same floor image goes underneath player and all crates
     var playerImage: String
-    var laserBeamImage: String
+    var laserBeamImages: [String]
     var crateImage: String
     
-    init(floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImage: String = "laser_beam_pointing_up", crateImage: String = Constants.TileNames.crate.rawValue) {
+    init(floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], crateImage: String = Constants.TileNames.crate.rawValue) {
         self.floorImage = floorImage
         self.playerImage = playerImage
-        self.laserBeamImage = laserBeamImage
+        self.laserBeamImages = laserBeamImages
         self.crateImage = crateImage
     }
     
@@ -46,9 +46,9 @@ class Default2: Theme {
 class Beach: Theme {
     init(withFloorImage floorImage: String = "beach_floor1") {
         let playerImage: String = "beach_player"
-        let laserBeamImage: String = "beach_laser_beam_pointing_up"
+        let laserBeamImages: [String] = ["beach_laser_beam_pointing_up", "beach_laser_beam_pointing_down"]
         let crateImage: String = "beach_crate"
         
-        super.init(floorImage: floorImage, playerImage: playerImage, laserBeamImage: laserBeamImage, crateImage: crateImage)
+        super.init(floorImage: floorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, crateImage: crateImage)
     }
 }
