@@ -22,6 +22,9 @@ class Theme: Equatable {
     
     static func == (lhs: Theme, rhs: Theme) -> Bool {
         return lhs.floorImage == rhs.floorImage
+            && lhs.playerImage == rhs.playerImage
+            && lhs.laserBeamImages == rhs.laserBeamImages
+            && lhs.crateImage == rhs.crateImage
     }
     
 }
