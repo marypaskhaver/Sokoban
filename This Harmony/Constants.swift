@@ -29,7 +29,8 @@ class Constants {
         3 : Beach(withFloorImage: "tile005"),
         4 : Beach(),
         5 : Beach(),
-        6 : Beach()
+        6 : Beach(),
+        7 : Beach()
     ]
     
     var numLevels: Int = 0
