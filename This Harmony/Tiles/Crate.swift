@@ -18,7 +18,7 @@ class Crate: MovableTile {
             self.colorBlendFactor = 0.4
         } else {
             self.colorBlendFactor = 0
-            self.texture = SKTexture(imageNamed: "crate")
+            self.texture = SKTexture(imageNamed: Tile.constants.getLevelTheme().crateImage)
         }
     }
 }
