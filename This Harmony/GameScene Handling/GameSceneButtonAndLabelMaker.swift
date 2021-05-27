@@ -77,16 +77,20 @@ class GameSceneButtonAndLabelMaker {
             case .phone:
                 return 75
             case .pad:
-                if tileShift == 0 { return -200 }
-
-                tileShift /= 2.4
-                return floor(5 * tileShift)
+                if tileShift == 0 {
+                    return -200
+                } else {
+                    return -1.25 * CGFloat(Tile.constants.tileSize)
+                }
+                    
             default:
                 return -1
             }
         }
-
-        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - 4 * tileShift))
+        
+        let finalMoveDown: CGFloat = sizeMultiplier == 1 ? 0 : -70
+        
+        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - finalMoveDown))
 
         buttonRestart.name = "reset_button"
         buttonNext.name = "next_button"
