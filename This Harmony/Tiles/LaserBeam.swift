@@ -22,7 +22,21 @@ class LaserBeam: Tile {
     }
     
     init(inDirection dir: Direction, atPoint pt: CGPoint) {
-        super.init(texture: SKTexture(imageNamed: Tile.constants.getLevelTheme().laserBeamImage), name: Constants.TileNames.laserBeam.rawValue)
+        super.init(texture: SKTexture(imageNamed: Tile.constants.getLevelTheme().laserBeamImages[0]), name: Constants.TileNames.laserBeam.rawValue)
+        
+    
+        let laserBeamImages: [String] = Tile.constants.getLevelTheme().laserBeamImages
+        var skTexturesOfLaserBeamImages: [SKTexture] = []
+        
+        if laserBeamImages.count > 0 {
+            for image in laserBeamImages {
+                skTexturesOfLaserBeamImages.append(SKTexture(imageNamed: image))
+            }
+        }
+    
+        let anim = SKAction.animate(with: skTexturesOfLaserBeamImages, timePerFrame: 0.15)
+        self.run(SKAction.repeatForever(anim))
+
         
         self.position = pt
         rotate(toBePointing: dir)
