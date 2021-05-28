@@ -96,9 +96,7 @@ class GameSceneButtonAndLabelMaker {
         let finalMoveDown: CGFloat = sizeMultiplier == 1 ? 0 : -70
         
         let buttonMenu: MSButtonNode = MSButtonNode(withName: "menu_button", SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - finalMoveDown))
-        
-        print(buttonMenu.position)
-        
+
         gc.buttonRestart = buttonRestart
         gc.buttonNext = buttonNext
         gc.buttonPrevious = buttonPrevious
