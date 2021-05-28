@@ -40,12 +40,15 @@ class LaserBeam: Tile {
     
     private func animate() {
         let laserBeamImages: [String] = Tile.constants.getLevelTheme().laserBeamImages
+        
+        if laserBeamImages.count == 1 {
+            return
+        }
+        
         var skTexturesOfLaserBeamImages: [SKTexture] = []
         
-        if laserBeamImages.count > 0 {
-            for image in laserBeamImages {
-                skTexturesOfLaserBeamImages.append(SKTexture(imageNamed: image))
-            }
+        for image in laserBeamImages {
+            skTexturesOfLaserBeamImages.append(SKTexture(imageNamed: image))
         }
     
         let anim = SKAction.animate(with: skTexturesOfLaserBeamImages, timePerFrame: 0.15)
