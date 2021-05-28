@@ -11,14 +11,16 @@ class Theme: Equatable {
     var floorImage: String // Same floor image goes underneath player and all crates
     var playerImage: String
     var laserBeamImages: [String]
+    var laserPointerImages: [String]
     var crateImage: String
     private var name: String
     
-    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], crateImage: String = Constants.TileNames.crate.rawValue) {
+    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue], crateImage: String = Constants.TileNames.crate.rawValue) {
         self.name = name
         self.floorImage = floorImage
         self.playerImage = playerImage
         self.laserBeamImages = laserBeamImages
+        self.laserPointerImages = laserPointerImages
         self.crateImage = crateImage
     }
     
@@ -48,8 +50,22 @@ class Beach: Theme {
     init(withFloorImage floorImage: String = "beach_floor1") {
         let playerImage: String = "beach_player"
         let laserBeamImages: [String] = ["beach_laser_beam_pointing_up", "beach_laser_beam_pointing_down"]
+        
+        let laserPointerImages: [String] = Beach.getLaserPointerAnimationImages(forLaserPointerWithBaseName: "witch")
+        
         let crateImage: String = "beach_crate"
         
-        super.init(withName: "Beach", floorImage: floorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, crateImage: crateImage)
+        super.init(withName: "Beach", floorImage: floorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage)
+    }
+    
+    private static func getLaserPointerAnimationImages(forLaserPointerWithBaseName name: String) -> [String] {
+        var images: [String] = []
+        
+        for dirLetter in ["u", "d", "l", "r"] {
+            images.append(name + "_" + dirLetter + "_1")
+            images.append(name + "_" + dirLetter + "_stand")
+        }
+        
+        return images
     }
 }
