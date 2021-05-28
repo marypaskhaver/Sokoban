@@ -12,8 +12,10 @@ class Theme: Equatable {
     var playerImage: String
     var laserBeamImages: [String]
     var crateImage: String
+    private var name: String
     
-    init(floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], crateImage: String = Constants.TileNames.crate.rawValue) {
+    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], crateImage: String = Constants.TileNames.crate.rawValue) {
+        self.name = name
         self.floorImage = floorImage
         self.playerImage = playerImage
         self.laserBeamImages = laserBeamImages
@@ -21,10 +23,7 @@ class Theme: Equatable {
     }
     
     static func == (lhs: Theme, rhs: Theme) -> Bool {
-        return lhs.floorImage == rhs.floorImage
-            && lhs.playerImage == rhs.playerImage
-            && lhs.laserBeamImages == rhs.laserBeamImages
-            && lhs.crateImage == rhs.crateImage
+        return lhs.name == rhs.name
     }
     
 }
@@ -32,8 +31,7 @@ class Theme: Equatable {
 class Default: Theme {
     init() {
         let floorImage: String = Constants.TileNames.floor.rawValue
-
-        super.init(floorImage: floorImage)
+        super.init(withName: "Default", floorImage: floorImage)
     }
 }
 
@@ -42,7 +40,7 @@ class Default2: Theme {
     init() {
         let floorImage: String = Constants.TileNames.player.rawValue
         
-        super.init(floorImage: floorImage)
+        super.init(withName: "Default2", floorImage: floorImage)
     }
 }
 
@@ -52,6 +50,6 @@ class Beach: Theme {
         let laserBeamImages: [String] = ["beach_laser_beam_pointing_up", "beach_laser_beam_pointing_down"]
         let crateImage: String = "beach_crate"
         
-        super.init(floorImage: floorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, crateImage: crateImage)
+        super.init(withName: "Beach", floorImage: floorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, crateImage: crateImage)
     }
 }
