@@ -20,7 +20,6 @@ class SelectLevelViewController: UICollectionViewController {
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         layout.minimumInteritemSpacing = 20
         layout.minimumLineSpacing = 20
-//        layout.estimatedItemSize = CGSize(width: 96, height: 96)
         layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.size.width, height: 60)
         self.collectionView!.collectionViewLayout = layout
         
@@ -98,7 +97,7 @@ class SelectLevelViewController: UICollectionViewController {
             break
         }
         
-            return header
+        return header
     }
     
 }
