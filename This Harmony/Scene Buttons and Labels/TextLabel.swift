@@ -12,7 +12,7 @@ class TextLabel: SKLabelNode {
     init(_ text: String, at position: CGPoint) {
         super.init()
         self.text = text
-        self.fontName = "PingFangSC-Semibold"
+        self.fontName = "PlayMeGames"
         self.fontSize = 30
         self.position = position
         self.zPosition = 1

@@ -17,7 +17,7 @@ class StepLabel: SKLabelNode {
         self.fontSize = 60
         self.horizontalAlignmentMode = .center
         self.fontColor = SKColor(displayP3Red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0)
-        self.fontName = "PingFangSC-Semibold"
+        self.fontName = "PlayMeGames"
         self.zPosition = 3
     }
     
