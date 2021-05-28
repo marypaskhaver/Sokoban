@@ -75,7 +75,12 @@ class GameSceneButtonAndLabelMaker {
         var moveDownAmt2: CGFloat {
             switch UIDevice.current.userInterfaceIdiom {
             case .phone:
-                return 75
+                if tileShift == 0 {
+                    return 75
+                } else {
+                    return 2.4 * CGFloat(Tile.constants.tileSize)
+                }
+                
             case .pad:
                 if tileShift == 0 {
                     return -200
@@ -91,6 +96,8 @@ class GameSceneButtonAndLabelMaker {
         let finalMoveDown: CGFloat = sizeMultiplier == 1 ? 0 : -70
         
         let buttonMenu: MSButtonNode = MSButtonNode(withName: "menu_button", SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - finalMoveDown))
+        
+        print(buttonMenu.position)
         
         gc.buttonRestart = buttonRestart
         gc.buttonNext = buttonNext
