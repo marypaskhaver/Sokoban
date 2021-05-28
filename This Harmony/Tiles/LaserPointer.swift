@@ -21,6 +21,38 @@ class LaserPointer: Tile {
                 
         // Convert zRotation to degrees
         self.direction = degreeAndDirectionDict[Int(self.zRotation * (180 / .pi ))]
+        
+        animate()
+    }
+    
+    private func animate() {
+        let images: [String] = Tile.constants.getLevelTheme().laserPointerImages
+        
+        if images.count == 1 {
+            return
+        }
+        
+        var skTexturesOfLaserPointerImages: [SKTexture] = []
+
+        for image in images.filter( { $0.contains("_" + getDirectionLetter(forDirection: self.direction) + "_") }) {
+            skTexturesOfLaserPointerImages.append(SKTexture(imageNamed: image))
+        }
+            
+        let anim = SKAction.animate(with: skTexturesOfLaserPointerImages, timePerFrame: 1)
+        self.run(SKAction.repeatForever(anim))
+    }
+    
+    private func getDirectionLetter(forDirection dir: Direction) -> String {
+        switch dir {
+        case .right:
+            return "r"
+        case .left:
+            return "l"
+        case .up:
+            return "u"
+        case .down:
+            return "d"
+        }
     }
    
 }
