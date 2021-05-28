@@ -40,11 +40,12 @@ class MSButtonNode: SKSpriteNode {
         }
     }
     
-    init(_ textureImage: SKTexture, _ size: CGSize, atPosition position: CGPoint) {
+    init(withName name: String = "", _ textureImage: SKTexture, _ size: CGSize, atPosition position: CGPoint) {
         super.init(texture: textureImage, color: UIColor.red, size: size)
         self.position = position
         self.zPosition = 1
         self.isUserInteractionEnabled = true
+        self.name = name
     }
     
     // Support for NSKeyedArchiver (loading objects from SK Scene Editor)
