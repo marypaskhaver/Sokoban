@@ -13,7 +13,7 @@ class TextLabel: SKLabelNode {
         super.init()
         self.text = text
         self.fontName = "PlayMeGames"
-        self.fontSize = 30
+        self.fontSize = 40
         self.position = position
         self.zPosition = 1
     }
