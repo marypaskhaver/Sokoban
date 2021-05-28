@@ -24,7 +24,21 @@ class LaserBeam: Tile {
     init(inDirection dir: Direction, atPoint pt: CGPoint) {
         super.init(texture: SKTexture(imageNamed: Tile.constants.getLevelTheme().laserBeamImages[0]), name: Constants.TileNames.laserBeam.rawValue)
         
+        self.position = pt
+        self.zPosition = 1
+        self.isHidden = true // Hide initially
+        
+        self.direction = dir
+        rotate(toBePointing: dir)
+        
+        animate()
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    private func animate() {
         let laserBeamImages: [String] = Tile.constants.getLevelTheme().laserBeamImages
         var skTexturesOfLaserBeamImages: [SKTexture] = []
         
@@ -36,17 +50,6 @@ class LaserBeam: Tile {
     
         let anim = SKAction.animate(with: skTexturesOfLaserBeamImages, timePerFrame: 0.15)
         self.run(SKAction.repeatForever(anim))
-
-        
-        self.position = pt
-        rotate(toBePointing: dir)
-        self.direction = dir
-        self.zPosition = 1
-        self.isHidden = true // Hide initially
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
 }
