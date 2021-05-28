@@ -14,6 +14,7 @@
 		2021EBCF265F154900702472 /* Level_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBCE265F154900702472 /* Level_6.sks */; };
 		2021EBD1265F33F900702472 /* Level_7.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBD0265F33F900702472 /* Level_7.sks */; };
 		2021EBD32660389500702472 /* Level_8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBD22660389500702472 /* Level_8.sks */; };
+		2021EBD52660435100702472 /* Level_9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBD42660435100702472 /* Level_9.sks */; };
 		20583A7F25BA740900A74914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F811259BC43A004BF34B /* Assets.xcassets */; };
 		20583A8425BA752600A74914 /* player_cant_move.wav in Resources */ = {isa = PBXBuildFile; fileRef = 20583A8325BA752600A74914 /* player_cant_move.wav */; };
 		20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20583A8B25BA75C500A74914 /* SoundPlayer.swift */; };
@@ -123,6 +124,7 @@
 		2021EBCE265F154900702472 /* Level_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_6.sks; sourceTree = "<group>"; };
 		2021EBD0265F33F900702472 /* Level_7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_7.sks; sourceTree = "<group>"; };
 		2021EBD22660389500702472 /* Level_8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_8.sks; sourceTree = "<group>"; };
+		2021EBD42660435100702472 /* Level_9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_9.sks; sourceTree = "<group>"; };
 		20583A8325BA752600A74914 /* player_cant_move.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = player_cant_move.wav; sourceTree = "<group>"; };
 		20583A8B25BA75C500A74914 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		206B700E2605599800B9716A /* SwipeRightTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightTracker.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				2021EBCE265F154900702472 /* Level_6.sks */,
 				2021EBD0265F33F900702472 /* Level_7.sks */,
 				2021EBD22660389500702472 /* Level_8.sks */,
+				2021EBD42660435100702472 /* Level_9.sks */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2021EBD52660435100702472 /* Level_9.sks in Resources */,
 				2021EBD1265F33F900702472 /* Level_7.sks in Resources */,
 				20E2F810259BC439004BF34B /* Main.storyboard in Resources */,
 				20583A8425BA752600A74914 /* player_cant_move.wav in Resources */,
