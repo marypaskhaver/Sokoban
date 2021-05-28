@@ -22,7 +22,6 @@ class SelectLevelViewController: UICollectionViewController {
         layout.minimumLineSpacing = 20
 //        layout.estimatedItemSize = CGSize(width: 96, height: 96)
         layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.size.width, height: 60)
-        layout.sectionHeadersPinToVisibleBounds = true
         self.collectionView!.collectionViewLayout = layout
         
         self.collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
