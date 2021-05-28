@@ -30,7 +30,9 @@ class Constants {
         4 : Beach(),
         5 : Beach(),
         6 : Beach(),
-        7 : Beach()
+        7 : Beach(),
+        8 : Beach(),
+        9 : Beach()
     ]
     
     var numLevels: Int = 0
