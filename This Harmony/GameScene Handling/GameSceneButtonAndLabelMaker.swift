@@ -64,13 +64,13 @@ class GameSceneButtonAndLabelMaker {
             }
         }
         
-        let buttonPrevious: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "prev_button"), buttonSize, atPosition: CGPoint(x: grid.grid[0][0].frame.midX * sizeMultiplier / 2, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
+        let buttonPrevious: MSButtonNode = MSButtonNode(withName: "prev_button", SKTexture(imageNamed: "prev_button"), buttonSize, atPosition: CGPoint(x: grid.grid[0][0].frame.midX * sizeMultiplier / 2, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
                 
         // 75 won't work for all hardcoding-- what about diff phone sizes, iPads?
         
-        let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), buttonSize, atPosition: CGPoint(x: buttonPrevious.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
+        let buttonNext: MSButtonNode = MSButtonNode(withName: "next_button", SKTexture(imageNamed: "next_button"), buttonSize, atPosition: CGPoint(x: buttonPrevious.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
 
-        let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), buttonSize, atPosition: CGPoint(x: buttonNext.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
+        let buttonRestart: MSButtonNode = MSButtonNode(withName: "reset_button", SKTexture(imageNamed: "reset_button"), buttonSize, atPosition: CGPoint(x: buttonNext.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
         
         var moveDownAmt2: CGFloat {
             switch UIDevice.current.userInterfaceIdiom {
@@ -90,12 +90,7 @@ class GameSceneButtonAndLabelMaker {
         
         let finalMoveDown: CGFloat = sizeMultiplier == 1 ? 0 : -70
         
-        let buttonMenu: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - finalMoveDown))
-
-        buttonRestart.name = "reset_button"
-        buttonNext.name = "next_button"
-        buttonPrevious.name = "prev_button"
-        buttonMenu.name = "menu_button"
+        let buttonMenu: MSButtonNode = MSButtonNode(withName: "menu_button", SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - finalMoveDown))
         
         gc.buttonRestart = buttonRestart
         gc.buttonNext = buttonNext
