@@ -33,7 +33,7 @@ class Constants {
         7 : Beach(),
         8 : Beach(),
         9 : Beach(),
-        10 : Beach()
+        10 : Beach(levelMusicParts: Sound.beachThemeTwoStorages)
     ]
     
     var numLevels: Int = 0
