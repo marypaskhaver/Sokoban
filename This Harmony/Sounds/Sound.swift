@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum Sound: String {
-    case playerCantMove = "player_cant_move.wav"
+struct Sound {
+    static let playerCantMove = "player_cant_move.wav"
+    static let beachThemeTwoStorages = ["beach_theme1.mp3", "beach_theme2.mp3"]
 }
