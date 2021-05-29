@@ -15,13 +15,17 @@ class Theme: Equatable {
     var crateImage: String
     private var name: String
     
-    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue], crateImage: String = Constants.TileNames.crate.rawValue) {
+    var levelMusicParts: [String]
+    
+    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue], crateImage: String = Constants.TileNames.crate.rawValue, levelMusicParts: [String] = []) {
+        // Change levelMusicParts later to default theme
         self.name = name
         self.floorImage = floorImage
         self.playerImage = playerImage
         self.laserBeamImages = laserBeamImages
         self.laserPointerImages = laserPointerImages
         self.crateImage = crateImage
+        self.levelMusicParts = levelMusicParts
     }
     
     static func == (lhs: Theme, rhs: Theme) -> Bool {
@@ -47,7 +51,7 @@ class Default2: Theme {
 }
 
 class Beach: Theme {
-    init(withFloorImage floorImage: String = "beach_floor1") {
+    init(withFloorImage floorImage: String = "beach_floor1", levelMusicParts: [String] = Sound.beachThemeTwoStorages) {
         let playerImage: String = "beach_player"
         let laserBeamImages: [String] = ["beach_laser_beam_pointing_up", "beach_laser_beam_pointing_down"]
         
@@ -55,7 +59,7 @@ class Beach: Theme {
         
         let crateImage: String = "beach_crate"
         
-        super.init(withName: "Beach", floorImage: floorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage)
+        super.init(withName: "Beach", floorImage: floorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
     }
     
     private static func getLaserPointerAnimationImages(forLaserPointerWithBaseName name: String) -> [String] {
