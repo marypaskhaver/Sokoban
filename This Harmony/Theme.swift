@@ -51,7 +51,7 @@ class Default2: Theme {
 }
 
 class Beach: Theme {
-    init(withFloorImage floorImage: String = "beach_floor1", levelMusicParts: [String] = Sound.beachThemeTwoStorages) {
+    init(withFloorImage floorImage: String = "beach_floor1", levelMusicParts: [String] = Sound.beachThemeTwoStoragesA) {
         let playerImage: String = "beach_player"
         let laserBeamImages: [String] = ["beach_laser_beam_pointing_up", "beach_laser_beam_pointing_down"]
         
