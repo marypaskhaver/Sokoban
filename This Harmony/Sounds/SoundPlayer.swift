@@ -70,13 +70,29 @@ class SoundPlayer {
     static func updateLevelMusic(withGridInformation gridInformation: GridInformation) {
         let levelMusicParts: [String] = Tile.constants.getLevelTheme().levelMusicParts
         let numberOfCratesOnStorageTiles = gridInformation.numberOfCratesOnStorageTiles()
-                
+        
+//         A crate that was previously on a storage location has now been moved off. So, stop playing the very last musicPart / player that was added to arrayOfAudioPlayers
+        if numberOfCratesOnStorageTiles < SoundPlayer.numberOfStorageSpacesFilled {
+            if let lastPlayer: AVAudioPlayer = SoundPlayer.arrayOfAudioPlayers.popLast() {
+                lastPlayer.stop()
+            }
+            
+            SoundPlayer.numberOfStorageSpacesFilled = numberOfCratesOnStorageTiles
+            return
+        }
+        
+        // Either the level hasn't started (each are 0) or nothing's changed (player has moved but not pushed a crate), so can return early
         if numberOfCratesOnStorageTiles == SoundPlayer.numberOfStorageSpacesFilled {
+            return
+        }
+                
+        // Return early if the number of storage spaces filled is equal to the # of music parts. Since numberOfStorageSpacesFilled right now holds the prev # of storage spaces filled, that means that any subsequent storage filled will be greater than the music parts in the level. Hence, those parts will not play; you will not even affects the arrayOfAudioPlayers
+        if SoundPlayer.numberOfStorageSpacesFilled >= levelMusicParts.count {
             return
         }
         
         SoundPlayer.arrayOfAudioPlayers = []
-                        
+        
         // The # of storage locations with crates on them has changed
         for musicPart in 0..<numberOfCratesOnStorageTiles {
             // Avoid going out of bounds if I accidentally or by default provide a music theme to a level that consists
