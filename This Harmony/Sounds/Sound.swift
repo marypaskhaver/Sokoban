@@ -9,6 +9,6 @@ import Foundation
 
 struct Sound {
     static let playerCantMove = "player_cant_move.mp3"
-    static let beachThemeTwoStorages = ["beach_theme1.mp3", "beach_theme2.mp3"]
-    static let beachThemeThreeStorages = ["beach_theme_3_1.mp3", "beach_theme_3_2.mp3", "beach_theme_3_3.mp3"]
+    static let beachThemeTwoStorages = ["beach_2st_thA_pt1.mp3", "beach_2st_thA_pt2.mp3"]
+    static let beachThemeThreeStorages = ["beach_3st_thA_pt1.mp3", "beach_3st_thA_pt2.mp3", "beach_3st_thA_pt3.mp3"]
 }
