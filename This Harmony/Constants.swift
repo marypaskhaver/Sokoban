@@ -31,7 +31,7 @@ class Constants {
         5 : Beach(),
         6 : Beach(),
         7 : Beach(),
-        8 : Beach(),
+        8 : Beach(levelMusicParts: Sound.beachThemeThreeStorages),
         9 : Beach(),
         10 : Beach(levelMusicParts: Sound.beachThemeTwoStorages)
     ]
