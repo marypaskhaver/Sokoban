@@ -27,6 +27,8 @@
 		2021EBFE2663E22100702472 /* beach_3st_thA_pt2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBFB2663E22100702472 /* beach_3st_thA_pt2.mp3 */; };
 		2021EBFF2663E22100702472 /* beach_3st_thA_pt1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBFC2663E22100702472 /* beach_3st_thA_pt1.mp3 */; };
 		2021EC032663E73500702472 /* beach_1st_thA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2021EC022663E73500702472 /* beach_1st_thA.mp3 */; };
+		2021EC0B2663EF0700702472 /* beach_2st_thB_pt1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2021EC092663EF0700702472 /* beach_2st_thB_pt1.mp3 */; };
+		2021EC0C2663EF0700702472 /* beach_2st_thB_pt2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2021EC0A2663EF0700702472 /* beach_2st_thB_pt2.mp3 */; };
 		20583A7F25BA740900A74914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F811259BC43A004BF34B /* Assets.xcassets */; };
 		20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20583A8B25BA75C500A74914 /* SoundPlayer.swift */; };
 		206B700F2605599800B9716A /* SwipeRightTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B700E2605599800B9716A /* SwipeRightTracker.swift */; };
@@ -148,6 +150,8 @@
 		2021EBFB2663E22100702472 /* beach_3st_thA_pt2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thA_pt2.mp3; sourceTree = "<group>"; };
 		2021EBFC2663E22100702472 /* beach_3st_thA_pt1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thA_pt1.mp3; sourceTree = "<group>"; };
 		2021EC022663E73500702472 /* beach_1st_thA.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_1st_thA.mp3; sourceTree = "<group>"; };
+		2021EC092663EF0700702472 /* beach_2st_thB_pt1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_2st_thB_pt1.mp3; sourceTree = "<group>"; };
+		2021EC0A2663EF0700702472 /* beach_2st_thB_pt2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_2st_thB_pt2.mp3; sourceTree = "<group>"; };
 		20583A8B25BA75C500A74914 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		206B700E2605599800B9716A /* SwipeRightTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightTracker.swift; sourceTree = "<group>"; };
 		206B701626055C0E00B9716A /* SwipeLeftTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeLeftTracker.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				2021EC082663E85400702472 /* Theme A */,
+				2021EC0D2663EF0F00702472 /* Theme B */,
 			);
 			path = "Two Storages";
 			sourceTree = "<group>";
@@ -309,6 +314,15 @@
 				2021EBF82663E13400702472 /* beach_2st_thA_pt2.mp3 */,
 			);
 			path = "Theme A";
+			sourceTree = "<group>";
+		};
+		2021EC0D2663EF0F00702472 /* Theme B */ = {
+			isa = PBXGroup;
+			children = (
+				2021EC092663EF0700702472 /* beach_2st_thB_pt1.mp3 */,
+				2021EC0A2663EF0700702472 /* beach_2st_thB_pt2.mp3 */,
+			);
+			path = "Theme B";
 			sourceTree = "<group>";
 		};
 		20583A9325BA780400A74914 /* Sounds */ = {
@@ -613,6 +627,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2021EBD52660435100702472 /* Level_5.sks in Resources */,
+				2021EC0C2663EF0700702472 /* beach_2st_thB_pt2.mp3 in Resources */,
+				2021EC0B2663EF0700702472 /* beach_2st_thB_pt1.mp3 in Resources */,
 				2021EBD1265F33F900702472 /* Level_7.sks in Resources */,
 				2021EBFD2663E22100702472 /* beach_3st_thA_pt3.mp3 in Resources */,
 				20E2F810259BC439004BF34B /* Main.storyboard in Resources */,
