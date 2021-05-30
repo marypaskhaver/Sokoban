@@ -268,16 +268,56 @@
 			path = TestLevels;
 			sourceTree = "<group>";
 		};
-		20583A9325BA780400A74914 /* Sounds */ = {
+		2021EC042663E82600702472 /* Three Storages */ = {
+			isa = PBXGroup;
+			children = (
+				2021EC072663E84400702472 /* Theme A */,
+			);
+			path = "Three Storages";
+			sourceTree = "<group>";
+		};
+		2021EC052663E83400702472 /* Two Storages */ = {
+			isa = PBXGroup;
+			children = (
+				2021EC082663E85400702472 /* Theme A */,
+			);
+			path = "Two Storages";
+			sourceTree = "<group>";
+		};
+		2021EC062663E83C00702472 /* One Storage */ = {
+			isa = PBXGroup;
+			children = (
+				2021EC022663E73500702472 /* beach_1st_thA.mp3 */,
+			);
+			path = "One Storage";
+			sourceTree = "<group>";
+		};
+		2021EC072663E84400702472 /* Theme A */ = {
 			isa = PBXGroup;
 			children = (
 				2021EBFC2663E22100702472 /* beach_3st_thA_pt1.mp3 */,
-				2021EC022663E73500702472 /* beach_1st_thA.mp3 */,
 				2021EBFB2663E22100702472 /* beach_3st_thA_pt2.mp3 */,
 				2021EBFA2663E22100702472 /* beach_3st_thA_pt3.mp3 */,
-				2021EBF02663244300702472 /* player_cant_move.mp3 */,
-				2021EBF82663E13400702472 /* beach_2st_thA_pt2.mp3 */,
+			);
+			path = "Theme A";
+			sourceTree = "<group>";
+		};
+		2021EC082663E85400702472 /* Theme A */ = {
+			isa = PBXGroup;
+			children = (
 				2021EBE82661AACF00702472 /* beach_2st_thA_pt1.mp3 */,
+				2021EBF82663E13400702472 /* beach_2st_thA_pt2.mp3 */,
+			);
+			path = "Theme A";
+			sourceTree = "<group>";
+		};
+		20583A9325BA780400A74914 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2021EC062663E83C00702472 /* One Storage */,
+				2021EC052663E83400702472 /* Two Storages */,
+				2021EC042663E82600702472 /* Three Storages */,
+				2021EBF02663244300702472 /* player_cant_move.mp3 */,
 				20583A8B25BA75C500A74914 /* SoundPlayer.swift */,
 				206BC54B25BAFEBB00CD5967 /* Sound.swift */,
 			);
