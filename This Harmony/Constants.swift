@@ -29,11 +29,11 @@ class Constants {
         3 : Beach(withFloorImage: "tile005"),
         4 : Beach(levelMusicParts: Sound.beachThemeOneStorage),
         5 : Beach(),
-        6 : Beach(),
+        6 : Beach(levelMusicParts: Sound.beachThemeTwoStoragesB),
         7 : Beach(),
-        8 : Beach(levelMusicParts: Sound.beachThemeThreeStorages),
+        8 : Beach(levelMusicParts: Sound.beachThemeThreeStoragesA),
         9 : Beach(),
-        10 : Beach(levelMusicParts: Sound.beachThemeTwoStorages)
+        10 : Beach(levelMusicParts: Sound.beachThemeTwoStoragesA)
     ]
     
     var numLevels: Int = 0
