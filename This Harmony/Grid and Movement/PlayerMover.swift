@@ -157,7 +157,7 @@ class PlayerMover {
     
     // The row and col properties of Floors (and Crates) are not changed at all throughout the game-- only the Floors crate and player properties are
     func movePlayer(inDirection dir: Direction) {
-        if !canPlayerMove(inDirection: dir) { SoundPlayer.playSound(.playerCantMove); return }
+        if !canPlayerMove(inDirection: dir) { SoundPlayer.playSound(Sound.playerCantMove); return }
 
         didPlayerMove = true
 
@@ -200,5 +200,7 @@ class PlayerMover {
         }
         
         (oneTileFromPlayer as! Floor).player = playerNode // Set tile in front of player (floor) to have player property
+    
+        SoundPlayer.updateLevelMusic(withGridInformation: GridInformation(withGrid: grid))
     }
 }
