@@ -23,6 +23,22 @@ class GridInformation {
         return false
     }
     
+    func numberOfCratesOnStorageTiles() -> Int {
+        var sumCrates: Int = 0
+        
+        for row in 0..<grid.count {
+            for col in 0..<grid[row].count {
+                if let storage = grid[row][col] as? Storage {
+                    if storage.crate != nil {
+                        sumCrates += 1
+                    }
+                }
+            }
+        }
+        
+        return sumCrates
+    }
+    
     func getRowAndColumnOfFloor(floorNodeInGrid floorNode: Floor) -> GridPoint {
         for row in 0..<grid.count {
             for col in 0..<grid[row].count {
