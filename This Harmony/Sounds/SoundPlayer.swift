@@ -11,10 +11,14 @@ import AVFoundation
 class SoundPlayer {
     private static var numberOfStorageSpacesFilled: Int = 0
     private static var arrayOfAudioPlayers: [AVAudioPlayer] = []
+    private static var currentPlayer: AVAudioPlayer!
+    // Have to init var outside of playSound to avoid AudioQueueInternalNotifyRunning / error before everything's
+    // set up correctly
     
     static func reset() {
         SoundPlayer.numberOfStorageSpacesFilled = 0
         SoundPlayer.arrayOfAudioPlayers = []
+        SoundPlayer.currentPlayer = nil
     }
     
     static func playSound(_ sound: String) {
@@ -28,18 +32,23 @@ class SoundPlayer {
             try AVAudioSession.sharedInstance().setActive(true)
 
             // The following line is required for the player to work on iOS 11. Change the file type accordingly
-            let player: AVAudioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            currentPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
 
-//            guard let player = player else { return }
-//            player.prepareToPlay()
+            guard let player = currentPlayer else { return }
+
             player.volume = 1
 
+            if sound == Sound.playerCantMove {
+                DispatchQueue.main.async {
+                    player.prepareToPlay()
+                    player.play()
+                }
+                
+                return
+            }
+            
             if sound != Sound.playerCantMove {
                 player.numberOfLoops = -1 // Loop forever
-            } else {
-                player.prepareToPlay()
-                player.play()
-                return
             }
             
             SoundPlayer.arrayOfAudioPlayers.append(player)
