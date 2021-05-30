@@ -27,7 +27,7 @@ class Constants {
         1 : Default(),
         2 : Default2(),
         3 : Beach(withFloorImage: "tile005"),
-        4 : Beach(),
+        4 : Beach(levelMusicParts: Sound.beachThemeOneStorage),
         5 : Beach(),
         6 : Beach(),
         7 : Beach(),
