@@ -19,6 +19,10 @@ class Floor: Tile {
         super.init(texture: defaultTexture, name: Constants.TileNames.floor.rawValue)
     }
     
+    init(withPlayerFloorImage image: String) {
+        super.init(texture: SKTexture(imageNamed: image), name: Constants.TileNames.floor.rawValue)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
