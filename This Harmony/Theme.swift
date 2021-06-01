@@ -8,7 +8,9 @@
 import Foundation
 
 class Theme: Equatable {
-    var floorImage: String // Same floor image goes underneath player and all crates
+    var floorImage: String // Floor image that goes underneath crates
+    var playerFloorImage: String // Floor image that goes underneath player
+    
     var playerImage: String
     var laserBeamImages: [String]
     var laserPointerImages: [String]
@@ -17,10 +19,13 @@ class Theme: Equatable {
     
     var levelMusicParts: [String]
     
-    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue], crateImage: String = Constants.TileNames.crate.rawValue, levelMusicParts: [String] = []) {
+    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerFloorImage: String?, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue], crateImage: String = Constants.TileNames.crate.rawValue, levelMusicParts: [String] = []) {
         // Change levelMusicParts later to default theme
         self.name = name
+        
         self.floorImage = floorImage
+        self.playerFloorImage = (playerFloorImage == nil) ? floorImage : playerFloorImage!
+        
         self.playerImage = playerImage
         self.laserBeamImages = laserBeamImages
         self.laserPointerImages = laserPointerImages
@@ -37,7 +42,7 @@ class Theme: Equatable {
 class Default: Theme {
     init() {
         let floorImage: String = Constants.TileNames.floor.rawValue
-        super.init(withName: "Default", floorImage: floorImage)
+        super.init(withName: "Default", floorImage: floorImage, playerFloorImage: nil)
     }
 }
 
@@ -46,20 +51,21 @@ class Default2: Theme {
     init() {
         let floorImage: String = Constants.TileNames.player.rawValue
         
-        super.init(withName: "Default2", floorImage: floorImage)
+        super.init(withName: "Default2", floorImage: floorImage, playerFloorImage: nil)
     }
 }
 
 class Beach: Theme {
-    init(withFloorImage floorImage: String = "beach_floor1", levelMusicParts: [String] = Sound.beachThemeTwoStoragesA) {
+    init(withFloorImage floorImage: String = "beach_floor1", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.beachThemeTwoStoragesA) {
         let playerImage: String = "beach_player"
+        
         let laserBeamImages: [String] = ["beach_laser_beam_pointing_up", "beach_laser_beam_pointing_down"]
         
         let laserPointerImages: [String] = Beach.getLaserPointerAnimationImages(forLaserPointerWithBaseName: "witch")
         
         let crateImage: String = "beach_crate"
         
-        super.init(withName: "Beach", floorImage: floorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
+        super.init(withName: "Beach", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
     }
     
     private static func getLaserPointerAnimationImages(forLaserPointerWithBaseName name: String) -> [String] {
