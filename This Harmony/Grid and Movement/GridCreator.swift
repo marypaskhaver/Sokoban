@@ -138,8 +138,8 @@ class GridCreator {
                     let playerNode: Player = grid[row][col] as! Player
                     
                     // Replace w/ Floor tile w/ non-nil player property
-                    grid[row][col] = Floor()
-                    
+                    grid[row][col] = Floor(withPlayerFloorImage: Tile.constants.getLevelTheme().playerFloorImage)
+
                     (grid[row][col] as! Floor).player = playerNode
                     
                     let firstNodePosition: CGPoint = grid[0][0].position // Assumes grid is a rectangle
