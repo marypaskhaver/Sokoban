@@ -35,7 +35,7 @@ class Constants {
         9 : Beach(),
         10 : Beach(levelMusicParts: Sound.beachThemeTwoStoragesA),
         11 : Beach(),
-        12 : Beach(withFloorImage: "dd_tile002")
+        12 : Beach(withFloorImage: "dd_tile002", withPlayerFloorImage: "dd_tile012")
     ]
     
     var numLevels: Int = 0
