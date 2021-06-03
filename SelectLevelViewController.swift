@@ -72,8 +72,8 @@ class SelectLevelViewController: UICollectionViewController {
     func getNumberOfCellsBeforeThisOne(at indexPath: IndexPath) -> Int {
         var numberOfCellsBeforeThisOne: Int = 0
         
-        for _ in 0..<indexPath.section {
-            numberOfCellsBeforeThisOne += collectionView.numberOfItems(inSection: indexPath.section - 1)
+        for section in 0..<indexPath.section {
+            numberOfCellsBeforeThisOne += collectionView.numberOfItems(inSection: section)
         }
         
         return numberOfCellsBeforeThisOne
