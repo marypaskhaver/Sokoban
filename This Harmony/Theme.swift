@@ -79,3 +79,17 @@ class Beach: Theme {
         return images
     }
 }
+
+class DarkDimension: Theme {
+    init(withFloorImage floorImage: String = "dd_tile002", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.beachThemeTwoStoragesA) {
+        let playerImage: String = "beach_player"
+        
+        let laserBeamImages: [String] = ["laser_beam_pointing_up"]
+        
+        let laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue]
+        
+        let crateImage: String = "beach_crate"
+        
+        super.init(withName: "Dark Dimension", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
+    }
+}
