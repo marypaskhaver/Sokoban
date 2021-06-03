@@ -34,6 +34,8 @@ class SelectLevelViewController: UICollectionViewController {
             return constants.levelThemes.values.filter( { type(of: $0) == Default2.self } ).count
         case 2:
             return constants.levelThemes.values.filter( { type(of: $0) == Beach.self } ).count
+        case 3:
+            return constants.levelThemes.values.filter( { type(of: $0) == DarkDimension.self } ).count
         default:
             return 0
         }
@@ -92,7 +94,9 @@ class SelectLevelViewController: UICollectionViewController {
         case 1:
             header.title.text = "Default2 Levels"
         case 2:
-            header.title.text = "Beach Levels"
+            header.title.text = "Beach"
+        case 3:
+            header.title.text = "Dark Dimension"
         default:
             break
         }
@@ -117,8 +121,7 @@ class Header: UICollectionViewCell  {
         
         title.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         title.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        title.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        title.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        title.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {
