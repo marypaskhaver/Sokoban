@@ -81,7 +81,7 @@ class Beach: Theme {
 }
 
 class DarkDimension: Theme {
-    init(withFloorImage floorImage: String = "dd_tile002", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.beachThemeTwoStoragesA) {
+    init(withFloorImage floorImage: String = "dd_tile002", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.darkThemeThreeStoragesA) {
         let playerImage: String = "beach_player"
         
         let laserBeamImages: [String] = ["laser_beam_pointing_up"]
