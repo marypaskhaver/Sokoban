@@ -86,10 +86,21 @@ class DarkDimension: Theme {
         
         let laserBeamImages: [String] = ["laser_beam_pointing_up"]
         
-        let laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue]
+        let laserPointerImages: [String] = DarkDimension.getLaserPointerAnimationImages(forLaserPointerWithBaseName: "reaper")
         
         let crateImage: String = "beach_crate"
         
         super.init(withName: "Dark Dimension", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
+    }
+    
+    private static func getLaserPointerAnimationImages(forLaserPointerWithBaseName name: String) -> [String] {
+        var images: [String] = []
+        
+        for dirLetter in ["u", "d", "l", "r"] {
+            images.append(name + "_" + dirLetter + "_1")
+//            images.append(name + "_" + dirLetter + "_2")
+        }
+        
+        return images
     }
 }
