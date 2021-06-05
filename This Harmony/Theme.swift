@@ -100,8 +100,8 @@ class DarkDimension: Theme {
             images.append(name + "_" + dirLetter + "_1")
 //            images.append(name + "_" + dirLetter + "_2")
             
-            if dirLetter == "l" {
-                images.append(name + "_l_2")
+            if dirLetter == "l" || dirLetter == "r" {
+                images.append(name + "_" + dirLetter + "_2")
             }
         }
         
