@@ -84,7 +84,7 @@ class DarkDimension: Theme {
     init(withFloorImage floorImage: String = "dd_tile002", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.darkThemeThreeStoragesA) {
         let playerImage: String = "beach_player"
         
-        let laserBeamImages: [String] = ["laser_beam_pointing_up"]
+        let laserBeamImages: [String] = ["skull", "skull2"]
         
         let laserPointerImages: [String] = DarkDimension.getLaserPointerAnimationImages(forLaserPointerWithBaseName: "reaper")
         
@@ -99,6 +99,10 @@ class DarkDimension: Theme {
         for dirLetter in ["u", "d", "l", "r"] {
             images.append(name + "_" + dirLetter + "_1")
 //            images.append(name + "_" + dirLetter + "_2")
+            
+            if dirLetter == "l" {
+                images.append(name + "_l_2")
+            }
         }
         
         return images
