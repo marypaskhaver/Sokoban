@@ -31,7 +31,9 @@ class GameSceneButtonAndLabelMaker {
         gc.children.first(where: {$0.name == "camera"})!.run(zoomInAction)
 
         // Edit node size based on zoom action
-        let sizeMultiplier: CGFloat = 1 + abs(1.0 - CGFloat(gc.grid.grid[0].count) / 8.0)
+        let currentWidthRatioToIdealWidth: CGFloat = CGFloat(gc.grid.grid[0].count) / 8.0
+        
+        let sizeMultiplier: CGFloat = currentWidthRatioToIdealWidth < 1 ? currentWidthRatioToIdealWidth : 1 + abs(1.0 - CGFloat(gc.grid.grid[0].count) / 8.0)
         
         let buttonSize = CGSize(width: 80 * sizeMultiplier, height: 80 * sizeMultiplier)
             
