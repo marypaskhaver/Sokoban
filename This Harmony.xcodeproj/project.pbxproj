@@ -60,6 +60,7 @@
 		20C325FF2669C67700E9A165 /* Level_11.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20C325FE2669C67700E9A165 /* Level_11.sks */; };
 		20C32601266B15C900E9A165 /* Level_14.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20C32600266B15C900E9A165 /* Level_14.sks */; };
 		20C32603266B20AF00E9A165 /* Level_15.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20C32602266B20AF00E9A165 /* Level_15.sks */; };
+		20C32605266D5B3700E9A165 /* Level_16.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20C32604266D5B3700E9A165 /* Level_16.sks */; };
 		20C877D3264F59B50004B963 /* MenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C877D2264F59B50004B963 /* MenuTests.swift */; };
 		20C877D52652EF1F0004B963 /* CameraMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C877D42652EF1F0004B963 /* CameraMaker.swift */; };
 		20C877D92655A7170004B963 /* Level_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20C877D82655A7170004B963 /* Level_3.sks */; };
@@ -187,6 +188,7 @@
 		20C325FE2669C67700E9A165 /* Level_11.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_11.sks; sourceTree = "<group>"; };
 		20C32600266B15C900E9A165 /* Level_14.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_14.sks; sourceTree = "<group>"; };
 		20C32602266B20AF00E9A165 /* Level_15.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_15.sks; sourceTree = "<group>"; };
+		20C32604266D5B3700E9A165 /* Level_16.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_16.sks; sourceTree = "<group>"; };
 		20C877D2264F59B50004B963 /* MenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTests.swift; sourceTree = "<group>"; };
 		20C877D42652EF1F0004B963 /* CameraMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMaker.swift; sourceTree = "<group>"; };
 		20C877D82655A7170004B963 /* Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_3.sks; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				2021EC102664805000702472 /* Level_13.sks */,
 				20C32600266B15C900E9A165 /* Level_14.sks */,
 				20C32602266B20AF00E9A165 /* Level_15.sks */,
+				20C32604266D5B3700E9A165 /* Level_16.sks */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				2021EBD52660435100702472 /* Level_5.sks in Resources */,
 				2021EC0C2663EF0700702472 /* beach_2st_thB_pt2.mp3 in Resources */,
 				2021EC0B2663EF0700702472 /* beach_2st_thB_pt1.mp3 in Resources */,
+				20C32605266D5B3700E9A165 /* Level_16.sks in Resources */,
 				2021EBD1265F33F900702472 /* Level_7.sks in Resources */,
 				2021EBFD2663E22100702472 /* dark_3st_thA_pt3.mp3 in Resources */,
 				20E2F810259BC439004BF34B /* Main.storyboard in Resources */,
