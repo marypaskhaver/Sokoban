@@ -47,7 +47,7 @@ class LaserBeam: Tile {
         
         var skTexturesOfLaserBeamImages: [SKTexture] = []
         
-        for image in laserBeamImages {
+        for image in laserBeamImages.shuffled() {
             skTexturesOfLaserBeamImages.append(SKTexture(imageNamed: image))
         }
     
