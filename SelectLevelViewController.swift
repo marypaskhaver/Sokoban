@@ -36,6 +36,8 @@ class SelectLevelViewController: UICollectionViewController {
             return constants.levelThemes.values.filter( { type(of: $0) == Beach.self } ).count
         case 3:
             return constants.levelThemes.values.filter( { type(of: $0) == DarkDimension.self } ).count
+        case 4:
+            return constants.levelThemes.values.filter( { type(of: $0) == Jungle.self } ).count
         default:
             return 0
         }
@@ -97,6 +99,8 @@ class SelectLevelViewController: UICollectionViewController {
             header.title.text = "Beach"
         case 3:
             header.title.text = "Dark Dimension"
+        case 4:
+            header.title.text = "Jungle"
         default:
             break
         }
