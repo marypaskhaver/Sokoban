@@ -108,3 +108,24 @@ class DarkDimension: Theme {
         return images
     }
 }
+
+class Jungle: Theme {
+    init(withFloorImage floorImage: String = "j_tile105", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.darkThemeThreeStoragesA) {
+
+        let playerImage: String = "beach_player"
+        
+        let laserPointerImages: [String] = ["bard_d_1", "bard_d_2", "bard_d_3", "bard_d_4",
+        "bard_u_1", "bard_l_1", "bard_r_1"] // All other images except the _d_ ones don't exist, but I need all directions for code to work for now
+        
+        let crateImage: String = "beach_crate"
+        
+        var laserBeamImages: [String] = []
+        let randRange = Int.random(in: 3..<9)
+        
+        for num in 1..<randRange {
+            laserBeamImages.append("jungle_laser_beam_\(num)")
+        }
+
+        super.init(withName: "Jungle", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
+    }
+}
