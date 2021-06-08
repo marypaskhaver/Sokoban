@@ -37,6 +37,7 @@
 		2021EC132664806100702472 /* Level_12.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2021EC122664806100702472 /* Level_12.sks */; };
 		20484748266FAE8C0019E4C9 /* Level_20.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20484747266FAE8C0019E4C9 /* Level_20.sks */; };
 		2048474A266FCFD80019E4C9 /* Level_21.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20484749266FCFD80019E4C9 /* Level_21.sks */; };
+		2048474C2670228E0019E4C9 /* Level_22.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2048474B2670228E0019E4C9 /* Level_22.sks */; };
 		20583A7F25BA740900A74914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F811259BC43A004BF34B /* Assets.xcassets */; };
 		20583A8C25BA75C500A74914 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20583A8B25BA75C500A74914 /* SoundPlayer.swift */; };
 		206B700F2605599800B9716A /* SwipeRightTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B700E2605599800B9716A /* SwipeRightTracker.swift */; };
@@ -172,6 +173,7 @@
 		2021EC122664806100702472 /* Level_12.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_12.sks; sourceTree = "<group>"; };
 		20484747266FAE8C0019E4C9 /* Level_20.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_20.sks; sourceTree = "<group>"; };
 		20484749266FCFD80019E4C9 /* Level_21.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_21.sks; sourceTree = "<group>"; };
+		2048474B2670228E0019E4C9 /* Level_22.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_22.sks; sourceTree = "<group>"; };
 		20583A8B25BA75C500A74914 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		206B700E2605599800B9716A /* SwipeRightTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightTracker.swift; sourceTree = "<group>"; };
 		206B701626055C0E00B9716A /* SwipeLeftTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeLeftTracker.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				2000BDCE266DAFA5006B6813 /* Level_19.sks */,
 				20484747266FAE8C0019E4C9 /* Level_20.sks */,
 				20484749266FCFD80019E4C9 /* Level_21.sks */,
+				2048474B2670228E0019E4C9 /* Level_22.sks */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 			files = (
 				2021EBD52660435100702472 /* Level_5.sks in Resources */,
 				2021EC0C2663EF0700702472 /* beach_2st_thB_pt2.mp3 in Resources */,
+				2048474C2670228E0019E4C9 /* Level_22.sks in Resources */,
 				2021EC0B2663EF0700702472 /* beach_2st_thB_pt1.mp3 in Resources */,
 				20C32605266D5B3700E9A165 /* Level_16.sks in Resources */,
 				2000BDCF266DAFA5006B6813 /* Level_19.sks in Resources */,
