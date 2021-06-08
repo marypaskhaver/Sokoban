@@ -44,7 +44,8 @@ class Constants {
         18 : DarkDimension(),
         19 : Jungle(),
         20 : Jungle(),
-        21 : Jungle()
+        21 : Jungle(),
+        22 : Jungle()
     ]
     
     var numLevels: Int = 0
