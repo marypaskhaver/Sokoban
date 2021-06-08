@@ -42,7 +42,8 @@ class Constants {
         16 : DarkDimension(),
         17 : DarkDimension(withPlayerFloorImage: "dd_tile012"),
         18 : DarkDimension(),
-        19 : Jungle()
+        19 : Jungle(),
+        20 : Jungle()
     ]
     
     var numLevels: Int = 0
