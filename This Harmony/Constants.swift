@@ -45,7 +45,9 @@ class Constants {
         19 : Jungle(),
         20 : Jungle(),
         21 : Jungle(),
-        22 : Jungle()
+        22 : Jungle(),
+        23 : Jungle(),
+        24 : Jungle(withPlayerFloorImage: "j_tile108")
     ]
     
     var numLevels: Int = 0
