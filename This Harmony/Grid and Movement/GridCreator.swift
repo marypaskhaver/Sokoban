@@ -29,20 +29,22 @@ class GridCreator {
 //
 //                if node as? Floor != nil {
 //                    if node as? Storage != nil {
-//                        print("storage ")
+//                        print("storage \(node.position)")
 //                    } else if (node as! Floor).player != nil {
-//                        print("player ")
+//                        print("player \(node.position)")
 //                    } else if (node as! Floor).crate != nil {
-//                        print("crate ")
+//                        print("crate \(node.position)")
 //                    } else {
-//                        print("floor ")
+//                        print("floor \(node.position)")
 //                    }
 //                } else {
 //                    print(node.name ?? "no name" + " ")
+//                    print("wall above has position \(node.position) ")
 //                }
 //            }
 //            print()
 //        }
+//        print("------------------")
 //    }
     
     private func getGridOfScenesChildren(_ children: [SKNode]) -> [ [Tile] ] {
