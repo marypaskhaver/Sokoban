@@ -51,9 +51,42 @@ class MenuBoxMaker {
             self.gameScene.gvc.presentLevelMenu()
         }
         
+        addRopes(behindBox: menuBox)
+        
         menuBox.addChild(levelMenuLabel)
         
         return menuBox
+    }
+    
+    func addRopes(behindBox menuBox: SKShapeNode) {
+        let sizeMultiplier: CGFloat = 1 + abs(1.0 - CGFloat(self.gameScene.grid.grid[0].count) / 8.0)
+
+        var rope1: SKSpriteNode = SKSpriteNode(imageNamed: "rope_bit") // Check appearance on iPhone, other devices, zoom
+        rope1.position = CGPoint(x: menuBox.frame.midX / 2, y: sizeMultiplier * (UIScreen.main.bounds.maxY + 100) + getCameraPosition().y) // Add 100 for safety
+        menuBox.addChild(rope1)
+        
+        var prevY = rope1.position.y
+        
+        while rope1.position.y > menuBox.frame.maxY {
+            rope1 = SKSpriteNode(imageNamed: "rope_bit")
+            rope1.position = CGPoint(x: menuBox.frame.midX / 2, y: prevY - rope1.frame.height)
+            prevY = rope1.position.y
+            menuBox.addChild(rope1)
+        }
+        
+        var rope2: SKSpriteNode = SKSpriteNode(imageNamed: "rope_bit")
+        rope2.position = CGPoint(x: menuBox.frame.midX * 1.5, y: sizeMultiplier * (UIScreen.main.bounds.maxY + 100) + getCameraPosition().y)
+        menuBox.addChild(rope2)
+        
+        prevY = rope2.position.y
+
+        while rope2.position.y > menuBox.frame.maxY {
+            rope2 = SKSpriteNode(imageNamed: "rope_bit")
+            rope2.position = CGPoint(x: menuBox.frame.midX * 1.5, y: prevY - rope2.frame.height)
+            prevY = rope2.position.y
+            menuBox.addChild(rope2)
+        }
+
     }
     
     private func getLevelCompleteMenu() -> SKShapeNode {
