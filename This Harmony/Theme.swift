@@ -39,22 +39,6 @@ class Theme: Equatable {
     
 }
 
-class Default: Theme {
-    init() {
-        let floorImage: String = Constants.TileNames.floor.rawValue
-        super.init(withName: "Default", floorImage: floorImage, playerFloorImage: nil)
-    }
-}
-
-class Default2: Theme {
-    // Temporary-- just seeing if I can use diff images in levels w/ diff themes
-    init() {
-        let floorImage: String = Constants.TileNames.player.rawValue
-        
-        super.init(withName: "Default2", floorImage: floorImage, playerFloorImage: nil)
-    }
-}
-
 class Beach: Theme {
     init(withFloorImage floorImage: String = "beach_floor1", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.beachThemeTwoStoragesA) {
         let playerImage: String = "beach_player"
