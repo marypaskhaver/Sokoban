@@ -72,11 +72,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func disableButtonsIfNeeded() {
-        // Disable buttons if needed
-        if CoreDataManager.gameSceneClass.getLevel(CoreDataManager.gameSceneClass.level + 1) == nil {
+        // Disable buttons if the SKS level doesn't exist or hasn't been added to Tile.constants's levelThemes
+        if CoreDataManager.gameSceneClass.getLevel(CoreDataManager.gameSceneClass.level + 1) == nil ||
+            Tile.constants.levelThemes[CoreDataManager.gameSceneClass.level + 1] == nil {
             buttonNext.state = .disabled
             buttonNext.reloadInputViews()
-        } else if CoreDataManager.gameSceneClass.getLevel(CoreDataManager.gameSceneClass.level - 1) == nil {
+        } else if CoreDataManager.gameSceneClass.getLevel(CoreDataManager.gameSceneClass.level - 1) == nil ||
+            Tile.constants.levelThemes[CoreDataManager.gameSceneClass.level - 1] == nil {
             buttonPrevious.state = .disabled
             buttonPrevious.reloadInputViews()
         }
