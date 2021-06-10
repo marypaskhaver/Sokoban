@@ -45,7 +45,7 @@ class MenuBoxMaker {
         menuBox.fillColor = .white
         menuBox.name = MenuBox.pauseLevelMenu.rawValue
         
-        let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY))
+        let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + menuBox.frame.height / 6))
 
         levelMenuLabel.selectedHandler = {
             self.gameScene.gvc.presentLevelMenu()
@@ -56,7 +56,6 @@ class MenuBoxMaker {
         homeLabel.selectedHandler = {
             self.gameScene.gvc.presentMainMenu()
         }
-
         
         addRopes(behindBox: menuBox)
         
