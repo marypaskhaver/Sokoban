@@ -138,6 +138,7 @@ class GridCreator {
                 
                 if grid[row][col].name == Constants.TileNames.player.rawValue {
                     let playerNode: Player = grid[row][col] as! Player
+                    playerNode.setTextureToLevelThemePlayerImage() // Change texture from the default it was set to in the level
                     
                     // Replace w/ Floor tile w/ non-nil player property
                     grid[row][col] = Floor(withPlayerFloorImage: Tile.constants.getLevelTheme().playerFloorImage)
