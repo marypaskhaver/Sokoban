@@ -29,9 +29,7 @@ class GameSceneButtonAndLabelMaker {
         let currentWidthRatioToIdealWidth: CGFloat = CGFloat(gc.grid.grid[0].count) / 8.0
         
         let sizeMultiplier: CGFloat = currentWidthRatioToIdealWidth < 1 ? currentWidthRatioToIdealWidth : 1 + abs(1.0 - CGFloat(gc.grid.grid[0].count) / 8.0)
-        
-        let buttonSize = CGSize(width: 80 * sizeMultiplier, height: 80 * sizeMultiplier)
-            
+                    
         var positionBeforeApplyingVector: CGFloat {
             // Tile.constants.tileSize / 2 gives midY of bottom left-most node, at (35, 35)
             let bottomLeftMidY: CGFloat = CGFloat(Tile.constants.tileSize / 2)
@@ -67,13 +65,16 @@ class GameSceneButtonAndLabelMaker {
         
         let topLeftMidX: CGFloat = CGFloat(Tile.constants.tileSize / 2)
         
-        let buttonPrevious: MSButtonNode = MSButtonNode(withName: "prev_button", SKTexture(imageNamed: "prev_button"), buttonSize, atPosition: CGPoint(x: topLeftMidX * sizeMultiplier / 2, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
-                
-        // 75 won't work for all hardcoding-- what about diff phone sizes, iPads?
-        
-        let buttonNext: MSButtonNode = MSButtonNode(withName: "next_button", SKTexture(imageNamed: "next_button"), buttonSize, atPosition: CGPoint(x: buttonPrevious.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
+        let buttonPrevTexture: SKTexture = SKTexture(imageNamed: "prev_button")
 
-        let buttonRestart: MSButtonNode = MSButtonNode(withName: "reset_button", SKTexture(imageNamed: "reset_button"), buttonSize, atPosition: CGPoint(x: buttonNext.position.x + 90 * sizeMultiplier, y: buttonPrevious.frame.midY))
+        let buttonPrevious: MSButtonNode = MSButtonNode(withName: "prev_button", SKTexture(imageNamed: "prev_button"), CGSize(width: buttonPrevTexture.size().width / buttonPrevTexture.size().height * 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: topLeftMidX * sizeMultiplier, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
+
+        let space: CGFloat = buttonPrevious.size.width * 1.2
+        
+        let buttonNextTexture: SKTexture = SKTexture(imageNamed: "next_button")
+        let buttonNext: MSButtonNode = MSButtonNode(withName: "next_button", buttonNextTexture, buttonPrevious.size, atPosition: CGPoint(x: buttonPrevious.position.x + space * sizeMultiplier, y: buttonPrevious.frame.midY))
+                
+        let buttonRestart: MSButtonNode = MSButtonNode(withName: "reset_button", SKTexture(imageNamed: "reset_button"), buttonNext.size, atPosition: CGPoint(x: buttonNext.position.x + space * sizeMultiplier, y: buttonPrevious.frame.midY))
         
         var moveDownAmt2: CGFloat {
             switch UIDevice.current.userInterfaceIdiom {
