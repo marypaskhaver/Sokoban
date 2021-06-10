@@ -58,7 +58,7 @@ class MenuBoxMaker {
         return menuBox
     }
     
-    func addRopes(behindBox menuBox: SKShapeNode) {
+    private func addRopes(behindBox menuBox: SKShapeNode) {
         let sizeMultiplier: CGFloat = 1 + abs(1.0 - CGFloat(self.gameScene.grid.grid[0].count) / 8.0)
 
         var rope1: SKSpriteNode = SKSpriteNode(imageNamed: "rope_bit") // Check appearance on iPhone, other devices, zoom
