@@ -120,11 +120,11 @@ class SelectLevelViewControllerTests: XCTestCase {
     func testCellsSplitIntoSectionsBasedOnLevelTheme() {
         let slvc: SelectLevelViewController = createSelectLevelViewController()
 
-        // Since currently all 12 test_levels are listed as Default levels, there should only be one section w/ all 12 test_levels
+        // Since currently all 12 test_levels are listed as Beach levels, there should only be one section w/ all 12 test_levels
         XCTAssertEqual(slvc.collectionView.numberOfSections, 1)
 
-        // Replace test_level 1's theme from Default to Beach
-        slvc.constants.levelThemes[1] = Beach()
+        // Replace test_level 1's theme from Beach to Jungle
+        slvc.constants.levelThemes[1] = Jungle()
 
         slvc.collectionView.reloadData()
 
