@@ -67,9 +67,9 @@ class GameSceneButtonAndLabelMaker {
         
         let buttonPrevTexture: SKTexture = SKTexture(imageNamed: "prev_button")
 
-        let buttonPrevious: MSButtonNode = MSButtonNode(withName: "prev_button", SKTexture(imageNamed: "prev_button"), CGSize(width: buttonPrevTexture.size().width / buttonPrevTexture.size().height * 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: topLeftMidX * sizeMultiplier, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
+        let buttonPrevious: MSButtonNode = MSButtonNode(withName: "prev_button", SKTexture(imageNamed: "prev_button"), CGSize(width: buttonPrevTexture.size().width / buttonPrevTexture.size().height * 70 * sizeMultiplier, height: 70 * sizeMultiplier), atPosition: CGPoint(x: topLeftMidX * sizeMultiplier, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
 
-        let space: CGFloat = buttonPrevious.size.width * 1.2
+        let space: CGFloat = buttonPrevious.size.width / sizeMultiplier * 1.2
         
         let buttonNextTexture: SKTexture = SKTexture(imageNamed: "next_button")
         let buttonNext: MSButtonNode = MSButtonNode(withName: "next_button", buttonNextTexture, buttonPrevious.size, atPosition: CGPoint(x: buttonPrevious.position.x + space * sizeMultiplier, y: buttonPrevious.frame.midY))
