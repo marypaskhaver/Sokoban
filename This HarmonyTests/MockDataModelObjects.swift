@@ -78,18 +78,18 @@ class MockDataModelObjects {
             self.numLevels = levelCount
 
             self.levelThemes = [
-                1 : Default(),
-                2 : Default(),
-                3 : Default(),
-                4 : Default(),
-                5 : Default(),
-                6 : Default(),
-                7 : Default(),
-                8 : Default(),
-                9 : Default(),
-                10 : Default(),
-                11 : Default(),
-                12 : Default()
+                1 : Beach(),
+                2 : Beach(),
+                3 : Beach(),
+                4 : Beach(),
+                5 : Beach(),
+                6 : Beach(),
+                7 : Beach(),
+                8 : Beach(),
+                9 : Beach(),
+                10 : Beach(),
+                11 : Beach(),
+                12 : Beach()
             ]
         }
         
