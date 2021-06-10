@@ -29,14 +29,10 @@ class SelectLevelViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch (section) {
         case 0:
-            return constants.levelThemes.values.filter( { type(of: $0) == Default.self } ).count
-        case 1:
-            return constants.levelThemes.values.filter( { type(of: $0) == Default2.self } ).count
-        case 2:
             return constants.levelThemes.values.filter( { type(of: $0) == Beach.self } ).count
-        case 3:
+        case 1:
             return constants.levelThemes.values.filter( { type(of: $0) == DarkDimension.self } ).count
-        case 4:
+        case 2:
             return constants.levelThemes.values.filter( { type(of: $0) == Jungle.self } ).count
         default:
             return 0
@@ -92,14 +88,10 @@ class SelectLevelViewController: UICollectionViewController {
         
         switch indexPath.section {
         case 0:
-            header.title.text = "Default Levels"
-        case 1:
-            header.title.text = "Default2 Levels"
-        case 2:
             header.title.text = "Beach"
-        case 3:
+        case 1:
             header.title.text = "Dark Dimension"
-        case 4:
+        case 2:
             header.title.text = "Jungle"
         default:
             break
