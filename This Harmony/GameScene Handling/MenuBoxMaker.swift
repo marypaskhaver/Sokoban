@@ -51,10 +51,18 @@ class MenuBoxMaker {
             self.gameScene.gvc.presentLevelMenu()
         }
         
+        let homeLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "home_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: levelMenuLabel.frame.midX, y: menuBox.frame.midY - menuBox.frame.height / 6))
+
+        homeLabel.selectedHandler = {
+            self.gameScene.gvc.presentMainMenu()
+        }
+
+        
         addRopes(behindBox: menuBox)
         
         menuBox.addChild(levelMenuLabel)
-        
+        menuBox.addChild(homeLabel)
+
         return menuBox
     }
     
