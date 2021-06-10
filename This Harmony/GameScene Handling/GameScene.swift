@@ -130,9 +130,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func showLevelCompleteMenu() {
-        let menuBox: SKShapeNode = MenuBoxMaker(for: self).getBox(ofType: .levelCompleteMenu)
+        let menuBoxMaker: MenuBoxMaker = MenuBoxMaker(for: self)
+        let menuBox: SKShapeNode = menuBoxMaker.getBox(ofType: .levelCompleteMenu)
+        
+        menuBox.position = CGPoint(x: 0, y: -UIScreen.main.bounds.maxY)
+        
         self.scene?.addChild(menuBox)
         
+        menuBox.run(SKAction.moveTo(y: 0, duration: 0.8))
+
         buttonRestart.state = .disabled
         buttonNext.state = .disabled
         buttonPrevious.state = .disabled
