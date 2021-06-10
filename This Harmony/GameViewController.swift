@@ -28,6 +28,10 @@ class GameViewController: UIViewController {
 //            // TODO: handle the error
 //        }
         
+        presentMainMenu()
+    }
+    
+    func presentMainMenu() {
         if let view = self.view as! SKView? {
             if let scene = MainMenu(fileNamed: "MainMenu") {
                 // Set the scale mode to scale to fit the window
