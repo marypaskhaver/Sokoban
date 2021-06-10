@@ -16,11 +16,6 @@ class GameSceneButtonAndLabelMaker {
     }
     
     func addButtonsAndLabels() {
-        // Not always going to keep level 1 the same way so save these constants elsewhere or make it level 0 or something
-        let gc1: GameScene = GameScene.getLevel(1)!
-        let gridCreator: GridCreator = GridCreator(withChildren: gc1.children)
-        let grid = Grid(with2DArrayOfTiles: gridCreator.grid, laserPointers: gridCreator.laserPointers, withCoreDataManager: CoreDataManager())
-
         // Camera is always set up before buttons and is the center of the grid
         let cameraPosition: CGPoint = gc.children.first(where: {$0.name == "camera"})!.position
         
@@ -38,11 +33,15 @@ class GameSceneButtonAndLabelMaker {
         let buttonSize = CGSize(width: 80 * sizeMultiplier, height: 80 * sizeMultiplier)
             
         var positionBeforeApplyingVector: CGFloat {
+            // Tile.constants.tileSize / 2 gives midY of bottom left-most node, at (35, 35)
+            let bottomLeftMidY: CGFloat = CGFloat(Tile.constants.tileSize / 2)
+
             switch UIDevice.current.userInterfaceIdiom {
+
             case .phone:
-                return grid.grid[grid.grid.count - 1][0].frame.midY * sizeMultiplier - 0.35 * sizeMultiplier * UIScreen.main.bounds.height * sizeMultiplier
+                return bottomLeftMidY * sizeMultiplier - 0.35 * sizeMultiplier * UIScreen.main.bounds.height * sizeMultiplier
             case .pad:
-                return grid.grid[grid.grid.count - 1][0].frame.midY * sizeMultiplier - 0.35 * sizeMultiplier * UIScreen.main.bounds.height * sizeMultiplier
+                return bottomLeftMidY * sizeMultiplier - 0.35 * sizeMultiplier * UIScreen.main.bounds.height * sizeMultiplier
             default:
                 return -1
             }
@@ -66,7 +65,9 @@ class GameSceneButtonAndLabelMaker {
             }
         }
         
-        let buttonPrevious: MSButtonNode = MSButtonNode(withName: "prev_button", SKTexture(imageNamed: "prev_button"), buttonSize, atPosition: CGPoint(x: grid.grid[0][0].frame.midX * sizeMultiplier / 2, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
+        let topLeftMidX: CGFloat = CGFloat(Tile.constants.tileSize / 2)
+        
+        let buttonPrevious: MSButtonNode = MSButtonNode(withName: "prev_button", SKTexture(imageNamed: "prev_button"), buttonSize, atPosition: CGPoint(x: topLeftMidX * sizeMultiplier / 2, y: positionBeforeApplyingVector - (moveDownAmt * sizeMultiplier + vector.dy * sizeMultiplier) - tileShift))
                 
         // 75 won't work for all hardcoding-- what about diff phone sizes, iPads?
         
@@ -97,7 +98,9 @@ class GameSceneButtonAndLabelMaker {
         
         let finalMoveDown: CGFloat = sizeMultiplier == 1 ? 0 : -70
         
-        let buttonMenu: MSButtonNode = MSButtonNode(withName: "menu_button", SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: grid.grid[0][0].frame.midY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - finalMoveDown))
+        let topLeftMidY: CGFloat = CGFloat(Tile.constants.tileSize / 2) + CGFloat(Tile.constants.tileSize) * 9
+
+        let buttonMenu: MSButtonNode = MSButtonNode(withName: "menu_button", SKTexture(imageNamed: "menu_button"), CGSize(width: 60 * sizeMultiplier, height: 60 * sizeMultiplier), atPosition: CGPoint(x: buttonPrevious.frame.midX - 20 * sizeMultiplier, y: topLeftMidY * sizeMultiplier + 80 * sizeMultiplier - sizeMultiplier * (moveDownAmt2 + vector.dy) - finalMoveDown))
 
         gc.buttonRestart = buttonRestart
         gc.buttonNext = buttonNext
