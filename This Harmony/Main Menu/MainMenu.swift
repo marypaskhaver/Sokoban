@@ -11,6 +11,8 @@ import SpriteKit
 class MainMenu: SKScene {
 
     var buttonPlay: MSButtonNode!
+    var buttonSkins: MSButtonNode!
+    
     var gvc: GameViewController!
     
     override func didMove(to view: SKView) {
@@ -19,6 +21,12 @@ class MainMenu: SKScene {
         
         buttonPlay.selectedHandler = {
             self.gvc.presentLevelMenu()
+        }
+        
+        buttonSkins = self.childNode(withName: "buttonSkins") as! MSButtonNode
+        
+        buttonSkins.selectedHandler = {
+            self.gvc.presentSkinsMenu()
         }
         
     }
