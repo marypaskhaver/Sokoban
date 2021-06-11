@@ -64,6 +64,10 @@ class GameViewController: UIViewController {
         self.performSegue(withIdentifier: "showLevelMenu", sender: self)
     }
     
+    func presentSkinsMenu() {
+        self.performSegue(withIdentifier: "showSkinsMenu", sender: self)
+    }
+    
     func loadLevel(number: Int) {
         // Grab reference to our SpriteKit view
         guard let skView = self.view as! SKView? else {
