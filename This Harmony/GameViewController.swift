@@ -42,9 +42,6 @@ class GameViewController: UIViewController {
             }
             
             view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
         }
     }
 
@@ -65,7 +62,17 @@ class GameViewController: UIViewController {
     }
     
     func presentSkinsMenu() {
-        self.performSegue(withIdentifier: "showSkinsMenu", sender: self)
+        if let view = self.view as! SKView? {
+            if let scene = SkinsMenu(fileNamed: "SkinsMenu") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                scene.gvc = self
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+        }
     }
     
     func loadLevel(number: Int) {
@@ -88,9 +95,9 @@ class GameViewController: UIViewController {
         gameScene.scaleMode = .aspectFill
 
         // Show debug
-        skView.showsPhysics = true
-        skView.showsDrawCount = true
-        skView.showsFPS = true
+//        skView.showsPhysics = true
+//        skView.showsDrawCount = true
+//        skView.showsFPS = true
 
         // Start game scene
         skView.presentScene(gameScene)
