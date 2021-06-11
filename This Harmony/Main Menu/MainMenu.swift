@@ -12,7 +12,8 @@ class MainMenu: SKScene {
 
     var buttonPlay: MSButtonNode!
     var buttonSkins: MSButtonNode!
-    
+    var logo: SKSpriteNode!
+
     var gvc: GameViewController!
     
     override func didMove(to view: SKView) {
@@ -29,6 +30,13 @@ class MainMenu: SKScene {
             self.gvc.presentSkinsMenu()
         }
         
+        // Animate logo
+        logo = self.childNode(withName: "logo") as! SKSpriteNode
+        
+        let moveUp: SKAction = SKAction.move(by: CGVector(dx: 0, dy: 10) , duration: 1)
+        let moveDown: SKAction = SKAction.move(by: CGVector(dx: 0, dy: -10) , duration: 1)
+        
+        logo.run(SKAction.repeatForever(SKAction.sequence([moveUp, moveDown])))
     }
     
 }
