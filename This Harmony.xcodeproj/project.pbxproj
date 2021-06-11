@@ -17,6 +17,8 @@
 		200E335026703C350017B457 /* Level_22.sks in Resources */ = {isa = PBXBuildFile; fileRef = 200E334F26703C350017B457 /* Level_22.sks */; };
 		200E335226713D170017B457 /* Level_23.sks in Resources */ = {isa = PBXBuildFile; fileRef = 200E335126713D170017B457 /* Level_23.sks */; };
 		200E33542671BA0C0017B457 /* Level_24.sks in Resources */ = {isa = PBXBuildFile; fileRef = 200E33532671BA0C0017B457 /* Level_24.sks */; };
+		200E33582673F0B40017B457 /* SkinsMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 200E33572673F0B40017B457 /* SkinsMenu.sks */; };
+		200E335A2673F11A0017B457 /* SkinsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200E33592673F11A0017B457 /* SkinsMenu.swift */; };
 		2021EBCD265E803E00702472 /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBCC265E803E00702472 /* Level_2.sks */; };
 		2021EBCF265F154900702472 /* Level_4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBCE265F154900702472 /* Level_4.sks */; };
 		2021EBD1265F33F900702472 /* Level_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2021EBD0265F33F900702472 /* Level_5.sks */; };
@@ -155,6 +157,8 @@
 		200E334F26703C350017B457 /* Level_22.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_22.sks; sourceTree = "<group>"; };
 		200E335126713D170017B457 /* Level_23.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_23.sks; sourceTree = "<group>"; };
 		200E33532671BA0C0017B457 /* Level_24.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_24.sks; sourceTree = "<group>"; };
+		200E33572673F0B40017B457 /* SkinsMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SkinsMenu.sks; sourceTree = "<group>"; };
+		200E33592673F11A0017B457 /* SkinsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsMenu.swift; sourceTree = "<group>"; };
 		2021EBCC265E803E00702472 /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
 		2021EBCE265F154900702472 /* Level_4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_4.sks; sourceTree = "<group>"; };
 		2021EBD0265F33F900702472 /* Level_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_5.sks; sourceTree = "<group>"; };
@@ -550,6 +554,8 @@
 			children = (
 				2076A89525A689D90085DA7A /* MainMenu.sks */,
 				2076A89F25A68BED0085DA7A /* MainMenu.swift */,
+				200E33592673F11A0017B457 /* SkinsMenu.swift */,
+				200E33572673F0B40017B457 /* SkinsMenu.sks */,
 			);
 			path = "Main Menu";
 			sourceTree = "<group>";
@@ -673,6 +679,7 @@
 			files = (
 				2021EBD52660435100702472 /* Level_3.sks in Resources */,
 				2021EC0C2663EF0700702472 /* beach_2st_thB_pt2.mp3 in Resources */,
+				200E33582673F0B40017B457 /* SkinsMenu.sks in Resources */,
 				2048474C2670228E0019E4C9 /* Level_20.sks in Resources */,
 				2021EC0B2663EF0700702472 /* beach_2st_thB_pt1.mp3 in Resources */,
 				20C32605266D5B3700E9A165 /* Level_14.sks in Resources */,
@@ -787,6 +794,7 @@
 				20E2F80B259BC439004BF34B /* GameScene.swift in Sources */,
 				20A04BAC2626844500C3BB1F /* GridInformation.swift in Sources */,
 				20E2F80D259BC439004BF34B /* GameViewController.swift in Sources */,
+				200E335A2673F11A0017B457 /* SkinsMenu.swift in Sources */,
 				20F59231259CE20C003C6A1D /* MovableTile.swift in Sources */,
 				20F59251259F71DD003C6A1D /* Tile.swift in Sources */,
 				20DA9BE9262CCE8D005B11A1 /* Theme.swift in Sources */,
