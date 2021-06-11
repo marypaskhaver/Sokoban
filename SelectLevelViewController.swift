@@ -57,6 +57,8 @@ class SelectLevelViewController: UICollectionViewController {
         let cellNumber: Int = indexPath.row + 1
         cell.levelNumberLabel.text = String(cellNumber)
 
+        cell.levelNumberLabel.font = UIFont(name: "Pixellium", size: 24)
+        
         // Toggle cell's checkmarkView
         cell.checkmarkView.isHidden = constants.completeLevels.contains(getLevelNumberFromCell(at: indexPath)) ? false : true
 
@@ -86,6 +88,8 @@ class SelectLevelViewController: UICollectionViewController {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:
                 "header", for: indexPath) as! Header
         
+        header.title.font = UIFont(name: "Pixellium", size: 36)
+
         switch indexPath.section {
         case 0:
             header.title.text = "Beach"
