@@ -21,6 +21,7 @@
                     </view>
                     <connections>
                         <segue destination="1SP-Oq-Buu" kind="presentation" identifier="showLevelMenu" id="jwR-Gi-rbu"/>
+                        <segue destination="pDe-hG-nMp" kind="presentation" identifier="showSkinsMenu" id="S83-Tb-STi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -115,7 +116,22 @@
                     </connections>
                 </collectionViewCell>
             </objects>
-            <point key="canvasLocation" x="539" y="115"/>
+            <point key="canvasLocation" x="525" y="-153"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bWf-Gc-W0j">
+            <objects>
+                <viewController id="pDe-hG-nMp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4WM-42-e6Q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aLi-ld-Ae8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NrE-NH-BBm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549" y="527"/>
         </scene>
     </scenes>
     <resources>
