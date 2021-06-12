@@ -91,7 +91,7 @@ class DarkDimension: Theme {
 }
 
 class Jungle: Theme {
-    init(withPlayerImage playerImage: String = "blond_girl", withFloorImage floorImage: String = "j_tile105", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.darkThemeThreeStoragesA) {
+    init(withPlayerImage playerImage: String = "delia", withFloorImage floorImage: String = "j_tile105", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.darkThemeThreeStoragesA) {
         
         let laserPointerImages: [String] = ["bard_d_1", "bard_d_2", "bard_d_3", "bard_d_4",
         "bard_u_1", "bard_l_1", "bard_r_1"] // All other images except the _d_ ones don't exist, but I need all directions for code to work for now
