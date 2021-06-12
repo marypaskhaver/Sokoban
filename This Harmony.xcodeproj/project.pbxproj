@@ -406,6 +406,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		207A9A0726743382008BB5A9 /* Skins Menu */ = {
+			isa = PBXGroup;
+			children = (
+				200E33592673F11A0017B457 /* SkinsMenu.swift */,
+				200E33572673F0B40017B457 /* SkinsMenu.sks */,
+			);
+			path = "Skins Menu";
+			sourceTree = "<group>";
+		};
 		20A04B372621389900C3BB1F /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +460,7 @@
 				20583A9325BA780400A74914 /* Sounds */,
 				206B702526055E5500B9716A /* GameScene Handling */,
 				20E2F80C259BC439004BF34B /* GameViewController.swift */,
+				207A9A0726743382008BB5A9 /* Skins Menu */,
 				20ED277F25B92CA500428A5F /* Main Menu */,
 				20E2F80E259BC439004BF34B /* Main.storyboard */,
 				20EB18BF25F02D7D004914A0 /* LevelCell.swift */,
@@ -554,8 +564,6 @@
 			children = (
 				2076A89525A689D90085DA7A /* MainMenu.sks */,
 				2076A89F25A68BED0085DA7A /* MainMenu.swift */,
-				200E33592673F11A0017B457 /* SkinsMenu.swift */,
-				200E33572673F0B40017B457 /* SkinsMenu.sks */,
 			);
 			path = "Main Menu";
 			sourceTree = "<group>";
