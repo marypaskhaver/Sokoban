@@ -57,7 +57,7 @@ class Player: MovableTile {
         self.run(SKAction.repeat(createAnimationAction(inDirection: .down), count: 1))
     }
     
-    // The SKScenes / levels are created with a default player image, but this doesn't always correspond with the actual Theme's image. Ex: I used a beach_player to make Jungle levels but a Jungle level's actual player would be the blond_girl sprite. This func replaces the beach_player with the theme's actual playerImage: the right sprite.
+    // The SKScenes / levels are created with a default player image, but this doesn't always correspond with the actual Theme's image. Ex: I used a louise image to make Jungle levels but a Jungle level's actual player would be the delia sprite. This func replaces the louise image with the theme's actual playerImage: the right sprite.
     func setTextureToLevelThemePlayerImage() {
         self.texture = SKTexture(imageNamed: Tile.constants.getLevelTheme().playerImage + "_d_stand")
     }
