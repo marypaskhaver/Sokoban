@@ -34,6 +34,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
+        // If the user changed what player they're playing as, this will notify the theme and update the image
+        self.theme.updatePlayerImageIfNeeded()
+
         // Create grid
         let gridCreator: GridCreator = GridCreator(withChildren: children)
         grid = Grid(with2DArrayOfTiles: gridCreator.grid, laserPointers: gridCreator.laserPointers, withCoreDataManager: gvc.cdm)
