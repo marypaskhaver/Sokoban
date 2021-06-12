@@ -40,7 +40,7 @@ class Theme: Equatable {
 }
 
 class Beach: Theme {
-    init(withPlayerImage playerImage: String = "beach_player", withFloorImage floorImage: String = "beach_floor1", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.beachThemeTwoStoragesA) {
+    init(withPlayerImage playerImage: String = "louise", withFloorImage floorImage: String = "beach_floor1", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.beachThemeTwoStoragesA) {
         let laserBeamImages: [String] = ["beach_laser_beam_pointing_up", "beach_laser_beam_pointing_down"]
         
         let laserPointerImages: [String] = Beach.getLaserPointerAnimationImages(forLaserPointerWithBaseName: "witch")
@@ -63,7 +63,7 @@ class Beach: Theme {
 }
 
 class DarkDimension: Theme {
-    init(withPlayerImage playerImage: String = "beach_player", withFloorImage floorImage: String = "dd_tile002", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.darkThemeThreeStoragesA) {
+    init(withPlayerImage playerImage: String = "louise", withFloorImage floorImage: String = "dd_tile002", withPlayerFloorImage playerFloorImage: String? = nil, levelMusicParts: [String] = Sound.darkThemeThreeStoragesA) {
         
         let laserBeamImages: [String] = ["skull", "skull2"]
         
