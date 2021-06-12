@@ -19,7 +19,7 @@ class Theme: Equatable {
     
     var levelMusicParts: [String]
     
-    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerFloorImage: String?, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue], crateImage: String = Constants.TileNames.crate.rawValue, levelMusicParts: [String] = []) {
+    init(withName name: String, floorImage: String = Constants.TileNames.floor.rawValue, playerFloorImage: String?, playerImage: String = Constants.TileNames.player.rawValue, laserBeamImages: [String] = ["laser_beam_pointing_up"], laserPointerImages: [String] = [Constants.TileNames.laserPointer.rawValue], crateImage: String = "barrel", levelMusicParts: [String] = []) {
         // Change levelMusicParts later to default theme
         self.name = name
         
@@ -51,10 +51,8 @@ class Beach: Theme {
         let laserBeamImages: [String] = ["beach_laser_beam_pointing_up", "beach_laser_beam_pointing_down"]
         
         let laserPointerImages: [String] = Beach.getLaserPointerAnimationImages(forLaserPointerWithBaseName: "witch")
-        
-        let crateImage: String = "beach_crate"
-        
-        super.init(withName: "Beach", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
+                
+        super.init(withName: "Beach", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, levelMusicParts: levelMusicParts)
     }
     
     private static func getLaserPointerAnimationImages(forLaserPointerWithBaseName name: String) -> [String] {
@@ -75,10 +73,8 @@ class DarkDimension: Theme {
         let laserBeamImages: [String] = ["skull", "skull2"]
         
         let laserPointerImages: [String] = DarkDimension.getLaserPointerAnimationImages(forLaserPointerWithBaseName: "reaper")
-        
-        let crateImage: String = "beach_crate"
-        
-        super.init(withName: "Dark Dimension", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
+                
+        super.init(withName: "Dark Dimension", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, levelMusicParts: levelMusicParts)
     }
     
     private static func getLaserPointerAnimationImages(forLaserPointerWithBaseName name: String) -> [String] {
@@ -102,9 +98,7 @@ class Jungle: Theme {
         
         let laserPointerImages: [String] = ["bard_d_1", "bard_d_2", "bard_d_3", "bard_d_4",
         "bard_u_1", "bard_l_1", "bard_r_1"] // All other images except the _d_ ones don't exist, but I need all directions for code to work for now
-        
-        let crateImage: String = "beach_crate"
-        
+                
         var laserBeamImages: [String] = []
         let randRange = Int.random(in: 3..<9)
         
@@ -112,6 +106,6 @@ class Jungle: Theme {
             laserBeamImages.append("jungle_laser_beam_\(num)")
         }
 
-        super.init(withName: "Jungle", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, crateImage: crateImage, levelMusicParts: levelMusicParts)
+        super.init(withName: "Jungle", floorImage: floorImage, playerFloorImage: playerFloorImage, playerImage: playerImage, laserBeamImages: laserBeamImages, laserPointerImages: laserPointerImages, levelMusicParts: levelMusicParts)
     }
 }
