@@ -8,6 +8,8 @@
 import Foundation
 import SpriteKit
 
+let defaults = UserDefaults.standard
+
 class SkinsMenu: SKScene {
 
     var buttonNext: MSButtonNode!
@@ -54,6 +56,7 @@ class SkinsMenu: SKScene {
         buttonDone = self.childNode(withName: "buttonDone") as! MSButtonNode
         
         buttonDone.selectedHandler = {
+            defaults.setValue(self.images[self.imageInd], forKey: "userChosenPlayerImage")
             self.gvc.presentMainMenu()
         }
         
