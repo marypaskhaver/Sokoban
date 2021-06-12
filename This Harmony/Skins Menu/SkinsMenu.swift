@@ -24,11 +24,17 @@ class SkinsMenu: SKScene {
     var images: [String] = ["louise", "delia", "aaron", "marco"]
     var imageInd: Int = 0
 
+    var nameLabel: SKLabelNode!
+    
     override func didMove(to view: SKView) {
 
         playerImage = self.childNode(withName: "playerImage") as! SKSpriteNode
         self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
 
+        // Set UI connections
+        nameLabel = self.childNode(withName: "nameLabel") as! SKLabelNode
+        nameLabel.fontName = "PlayMeGames"
+        nameLabel.fontSize = 60
         
         // Set UI connections
         buttonPrev = self.childNode(withName: "buttonPrevious") as! MSButtonNode
@@ -40,6 +46,7 @@ class SkinsMenu: SKScene {
             }
             
             self.updateButtons()
+            self.updateNameLabel()
         }
         
         buttonNext = self.childNode(withName: "buttonNext") as! MSButtonNode
@@ -51,6 +58,7 @@ class SkinsMenu: SKScene {
             }
 
             self.updateButtons()
+            self.updateNameLabel()
         }
         
         buttonDone = self.childNode(withName: "buttonDone") as! MSButtonNode
@@ -61,6 +69,7 @@ class SkinsMenu: SKScene {
         }
         
         updateButtons()
+        updateNameLabel()
     }
     
     func updateButtons() {
@@ -75,6 +84,10 @@ class SkinsMenu: SKScene {
         
         buttonNext.reloadInputViews()
         buttonPrev.reloadInputViews()
+    }
+    
+    func updateNameLabel() {
+        nameLabel.text = images[imageInd].capitalized
     }
     
 }
