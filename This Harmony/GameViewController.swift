@@ -27,6 +27,12 @@ class GameViewController: UIViewController {
 //        } catch let error as NSError {
 //            // TODO: handle the error
 //        }
+//
+//        let dictionary = defaults.dictionaryRepresentation()
+//
+//        dictionary.keys.forEach { key in
+//            defaults.removeObject(forKey: key)
+//        }
         
         presentMainMenu()
     }
