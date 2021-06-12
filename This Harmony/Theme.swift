@@ -37,6 +37,13 @@ class Theme: Equatable {
         return lhs.name == rhs.name
     }
     
+    // If what's in UserDefaults conflicts w/ the current playerImage, change current playerImage to what's in UserDefaults
+    func updatePlayerImageIfNeeded() {
+        if let userChosenPlayerImage = defaults.string(forKey: "userChosenPlayerImage") {
+            self.playerImage = userChosenPlayerImage
+        }
+    }
+    
 }
 
 class Beach: Theme {
