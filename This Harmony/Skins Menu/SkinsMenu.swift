@@ -19,7 +19,7 @@ class SkinsMenu: SKScene {
     
     var gvc: GameViewController!
 
-    var images: [String] = ["beach_player", "blond_girl", "beach_player"]
+    var images: [String] = ["beach_player", "blond_girl", "redhead_boy"]
     var imageInd: Int = 0
 
     override func didMove(to view: SKView) {
