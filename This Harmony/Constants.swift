@@ -36,7 +36,7 @@ class Constants {
         10 : DarkDimension(withFloorImage: "dd_tile023", withPlayerFloorImage: "dd_tile012"),
         11 : DarkDimension(withFloorImage: "dd_tile021"),
         12 : DarkDimension(withPlayerFloorImage: "dd_tile021"),
-        13 : DarkDimension(),
+        13 : DarkDimension(levelMusicParts: Sound.darkThemeTwoStoragesA),
         14 : DarkDimension(),
         15 : DarkDimension(withPlayerFloorImage: "dd_tile012"),
         16 : DarkDimension(),
