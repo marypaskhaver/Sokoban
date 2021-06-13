@@ -107,10 +107,9 @@ class SkinsMenu: SKScene {
     }
     
     func reloadInputViewsOfButtonsAndImages() {
-        playerImageLeft.reloadInputViews()
-        playerImageRight.reloadInputViews()
-        buttonNext.reloadInputViews()
-        buttonPrev.reloadInputViews()
+        for node in [playerImageLeft, playerImageRight, buttonNext, buttonPrev] {
+            node.reloadInputViews()
+        }
     }
     
     func animatePlayerImage() {
