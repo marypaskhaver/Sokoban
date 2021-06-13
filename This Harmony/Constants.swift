@@ -29,7 +29,7 @@ class Constants {
         3 : Beach(levelMusicParts: Sound.beachThemeTwoStoragesC),
         4 : Beach(levelMusicParts: Sound.beachThemeTwoStoragesB),
         5 : Beach(levelMusicParts: Sound.beachThemeThreeStoragesA),
-        6 : Beach(),
+        6 : Beach(levelMusicParts: Sound.beachThemeThreeStoragesB),
         7 : Beach(),
         8 : Beach(levelMusicParts: Sound.beachThemeTwoStoragesA),
         9 : DarkDimension(),
