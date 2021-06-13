@@ -12,41 +12,32 @@ let defaults = UserDefaults.standard
 
 class SkinsMenu: SKScene {
 
-    var buttonNext: MSButtonNode!
-    var buttonPrev: MSButtonNode!
+    lazy var buttonNext: MSButtonNode = self.childNode(withName: "buttonNext") as! MSButtonNode
+    lazy var buttonPrev: MSButtonNode = self.childNode(withName: "buttonPrevious") as! MSButtonNode
     
-    var playerImage: SKSpriteNode!
+    lazy var playerImage: SKSpriteNode = self.childNode(withName: "playerImage") as! SKSpriteNode
     
-    var buttonDone: MSButtonNode!
+    lazy var buttonDone: MSButtonNode = self.childNode(withName: "buttonDone") as! MSButtonNode
     
     var gvc: GameViewController!
 
     var images: [String] = ["louise", "delia", "aaron", "marco"]
     var imageInd: Int = 0
 
-    var nameLabel: SKLabelNode!
+    lazy var nameLabel: SKLabelNode = self.childNode(withName: "nameLabel") as! SKLabelNode
 
-    var playerImageLeft: SKSpriteNode!
-    var playerImageRight: SKSpriteNode!
+    lazy var playerImageLeft: SKSpriteNode = self.childNode(withName: "playerImageLeft") as! SKSpriteNode
+    lazy var playerImageRight: SKSpriteNode = self.childNode(withName: "playerImageRight") as! SKSpriteNode
     
     override func didMove(to view: SKView) {
-
-        playerImage = self.childNode(withName: "playerImage") as! SKSpriteNode
-        playerImageLeft = self.childNode(withName: "playerImageLeft") as! SKSpriteNode
-        playerImageRight = self.childNode(withName: "playerImageRight") as! SKSpriteNode
-
         // Don't set left image bc when view loads, start at imageInd 0
         self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
         self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
 
-        // Set UI connections
-        nameLabel = self.childNode(withName: "nameLabel") as! SKLabelNode
+        // Set nameLabel font properties
         nameLabel.fontName = "PlayMeGames"
         nameLabel.fontSize = 60
         
-        // Set UI connections
-        buttonPrev = self.childNode(withName: "buttonPrevious") as! MSButtonNode
-
         buttonPrev.selectedHandler = {
             if self.imageInd - 1 >= 0 {
                 self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd - 1] + "_d_stand")
@@ -56,9 +47,7 @@ class SkinsMenu: SKScene {
             self.updateButtons()
             self.updateNameLabel()
         }
-        
-        buttonNext = self.childNode(withName: "buttonNext") as! MSButtonNode
-        
+                
         buttonNext.selectedHandler = {
             if self.imageInd + 1 < self.images.count {
                 self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd + 1] + "_d_stand")
@@ -68,9 +57,7 @@ class SkinsMenu: SKScene {
             self.updateButtons()
             self.updateNameLabel()
         }
-        
-        buttonDone = self.childNode(withName: "buttonDone") as! MSButtonNode
-        
+                
         buttonDone.selectedHandler = {
             defaults.setValue(self.images[self.imageInd], forKey: "userChosenPlayerImage")
             self.gvc.presentMainMenu()
@@ -81,7 +68,6 @@ class SkinsMenu: SKScene {
     }
     
     func updateButtons() {
-        print("current index: \(imageInd)")
         if imageInd == 0 {
             buttonPrev.isHidden = true
             playerImageLeft.isHidden = true
