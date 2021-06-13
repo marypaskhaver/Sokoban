@@ -33,7 +33,7 @@ class Constants {
         7 : Beach(levelMusicParts: Sound.beachThemeThreeStoragesC),
         8 : Beach(levelMusicParts: Sound.beachThemeThreeStoragesD),
         9 : DarkDimension(levelMusicParts: Sound.darkThemeThreeStoragesA),
-        10 : DarkDimension(withFloorImage: "dd_tile023", withPlayerFloorImage: "dd_tile012"),
+        10 : DarkDimension(withFloorImage: "dd_tile023", withPlayerFloorImage: "dd_tile012", levelMusicParts: Sound.darkThemeThreeStoragesB),
         11 : DarkDimension(withFloorImage: "dd_tile021"),
         12 : DarkDimension(withPlayerFloorImage: "dd_tile021"),
         13 : DarkDimension(levelMusicParts: Sound.darkThemeTwoStoragesA),
