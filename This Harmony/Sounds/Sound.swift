@@ -17,8 +17,9 @@ struct Sound {
     static let beachThemeTwoStoragesB = ["beach_2st_thB_pt1.mp3", "beach_2st_thB_pt2.mp3"]
     static let beachThemeTwoStoragesC = ["beach_2st_thC_pt1.mp3", "beach_2st_thC_pt2.mp3"]
 
-    static let beachThemeThreeStoragesA = ["beach_3st_thA_pt1.mp3", "beach_3st_thA_pt2.mp3", "beach_3st_thA_pt3.mp3", "beach_3st_thA_pt4.mp3"]
-    static let beachThemeThreeStoragesB = ["beach_3st_thB_pt1.mp3", "beach_3st_thB_pt2.mp3", "beach_3st_thB_pt3.mp3", "beach_3st_thB_pt4.mp3"]
+    static let beachThemeThreeStoragesA = ["beach_3st_thA_pt1.mp3", "beach_3st_thA_pt2.mp3", "beach_3st_thA_pt3.mp3"]
+    static let beachThemeThreeStoragesB = ["beach_3st_thB_pt1.mp3", "beach_3st_thB_pt2.mp3", "beach_3st_thB_pt3.mp3"]
+    static let beachThemeThreeStoragesC = ["beach_3st_thC_pt1.mp3", "beach_3st_thC_pt2.mp3", "beach_3st_thC_pt3.mp3"]
 
     static let beachThemeFourStoragesA = ["beach_4st_thA_pt1.mp3", "beach_4st_thA_pt2.mp3", "beach_4st_thA_pt3.mp3", "beach_4st_thA_pt4.mp3"]
 
