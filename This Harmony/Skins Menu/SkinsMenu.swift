@@ -74,18 +74,20 @@ class SkinsMenu: SKScene {
         }
     }
     
+    func setIsHiddenProperty(for nodes: [SKNode], to bool: Bool) {
+        for node in nodes {
+            node.isHidden = bool
+        }
+    }
+    
     func updateButtons() {
+        // Initially, all buttons and playerImages have an isHidden property of false
         if imageInd == 0 {
-            buttonPrev.isHidden = true
-            playerImageLeft.isHidden = true
+            setIsHiddenProperty(for: [buttonPrev, playerImageLeft], to: true)
         } else if imageInd == images.count - 1 {
-            buttonNext.isHidden = true
-            playerImageRight.isHidden = true
+            setIsHiddenProperty(for: [buttonNext, playerImageRight], to: true)
         } else {
-            buttonNext.isHidden = false
-            buttonPrev.isHidden = false
-            playerImageLeft.isHidden = false
-            playerImageRight.isHidden = false
+            setIsHiddenProperty(for: [buttonNext, buttonPrev, playerImageLeft, playerImageRight], to: false)
         }
         
         updatePlayerLeftAndRightImages()
