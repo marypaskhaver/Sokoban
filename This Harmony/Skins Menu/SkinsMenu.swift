@@ -91,11 +91,8 @@ class SkinsMenu: SKScene {
         }
         
         updatePlayerLeftAndRightImages()
+        reloadInputViewsOfButtonsAndImages()
         
-        playerImageLeft.reloadInputViews()
-        playerImageRight.reloadInputViews()
-        buttonNext.reloadInputViews()
-        buttonPrev.reloadInputViews()
         animatePlayerImage()
     }
     
@@ -107,6 +104,13 @@ class SkinsMenu: SKScene {
         if imageInd + 1 < images.count {
             playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
         }
+    }
+    
+    func reloadInputViewsOfButtonsAndImages() {
+        playerImageLeft.reloadInputViews()
+        playerImageRight.reloadInputViews()
+        buttonNext.reloadInputViews()
+        buttonPrev.reloadInputViews()
     }
     
     func animatePlayerImage() {
