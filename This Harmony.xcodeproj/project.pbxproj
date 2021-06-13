@@ -313,7 +313,9 @@
 		2021EC042663E82600702472 /* Three Storages */ = {
 			isa = PBXGroup;
 			children = (
-				2021EC072663E84400702472 /* Theme A */,
+				2021EBFC2663E22100702472 /* dark_3st_thA_pt1.mp3 */,
+				2021EBFB2663E22100702472 /* dark_3st_thA_pt2.mp3 */,
+				2021EBFA2663E22100702472 /* dark_3st_thA_pt3.mp3 */,
 			);
 			path = "Three Storages";
 			sourceTree = "<group>";
@@ -321,8 +323,12 @@
 		2021EC052663E83400702472 /* Two Storages */ = {
 			isa = PBXGroup;
 			children = (
-				2021EC082663E85400702472 /* Theme A */,
-				2021EC0D2663EF0F00702472 /* Theme B */,
+				2039D86726765FE90013643D /* jungle_2st_thA_pt1.mp3 */,
+				2039D86826765FE90013643D /* jungle_2st_thA_pt2.mp3 */,
+				2021EBE82661AACF00702472 /* beach_2st_thA_pt1.mp3 */,
+				2021EBF82663E13400702472 /* beach_2st_thA_pt2.mp3 */,
+				2021EC092663EF0700702472 /* beach_2st_thB_pt1.mp3 */,
+				2021EC0A2663EF0700702472 /* beach_2st_thB_pt2.mp3 */,
 			);
 			path = "Two Storages";
 			sourceTree = "<group>";
@@ -334,36 +340,6 @@
 				2021EC0E26646F2E00702472 /* jungle_1st_thA.mp3 */,
 			);
 			path = "One Storage";
-			sourceTree = "<group>";
-		};
-		2021EC072663E84400702472 /* Theme A */ = {
-			isa = PBXGroup;
-			children = (
-				2021EBFC2663E22100702472 /* dark_3st_thA_pt1.mp3 */,
-				2021EBFB2663E22100702472 /* dark_3st_thA_pt2.mp3 */,
-				2021EBFA2663E22100702472 /* dark_3st_thA_pt3.mp3 */,
-			);
-			path = "Theme A";
-			sourceTree = "<group>";
-		};
-		2021EC082663E85400702472 /* Theme A */ = {
-			isa = PBXGroup;
-			children = (
-				2039D86726765FE90013643D /* jungle_2st_thA_pt1.mp3 */,
-				2039D86826765FE90013643D /* jungle_2st_thA_pt2.mp3 */,
-				2021EBE82661AACF00702472 /* beach_2st_thA_pt1.mp3 */,
-				2021EBF82663E13400702472 /* beach_2st_thA_pt2.mp3 */,
-			);
-			path = "Theme A";
-			sourceTree = "<group>";
-		};
-		2021EC0D2663EF0F00702472 /* Theme B */ = {
-			isa = PBXGroup;
-			children = (
-				2021EC092663EF0700702472 /* beach_2st_thB_pt1.mp3 */,
-				2021EC0A2663EF0700702472 /* beach_2st_thB_pt2.mp3 */,
-			);
-			path = "Theme B";
 			sourceTree = "<group>";
 		};
 		20583A9325BA780400A74914 /* Sounds */ = {
