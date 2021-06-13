@@ -33,15 +33,18 @@ class SkinsMenu: SKScene {
         // Don't set left image bc when view loads, start at imageInd 0
         self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
         self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
-
-        // Set nameLabel font properties
-        nameLabel.fontName = "PlayMeGames"
-        nameLabel.fontSize = 60
         
+        setUpNameLabel()
         setButtonHandlers()
         
         updateButtons()
         updateNameLabel()
+    }
+    
+    func setUpNameLabel() {
+        // Set nameLabel font properties
+        nameLabel.fontName = "PlayMeGames"
+        nameLabel.fontSize = 60
     }
     
     func setButtonHandlers() {
