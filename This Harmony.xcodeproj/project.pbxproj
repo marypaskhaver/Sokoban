@@ -63,6 +63,9 @@
 		2039D89B2676B5DE0013643D /* beach_3st_thD_pt3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D8982676B5DE0013643D /* beach_3st_thD_pt3.mp3 */; };
 		2039D89E2676BCF30013643D /* dark_2st_thA_pt2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D89C2676BCF30013643D /* dark_2st_thA_pt2.mp3 */; };
 		2039D89F2676BCF30013643D /* dark_2st_thA_pt1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D89D2676BCF30013643D /* dark_2st_thA_pt1.mp3 */; };
+		2039D8A32676BF970013643D /* dark_3st_thB_pt1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D8A02676BF970013643D /* dark_3st_thB_pt1.mp3 */; };
+		2039D8A42676BF970013643D /* dark_3st_thB_pt2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D8A12676BF970013643D /* dark_3st_thB_pt2.mp3 */; };
+		2039D8A52676BF970013643D /* dark_3st_thB_pt3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D8A22676BF970013643D /* dark_3st_thB_pt3.mp3 */; };
 		20484748266FAE8C0019E4C9 /* Level_18.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20484747266FAE8C0019E4C9 /* Level_18.sks */; };
 		2048474A266FCFD80019E4C9 /* Level_19.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20484749266FCFD80019E4C9 /* Level_19.sks */; };
 		2048474C2670228E0019E4C9 /* Level_20.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2048474B2670228E0019E4C9 /* Level_20.sks */; };
@@ -225,6 +228,9 @@
 		2039D8982676B5DE0013643D /* beach_3st_thD_pt3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thD_pt3.mp3; sourceTree = "<group>"; };
 		2039D89C2676BCF30013643D /* dark_2st_thA_pt2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dark_2st_thA_pt2.mp3; sourceTree = "<group>"; };
 		2039D89D2676BCF30013643D /* dark_2st_thA_pt1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dark_2st_thA_pt1.mp3; sourceTree = "<group>"; };
+		2039D8A02676BF970013643D /* dark_3st_thB_pt1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dark_3st_thB_pt1.mp3; sourceTree = "<group>"; };
+		2039D8A12676BF970013643D /* dark_3st_thB_pt2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dark_3st_thB_pt2.mp3; sourceTree = "<group>"; };
+		2039D8A22676BF970013643D /* dark_3st_thB_pt3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dark_3st_thB_pt3.mp3; sourceTree = "<group>"; };
 		20484747266FAE8C0019E4C9 /* Level_18.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_18.sks; sourceTree = "<group>"; };
 		20484749266FCFD80019E4C9 /* Level_19.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_19.sks; sourceTree = "<group>"; };
 		2048474B2670228E0019E4C9 /* Level_20.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_20.sks; sourceTree = "<group>"; };
@@ -368,6 +374,9 @@
 				2021EBFC2663E22100702472 /* dark_3st_thA_pt1.mp3 */,
 				2021EBFB2663E22100702472 /* dark_3st_thA_pt2.mp3 */,
 				2021EBFA2663E22100702472 /* dark_3st_thA_pt3.mp3 */,
+				2039D8A02676BF970013643D /* dark_3st_thB_pt1.mp3 */,
+				2039D8A12676BF970013643D /* dark_3st_thB_pt2.mp3 */,
+				2039D8A22676BF970013643D /* dark_3st_thB_pt3.mp3 */,
 			);
 			path = "Three Storages";
 			sourceTree = "<group>";
@@ -767,6 +776,7 @@
 				2021EBCD265E803E00702472 /* Level_2.sks in Resources */,
 				2021EC032663E73500702472 /* beach_1st_thA.mp3 in Resources */,
 				2076A89625A689D90085DA7A /* MainMenu.sks in Resources */,
+				2039D8A52676BF970013643D /* dark_3st_thB_pt3.mp3 in Resources */,
 				20DA9BA62629B784005B11A1 /* Test_Level_2.sks in Resources */,
 				2021EBDB266145C000702472 /* Pixeboy.ttf in Resources */,
 				2039D86A26765FE90013643D /* jungle_2st_thA_pt2.mp3 in Resources */,
@@ -777,6 +787,7 @@
 				20DA9BD1262A2499005B11A1 /* Test_Level_8.sks in Resources */,
 				200E335026703C350017B457 /* Level_22.sks in Resources */,
 				2021EBF12663244300702472 /* player_cant_move.mp3 in Resources */,
+				2039D8A32676BF970013643D /* dark_3st_thB_pt1.mp3 in Resources */,
 				2021EBD92661458300702472 /* PlayMeGames.ttf in Resources */,
 				20DA9C152634A4E4005B11A1 /* Test_Level_12.sks in Resources */,
 				20DA9BCB262A2244005B11A1 /* Test_Level_7.sks in Resources */,
@@ -784,6 +795,7 @@
 				2039D874267669180013643D /* beach_4st_thA_pt2.mp3 in Resources */,
 				2039D88D267677A90013643D /* beach_3st_thC_pt1.mp3 in Resources */,
 				2021EC132664806100702472 /* Level_10.sks in Resources */,
+				2039D8A42676BF970013643D /* dark_3st_thB_pt2.mp3 in Resources */,
 				20DA9BA22629B782005B11A1 /* Test_Level_1.sks in Resources */,
 				20DA9BC02629C591005B11A1 /* Test_Level_6.sks in Resources */,
 				2021EBFF2663E22100702472 /* dark_3st_thA_pt1.mp3 in Resources */,
