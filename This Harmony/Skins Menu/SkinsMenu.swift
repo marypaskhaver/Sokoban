@@ -37,7 +37,7 @@ class SkinsMenu: SKScene {
         setUpNameLabel()
         setButtonHandlers()
         
-        updateButtons()
+        updateButtonsAndImages()
         updateNameLabel()
     }
     
@@ -54,7 +54,7 @@ class SkinsMenu: SKScene {
                 self.imageInd -= 1
             }
             
-            self.updateButtons()
+            self.updateButtonsAndImages()
             self.updateNameLabel()
         }
                 
@@ -64,7 +64,7 @@ class SkinsMenu: SKScene {
                 self.imageInd += 1
             }
 
-            self.updateButtons()
+            self.updateButtonsAndImages()
             self.updateNameLabel()
         }
                 
@@ -80,7 +80,7 @@ class SkinsMenu: SKScene {
         }
     }
     
-    func updateButtons() {
+    func updateButtonsAndImages() {
         // Initially, all buttons and playerImages have an isHidden property of false
         if imageInd == 0 {
             setIsHiddenProperty(for: [buttonPrev, playerImageLeft], to: true)
