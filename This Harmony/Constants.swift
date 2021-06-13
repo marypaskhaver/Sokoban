@@ -25,7 +25,7 @@ class Constants {
     
     var levelThemes: [Int : Theme] = [
         1 : Beach(withFloorImage: "tile005"),
-        2 : Beach(),
+        2 : Beach(levelMusicParts: Sound.beachThemeOneStorageA),
         3 : Beach(),
         4 : Beach(levelMusicParts: Sound.beachThemeTwoStoragesB),
         5 : Beach(),
@@ -44,7 +44,7 @@ class Constants {
         18 : Jungle(),
         19 : Jungle(),
         20 : Jungle(),
-        21 : Jungle(),
+        21 : Jungle(levelMusicParts: Sound.jungleThemeOneStorageA),
         22 : Jungle(withPlayerFloorImage: "j_tile108"),
         23 : Jungle(),
         24 : Jungle()
