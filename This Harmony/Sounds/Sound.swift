@@ -25,6 +25,8 @@ struct Sound {
     static let beachThemeFourStoragesA = ["beach_4st_thA_pt1.mp3", "beach_4st_thA_pt2.mp3", "beach_4st_thA_pt3.mp3", "beach_4st_thA_pt4.mp3"]
 
     // MARK: - Dark Dimension Themes
+    static let darkThemeTwoStoragesA = ["dark_2st_thA_pt1.mp3", "dark_2st_thA_pt2.mp3"]
+
     static let darkThemeThreeStoragesA = ["dark_3st_thA_pt1.mp3", "dark_3st_thA_pt2.mp3", "dark_3st_thA_pt3.mp3"]
     
     // MARK: - Jungle Themes
