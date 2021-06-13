@@ -107,6 +107,20 @@ class SkinsMenu: SKScene {
         playerImageRight.reloadInputViews()
         buttonNext.reloadInputViews()
         buttonPrev.reloadInputViews()
+        animatePlayerImage()
+    }
+    
+    func animatePlayerImage() {
+        let playerTexture: String = images[imageInd]
+        
+        let anim = SKAction.animate(with: [
+            SKTexture(imageNamed: playerTexture + "_d_1"),
+            SKTexture(imageNamed: playerTexture + "_d_stand"),
+            SKTexture(imageNamed: playerTexture + "_d_2"),
+            SKTexture(imageNamed: playerTexture + "_d_stand")
+        ], timePerFrame: 0.2)
+
+        playerImage.run(SKAction.repeatForever(anim))
     }
     
     func updateNameLabel() {
