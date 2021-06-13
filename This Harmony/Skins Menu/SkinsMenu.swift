@@ -95,6 +95,16 @@ class SkinsMenu: SKScene {
             playerImageRight.isHidden = false
         }
         
+        updatePlayerLeftAndRightImages()
+        
+        playerImageLeft.reloadInputViews()
+        playerImageRight.reloadInputViews()
+        buttonNext.reloadInputViews()
+        buttonPrev.reloadInputViews()
+        animatePlayerImage()
+    }
+    
+    func updatePlayerLeftAndRightImages() {
         if imageInd - 1 >= 0 {
             playerImageLeft.texture = SKTexture(imageNamed: self.images[imageInd - 1] + "_d_stand")
         }
@@ -102,12 +112,6 @@ class SkinsMenu: SKScene {
         if imageInd + 1 < images.count {
             playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
         }
-        
-        playerImageLeft.reloadInputViews()
-        playerImageRight.reloadInputViews()
-        buttonNext.reloadInputViews()
-        buttonPrev.reloadInputViews()
-        animatePlayerImage()
     }
     
     func animatePlayerImage() {
