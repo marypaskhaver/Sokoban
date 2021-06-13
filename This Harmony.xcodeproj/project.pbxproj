@@ -58,6 +58,9 @@
 		2039D88D267677A90013643D /* beach_3st_thC_pt1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D88A267677A90013643D /* beach_3st_thC_pt1.mp3 */; };
 		2039D88E267677A90013643D /* beach_3st_thC_pt3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D88B267677A90013643D /* beach_3st_thC_pt3.mp3 */; };
 		2039D88F267677A90013643D /* beach_3st_thC_pt2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D88C267677A90013643D /* beach_3st_thC_pt2.mp3 */; };
+		2039D8992676B5DE0013643D /* beach_3st_thD_pt1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D8962676B5DE0013643D /* beach_3st_thD_pt1.mp3 */; };
+		2039D89A2676B5DE0013643D /* beach_3st_thD_pt2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D8972676B5DE0013643D /* beach_3st_thD_pt2.mp3 */; };
+		2039D89B2676B5DE0013643D /* beach_3st_thD_pt3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2039D8982676B5DE0013643D /* beach_3st_thD_pt3.mp3 */; };
 		20484748266FAE8C0019E4C9 /* Level_18.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20484747266FAE8C0019E4C9 /* Level_18.sks */; };
 		2048474A266FCFD80019E4C9 /* Level_19.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20484749266FCFD80019E4C9 /* Level_19.sks */; };
 		2048474C2670228E0019E4C9 /* Level_20.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2048474B2670228E0019E4C9 /* Level_20.sks */; };
@@ -215,6 +218,9 @@
 		2039D88A267677A90013643D /* beach_3st_thC_pt1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thC_pt1.mp3; sourceTree = "<group>"; };
 		2039D88B267677A90013643D /* beach_3st_thC_pt3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thC_pt3.mp3; sourceTree = "<group>"; };
 		2039D88C267677A90013643D /* beach_3st_thC_pt2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thC_pt2.mp3; sourceTree = "<group>"; };
+		2039D8962676B5DE0013643D /* beach_3st_thD_pt1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thD_pt1.mp3; sourceTree = "<group>"; };
+		2039D8972676B5DE0013643D /* beach_3st_thD_pt2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thD_pt2.mp3; sourceTree = "<group>"; };
+		2039D8982676B5DE0013643D /* beach_3st_thD_pt3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beach_3st_thD_pt3.mp3; sourceTree = "<group>"; };
 		20484747266FAE8C0019E4C9 /* Level_18.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_18.sks; sourceTree = "<group>"; };
 		20484749266FCFD80019E4C9 /* Level_19.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_19.sks; sourceTree = "<group>"; };
 		2048474B2670228E0019E4C9 /* Level_20.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_20.sks; sourceTree = "<group>"; };
@@ -352,6 +358,9 @@
 				2039D88A267677A90013643D /* beach_3st_thC_pt1.mp3 */,
 				2039D88C267677A90013643D /* beach_3st_thC_pt2.mp3 */,
 				2039D88B267677A90013643D /* beach_3st_thC_pt3.mp3 */,
+				2039D8962676B5DE0013643D /* beach_3st_thD_pt1.mp3 */,
+				2039D8972676B5DE0013643D /* beach_3st_thD_pt2.mp3 */,
+				2039D8982676B5DE0013643D /* beach_3st_thD_pt3.mp3 */,
 				2021EBFC2663E22100702472 /* dark_3st_thA_pt1.mp3 */,
 				2021EBFB2663E22100702472 /* dark_3st_thA_pt2.mp3 */,
 				2021EBFA2663E22100702472 /* dark_3st_thA_pt3.mp3 */,
@@ -741,6 +750,7 @@
 				20C325FF2669C67700E9A165 /* Level_9.sks in Resources */,
 				20DA9BBA2629C44E005B11A1 /* Test_Level_5.sks in Resources */,
 				2048474A266FCFD80019E4C9 /* Level_19.sks in Resources */,
+				2039D89A2676B5DE0013643D /* beach_3st_thD_pt2.mp3 in Resources */,
 				2039D877267669180013643D /* beach_4st_thA_pt3.mp3 in Resources */,
 				2039D87D26766C570013643D /* beach_4st_thA_pt4.mp3 in Resources */,
 				2039D86E2676659E0013643D /* beach_2st_thC_pt1.mp3 in Resources */,
@@ -770,6 +780,7 @@
 				20DA9BA22629B782005B11A1 /* Test_Level_1.sks in Resources */,
 				20DA9BC02629C591005B11A1 /* Test_Level_6.sks in Resources */,
 				2021EBFF2663E22100702472 /* dark_3st_thA_pt1.mp3 in Resources */,
+				2039D89B2676B5DE0013643D /* beach_3st_thD_pt3.mp3 in Resources */,
 				2021EBDF2661475E00702472 /* PixelDigivolve.ttf in Resources */,
 				20DA9BB42629C1F5005B11A1 /* Test_Level_4.sks in Resources */,
 				2021EBDD2661468400702472 /* Pixellium.ttf in Resources */,
@@ -790,6 +801,7 @@
 				200E334E26703AC20017B457 /* Level_21.sks in Resources */,
 				2021EBCF265F154900702472 /* Level_4.sks in Resources */,
 				20E2F809259BC439004BF34B /* Actions.sks in Resources */,
+				2039D8992676B5DE0013643D /* beach_3st_thD_pt1.mp3 in Resources */,
 				20DA9C032634A408005B11A1 /* Test_Level_10.sks in Resources */,
 				2039D86D2676659E0013643D /* beach_2st_thC_pt2.mp3 in Resources */,
 			);
