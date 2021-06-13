@@ -38,6 +38,13 @@ class SkinsMenu: SKScene {
         nameLabel.fontName = "PlayMeGames"
         nameLabel.fontSize = 60
         
+        setButtonHandlers()
+        
+        updateButtons()
+        updateNameLabel()
+    }
+    
+    func setButtonHandlers() {
         buttonPrev.selectedHandler = {
             if self.imageInd - 1 >= 0 {
                 self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd - 1] + "_d_stand")
@@ -62,9 +69,6 @@ class SkinsMenu: SKScene {
             defaults.setValue(self.images[self.imageInd], forKey: "userChosenPlayerImage")
             self.gvc.presentMainMenu()
         }
-        
-        updateButtons()
-        updateNameLabel()
     }
     
     func updateButtons() {
