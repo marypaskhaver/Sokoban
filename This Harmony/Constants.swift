@@ -39,7 +39,7 @@ class Constants {
         13 : DarkDimension(levelMusicParts: Sound.darkThemeTwoStoragesA),
         14 : DarkDimension(levelMusicParts: Sound.darkThemeThreeStoragesE),
         15 : DarkDimension(withPlayerFloorImage: "dd_tile012", levelMusicParts: Sound.darkThemeTwoStoragesB),
-        16 : DarkDimension(),
+        16 : DarkDimension(levelMusicParts: Sound.darkThemeThreeStoragesF),
         17 : Jungle(levelMusicParts: Sound.jungleThemeTwoStoragesA),
         18 : Jungle(levelMusicParts: Sound.jungleThemeThreeStoragesA),
         19 : Jungle(levelMusicParts: Sound.jungleThemeThreeStoragesB),
