@@ -32,6 +32,7 @@ struct Sound {
     static let darkThemeThreeStoragesB = ["dark_3st_thB_pt1.mp3", "dark_3st_thB_pt2.mp3", "dark_3st_thB_pt3.mp3"]
     static let darkThemeThreeStoragesC = ["dark_3st_thC_pt1.mp3", "dark_3st_thC_pt2.mp3", "dark_3st_thC_pt3.mp3"]
     static let darkThemeThreeStoragesD = ["dark_3st_thD_pt1.mp3", "dark_3st_thD_pt2.mp3", "dark_3st_thD_pt3.mp3"]
+    static let darkThemeThreeStoragesE = ["dark_3st_thE_pt1.mp3", "dark_3st_thE_pt2.mp3", "dark_3st_thE_pt3.mp3"]
 
     // MARK: - Jungle Themes
     static let jungleThemeOneStorageA = ["jungle_1st_thA.mp3"]
