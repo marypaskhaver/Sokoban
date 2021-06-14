@@ -42,7 +42,7 @@ class Constants {
         16 : DarkDimension(),
         17 : Jungle(levelMusicParts: Sound.jungleThemeTwoStoragesA),
         18 : Jungle(levelMusicParts: Sound.jungleThemeThreeStoragesA),
-        19 : Jungle(),
+        19 : Jungle(levelMusicParts: Sound.jungleThemeThreeStoragesB),
         20 : Jungle(),
         21 : Jungle(levelMusicParts: Sound.jungleThemeOneStorageA),
         22 : Jungle(withPlayerFloorImage: "j_tile108"),
