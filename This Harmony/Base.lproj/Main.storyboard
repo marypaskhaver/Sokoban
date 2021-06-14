@@ -82,38 +82,6 @@
                     </collectionView>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agy-dM-r2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Yjp-29-zjk" customClass="LevelCell" customModule="This_Harmony" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="slg-9a-WRY">
-                        <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-zR-Llj">
-                                <rect key="frame" x="27" y="37.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wIG-BR-mIX">
-                                <rect key="frame" x="32" y="32" width="64" height="64"/>
-                            </imageView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="wIG-BR-mIX" firstAttribute="top" secondItem="slg-9a-WRY" secondAttribute="top" constant="32" id="5eq-5c-Y4F"/>
-                            <constraint firstItem="wIG-BR-mIX" firstAttribute="leading" secondItem="slg-9a-WRY" secondAttribute="leading" constant="32" id="G0U-fd-aKN"/>
-                            <constraint firstAttribute="bottom" secondItem="wIG-BR-mIX" secondAttribute="bottom" id="UQd-He-A5e"/>
-                            <constraint firstAttribute="trailing" secondItem="wIG-BR-mIX" secondAttribute="trailing" id="pKN-ni-Koe"/>
-                            <constraint firstItem="mUr-zR-Llj" firstAttribute="centerY" secondItem="slg-9a-WRY" secondAttribute="centerY" id="qZj-k1-Cbm"/>
-                            <constraint firstItem="mUr-zR-Llj" firstAttribute="centerX" secondItem="slg-9a-WRY" secondAttribute="centerX" id="tZk-uG-icv"/>
-                        </constraints>
-                    </collectionViewCellContentView>
-                    <size key="customSize" width="96" height="96"/>
-                    <connections>
-                        <outlet property="checkmarkView" destination="wIG-BR-mIX" id="9yy-gY-3Es"/>
-                        <outlet property="levelNumberLabel" destination="mUr-zR-Llj" id="kng-ZN-0Sq"/>
-                    </connections>
-                </collectionViewCell>
             </objects>
             <point key="canvasLocation" x="523" y="115"/>
         </scene>
