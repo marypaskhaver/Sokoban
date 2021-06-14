@@ -130,6 +130,8 @@ class MenuBoxMaker {
         menuBox.addChild(buttonRestart)
         if CoreDataManager.gameSceneClass.level != Constants().numLevels { menuBox.addChild(buttonNext) }
 
+        addRopes(behindBox: menuBox)
+
         return menuBox
     }
     
