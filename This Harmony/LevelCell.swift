@@ -15,9 +15,7 @@ class LevelCell: UICollectionViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-                        
-        self.setNeedsLayout()
+        super.awakeFromNib()                        
     }
     
 }
