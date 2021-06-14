@@ -38,4 +38,6 @@ struct Sound {
     static let jungleThemeOneStorageA = ["jungle_1st_thA.mp3"]
 
     static let jungleThemeTwoStoragesA = ["jungle_2st_thA_pt1.mp3", "jungle_2st_thA_pt2.mp3"]
+    
+    static let jungleThemeThreeStoragesA = ["jungle_3st_thA_pt1.mp3", "jungle_3st_thA_pt2.mp3", "jungle_3st_thA_pt3.mp3"]
 }
