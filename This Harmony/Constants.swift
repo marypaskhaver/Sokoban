@@ -47,7 +47,7 @@ class Constants {
         21 : Jungle(levelMusicParts: Sound.jungleThemeOneStorageA),
         22 : Jungle(withPlayerFloorImage: "j_tile108", levelMusicParts: Sound.jungleThemeThreeStoragesD),
         23 : Jungle(levelMusicParts: Sound.jungleThemeThreeStoragesE),
-        24 : Jungle()
+        24 : Jungle(levelMusicParts: Sound.jungleThemeThreeStoragesF)
     ]
     
     var numLevels: Int = 0
