@@ -12,15 +12,17 @@ class LevelCell: UICollectionViewCell {
     
     @IBOutlet weak var levelNumberLabel: UILabel!
     @IBOutlet weak var checkmarkView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        self.backgroundColor = .lightGray
+        super.awakeFromNib()        
         
         let checkmarkImage: UIImage = UIImage(named: "checkmark")!
         let smallerCheckmarkImage: UIImage = resizeImage(image: checkmarkImage, targetSize: CGSize(width: self.frame.width / 2, height: self.frame.height / 2))
         
         checkmarkView.image = smallerCheckmarkImage
+        
+        backgroundImageView.image = UIImage(named: "gold_border")!
         
         self.setNeedsLayout()
     }
