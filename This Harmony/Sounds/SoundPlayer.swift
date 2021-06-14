@@ -22,7 +22,7 @@ class SoundPlayer {
     }
     
     static func playSound(_ sound: String) {
-        guard let url = Bundle.main.url(forResource: sound, withExtension: nil) else {
+        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else {
             print("\(sound) url not found")
             return
         }
