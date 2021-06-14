@@ -124,7 +124,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if nodesNamedMenuBox.count == 0 {
-            menuBox.position = CGPoint(x: 0, y: UIScreen.main.bounds.maxY) // Top of screen
+            menuBox.position = CGPoint(x: 0, y: UIScreen.main.bounds.maxY) // Come down from top of screen
             self.scene?.addChild(menuBox)
             menuBox.run(SKAction.moveTo(y: 0, duration: 0.8))
         }
@@ -140,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let menuBoxMaker: MenuBoxMaker = MenuBoxMaker(for: self)
         let menuBox: SKShapeNode = menuBoxMaker.getBox(ofType: .levelCompleteMenu)
         
-        menuBox.position = CGPoint(x: 0, y: -UIScreen.main.bounds.maxY) // Bottom of screen
+        menuBox.position = CGPoint(x: 0, y: UIScreen.main.bounds.maxY) // Come down from top of screen
         self.scene?.addChild(menuBox)
         menuBox.run(SKAction.moveTo(y: 0, duration: 0.8))
 
