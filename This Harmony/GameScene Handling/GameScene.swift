@@ -127,25 +127,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             menuBox.position = CGPoint(x: 0, y: UIScreen.main.bounds.maxY) // Come down from top of screen
             self.scene?.addChild(menuBox)
             menuBox.run(SKAction.moveTo(y: 0, duration: 0.8))
+            
+            buttonRestart.state = .disabled
+            buttonNext.state = .disabled
+            buttonPrevious.state = .disabled
         } else { // Pause menu already exists
             // Find it
             let existingBox: SKShapeNode = self.children.first(where: {$0.name == MenuBox.pauseLevelMenu.rawValue} ) as! SKShapeNode
             
+            let sizeMultiplier: CGFloat = 1 + abs(1.0 - CGFloat(self.grid.grid[0].count) / 8.0)
+
             // If it's in the scene, retract it
             if scene!.intersects(existingBox) {
-                // Set position to 10 px above screen's height just to make sure it doesn't intersect the scene being presented
-                existingBox.run(SKAction.moveTo(y: UIScreen.main.bounds.maxY + 10, duration: 0.8))
+                // Set position to 1050 px above screen's and menuBox's height just to make sure it doesn't intersect the scene being presented. Every scene has a height of 1024 and the sizeMultiplier accounts for the camera zoom.
+                existingBox.run(SKAction.moveTo(y: 1050 * sizeMultiplier, duration: 0.8))
+                
+                buttonRestart.state = .active
+                buttonNext.state = .active
+                buttonPrevious.state = .active
             } else {    // Else, drop it down
                 existingBox.run(SKAction.moveTo(y: 0, duration: 0.8))
+                
+                buttonRestart.state = .disabled
+                buttonNext.state = .disabled
+                buttonPrevious.state = .disabled
             }
                         
         }
         
         disableSwipeTrackers() // So user can't move while menu is open
-        
-        buttonRestart.state = .disabled
-        buttonNext.state = .disabled
-        buttonPrevious.state = .disabled
     }
     
     func showLevelCompleteMenu() {
