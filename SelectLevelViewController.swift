@@ -117,6 +117,8 @@ class Header: UICollectionViewCell  {
     func setupHeaderViews()   {
         addSubview(title)
 
+        title.textColor = UIColor.black
+        
         title.translatesAutoresizingMaskIntoConstraints = false
         
         title.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
