@@ -45,22 +45,25 @@ class MenuBoxMaker {
         menuBox.fillColor = .white
         menuBox.name = MenuBox.pauseLevelMenu.rawValue
         
-        let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + menuBox.frame.height / 6))
+        let levelMenuLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "level_menu_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + menuBox.frame.height / 4))
 
         levelMenuLabel.selectedHandler = {
             self.gameScene.gvc.presentLevelMenu()
         }
         
-        let homeLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "home_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: levelMenuLabel.frame.midX, y: menuBox.frame.midY - menuBox.frame.height / 6))
+        let homeLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "home_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: levelMenuLabel.frame.midX, y: menuBox.frame.midY))
 
         homeLabel.selectedHandler = {
             self.gameScene.gvc.presentMainMenu()
         }
         
+        let soundLabel: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "sound_button"), CGSize(width: menuBox.frame.width / 2, height: menuBox.frame.width / 6), atPosition: CGPoint(x: levelMenuLabel.frame.midX, y: menuBox.frame.midY - menuBox.frame.height / 4))
+        
         addRopes(behindBox: menuBox)
         
         menuBox.addChild(levelMenuLabel)
         menuBox.addChild(homeLabel)
+        menuBox.addChild(soundLabel)
 
         return menuBox
     }
