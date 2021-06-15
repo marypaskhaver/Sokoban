@@ -127,6 +127,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             menuBox.position = CGPoint(x: 0, y: UIScreen.main.bounds.maxY) // Come down from top of screen
             self.scene?.addChild(menuBox)
             menuBox.run(SKAction.moveTo(y: 0, duration: 0.8))
+        } else { // Pause menu already exists
+            // Find it
+            let existingBox: SKShapeNode = self.children.first(where: {$0.name == MenuBox.pauseLevelMenu.rawValue} ) as! SKShapeNode
+            
+            // If it's in the scene, retract it
+            if scene!.intersects(existingBox) {
+                // Set position to 10 px above screen's height just to make sure it doesn't intersect the scene being presented
+                existingBox.run(SKAction.moveTo(y: UIScreen.main.bounds.maxY + 10, duration: 0.8))
+            } else {    // Else, drop it down
+                existingBox.run(SKAction.moveTo(y: 0, duration: 0.8))
+            }
+                        
         }
         
         disableSwipeTrackers() // So user can't move while menu is open
