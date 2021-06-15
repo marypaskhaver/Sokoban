@@ -52,7 +52,10 @@ class SoundPlayer {
             }
             
             SoundPlayer.arrayOfAudioPlayers.append(player)
-            player.prepareToPlay()
+            
+            DispatchQueue.main.async {
+                player.prepareToPlay()
+            }
             
             for player in SoundPlayer.arrayOfAudioPlayers {
                 // Play in background
