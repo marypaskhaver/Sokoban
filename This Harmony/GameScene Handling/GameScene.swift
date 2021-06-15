@@ -115,6 +115,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         disableButtonsIfNeeded()
     }
     
+    func setGameSceneChangingButtonsStates(to state: MSButtonNodeState) {
+        buttonRestart.state = state
+        buttonNext.state = state
+        buttonPrevious.state = state
+    }
+    
     func showPauseAndSettingsMenu() {
         let menuBox: SKShapeNode = MenuBoxMaker(for: self).getBox(ofType: .pauseLevelMenu)
                 
@@ -128,9 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.scene?.addChild(menuBox)
             menuBox.run(SKAction.moveTo(y: 0, duration: 0.8))
             
-            buttonRestart.state = .disabled
-            buttonNext.state = .disabled
-            buttonPrevious.state = .disabled
+            setGameSceneChangingButtonsStates(to: .disabled)
         } else { // Pause menu already exists
             // Find it
             let existingBox: SKShapeNode = self.children.first(where: {$0.name == MenuBox.pauseLevelMenu.rawValue} ) as! SKShapeNode
@@ -142,15 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // Set position to 1050 px above screen's and menuBox's height just to make sure it doesn't intersect the scene being presented. Every scene has a height of 1024 and the sizeMultiplier accounts for the camera zoom.
                 existingBox.run(SKAction.moveTo(y: 1050 * sizeMultiplier, duration: 0.8))
                 
-                buttonRestart.state = .active
-                buttonNext.state = .active
-                buttonPrevious.state = .active
+                setGameSceneChangingButtonsStates(to: .active)
             } else {    // Else, drop it down
                 existingBox.run(SKAction.moveTo(y: 0, duration: 0.8))
                 
-                buttonRestart.state = .disabled
-                buttonNext.state = .disabled
-                buttonPrevious.state = .disabled
+                setGameSceneChangingButtonsStates(to: .disabled)
             }
                         
         }
