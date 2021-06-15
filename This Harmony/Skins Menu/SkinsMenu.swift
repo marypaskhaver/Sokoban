@@ -21,7 +21,7 @@ class SkinsMenu: SKScene {
     
     var gvc: GameViewController!
 
-    var images: [String] = ["louise", "delia", "aaron", "marco", "christina"]
+    var images: [String] = ["louise", "delia", "aaron", "marco", "christina", "tyler"]
     var imageInd: Int = 0
 
     lazy var nameLabel: SKLabelNode = self.childNode(withName: "nameLabel") as! SKLabelNode
