@@ -101,7 +101,7 @@ class MenuBoxMaker {
         let sizeMultiplier: CGFloat = 1 + abs(1.0 - CGFloat(self.gameScene.grid.grid[0].count) / 8.0)
 
         let cameraPosition: CGPoint = getCameraPosition()
-        let boxLength: CGFloat = 500 * sizeMultiplier
+        let boxLength: CGFloat = 400 * sizeMultiplier
 
         let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: cameraPosition.x - boxLength / 2, y: cameraPosition.y - boxLength / 2, width: boxLength, height: boxLength))
         menuBox.zPosition = 2
