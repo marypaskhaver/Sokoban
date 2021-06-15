@@ -110,8 +110,13 @@ class MenuBoxMaker {
 
         let menuBox: SKShapeNode = SKShapeNode(rect: CGRect(x: cameraPosition.x - boxLength / 2, y: cameraPosition.y - boxLength / 2, width: boxLength, height: boxLength))
         menuBox.zPosition = 2
-        menuBox.fillColor = .white
+        menuBox.fillColor = SKColor(displayP3Red: 202/255, green: 154/255, blue: 113/255, alpha: 1)
         menuBox.name = MenuBox.levelCompleteMenu.rawValue
+        
+        let bgImage = SKSpriteNode(imageNamed: "wood_frame")
+        bgImage.position = CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY)
+        bgImage.scale(to: CGSize(width: menuBox.frame.width, height: menuBox.frame.height))
+        menuBox.addChild(bgImage)
         
         let oldStepsLabel: StepLabel = StepLabel(withText: "Old Steps: \(gameScene.grid.lowestSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + 50))
         let newStepsLabel: StepLabel = StepLabel(withText: "New Steps: \(gameScene.grid.currentSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY - 50))
