@@ -12,4 +12,10 @@ Transform disharmony into this harmony. For free!
 - Swipe to move through 24 beautiful, themed levels
 - Push barrels into storage locations
 - Sit back, relax, and enjoy the music
+<br>
+<br>
+<br>
 
+Game art includes work by:
+- Final Boss Blues (http://finalbossblues.com)  
+- aka Pencils (http://akapencils.blogspot.com)
