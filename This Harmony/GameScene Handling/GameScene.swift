@@ -135,6 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             menuBox.run(SKAction.moveTo(y: 0, duration: 0.8))
             
             setGameSceneChangingButtonsStates(to: .disabled)
+            disableSwipeTrackers() // So user can't move while menu is open
         } else { // Pause menu already exists
             // Find it
             let existingBox: SKShapeNode = self.children.first(where: {$0.name == MenuBox.pauseLevelMenu.rawValue} ) as! SKShapeNode
@@ -150,15 +151,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 existingBox.run(SKAction.moveTo(y: 1050 * sizeMultiplier + amtToAdd, duration: 0.8))
                 
                 setGameSceneChangingButtonsStates(to: .active)
+                _ = self.view!.gestureRecognizers?.map( { $0.isEnabled = true } )
             } else {    // Else, drop it down
                 existingBox.run(SKAction.moveTo(y: 0, duration: 0.8))
                 
                 setGameSceneChangingButtonsStates(to: .disabled)
+                disableSwipeTrackers() // So user can't move while menu is open
             }
                         
         }
         
-        disableSwipeTrackers() // So user can't move while menu is open
     }
     
     func showLevelCompleteMenu() {
