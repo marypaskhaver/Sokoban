@@ -15,7 +15,9 @@ class LevelCell: UICollectionViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     override func awakeFromNib() {
-        super.awakeFromNib()                        
+        super.awakeFromNib()
+        
+        self.levelNumberLabel.textColor = UIColor.black
     }
     
 }
