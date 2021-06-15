@@ -119,19 +119,19 @@ class MenuBoxMaker {
         menuBox.addChild(bgImage)
         
         let oldStepsLabel: StepLabel = StepLabel(withText: "Old Steps: \(gameScene.grid.lowestSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY + 50))
-        let newStepsLabel: StepLabel = StepLabel(withText: "New Steps: \(gameScene.grid.currentSteps)", at: CGPoint(x: menuBox.frame.midX, y: menuBox.frame.midY - 25))
+        let newStepsLabel: StepLabel = StepLabel(withText: "New Steps: \(gameScene.grid.currentSteps)", at: CGPoint(x: menuBox.frame.midX, y: oldStepsLabel.position.y - 50))
         
         if gameScene.grid.lowestSteps != Int32.max { menuBox.addChild(oldStepsLabel) }
         menuBox.addChild(newStepsLabel)
         
-        let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 85, y: menuBox.frame.minY + 85))
+        let buttonRestart: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "reset_button"), CGSize(width: 100, height: 80), atPosition: CGPoint(x: menuBox.frame.minX + 95, y: menuBox.frame.minY + 85))
         
         buttonRestart.selectedHandler = {
             self.gameScene.gvc.loadLevel(number: CoreDataManager.gameSceneClass.level)
         }
         
         // Remove next button if there is no next level
-        let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 80, height: 80), atPosition: CGPoint(x: buttonRestart.frame.minX + 140, y: buttonRestart.frame.midY))
+        let buttonNext: MSButtonNode = MSButtonNode(SKTexture(imageNamed: "next_button"), CGSize(width: 100, height: 80), atPosition: CGPoint(x: menuBox.frame.maxX - 95, y: buttonRestart.frame.midY))
 
         buttonNext.selectedHandler = {
             self.gameScene.goToNextLevel()
