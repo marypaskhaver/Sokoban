@@ -144,7 +144,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // If it's in the scene, retract it
             if scene!.intersects(existingBox) {
                 // Set position to 1050 px above screen's and menuBox's height just to make sure it doesn't intersect the scene being presented. Every scene has a height of 1024 and the sizeMultiplier accounts for the camera zoom.
-                existingBox.run(SKAction.moveTo(y: 1050 * sizeMultiplier, duration: 0.8))
+                
+                let amtToAdd: CGFloat = grid.grid.count <= 7 ? 70 : 0
+                
+                existingBox.run(SKAction.moveTo(y: 1050 * sizeMultiplier + amtToAdd, duration: 0.8))
                 
                 setGameSceneChangingButtonsStates(to: .active)
             } else {    // Else, drop it down
