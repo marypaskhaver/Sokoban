@@ -16,7 +16,7 @@ class StepLabel: SKLabelNode {
         self.position = CGPoint(x: position.x, y: position.y)
         self.fontSize = 40
         self.horizontalAlignmentMode = .center
-        self.fontColor = UIColor.black
+        self.fontColor = UIColor.white
         self.fontName = "PlayMeGames"
         self.zPosition = 3
     }
