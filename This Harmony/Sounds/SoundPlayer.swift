@@ -15,13 +15,21 @@ class SoundPlayer {
     // Have to init var outside of playSound to avoid AudioQueueInternalNotifyRunning / error before everything's
     // set up correctly
     
-    static func reset() {
+    init() {
+        let levelMusicParts: [String] = Tile.constants.getLevelTheme().levelMusicParts
+        
+        for part in levelMusicParts {
+            addToAudioPlayers(part)
+        }
+    }
+    
+    func reset() {
         SoundPlayer.numberOfStorageSpacesFilled = 0
         SoundPlayer.arrayOfAudioPlayers = []
         SoundPlayer.currentPlayer = nil
     }
     
-    static func playSound(_ sound: String) {
+    func addToAudioPlayers(_ sound: String) {
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else {
             print("\(sound) url not found")
             return
@@ -32,80 +40,74 @@ class SoundPlayer {
             try AVAudioSession.sharedInstance().setActive(true)
 
             // The following line is required for the player to work on iOS 11. Change the file type accordingly
-            currentPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            SoundPlayer.currentPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
 
-            guard let player = currentPlayer else { return }
+            guard let player = SoundPlayer.currentPlayer else { return }
 
             player.volume = 1
-
-            if sound == Sound.playerCantMove {
-                DispatchQueue.main.async {
-                    player.prepareToPlay()
-                    player.play()
-                }
-                
-                return
-            }
-            
-            if sound != Sound.playerCantMove {
-                player.numberOfLoops = -1 // Loop forever
-            }
+            player.numberOfLoops = -1 // Loop forever
             
             SoundPlayer.arrayOfAudioPlayers.append(player)
             
             DispatchQueue.main.async {
                 player.prepareToPlay()
             }
-            
-            for player in SoundPlayer.arrayOfAudioPlayers {
-                // Play in background
-                DispatchQueue.main.async {
-                    player.stop()
-                    player.play()
-                }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+     
+    // Only for Sound.playerCantMove right now
+    func playSound(_ sound: String) {
+        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else {
+            print("\(sound) url not found")
+            return
+        }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            // The following line is required for the player to work on iOS 11. Change the file type accordingly
+            SoundPlayer.currentPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            guard let player = SoundPlayer.currentPlayer else { return }
+
+            player.volume = 1
+
+            DispatchQueue.main.async {
+                player.prepareToPlay()
+                player.play()
             }
+                        
         } catch let error {
             print(error.localizedDescription)
         }
         
     }
     
-    static func updateLevelMusic(withGridInformation gridInformation: GridInformation) {
-        let levelMusicParts: [String] = Tile.constants.getLevelTheme().levelMusicParts
+    func playAudioPlayers(upToIndex ind: Int, withGridInformation gridInformation: GridInformation) {
+        let numberOfCratesOnStorageTiles = gridInformation.numberOfCratesOnStorageTiles()
+
+        for i in 0..<numberOfCratesOnStorageTiles {
+            SoundPlayer.arrayOfAudioPlayers[i].stop()
+        }
+        
+        for i in 0..<ind {
+            SoundPlayer.arrayOfAudioPlayers[i].currentTime = 0
+            SoundPlayer.arrayOfAudioPlayers[i].play()
+        }
+    }
+    
+    func updateLevelMusic(withGridInformation gridInformation: GridInformation) {
         let numberOfCratesOnStorageTiles = gridInformation.numberOfCratesOnStorageTiles()
         
-//         A crate that was previously on a storage location has now been moved off. So, stop playing the very last musicPart / player that was added to arrayOfAudioPlayers
-        if numberOfCratesOnStorageTiles < SoundPlayer.numberOfStorageSpacesFilled {
-            if let lastPlayer: AVAudioPlayer = SoundPlayer.arrayOfAudioPlayers.popLast() {
-                lastPlayer.stop()
-            }
-            
+        if SoundPlayer.numberOfStorageSpacesFilled != numberOfCratesOnStorageTiles {
             SoundPlayer.numberOfStorageSpacesFilled = numberOfCratesOnStorageTiles
+        } else {
             return
         }
-        
-        // Either the level hasn't started (each are 0) or nothing's changed (player has moved but not pushed a crate), so can return early
-        if numberOfCratesOnStorageTiles == SoundPlayer.numberOfStorageSpacesFilled {
-            return
-        }
-                
-        // Return early if the number of storage spaces filled is equal to the # of music parts. Since numberOfStorageSpacesFilled right now holds the prev # of storage spaces filled, that means that any subsequent storage filled will be greater than the music parts in the level. Hence, those parts will not play; you will not even affects the arrayOfAudioPlayers
-        if SoundPlayer.numberOfStorageSpacesFilled >= levelMusicParts.count {
-            return
-        }
-        
-        SoundPlayer.arrayOfAudioPlayers = []
-        
-        // The # of storage locations with crates on them has changed
-        for musicPart in 0..<numberOfCratesOnStorageTiles {
-            // Avoid going out of bounds if I accidentally or by default provide a music theme to a level that consists
-            // of less parts than there are storage spaces
-            if musicPart < levelMusicParts.count {
-                playSound(levelMusicParts[musicPart])
-            }
-        }
-        
-        SoundPlayer.numberOfStorageSpacesFilled = numberOfCratesOnStorageTiles
-        
+            
+        playAudioPlayers(upToIndex: numberOfCratesOnStorageTiles, withGridInformation: gridInformation)
     }
 }
