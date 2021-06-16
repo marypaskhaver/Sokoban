@@ -16,6 +16,7 @@ class SoundPlayer {
     // set up correctly
     
     init() {
+        // Load all levelMusicParts into arrayOfAudioPlayers
         let levelMusicParts: [String] = Tile.constants.getLevelTheme().levelMusicParts
         
         for part in levelMusicParts {
@@ -49,6 +50,7 @@ class SoundPlayer {
             
             SoundPlayer.arrayOfAudioPlayers.append(player)
             
+            // Play in the bg / off of main thread
             DispatchQueue.main.async {
                 player.prepareToPlay()
             }
@@ -93,8 +95,13 @@ class SoundPlayer {
         }
         
         for i in 0..<ind {
-            SoundPlayer.arrayOfAudioPlayers[i].currentTime = 0
-            SoundPlayer.arrayOfAudioPlayers[i].play()
+            let player = SoundPlayer.arrayOfAudioPlayers[i]
+            player.currentTime = 0
+            player.volume = 1
+            
+            DispatchQueue.main.async {
+                player.play()
+            }
         }
     }
     
