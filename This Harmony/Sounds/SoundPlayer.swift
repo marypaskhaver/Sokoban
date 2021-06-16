@@ -57,8 +57,9 @@ class SoundPlayer {
         }
     }
      
-    // Only for Sound.playerCantMove right now
-    func playSound(_ sound: String) {
+    func playPlayerCantMoveSound() {
+        let sound: String = Sound.playerCantMove
+        
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else {
             print("\(sound) url not found")
             return
