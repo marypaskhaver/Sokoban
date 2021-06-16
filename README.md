@@ -1,4 +1,4 @@
-# This Harmony
+# Sokoban: The Journey (previously This Harmony: Musical Sokoban)
 
 Do you like puzzles? Do you like music? Do you not like lasers?
 
