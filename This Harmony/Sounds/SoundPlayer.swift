@@ -87,7 +87,7 @@ class SoundPlayer {
         
     }
     
-    func playAudioPlayers(upToIndex ind: Int, withGridInformation gridInformation: GridInformation) {
+    func playAudioPlayers(upToIndex ind: Int) {
         for i in 0..<SoundPlayer.arrayOfAudioPlayers.count {
             SoundPlayer.arrayOfAudioPlayers[i].stop()
         }
@@ -107,6 +107,6 @@ class SoundPlayer {
             return
         }
             
-        playAudioPlayers(upToIndex: numberOfCratesOnStorageTiles, withGridInformation: gridInformation)
+        playAudioPlayers(upToIndex: numberOfCratesOnStorageTiles)
     }
 }
