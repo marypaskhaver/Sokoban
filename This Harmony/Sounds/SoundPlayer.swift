@@ -89,6 +89,7 @@ class SoundPlayer {
         
     }
     
+    // Stop all players in arrayOfAudioPlayers, then only play as many as there are filled storage spots in the level
     func playAudioPlayers(upToIndex ind: Int) {
         for i in 0..<SoundPlayer.arrayOfAudioPlayers.count {
             SoundPlayer.arrayOfAudioPlayers[i].stop()
