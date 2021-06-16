@@ -69,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scene.scaleMode = .aspectFill
         
         // Reset music
-        SoundPlayer.reset()
+        SoundPlayer().reset()
         
         return scene
     }
