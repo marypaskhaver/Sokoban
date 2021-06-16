@@ -158,7 +158,7 @@ class PlayerMover {
     
     // The row and col properties of Floors (and Crates) are not changed at all throughout the game-- only the Floors crate and player properties are
     func movePlayer(inDirection dir: Direction) {
-        if !canPlayerMove(inDirection: dir) { soundPlayer.playSound(Sound.playerCantMove); return }
+        if !canPlayerMove(inDirection: dir) { soundPlayer.playPlayerCantMoveSound(); return }
 
         didPlayerMove = true
 
