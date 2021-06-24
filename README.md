@@ -13,8 +13,13 @@ Transform disharmony into this harmony. For free!
 - Push barrels into storage locations
 - Sit back, relax, and enjoy the music
 <br>
+
+You can find it on the App Store [here](https://apps.apple.com/us/app/sokoban-the-journey/id1572505145).
+
 <br>
 <br>
+<br>
+
 
 Game art includes work by:
 - Final Boss Blues (http://finalbossblues.com)  
