@@ -26,6 +26,8 @@ class SkinsMenu: SKScene {
     lazy var playerImageLeft: MSButtonNode = self.childNode(withName: "playerImageLeft") as! MSButtonNode
     lazy var playerImageRight: MSButtonNode = self.childNode(withName: "playerImageRight") as! MSButtonNode
     
+    lazy var instructionsLabel: SKLabelNode = self.childNode(withName: "instructions") as! SKLabelNode
+    
     override func didMove(to view: SKView) {
         // Don't set left image bc when view loads, start at imageInd 0
         self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
@@ -53,6 +55,10 @@ class SkinsMenu: SKScene {
         // Set nameLabel font properties
         nameLabel.fontName = "PlayMeGames"
         nameLabel.fontSize = 60
+        
+        instructionsLabel.text = "Swipe or tap on a sprite to change skins"
+        instructionsLabel.fontName = "Pixellium"
+        instructionsLabel.fontSize = 40
     }
     
     func setButtonHandlers() {
@@ -136,6 +142,10 @@ class SkinsMenu: SKScene {
     }
     
     func shiftPlayerImages(to dir: Direction) {
+        if !instructionsLabel.isHidden {
+            instructionsLabel.run(SKAction.fadeOut(withDuration: 1))
+        }
+        
         if dir == .right {
             if self.imageInd + 1 < self.images.count {
                 self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd + 1] + "_d_stand")
