@@ -23,13 +23,24 @@ class SkinsMenu: SKScene {
 
     lazy var nameLabel: SKLabelNode = self.childNode(withName: "nameLabel") as! SKLabelNode
 
-    lazy var playerImageLeft: SKSpriteNode = self.childNode(withName: "playerImageLeft") as! SKSpriteNode
-    lazy var playerImageRight: SKSpriteNode = self.childNode(withName: "playerImageRight") as! SKSpriteNode
+    lazy var playerImageLeft: MSButtonNode = self.childNode(withName: "playerImageLeft") as! MSButtonNode
+    lazy var playerImageRight: MSButtonNode = self.childNode(withName: "playerImageRight") as! MSButtonNode
     
     override func didMove(to view: SKView) {
         // Don't set left image bc when view loads, start at imageInd 0
         self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
         self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
+        
+        self.playerImageLeft.shouldChangeAlpha = false
+        self.playerImageRight.shouldChangeAlpha = false
+        
+        self.playerImageLeft.selectedHandler = {
+            self.shiftPlayerImages(to: .left)
+        }
+        
+        self.playerImageRight.selectedHandler = {
+            self.shiftPlayerImages(to: .right)
+        }
         
         setUpNameLabel()
         setButtonHandlers()
@@ -45,7 +56,6 @@ class SkinsMenu: SKScene {
     }
     
     func setButtonHandlers() {
-
         let swipeLeftTracker: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft(sender:)))
         swipeLeftTracker.direction = .left
         
@@ -79,7 +89,7 @@ class SkinsMenu: SKScene {
         }
         
         updatePlayerLeftAndRightImages()
-        reloadInputViewsOfButtonsAndImages()
+//        reloadInputViewsOfButtonsAndImages()
         
         animatePlayerImage()
     }
@@ -94,12 +104,11 @@ class SkinsMenu: SKScene {
         }
     }
     
-    func reloadInputViewsOfButtonsAndImages() {
-        for node in [playerImageLeft, playerImageRight] {
-            node.reloadInputViews()
-        }
-
-    }
+//    func reloadInputViewsOfButtonsAndImages() {
+//        for node in [playerImageLeft, playerImageRight] {
+//            node.reloadInputViews()
+//        }
+//    }
     
     func animatePlayerImage() {
         let playerTexture: String = images[imageInd]
