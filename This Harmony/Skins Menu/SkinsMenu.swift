@@ -11,9 +11,6 @@ import SpriteKit
 let defaults = UserDefaults.standard
 
 class SkinsMenu: SKScene {
-
-    lazy var buttonNext: MSButtonNode = self.childNode(withName: "buttonNext") as! MSButtonNode
-    lazy var buttonPrev: MSButtonNode = self.childNode(withName: "buttonPrevious") as! MSButtonNode
     
     lazy var playerImage: SKSpriteNode = self.childNode(withName: "playerImage") as! SKSpriteNode
     
@@ -48,25 +45,16 @@ class SkinsMenu: SKScene {
     }
     
     func setButtonHandlers() {
-        buttonPrev.selectedHandler = {
-            if self.imageInd - 1 >= 0 {
-                self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd - 1] + "_d_stand")
-                self.imageInd -= 1
-            }
-            
-            self.updateButtonsAndImages()
-            self.updateNameLabel()
-        }
-                
-        buttonNext.selectedHandler = {
-            if self.imageInd + 1 < self.images.count {
-                self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd + 1] + "_d_stand")
-                self.imageInd += 1
-            }
 
-            self.updateButtonsAndImages()
-            self.updateNameLabel()
-        }
+        let swipeLeftTracker: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft(sender:)))
+        swipeLeftTracker.direction = .left
+        
+        let swipeRightTracker: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight(sender:)))
+        swipeRightTracker.direction = .right
+
+        self.view!.addGestureRecognizer(swipeLeftTracker)
+        self.view!.addGestureRecognizer(swipeRightTracker)
+
                 
         buttonDone.selectedHandler = {
             defaults.setValue(self.images[self.imageInd], forKey: "userChosenPlayerImage")
@@ -83,11 +71,11 @@ class SkinsMenu: SKScene {
     func updateButtonsAndImages() {
         // Initially, all buttons and playerImages have an isHidden property of false
         if imageInd == 0 {
-            setIsHiddenProperty(for: [buttonPrev, playerImageLeft], to: true)
+            setIsHiddenProperty(for: [playerImageLeft], to: true)
         } else if imageInd == images.count - 1 {
-            setIsHiddenProperty(for: [buttonNext, playerImageRight], to: true)
+            setIsHiddenProperty(for: [playerImageRight], to: true)
         } else {
-            setIsHiddenProperty(for: [buttonNext, buttonPrev, playerImageLeft, playerImageRight], to: false)
+            setIsHiddenProperty(for: [playerImageLeft, playerImageRight], to: false)
         }
         
         updatePlayerLeftAndRightImages()
@@ -107,9 +95,10 @@ class SkinsMenu: SKScene {
     }
     
     func reloadInputViewsOfButtonsAndImages() {
-        for node in [playerImageLeft, playerImageRight, buttonNext, buttonPrev] {
+        for node in [playerImageLeft, playerImageRight] {
             node.reloadInputViews()
         }
+
     }
     
     func animatePlayerImage() {
@@ -127,6 +116,34 @@ class SkinsMenu: SKScene {
     
     func updateNameLabel() {
         nameLabel.text = images[imageInd].capitalized
+    }
+    
+    @objc func swipedRight(sender: UISwipeGestureRecognizer) {
+        shiftPlayerImages(to: .left)
+    }
+    
+    @objc func swipedLeft(sender: UISwipeGestureRecognizer) {
+        shiftPlayerImages(to: .right)
+    }
+    
+    func shiftPlayerImages(to dir: Direction) {
+        if dir == .right {
+            if self.imageInd + 1 < self.images.count {
+                self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd + 1] + "_d_stand")
+                self.imageInd += 1
+            }
+
+            self.updateButtonsAndImages()
+            self.updateNameLabel()
+        } else if dir == .left {
+            if self.imageInd - 1 >= 0 {
+                self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd - 1] + "_d_stand")
+                self.imageInd -= 1
+            }
+
+            self.updateButtonsAndImages()
+            self.updateNameLabel()
+        }
     }
     
 }
