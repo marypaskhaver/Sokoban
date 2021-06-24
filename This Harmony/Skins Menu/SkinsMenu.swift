@@ -56,9 +56,9 @@ class SkinsMenu: SKScene {
         nameLabel.fontName = "PlayMeGames"
         nameLabel.fontSize = 60
         
-        instructionsLabel.text = "Swipe or tap on a sprite to change skins"
+        instructionsLabel.text = "   Swipe or tap a sprite\n\t\t  to change skins"
         instructionsLabel.fontName = "Pixellium"
-        instructionsLabel.fontSize = 40
+        instructionsLabel.fontSize = 45
     }
     
     func setButtonHandlers() {
