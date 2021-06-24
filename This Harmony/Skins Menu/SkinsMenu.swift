@@ -95,7 +95,6 @@ class SkinsMenu: SKScene {
         }
         
         updatePlayerLeftAndRightImages()
-//        reloadInputViewsOfButtonsAndImages()
         
         animatePlayerImage()
     }
@@ -109,12 +108,6 @@ class SkinsMenu: SKScene {
             playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
         }
     }
-    
-//    func reloadInputViewsOfButtonsAndImages() {
-//        for node in [playerImageLeft, playerImageRight] {
-//            node.reloadInputViews()
-//        }
-//    }
     
     func animatePlayerImage() {
         let playerTexture: String = images[imageInd]
