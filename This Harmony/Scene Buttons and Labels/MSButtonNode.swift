@@ -15,6 +15,8 @@ class MSButtonNode: SKSpriteNode {
     
     // Setup a dummy action closure
     var selectedHandler: () -> Void = { print("No button action set") }
+    
+    // If needed, set this so MSButtonNode can maintain same transparency regardless of state
     var shouldChangeAlpha: Bool = false
     
     // Button state management
