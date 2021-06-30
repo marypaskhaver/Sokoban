@@ -34,7 +34,10 @@ class SkinsMenu: SKScene {
         if imageInd >= 1 {
             self.playerImageLeft.texture = SKTexture(imageNamed: self.images[imageInd - 1] + "_d_stand")
             self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
-            self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
+            
+            if imageInd + 1 < images.count {
+                self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
+            }
         } else {
             // Don't set left image bc when view loads, start at imageInd 0
             self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
@@ -156,10 +159,7 @@ class SkinsMenu: SKScene {
         if !instructionsLabel.isHidden {
             instructionsLabel.run(SKAction.fadeOut(withDuration: 1))
         }
-        
-        // Hide playerImage. Will be unhidden in animateImageSwitch funcs.
-        playerImage.isHidden = true
-        
+
         if dir == .right {
             animateImageSwitchLeft(from: playerImage, to: playerImageLeft)
             animateImageSwitchLeft(from: playerImageRight, to: playerImage)
@@ -187,7 +187,10 @@ class SkinsMenu: SKScene {
         
     func animateImageSwitchLeft(from rightmostImage: SKSpriteNode, to leftmostImage: SKSpriteNode) {
         if playerImageRight.isHidden { return }
-                        
+
+        // Hide playerImage. Will be unhidden at end of this func.
+        playerImage.isHidden = true
+
         let playerImageCopy: SKSpriteNode = SKSpriteNode(texture: rightmostImage.texture)
         playerImageCopy.position = CGPoint(x: rightmostImage.frame.midX, y: rightmostImage.frame.midY)
         playerImageCopy.scale(to: leftmostImage.size)
@@ -212,6 +215,9 @@ class SkinsMenu: SKScene {
     
     func animateImageSwitchRight(from leftmostImage: SKSpriteNode, to rightmostImage: SKSpriteNode) {
         if playerImageLeft.isHidden { return }
+
+        // Hide playerImage. Will be unhidden at end of this func.
+        playerImage.isHidden = true
 
         let playerImageCopy: SKSpriteNode = SKSpriteNode(texture: leftmostImage.texture)
         playerImageCopy.position = CGPoint(x: leftmostImage.frame.midX, y: leftmostImage.frame.midY)
