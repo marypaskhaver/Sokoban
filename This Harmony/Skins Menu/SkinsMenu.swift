@@ -32,10 +32,7 @@ class SkinsMenu: SKScene {
         // Don't set left image bc when view loads, start at imageInd 0
         self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
         self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
-        
-        self.playerImageLeft.shouldChangeAlpha = false
-        self.playerImageRight.shouldChangeAlpha = false
-        
+                
         self.playerImageLeft.selectedHandler = {
             self.shiftPlayerImages(to: .left)
         }
@@ -109,6 +106,10 @@ class SkinsMenu: SKScene {
         }
     }
     
+    func removeSprite(_ sprite: SKSpriteNode) {
+        sprite.removeFromParent()
+    }
+    
     func animatePlayerImage() {
         let playerTexture: String = images[imageInd]
         
@@ -139,7 +140,13 @@ class SkinsMenu: SKScene {
             instructionsLabel.run(SKAction.fadeOut(withDuration: 1))
         }
         
+        // Hide playerImage. Will be unhidden in animateImageSwitch funcs.
+        playerImage.isHidden = true
+        
         if dir == .right {
+            animateImageSwitchLeft(from: playerImage, to: playerImageLeft)
+            animateImageSwitchLeft(from: playerImageRight, to: playerImage)
+
             if self.imageInd + 1 < self.images.count {
                 self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd + 1] + "_d_stand")
                 self.imageInd += 1
@@ -148,6 +155,9 @@ class SkinsMenu: SKScene {
             self.updateButtonsAndImages()
             self.updateNameLabel()
         } else if dir == .left {
+            animateImageSwitchRight(from: playerImageLeft, to: playerImage)
+            animateImageSwitchRight(from: playerImage, to: playerImageRight)
+
             if self.imageInd - 1 >= 0 {
                 self.playerImage.texture = SKTexture(imageNamed: self.images[self.imageInd - 1] + "_d_stand")
                 self.imageInd -= 1
@@ -156,6 +166,52 @@ class SkinsMenu: SKScene {
             self.updateButtonsAndImages()
             self.updateNameLabel()
         }
+    }
+        
+    func animateImageSwitchLeft(from rightmostImage: SKSpriteNode, to leftmostImage: SKSpriteNode) {
+        if playerImageRight.isHidden { return }
+                        
+        let playerImageCopy: SKSpriteNode = SKSpriteNode(texture: rightmostImage.texture)
+        playerImageCopy.position = CGPoint(x: rightmostImage.frame.midX, y: rightmostImage.frame.midY)
+        playerImageCopy.scale(to: leftmostImage.size)
+        
+        self.addChild(playerImageCopy)
+                
+        let move: SKAction = SKAction.move(to: CGPoint(x: leftmostImage.frame.midX, y: leftmostImage.frame.midY), duration: 0.2)
+        let scale: SKAction = SKAction.scale(to: leftmostImage.frame.size, duration: 0.2)
+
+        playerImageCopy.run(SKAction.group([move, scale]))
+
+        let wait: SKAction = SKAction.wait(forDuration: 0.3)
+        let remove: SKAction = SKAction.run({() in self.removeSprite(playerImageCopy)})
+        let unhidePlayerImage: SKAction = SKAction.run({() in self.unhidePlayerImage()})
+        
+        playerImageCopy.run(SKAction.sequence([wait, remove, unhidePlayerImage]))
+    }
+    
+    func unhidePlayerImage() {
+        playerImage.isHidden = false
+    }
+    
+    func animateImageSwitchRight(from leftmostImage: SKSpriteNode, to rightmostImage: SKSpriteNode) {
+        if playerImageLeft.isHidden { return }
+
+        let playerImageCopy: SKSpriteNode = SKSpriteNode(texture: leftmostImage.texture)
+        playerImageCopy.position = CGPoint(x: leftmostImage.frame.midX, y: leftmostImage.frame.midY)
+        playerImageCopy.scale(to: leftmostImage.size)
+        
+        self.addChild(playerImageCopy)
+        
+        let move: SKAction = SKAction.move(to: CGPoint(x: rightmostImage.frame.midX, y: rightmostImage.frame.midY), duration: 0.2)
+        let scale: SKAction = SKAction.scale(to: rightmostImage.frame.size, duration: 0.2)
+
+        playerImageCopy.run(SKAction.group([move, scale]))
+
+        let wait: SKAction = SKAction.wait(forDuration: 0.3)
+        let remove: SKAction = SKAction.run({() in self.removeSprite(playerImageCopy)})
+        let unhidePlayerImage: SKAction = SKAction.run({() in self.unhidePlayerImage()})
+        
+        playerImageCopy.run(SKAction.sequence([wait, remove, unhidePlayerImage]))
     }
     
 }
