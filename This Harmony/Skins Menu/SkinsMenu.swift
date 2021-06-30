@@ -29,10 +29,18 @@ class SkinsMenu: SKScene {
     lazy var instructionsLabel: SKLabelNode = self.childNode(withName: "instructions") as! SKLabelNode
     
     override func didMove(to view: SKView) {
-        // Don't set left image bc when view loads, start at imageInd 0
-        self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
-        self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
-                
+        imageInd = getIndexOfUserChosenImage() >= 1 ? getIndexOfUserChosenImage() : 0
+        
+        if imageInd >= 1 {
+            self.playerImageLeft.texture = SKTexture(imageNamed: self.images[imageInd - 1] + "_d_stand")
+            self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
+            self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
+        } else {
+            // Don't set left image bc when view loads, start at imageInd 0
+            self.playerImage.texture = SKTexture(imageNamed: self.images[imageInd] + "_d_stand")
+            self.playerImageRight.texture = SKTexture(imageNamed: self.images[imageInd + 1] + "_d_stand")
+        }
+                        
         self.playerImageLeft.selectedHandler = {
             self.shiftPlayerImages(to: .left)
         }
@@ -46,6 +54,14 @@ class SkinsMenu: SKScene {
         
         updateButtonsAndImages()
         updateNameLabel()
+    }
+    
+    func getIndexOfUserChosenImage() -> Int {
+        if let currentImage = defaults.string(forKey: "userChosenPlayerImage") {
+            return images.firstIndex(of: currentImage)!
+        }
+        
+        return -1
     }
     
     func setUpNameLabel() {
