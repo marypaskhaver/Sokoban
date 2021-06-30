@@ -55,6 +55,7 @@ class MenuBoxMaker {
 
         homeLabel.selectedHandler = {
             self.gameScene.gvc.presentMainMenu()
+            SoundPlayer().reset()
         }
         
         let bgImage = SKSpriteNode(imageNamed: "wood_frame")
