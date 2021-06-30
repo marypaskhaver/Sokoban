@@ -49,7 +49,7 @@ class SkinsMenu: SKScene {
             self.shiftPlayerImages(to: .right)
         }
         
-        setUpNameLabel()
+        setUpLabels()
         setButtonHandlers()
         
         updateButtonsAndImages()
@@ -64,11 +64,12 @@ class SkinsMenu: SKScene {
         return -1
     }
     
-    func setUpNameLabel() {
+    func setUpLabels() {
         // Set nameLabel font properties
         nameLabel.fontName = "PlayMeGames"
         nameLabel.fontSize = 60
         
+        // Set instructionsLabel font properties
         instructionsLabel.text = "   Swipe or tap a sprite\n\t\t  to change skins"
         instructionsLabel.fontName = "Pixellium"
         instructionsLabel.fontSize = 45
